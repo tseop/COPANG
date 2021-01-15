@@ -1,5 +1,4 @@
 @charset "utf-8";
-
 html{font-size: 20px;}
 body{font-size: 1rem;display:flexd;}
 header{height: 12rem; border:1px solid red;}
@@ -40,17 +39,18 @@ main{min-height:40rem;border:1px solid blue;}
 .top .menu {
 	height: 45px;
 	background: #4285f4;
+	text-align:center;
 }
 
 .top .menu ul {
-	text-align: center;
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	display:inline-block;
 }
 
 .top .menu ul li {
-	display:inline-block;
+	float:left;
 	overflow: hidden;
 	text-align: center;
 	line-height: 45px;
@@ -79,6 +79,7 @@ main{min-height:40rem;border:1px solid blue;}
 
 .top .menu ul li a span.over {
 	top: -45px;
-	background: #b8b6ce;
-	color: #fff;
+	background: #fff;
+	color: #3079F3;
+	font-weight: 900;
 }

@@ -12,7 +12,7 @@
 <body>
 	<div class="top">
 		<div class="logo">
-			<a href="index.jsp"><img src="images/COPANG_LOGO_ver.2.png" width="100px"></a>
+			<a href="index.jsp"><img src="images/Copang_logo.png" width="100px"></a>
 		</div>
 		<div class="top-bar">
 			<a href="index.jsp">홈</a>&emsp;
