@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>COPANG</title>
+<title>COPANG  </title>
 </head>
 <body>
 	<form action="Login" method="post">
