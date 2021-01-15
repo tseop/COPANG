@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css?v=011501">
+<link rel="stylesheet" href="css/style.css?v=011502">
 </head>
 <body>
 <header>
