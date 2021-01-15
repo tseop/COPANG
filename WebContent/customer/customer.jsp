@@ -28,13 +28,13 @@
 		     <td><c:out value="${customer.cusName}"/></td>
 		     <td><c:out value="${customer.cusManager}"/></td>
 		     <td><c:out value="${customer.cusTel}"/></td>
-		     <td><c:out value="${customer.cusBusinessNo}"/></td>
+		     <td><c:out value="${customer.businessNo}"/></td>
 		    <%--  <td><a href="customerDelete.cu?no=${customer.cusNo }">삭제</a></td> --%>
 		  </tr>
    		</c:forEach>
-	  <%-- <tr border="0">
+	  <tr border="0">
 	      <td colspan="7"><jsp:include page="page.jsp" flush="true"/></td>
-	  </tr> --%>
+	  </tr>
 	</table>
 </div>
 <div id="link">

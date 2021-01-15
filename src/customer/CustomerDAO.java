@@ -32,7 +32,7 @@ public class CustomerDAO {
 	
 	public int customerRegister(CustomerDTO customerDTO) throws SQLException {
 		conn = getConnection();
-		sql = "insert into COUSTOMER(CUS_NAME,CUS_MANAGER,CUS_TEL,CUS_NUM) values(?,?,?,?)";
+		sql = "insert into CUSTOMER(CUS_NAME,CUS_MANAGER,CUS_TEL,CUS_NUM) values(?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, customerDTO.getCusName());
 		pstmt.setString(2, customerDTO.getCusManager());
@@ -46,7 +46,7 @@ public class CustomerDAO {
 		int count=0;
 		try {
 			conn = getConnection();
-			sql = "select count(*) from COUSTOMER";
+			sql = "select count(*) from CUSTOMER";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -64,7 +64,7 @@ public class CustomerDAO {
 	      ArrayList<CustomerDTO> list = new ArrayList<CustomerDTO>();
 	      try {
 	         conn=getConnection();
-	         sql = "select * from COUSTOMER";
+	         sql = "select * from CUSTOMER";
 	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	         rs = pstmt.executeQuery();
 	         int perPage = pageTo.getPerPage();//5
@@ -74,11 +74,11 @@ public class CustomerDAO {
 	         }
 	         //ResultSet의 absolute메소드를 이용하여 해당 페이지의 Cursor 의 위치로 이동...
 	         for(int i=0;i<perPage && rs.next();i++){
-	            int cusNo = rs.getInt("cusNo");
-	            String cusName = rs.getString("cusName");
-	            String cusManager = rs.getString("cusManager");
-	            String cusTel = rs.getString("cusTel");
-	            String businessNo = rs.getString("businessNo");
+	            int cusNo = rs.getInt("CUS_NO");
+	            String cusName = rs.getString("CUS_NAME");
+	            String cusManager = rs.getString("CUS_MANAGER");
+	            String cusTel = rs.getString("CUS_TEL");
+	            String businessNo = rs.getString("BUSINESS_NO");
 	            CustomerDTO data = new CustomerDTO();
 	            data.setCusNo(cusNo);
 	            data.setCusName(cusName);
