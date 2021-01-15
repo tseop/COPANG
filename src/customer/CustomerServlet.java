@@ -50,7 +50,7 @@ public class CustomerServlet extends HttpServlet {
 	           } catch (SQLException e) {
 	              e.printStackTrace();
 	           }
-	      }//등록
+	      }//등록 hi
 	      
 	      else if(command.equals("/customerList.cu")){//목록         
 	          int curPage = 1;//기본페이지
