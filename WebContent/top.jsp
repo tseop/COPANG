@@ -15,8 +15,8 @@
 			<a href="index.jsp"><img src="images/Copang_logo.png"></a>
 		</div>
 		<div class="top-bar">
-			<a href="index.jsp">홈</a>&emsp;
 			<%
+
 				String id = (String) session.getAttribute("id");//오브젝트 타입으로 반환되기때문에 타입변환 필요함
 				if (id != null) {
 					if (id.equals("zzzz1")) {
@@ -32,8 +32,8 @@
 					out.print("<a href='index.jsp?page=member/memberForm'>회원가입</a>&emsp;");
 					out.print("<a href='index.jsp?page=member/loginForm'>로그인</a>");
 				}
-			%>
 
+			%>
 		</div>
 		<div class="menu">
 			<ul>
@@ -58,8 +58,10 @@
 					%>
 				</li>
 				<li><a href="#">공지사항</a></li>
+
 				<li><a href="boardList.bo">익명게시판</a></li>
-				<li><a href="#">포트폴리오</a></li>
+				<li><a href='index.jsp?page=customer/customer'>거래처</a></li>
+
 			</ul>
 		</div>
 	</div>
