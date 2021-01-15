@@ -14,9 +14,7 @@ main{min-height:40rem;border:1px solid blue;}
 	background: white;
 	padding: 30px;
 }
-.top .logo {
-	text-align: center;
-}
+.top .logo {text-align: center;}
 .top .top-bar {
 	min-width: 30rem;
 	margin-bottom:1rem;

@@ -14,22 +14,25 @@
 .footer-content .sns-link ul li{display: inline;}
 .footer-content .sns-link a{text-decoration:none; height:4rem;font-size: 0.9rem;}
 .footer-content .sns-link img{width: 2.5rem; margin-left:1rem ; margin-right: 1rem;}
-.copyright{background-color: white; font-size:0.7rem; width: 100%; position: relative; height: 2rem; line-height: 2rem;text-align: center;}
-
+.copyright{background-color: white; font-size:0.7rem; width: 100%; position: relative; height: 2rem; line-height: 2rem;text-align: center;min-width: 30rem;}
+.footer-content .con{min-width: 30rem;}
+.footer-content .con a{text-decoration: none; color:white; font-weight: 700;}
 </style>
 </head>
 <body>
 <div class="footer-content">
-<p>(주)코팡컴퍼니 | 대표 김태섭 | 610-00-00000 | Tel.070-0000-0000</p>
-<p>개인정보관리책임자 이상아(info@copang.com)</p>
+<div class="con">
+<p>(주)코팡컴퍼니  | 대표 김태섭 | 610-00-00000 | Tel.070-0000-0000</p>
+<p>개인정보관리책임자 이상아 <a href="mailto:info@copang.com">info@copang.com</a></p>
 <hr>
 <div class="sns-link">
 <ul>
 <li><a href="https://github.com/KOCO-Project/COPANG">
 	<img src="images/github.png"></a></li>
-<li><a href="#"><img src="images/kakao.png"></a></li>
-<li><a href="#"><img src="images/instagram.png"></a></li>
+<li><a href="https://open.kakao.com/o/si5LysLc"><img src="images/kakao.png"></a></li>
+<li><a href="https://www.instagram.com/"><img src="images/instagram.png"></a></li>
 </ul>
+</div>
 </div>
 </div>
 <div class="copyright">
