@@ -6,24 +6,37 @@
 <link rel="stylesheet" href="css/reset.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KOCO</title>
+<title>COPANG</title>
 <style type="text/css">
-.footer-content{background:#888; text-align: center; height:8.5rem; line-height: 1.2rem; width: 100%; margin:auto; color: white; padding-top: 2.5rem;}
+.footer-content{background:#888; text-align: center; height:9rem; line-height: 1.5rem; width: 100%; margin:auto; color: white; padding-top: 2rem;}
+.footer-content p{font-size: 0.9rem; font-weight: 50;}
 .footer-content hr{width: 2.5rem; height: 0.15rem; border: none; background: white; margin-top: 1rem; margin-bottom: 1rem;}
-.footer-content h1{font-weight:500;height:2rem;font-size: 2rem;}
-.footer-content h2{font-weight:100;height:4rem;font-size: 0.9rem;}
-.copyright {background-color: white; font-size:0.7rem; width: 100%; position: relative; height: 2rem; line-height: 2rem;text-align: center;}
+.footer-content .sns-link ul li{display: inline;}
+.footer-content .sns-link a{text-decoration:none; height:4rem;font-size: 0.9rem;}
+.footer-content .sns-link img{width: 2.5rem; margin-left:1rem ; margin-right: 1rem;}
+.copyright{background-color: white; font-size:0.7rem; width: 100%; position: relative; height: 2rem; line-height: 2rem;text-align: center;min-width: 30rem;}
+.footer-content .con{min-width: 30rem;}
+.footer-content .con a{text-decoration: none; color:white; font-weight: 700;}
 </style>
 </head>
 <body>
 <div class="footer-content">
-<h1>WE ARE KOREAN DEVELOPER</h1>
+<div class="con">
+<p>(주)코팡컴퍼니  | 대표 김태섭 | 610-00-00000 | Tel.070-0000-0000</p>
+<p>개인정보관리책임자 이상아 <a href="mailto:info@copang.com">info@copang.com</a></p>
 <hr>
-<h2>KOCO is Double click here or click Edit Text to add some text of your own or to change the font. 
-This is the place for you to tell your site visitors a little bit about you and your services.</h2>
+<div class="sns-link">
+<ul>
+<li><a href="https://github.com/KOCO-Project/COPANG">
+	<img src="images/github.png"></a></li>
+<li><a href="https://open.kakao.com/o/si5LysLc"><img src="images/kakao.png"></a></li>
+<li><a href="https://www.instagram.com/"><img src="images/instagram.png"></a></li>
+</ul>
+</div>
+</div>
 </div>
 <div class="copyright">
-© 2021 by KOCO of Site. Proudly created with KHBClass
+© 2021 by COPANG of Site. Proudly created with KHBClass-1JO
 </div>
 </body>
 </html>
