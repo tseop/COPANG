@@ -13,8 +13,8 @@
 .footer-content hr{width: 2.5rem; height: 0.15rem; border: none; background: white; margin-top: 1rem; margin-bottom: 1rem;}
 .footer-content .sns-link ul li{display: inline;}
 .footer-content .sns-link a{text-decoration:none; height:4rem;font-size: 0.9rem;}
-.footer-content .sns-link img{width: 25px; background: #353a3f; padding: 0.6rem; border-radius:25px; }
-.copyright {background-color: white; font-size:0.7rem; width: 100%; position: relative; height: 2rem; line-height: 2rem;text-align: center;}
+.footer-content .sns-link img{width: 2.5rem; margin-left:1rem ; margin-right: 1rem;}
+.copyright{background-color: white; font-size:0.7rem; width: 100%; position: relative; height: 2rem; line-height: 2rem;text-align: center;}
 
 </style>
 </head>
