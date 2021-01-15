@@ -4,8 +4,8 @@
 	String pagefile = request.getParameter("page");
 	if (pagefile == null) {
 		pagefile = "test";
-    }
-%> 
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +16,14 @@
 <link rel="stylesheet" href="css/style.css?v=011501">
 </head>
 <body>
-<header>
-	<jsp:include page="top.jsp" />
-</header>
-<main>
-	<jsp:include page='<%=pagefile + ".jsp"%>' />
-</main>
-<footer>
-	<jsp:include page="bottom.jsp" />
-</footer>
+	<header>
+		<jsp:include page="top.jsp" />
+	</header>
+	<main>
+		<jsp:include page='<%=pagefile + ".jsp"%>' />
+	</main>
+	<footer>
+		<jsp:include page="bottom.jsp" />
+	</footer>
 </body>
 </html>
