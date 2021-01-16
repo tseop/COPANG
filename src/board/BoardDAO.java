@@ -13,7 +13,6 @@ public class BoardDAO {
 
 	private Connection conn;
 	private BoardDTO boardDTO;
-	private BoardDAO boardDAO;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private String sql;
@@ -67,7 +66,7 @@ public class BoardDAO {
 	public ArrayList<BoardDTO> boardList() throws SQLException {
 
 		conn = getConnection();
-		sql = "SELECT * FROM BOARD";
+		sql = "SELECT BOARD_NO, BOARD_TITLE, DATE_FORMAT(BOARD_DATE, '%m/%d') AS BOARD_DATE, BOARD_READCOUNT FROM BOARD ORDER BY BOARD_NO DESC";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		boardList = new ArrayList<BoardDTO>();
@@ -76,7 +75,6 @@ public class BoardDAO {
 			boardDTO = new BoardDTO();
 			boardDTO.setBoardNo(rs.getInt("BOARD_NO"));
 			boardDTO.setBoardTitle(rs.getString("BOARD_TITLE"));
-			boardDTO.setBoardContent(rs.getString("BOARD_CONTENT"));
 			boardDTO.setBoardDate(rs.getString("BOARD_DATE"));
 			boardDTO.setBoardReadcount(Integer.parseInt(rs.getString("BOARD_READCOUNT")));
 			boardList.add(boardDTO);
@@ -87,7 +85,8 @@ public class BoardDAO {
 	public BoardDTO boardView(int viewBoardNo) throws SQLException {
 
 		conn = getConnection();
-		sql = "SELECT * FROM BOARD WHERE BOARD_NO= ?";
+		sql = "SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, DATE_FORMAT(BOARD_DATE, '%Y-%m-%d %H시 %i분') AS BOARD_DATE, BOARD_READCOUNT FROM BOARD WHERE BOARD_NO = ?";
+
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, viewBoardNo);
 		rs = pstmt.executeQuery();
