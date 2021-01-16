@@ -7,13 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>COPANG</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div class="customer">
+<div class="table">
 	<h1>익명게시판</h1>
-
-
-
-	<table border="1">
+	<table>
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -38,10 +39,10 @@
 			}
 		%>
 	</table>
-
-
-	<input type="button" value="게시글쓰기"
-		onClick="location.href='board/boardWrite.jsp'">
-
+</div>
+<div id="link">
+	<a href="board/boardWrite.jsp" class="btn">게시글쓰기</a>
+</div>
+</div>
 </body>
 </html>

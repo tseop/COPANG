@@ -7,14 +7,14 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<style type="text/css">
-#link a{color:pink; text-decoration: none;}
-</style>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div class="customer">
+<div class="table">
 <h1>거래처 목록</h1>
-<div class="form">
-	<table border="1">
+<hr>
+	<table>
 		<tr>
 			<th style="width: 10%;">번호</th>
 			<th>이름</th>
@@ -24,24 +24,24 @@
 		</tr>
   		<c:forEach items="${list }" var="customer">
 		  <tr>
-		  <td><c:out value="${customer.cusNo}"/></td>
+		  <td class="num"><c:out value="${customer.cusNo}"/></td>
 		     <td><c:out value="${customer.cusName}"/></td>
 		     <td><c:out value="${customer.cusManager}"/></td>
 		     <td><c:out value="${customer.cusTel}"/></td>
-		     <td><c:out value="${customer.businessNo}"/></td>
+		     <td class="bno"><c:out value="${customer.businessNo}"/></td>
 		    <%--  <td><a href="customerDelete.cu?no=${customer.cusNo }">삭제</a></td> --%>
 		  </tr>
    		</c:forEach>
-	  <tr border="0">
-	      <td colspan="7"><jsp:include page="page.jsp" flush="true"/></td>
+	  <tr>
+	      <td colspan="5" style="border: 1px solid white; padding-top: 2rem;"><jsp:include page="page.jsp" flush="true"/></td>
 	  </tr>
 	</table>
 </div>
 <div id="link">
-	<a href="index.jsp?page=#">추가</a>&emsp;
-	<a href="index.jsp?page=#">검색</a>&emsp;
-	<a href="index.jsp?page=#">수정</a>
+	<a href="index.jsp?page=#" class="btn">추가</a>&emsp;
+	<a href="index.jsp?page=#" class="btn">검색</a>&emsp;
+	<a href="index.jsp?page=#" class="btn">수정</a>
+</div>
 </div>
 </body>
-
 </html>

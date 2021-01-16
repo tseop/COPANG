@@ -9,11 +9,11 @@
 	if (totalCount % perPage != 0)
 		totalPage++;
 
-	for (int i = 1; i <= totalPage; i++) {
-		if (curPage == i) {
-			out.print("<strong><font color='red'>" + i + "</font></strong>&nbsp;");
-		} else {
-			out.print("<a href='customer.cu?curPage=" + i + "'>" + i + "</a>&nbsp;");
-		} //end if
-	}
+      for( int i = 1 ; i <=  totalPage ; i++){
+        if(  curPage == i ){
+          out.print( "<strong><font color='#0074E9' style='font-size: 1.1rem;'>"+i+"</font></strong>&nbsp;" );            
+        }else{
+         out.print( "<a href='customerList.cu?curPage="+i+"'>"+i+"</a>&nbsp;" );
+        }//end if
+      }
 %>
