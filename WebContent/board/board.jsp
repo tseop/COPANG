@@ -14,7 +14,7 @@
 	<div class="customer">
 		<div class="table">
 			<h1>익명게시판</h1>
-			<br>
+			<hr>
 			<table border="1">
 				<tr>
 					<th>번호&nbsp;</th>
@@ -52,8 +52,7 @@
 					</ul>
 				</form>
 			</div>
-			<br> <input type="button" value="게시글쓰기"
-				onClick="location.href='board/boardWrite.jsp'">
+			<br>
 			<div class="link">
 				<a href="board/boardWrite.jsp" class="btn">게시글쓰기</a>
 			</div>
