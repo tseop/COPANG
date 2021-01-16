@@ -50,7 +50,7 @@ public class BoardDAO {
 
 		conn = getConnection();
 
-		sql = "INSERT INTO BOARD(BOARD_TITLE, BOARD_CONTENT,  BOARD_READCOUNT) values(?,?,?)";
+		sql = "INSERT INTO BOARD(BOARD_TITLE, BOARD_CONTENT, BOARD_READCOUNT) VALUES(?, ?, ?)";
 
 		pstmt = conn.prepareStatement(sql);
 
@@ -66,7 +66,7 @@ public class BoardDAO {
 	public ArrayList<BoardDTO> boardList() throws SQLException {
 
 		conn = getConnection();
-		sql = "select * from BOARD";
+		sql = "SELECT * FROM BOARD";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		boardList = new ArrayList<BoardDTO>();
@@ -86,7 +86,7 @@ public class BoardDAO {
 	public BoardDTO boardView(int viewBoardNo) throws SQLException {
 
 		conn = getConnection();
-		sql = "select * from BOARD where BOARD_NO= ?";
+		sql = "SELECT * FROM BOARD WHERE BOARD_NO= ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, viewBoardNo);
 		rs = pstmt.executeQuery();

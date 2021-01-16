@@ -24,11 +24,11 @@
 		</tr>
   		<c:forEach items="${list }" var="customer">
 		  <tr>
-		  <td class="num"><c:out value="${customer.cusNo}"/></td>
-		     <td><c:out value="${customer.cusName}"/></td>
-		     <td><c:out value="${customer.cusManager}"/></td>
-		     <td><c:out value="${customer.cusTel}"/></td>
-		     <td class="bno"><c:out value="${customer.businessNo}"/></td>
+		  <td class="num">${customer.cusNo}</td>
+		     <td>${customer.cusName}</td>
+		     <td>${customer.cusManager}</td>
+		     <td>${customer.cusTel}</td>
+		     <td class="bno">${customer.businessNo}</td>
 		    <%--  <td><a href="customerDelete.cu?no=${customer.cusNo }">삭제</a></td> --%>
 		  </tr>
    		</c:forEach>
