@@ -19,7 +19,7 @@
 			</td>
 		</tr>
 		<tr style="border: none;">
-			<td colspan="2" class="ID_MESG">asda</td>
+			<td colspan="2" class="ID_MESG"></td>
 		</tr>
 		</table>
 	<table class="login">
@@ -28,11 +28,11 @@
 			<td style="border-left: 1px solid #ccc;"><input type="password" name="EMP_PW" required="required" placeholder="비밀번호"></td>
 		</tr>
 		<tr style=" border: none;">
-			<td colspan="2" class="PWD_MESG">asda</td>
+			<td colspan="2" class="PWD_MESG"></td>
 		</tr>
 	</table>
 		<div class="link">
-			<a href="#" class="btn" onclick="formSubmit(); return false;">로그인</a>
+			<input type="submit" value="로그인">
 		</div>
 	</form>
 	<hr>
