@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
 <div class="box">

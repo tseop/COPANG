@@ -7,8 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>KHJSP</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style type="text/css">
+.btn_area{}
+.btn_area ul{display: flex; justify-content: center;}
+.btn_area ul li{padding: 1rem 1rem 0rem 1rem;}
+</style>
 </head>
 <body>
+<div class="customer">
+<div class="table">
 	<%
 		String searchTitle = request.getParameter("searchTitle");
 	%>
@@ -17,9 +26,10 @@
 
 		if (boardSearchList.size() == 0) {
 	%>
-	
+
+
 	<h3>" <%=searchTitle%> " 키워드를 포함한 게시물은 없습니다.</h3>
-	<br>
+	<hr>
 		<input type="button" value="게시글 전체보기" onClick="location.href='boardList.bo'">
 	<br><!-- 검색한 키워드의 게시물이 없을 경우 표시 -->
 	
@@ -28,9 +38,9 @@
 	%>
 
 	<h3>" <%=searchTitle%> " 키워드를 포함한 익명 게시글</h3>
-	<br>
+	<hr>
 
-	<table border="1">
+	<table>
 		<tr>
 			<th>번호&nbsp;</th>
 			<th>제목&nbsp;</th>
@@ -64,26 +74,23 @@
 			}
 		%>
 	</table>
-	<br>
-	<div>
+	
+	<div class="btn_area">
 		<form action="boardSearch.bo" method="get">
 			<ul>
-				<li><input type="text" placeholder="게시물 제목" name="searchTitle"
-					autofocus="autofocus" required="required"> <input
-					type="submit" value="검색"></li>
+				<li><input type="text" placeholder="게시물 제목" name="searchTitle" autofocus="autofocus" required="required"> 
+				<input type="submit" value="검색"></li>
+					
+				<li><% if((boardSearchList.size() != 0)) { %> 
+					<input type="button" value="게시글 전체보기" onClick="location.href='boardList.bo'"><% } %>
+					<!-- 검색한 키워드의 게시물이 없을 경우 미표시 --></li>
+				<li><input type="button" value="게시글쓰기"onClick="location.href='board/boardWrite.jsp'"></li>
 			</ul>
 		</form>
 	</div>
-	<br>
 	
-	<% if((boardSearchList.size() != 0)) { %> 
-	<input type="button" value="게시글 전체보기"
-		onClick="location.href='boardList.bo'">
-	<% } %><!-- 검색한 키워드의 게시물이 없을 경우 미표시 -->
-	
-	<input type="button" value="게시글쓰기"
-		onClick="location.href='board/boardWrite.jsp'">
-
+</div>
+</div>
 
 </body>
 </html>

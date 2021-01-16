@@ -32,7 +32,7 @@
 					<td><%=boardDTO.getBoardNo()%>&nbsp;</td>
 					<td><a href='boardView.bo?no=<%=boardDTO.getBoardNo()%>'
 						style="color: black; text-decoration: none;"
-						onmouseover="this.style.color='blue'"
+						onmouseover="this.style.color='#0074E9'"
 						onmouseout="this.style.color='black'"><%=boardDTO.getBoardTitle()%></a>&nbsp;</td>
 					<!--a태그로 인해 링크로 걸려버리는 디자인 제거하여 마우스 오버 및 아웃시 색상변화와 기본 텍스트 컬러 블랙으로만 설정 -->
 					<td><%=boardDTO.getBoardDate()%>&nbsp;</td>
