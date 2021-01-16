@@ -105,7 +105,7 @@ public class BoardDAO {
 	public ArrayList<BoardDTO> boardSearch(String searchTitle) throws SQLException {
 
 		conn = getConnection();
-		sql = "select * from BOARD where BOARD_TITLE LIKE ?";
+		sql = "SELECT * FROM BOARD WHERE BOARD_TITLE LIKE ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, "%" + searchTitle + "%");
 		rs = pstmt.executeQuery();
