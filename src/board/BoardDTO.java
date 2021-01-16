@@ -9,7 +9,6 @@ public class BoardDTO implements Serializable {
 	private String boardContent;
 	private String boardDate;
 	private int boardReadcount;
-	private String fileNo;
 
 	public int getBoardNo() {
 		return boardNo;
@@ -51,29 +50,19 @@ public class BoardDTO implements Serializable {
 		this.boardReadcount = boardReadcount;
 	}
 
-	public String getFileNo() {
-		return fileNo;
-	}
-
-	public void setFileNo(String fileNo) {
-		this.fileNo = fileNo;
-	}
-
 	@Override
 	public String toString() {
 		return "BoardDTO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
-				+ ", boardDate=" + boardDate + ", boardReadcount=" + boardReadcount + ", fileNo=" + fileNo + "]";
+				+ ", boardDate=" + boardDate + ", boardReadcount=" + boardReadcount + "]";
 	}
 
-	public BoardDTO(int boardNo, String boardTitle, String boardContent, String boardDate, int boardReadcount,
-			String fileNo) {
+	public BoardDTO(int boardNo, String boardTitle, String boardContent, String boardDate, int boardReadcount) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
 		this.boardDate = boardDate;
 		this.boardReadcount = boardReadcount;
-		this.fileNo = fileNo;
 	}
 
 	public BoardDTO() {

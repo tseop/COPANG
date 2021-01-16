@@ -3,6 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script type="text/javascript">
+	
+	function goBack() { <!--뒤로가기기능-->
+		window.history.back();
+	}
+	
+</script>
 <style type="text/css">
 li {
 	list-style-type: none;
@@ -23,7 +31,7 @@ li {
 			<li><textarea rows="20" cols="60" name="content"
 					placeholder="내용을 입력하세요"></textarea></li>
 			<li><input type="submit"><input type="button" value="취소"
-				onClick="location.href='../board.jsp'"></li>
+				onClick="goBack()"></li> <!--뒤로가기 삽입-->
 		</ul>
 	</form>
 </body>

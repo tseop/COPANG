@@ -19,6 +19,7 @@ public class BoardDAO {
 	private String sql;
 	private int cnt;
 	private ArrayList<BoardDTO> boardList;
+	private ArrayList<BoardDTO> boardSearchList;
 
 	public BoardDAO() {
 		boardDTO = new BoardDTO();
@@ -100,5 +101,27 @@ public class BoardDAO {
 		}
 
 		return boardDTO;
+	}
+
+	public ArrayList<BoardDTO> boardSearch(String searchTitle) throws SQLException {
+
+		conn = getConnection();
+		sql = "select * from BOARD where BOARD_TITLE LIKE ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, "%" + searchTitle + "%");
+		rs = pstmt.executeQuery();
+		boardSearchList = new ArrayList<BoardDTO>();
+
+		while (rs.next()) {
+			boardDTO = new BoardDTO();
+			boardDTO.setBoardNo(rs.getInt("BOARD_NO"));
+			boardDTO.setBoardTitle(rs.getString("BOARD_TITLE"));
+			boardDTO.setBoardContent(rs.getString("BOARD_CONTENT"));
+			boardDTO.setBoardDate(rs.getString("BOARD_DATE"));
+			boardDTO.setBoardReadcount(Integer.parseInt(rs.getString("BOARD_READCOUNT")));
+			boardSearchList.add(boardDTO);
+		}
+
+		return boardSearchList;
 	}
 }

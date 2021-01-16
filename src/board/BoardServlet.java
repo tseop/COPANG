@@ -22,10 +22,12 @@ public class BoardServlet extends HttpServlet {
 	private BoardDAO boardDAO;
 	private int cnt;
 	private RequestDispatcher dis;
+	private ArrayList<BoardDTO> boardSearchList; 
 	private ArrayList<BoardDTO> boardList;
 	private String viewBoardTitle;
 	private int viewBoardNo;
-	
+	private String searchTitle;
+
 	public BoardServlet() {
 		boardDTO = new BoardDTO();
 		boardDAO = new BoardDAO();
@@ -85,6 +87,18 @@ public class BoardServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		} else if (command.equals("/boardSearch.bo")) {
+			searchTitle = request.getParameter("searchTitle");
+
+			try {
+				boardSearchList = boardDAO.boardSearch(searchTitle);
+				dis = request.getRequestDispatcher("index.jsp?page=board/boardSearch");
+				request.setAttribute("boardSearchList", boardSearchList);
+				dis.forward(request, response);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
