@@ -28,11 +28,7 @@
 						out.print("<a href=index.jsp?page=member/deleteAccountForm>회원탈퇴</a><br>");
 						out.print(id + "님 접속중");
 					}
-				} else {
-					out.print("<a href='index.jsp?page=member/memberForm'>회원가입</a>&emsp;");
-					out.print("<a href='index.jsp?page=member/loginForm'>로그인</a>");
-				}
-
+				} 
 			%>
 		</div>
 		<div class="menu">

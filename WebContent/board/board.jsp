@@ -71,7 +71,7 @@
 				onClick="location.href='board/boardWrite.jsp'">
 
 
-			<div id="link">
+			<div class="link">
 				<a href="board/boardWrite.jsp" class="btn">게시글쓰기</a>
 			</div>
 		</div>

@@ -21,14 +21,29 @@ footer{border:1px solid pink;}
 
 /* table */
 .customer{padding: 2rem; min-height: 30rem;font-size: 1.1rem;}
-#link {width:80%; min-width: 30rem;margin: auto;text-align: center;position: relative;}
-#link a{color:white; font-size:0.8rem; text-decoration: none;}
-#link a.btn{width: 3rem; padding: 1rem 4rem 1rem 4rem;height: 1.5rem;background: #0074E9;box-shadow: inset 0 -2px 0 rgba(0,0,0,0.35);}
+.link {width:80%;margin: auto;text-align: center;position: relative;height: 2rem;}
+.link a{color:white; font-size:0.8rem; text-decoration: none;}
+.link a.btn{width: 3rem; padding: 1rem 4rem 1rem 4rem;height: 1.5rem;background: #0074E9;box-shadow: inset 0 -2px 0 rgba(0,0,0,0.35);text-shadow: 1px 1px 1px rgba(255,255,255, .22);}
 .table{width:80%; min-width: 30rem;margin: 0 auto 2rem auto;frame:void;}
 .table h1{font-size: 2rem; font-weight: 500rem; margin: 1rem;}
 .table table{text-align: center; margin: auto; min-width: 30rem;width: 100%;}
 .table table a{color: black; font-size:1rem; text-decoration: none;}
 .table table tr th{padding: 0.7rem;font-size: 0.9rem;color: #0074E9;}
 .table table tr td{border:1px solid #ccc;padding: 0.7rem;font-size: 0.9rem; border-right:none;border-left:none;}
+
+/* login */
+.box{text-align: center; padding: 2rem; margin: auto;width: 17rem;}
+.box img{margin: 1rem;}
+.box .login{text-align: center;margin: auto;margin-bottom: 1.5rem;}
+.box .login img{width: 20px;margin: 0;}
+.box .login input::placeholder {color: #ccc;font-size: 0.7rem;}
+.box table label{font-size: 0rem;vertical-align: middle;}
+.box table tr{border: 1px solid #ccc;}
+.box table td{padding: 12px;}
+.box table input{font-size: 0.8rem;border:none;width: 13rem;}
+.box table td.ID_MESG,.box table td.PWD_MESG{padding: 0;text-align: left;font-size: 0.7rem;padding-left: 1rem;line-height: 1rem;}
+.box hr{position: relative;margin-top: 1rem;width: 17rem;border: none;background: #ccc;height: 1px;}
+.box p{font-size: 0.7rem; color: #555;}
+
 
 

@@ -37,7 +37,7 @@
 	  </tr>
 	</table>
 </div>
-<div id="link">
+<div class="link">
 	<a href="index.jsp?page=#" class="btn">추가</a>&emsp;
 	<a href="index.jsp?page=#" class="btn">검색</a>&emsp;
 	<a href="index.jsp?page=#" class="btn">수정</a>
