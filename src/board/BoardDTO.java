@@ -10,6 +10,20 @@ public class BoardDTO implements Serializable {
 	private String boardDate;
 	private int boardReadcount;
 
+	public BoardDTO(int boardNo, String boardTitle, String boardContent, String boardDate, int boardReadcount) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardDate = boardDate;
+		this.boardReadcount = boardReadcount;
+	}
+
+	public BoardDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -54,20 +68,6 @@ public class BoardDTO implements Serializable {
 	public String toString() {
 		return "BoardDTO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
 				+ ", boardDate=" + boardDate + ", boardReadcount=" + boardReadcount + "]";
-	}
-
-	public BoardDTO(int boardNo, String boardTitle, String boardContent, String boardDate, int boardReadcount) {
-		super();
-		this.boardNo = boardNo;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.boardDate = boardDate;
-		this.boardReadcount = boardReadcount;
-	}
-
-	public BoardDTO() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

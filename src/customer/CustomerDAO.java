@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class CustomerDAO {
 	private Connection conn;
 	private CustomerDTO customerDTO;
-	private CustomerDAO customerDAO;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private String sql;
 	private int cnt;
 
 	public CustomerDAO() {
+		customerDTO = new CustomerDTO();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -32,7 +32,7 @@ public class CustomerDAO {
 	
 	public int customerRegister(CustomerDTO customerDTO) throws SQLException {
 		conn = getConnection();
-		sql = "insert into CUSTOMER(CUS_NAME,CUS_MANAGER,CUS_TEL,CUS_NUM) values(?,?,?,?)";
+		sql = "INSERT INTO CUSTOMER(CUS_NAME, CUS_MANAGER, CUS_TEL, CUS_NUM) VALUES(?, ?, ?, ?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, customerDTO.getCusName());
 		pstmt.setString(2, customerDTO.getCusManager());
@@ -46,7 +46,7 @@ public class CustomerDAO {
 		int count=0;
 		try {
 			conn = getConnection();
-			sql = "select count(*) from CUSTOMER";
+			sql = "SELECT COUNT(*) FROM CUSTOMER";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -64,7 +64,7 @@ public class CustomerDAO {
 	      ArrayList<CustomerDTO> list = new ArrayList<CustomerDTO>();
 	      try {
 	         conn=getConnection();
-	         sql = "select * from CUSTOMER";
+	         sql = "SELECT * FROM CUSTOMER";
 	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	         rs = pstmt.executeQuery();
 	         int perPage = pageTo.getPerPage();//5
