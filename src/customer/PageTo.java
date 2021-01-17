@@ -10,7 +10,7 @@ public class PageTo implements Serializable {
     private int totalCount;//전체레코드개수
    public PageTo() {
 
-      this.perPage = 7;//페이지당 글이 7개
+      this.perPage = 10;//페이지당 글이 7개
    }
    
    public ArrayList<CustomerDTO> getList() {
