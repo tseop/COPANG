@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/style.css?v=1">
 </head>
 <body>
 	<div class="customer">
@@ -43,18 +43,14 @@
 				%>
 			</table>
 			<br>
-			<div>
+			<div class="search_area">
 				<form action="boardSearch.bo" method="get">
 					<ul>
-						<li><input type="text" placeholder="게시물 제목"
-							name="searchTitle" required="required"> <input
-							type="submit" value="검색"></li>
+						<li class="search_box"><input type="text" placeholder="게시물 제목" name="searchTitle" required="required"> 
+						<input type="submit" value="검색"></li>
+						<li><input type="button" value="게시글쓰기" onClick="location.href='board/boardWrite.jsp'"></li>
 					</ul>
 				</form>
-			</div>
-			<br>
-			<div class="link">
-				<a href="board/boardWrite.jsp" class="btn">게시글쓰기</a>
 			</div>
 		</div>
 	</div>

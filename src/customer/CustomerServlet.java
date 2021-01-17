@@ -45,12 +45,11 @@ public class CustomerServlet extends HttpServlet {
 	    	  customerDTO.setBusinessNo(request.getParameter("businessNo"));
 	    	  try {
 	              cnt = customerDAO.customerRegister(customerDTO);
-	              out.print(cnt + "건 거래처가 등록되었습니다.");
-	              response.sendRedirect("customerList.cu");
+	              out.print("<script>alert('거래처가 " + cnt + "건 등록되었습니다.');location.href='customerList.cu';</script>");
 	           } catch (SQLException e) {
 	              e.printStackTrace();
 	           }
-	      }//등록 hi
+	      }//등록 
 	      
 	      else if(command.equals("/customerList.cu")){//목록         
 	          int curPage = 1;//기본페이지

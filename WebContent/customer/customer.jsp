@@ -12,7 +12,16 @@
 <body>
 <div class="customer">
 <div class="table">
-<h1>거래처 목록</h1>
+<div class="search_area">
+	<form action="customerSearch.bo" method="get">
+		<h1>거래처 목록</h1>
+		<ul style="margin-left: auto; width: fit-content;">
+			<li class="search_box"><input type="text" placeholder="거래처 이름" name="searchCustomerName" autofocus="autofocus" required="required"> 
+			<input type="submit" value="검색"></li>
+			
+		</ul>
+	</form>
+	</div>
 <hr>
 	<table>
 		<tr>
@@ -28,7 +37,7 @@
 		     <td>${customer.cusName}</td>
 		     <td>${customer.cusManager}</td>
 		     <td>${customer.cusTel}</td>
-		     <td class="bno">${customer.businessNo}</td>
+		     <td>${customer.businessNo}</td>
 		    <%--  <td><a href="customerDelete.cu?no=${customer.cusNo }">삭제</a></td> --%>
 		  </tr>
    		</c:forEach>
@@ -36,11 +45,12 @@
 	      <td colspan="5" style="border: 1px solid white; padding-top: 2rem;"><jsp:include page="page.jsp" flush="true"/></td>
 	  </tr>
 	</table>
+<div class="search_area">
+	<ul>
+		<li><input type="button" value="거래처 등록" onClick="location.href='index.jsp?page=customer/customerRegister'"></li>
+		<li><input type="button" value="거래처 수정" onClick="location.href='customer/customerUpdate.jsp'"></li>
+	</ul>
 </div>
-<div class="link">
-	<a href="index.jsp?page=#" class="btn">추가</a>&emsp;
-	<a href="index.jsp?page=#" class="btn">검색</a>&emsp;
-	<a href="index.jsp?page=#" class="btn">수정</a>
 </div>
 </div>
 </body>

@@ -20,7 +20,7 @@
 .board_view .date ul{display: flex;font-size: 0.8rem;width: fit-content;margin-left: auto;}
 .board_view .date ul li{padding-left: 1rem;}
 .customer hr{position: relative;border: none;background: #ccc;height: 1px;}
-
+input[type=button]{border: 0px; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.8rem;}
 
 </style>
 </head>
