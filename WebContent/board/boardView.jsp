@@ -2,6 +2,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:useBean id="boardView" class="board.BoardDAO" scope="page"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,13 +31,14 @@ input[type=button]{border: 0px; background: #366afe; color:white; padding: 0.8re
 <div class="board_view">
 	<%
 		BoardDTO boardDTO = (BoardDTO) request.getAttribute("boardDTO");
+		boardView.boardReadCount(boardDTO);
 	%>
 <h1>게시물</h1><br>
 <div class="title">
 	<ul>
 		<li >&emsp;<%=boardDTO.getBoardNo()%></li>
 		<li id="title"><%=boardDTO.getBoardTitle()%></li>
-		<li >조회수 &emsp;<%=boardDTO.getBoardReadcount()%></li>
+		<li >조회수 &emsp;<%=boardDTO.getBoardReadcount()+1%></li>
 	</ul>
 </div>
 <hr>
@@ -45,11 +48,12 @@ input[type=button]{border: 0px; background: #366afe; color:white; padding: 0.8re
 <hr>
 <div class="date">
 <ul>
-	<li>마지막 업로드</li>
+	<li>작성 날짜</li>
 	<li><%=boardDTO.getBoardDate()%></li>
 </ul>
 </div>
 <input type="button" value="목록으로" onClick="location.href='boardList.bo'" class="btn">
+<input type ="button" value="삭제하기" onClick="location.href='boardDelete.bo?no=<%=boardDTO.getBoardNo()%>'" class="btn">
 </div>
 </div>
 </body>

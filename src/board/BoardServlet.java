@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.BoardDTO;
-
 @WebServlet("*.bo")
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +20,7 @@ public class BoardServlet extends HttpServlet {
 	private BoardDAO boardDAO;
 	private int cnt;
 	private RequestDispatcher dis;
-	private ArrayList<BoardDTO> boardSearchList; 
+	private ArrayList<BoardDTO> boardSearchList;
 	private ArrayList<BoardDTO> boardList;
 	private String viewBoardTitle;
 	private int viewBoardNo;
@@ -48,59 +46,66 @@ public class BoardServlet extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 
+		// 게시글 등록
 		if (command.equals("/boardRegister.bo")) {
 			boardDTO.setBoardTitle(request.getParameter("title"));
 			boardDTO.setBoardContent(request.getParameter("content"));
 			boardDTO.setBoardReadcount(Integer.parseInt(request.getParameter("readcount")));
-
 			try {
 				cnt = boardDAO.boardWrite(boardDTO);
-				out.print(cnt);
 				response.sendRedirect("boardList.bo");
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/boardList.bo")) {
-
-			try {
-				boardList = boardDAO.boardList();
-				dis = request.getRequestDispatcher("index.jsp?page=board/board");
-				request.setAttribute("boardList", boardList);
-				dis.forward(request, response);
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		} else if (command.equals("/boardView.bo")) {
-			viewBoardTitle = request.getParameter("no");
-			int no = Integer.parseInt(viewBoardTitle);
-
-			try {
-				boardDTO = boardDAO.boardView(no);
-				dis = request.getRequestDispatcher("index.jsp?page=board/boardView");
-				request.setAttribute("boardDTO", boardDTO);
-				dis.forward(request, response);
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		} else if (command.equals("/boardSearch.bo")) {
-			searchTitle = request.getParameter("searchTitle");
-
-			try {
-				boardSearchList = boardDAO.boardSearch(searchTitle);
-				dis = request.getRequestDispatcher("index.jsp?page=board/boardSearch");
-				request.setAttribute("boardSearchList", boardSearchList);
-				dis.forward(request, response);
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 
-	}
+		// 전체게시판
+		else if (command.equals("/boardList.bo")) {
+			int curPage = 1;
+			if (request.getParameter("curPage") != null) {
+				curPage = Integer.parseInt(request.getParameter("curPage"));
+			}
+			PageTo boardList = boardDAO.page(curPage);
+			dis = request.getRequestDispatcher("index.jsp?page=board/board");
+			request.setAttribute("page", boardList);
+			request.setAttribute("list", boardList.getList());
+			dis.forward(request, response);
 
+		// 게시글 클릭 후 내용볼 수 있는 게시글
+		} else if (command.equals("/boardView.bo")) {
+			viewBoardTitle = request.getParameter("no");
+			int no = Integer.parseInt(viewBoardTitle);
+			try {
+				boardDTO = boardDAO.boardView(no);
+				dis = request.getRequestDispatcher("index.jsp?page=board/boardView");
+				request.setAttribute("boardDTO", boardDTO);
+				dis.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		// 검색 게시글 리스트
+		} else if (command.equals("/boardSearch.bo")) {
+			searchTitle = request.getParameter("searchTitle");
+			try {
+				boardSearchList = boardDAO.boardSearch(searchTitle);
+				dis = request.getRequestDispatcher("index.jsp?page=board/boardSearch");
+				request.setAttribute("boardSearchList", boardSearchList);
+				dis.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		// 게시글 삭제
+		} else if (command.equals("/boardDelete.bo")) {
+			String getNo = request.getParameter("no");
+			int no = Integer.parseInt(getNo);
+			try {
+				cnt = boardDAO.boardDelete(no);
+				response.sendRedirect("boardList.bo");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

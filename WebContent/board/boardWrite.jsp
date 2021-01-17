@@ -5,11 +5,10 @@
 <head>
 
 <script type="text/javascript">
-	
-	function goBack() { <!--뒤로가기기능-->
+	<!--뒤로가기기능-->
+	function goBack() { 
 		window.history.back();
 	}
-	
 </script>
 <style type="text/css">
 li {
@@ -34,5 +33,6 @@ li {
 				onClick="goBack()"></li> <!--뒤로가기 삽입-->
 		</ul>
 	</form>
+	
 </body>
 </html>

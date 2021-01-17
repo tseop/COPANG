@@ -15,44 +15,28 @@
 <div class="table">
 	<%
 		String searchTitle = request.getParameter("searchTitle");
-	%>
-	<%
 		ArrayList<BoardDTO> boardSearchList = (ArrayList<BoardDTO>) request.getAttribute("boardSearchList");
-
 		if (boardSearchList.size() == 0) {
 	%>
-
-
-	<h3>" <%=searchTitle%> " 키워드를 포함한 게시물은 없습니다.</h3>
+	<h3>" <%=searchTitle%> " 키워드를 포함한 게시물은 없습니다.</h3><!-- 검색한 키워드의 게시물이 없을 경우 표시 -->
 	<hr>
+	<div class="search_area">
 		<input type="button" value="게시글 전체보기" onClick="location.href='boardList.bo'">
-	<br><!-- 검색한 키워드의 게시물이 없을 경우 표시 -->
-	
+		</div>
+	<br>
 	<%
 		} else {
 	%>
-
 	<h3>" <%=searchTitle%> " 키워드를 포함한 익명 게시글</h3>
 	<hr>
-
 	<table>
-		<tr>
-			<th>번호&nbsp;</th>
-			<th>제목&nbsp;</th>
-			<th>날짜&nbsp;</th>
-			<th>조회수</th>
-		</tr>
-
+		<tr><th>번호</th>
+			<th>제목</th>
+			<th>날짜</th>
+			<th>조회수</th></tr>
 		<%
 			for (int i = 0; i < boardSearchList.size(); i++) {
 					BoardDTO boardDTO = boardSearchList.get(i);
-
-					String boardDate = boardDTO.getBoardDate(); //datebase date값 변수 저장
-					String timeY = boardDate.substring(2, 4); //연도 뒷 2자리 
-					String timeM = boardDate.substring(5, 7); //월 2자리
-					String timeD = boardDate.substring(8, 10); //일 2자리
-					String boardTimeMDY = timeM + "/" + timeD + "/" + timeY; //월 , 일, 연도 순으로 출력
-					String boardTimeMD = timeM + "/" + timeD; //월, 일 순으로 출력
 		%>
 		<tr>
 			<td><%=boardDTO.getBoardNo()%>&nbsp;</td>
@@ -61,7 +45,7 @@
 				onmouseover="this.style.color='#0074E9'"
 				onmouseout="this.style.color='black'"><%=boardDTO.getBoardTitle()%></a>&nbsp;</td>
 			<!--a태그로 인해 링크로 걸려버리는 디자인 제거하여 마우스 오버 및 아웃시 색상변화와 기본 텍스트 컬러 블랙으로만 설정 -->
-			<td><%=boardTimeMD%>&nbsp;</td>
+			<td><%=boardDTO.getBoardDate()%>&nbsp;</td>
 			<td><%=boardDTO.getBoardReadcount()%></td>
 		</tr>
 		<%
@@ -75,7 +59,6 @@
 			<ul>
 				<li class="search_box"><input type="text" placeholder="게시물 제목" name="searchTitle" autofocus="autofocus" required="required"> 
 				<input type="submit" value="검색"></li>
-					
 				<li><% if((boardSearchList.size() != 0)) { %> 
 					<input type="button" value="게시글 전체보기" onClick="location.href='boardList.bo'"><% } %>
 					<!-- 검색한 키워드의 게시물이 없을 경우 미표시 --></li>
@@ -83,9 +66,7 @@
 			</ul>
 		</form>
 	</div>
-	
 </div>
 </div>
-
 </body>
 </html>
