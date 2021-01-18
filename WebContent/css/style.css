@@ -59,6 +59,21 @@ footer{border:1px solid pink; position: relative;left: 0;bottom: 0;width: 100%;}
 .search_area input[type=text]{padding: 0.5rem;width: 15rem;border: none;}
 .search_area input[type=submit]{border: none; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.8rem;}
 
+/* board_view */
+.customer .board_view {width:80%; margin: auto;}
+.customer .board_view h1{font-weight: 100; font-size: 2rem;margin: 1rem;}
+.customer .board_view h3{font-weight: 100; font-size: 1rem;margin-top: 1rem; border-bottom: 1px solid #ccc;line-height: 1.3rem;}
+.customer .board_view .title ul{display: flex;justify-content: space-between;vertical-align: middle;}
+.customer .board_view .title ul li{padding: 0.3rem;font-size: 0.8rem;}
+.customer .board_view .title ul li#title{min-width: 80%;font-size: 1rem;}
+.customer .board_view .content{min-height: 20rem;font-size: 1rem;}
+.customer .board_view .date{margin: 1rem;text-align: right;}
+.customer .board_view .date ul{display: flex;font-size: 0.8rem;width: fit-content;margin-left: auto;}
+.customer .board_view .date ul li{padding-left: 1rem;}
+.customer .board_view input[type=button]{border: 0px; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.8rem;}
+.customer hr{position: relative;border: none;background: #ccc;height: 1px;}
+
+
 /* EMPLOYEE_REGISTER */
 .customer .emp_reg_form{width: 50%;margin: auto;}
 .customer .emp_reg_form table{width: 30rem;margin: auto;font-size: 0.9rem;font-weight: 100;margin-bottom: 1rem;}
@@ -72,6 +87,7 @@ footer{border:1px solid pink; position: relative;left: 0;bottom: 0;width: 100%;}
 .customer .emp_reg_form input.security_no {width: 6.7rem;}
 .customer .emp_reg_form .search_area ul li{margin:2rem 2rem;}
 
+
 /* CUSTOMER_REGISTER */
 .customer .reg_form{width: 50%;margin: auto;}
 .customer .reg_form table{margin: auto;font-size: 0.9rem;font-weight: 100;margin-bottom: 1rem;}
@@ -83,3 +99,7 @@ footer{border:1px solid pink; position: relative;left: 0;bottom: 0;width: 100%;}
 .customer .reg_form h1{padding-left: 3rem;}
 .customer .reg_form input[type=text]{padding: 0.5rem; border: 1px solid #ccc;width: 15rem;}
 .customer .reg_form .search_area ul li{margin:2rem 2rem;}
+
+
+
+

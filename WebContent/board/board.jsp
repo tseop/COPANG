@@ -49,8 +49,8 @@
 
 		<div class="search_area">
 			<ul>
-			<li><input type="button" value="게시글쓰기"	 onClick="location.href='index.jsp?page=board/boardWrite'"></li>
-				</ul>
+				<li><input type="button" value="게시글쓰기"	 onClick="location.href='index.jsp?page=board/boardWrite'"></li>
+			</ul>
 		</div>
 		</div>
 		</div>
