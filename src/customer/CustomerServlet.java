@@ -12,14 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.BoardDTO;
+
 @WebServlet({ "*.cu" })
 public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CustomerDTO customerDTO;
 	private CustomerDAO customerDAO;
 	private int cnt;
-	private ArrayList<CustomerDTO> customerList;
+	private ArrayList<CustomerDTO> customerSearchList;
 	private RequestDispatcher dis;
+	private String customerSearch;
 	
    public CustomerServlet() {
 	  customerDTO = new CustomerDTO();
@@ -59,30 +62,26 @@ public class CustomerServlet extends HttpServlet {
 	          PageTo customerList = customerDAO.page(curPage);
 	          dis = request.getRequestDispatcher("index.jsp?page=customer/customer");
 	          request.setAttribute("page", customerList);
-	          //listPage.jsp에서 목록 리스트 데이터 저장
 	          request.setAttribute("list", customerList.getList());
-	          //page.jsp에서 페이징 처리 데이터 저장
 	          dis.forward(request, response);
 	       }//목록
-	      
-	      else if(command.equals("/customerUpdate.cu")){//수정
-	          
-	    	  
-	    	  
-	       }//수정
-	      
+	    
 	      else if (command.equals("/customerSearch.cu")) {
-	     	String customerSearch = request.getParameter("searchCustomerName");
+	    	  customerSearch = request.getParameter("customerSearch");
 	          try {
-	        	 customerDTO = customerDAO.customerSearch(customerSearch);
+	        	 customerSearchList = customerDAO.customerSearch(customerSearch);
 	             dis = request.getRequestDispatcher("index.jsp?page=customer/customerSearch");
-	             request.setAttribute("customerDTO", customerDTO);
+	             request.setAttribute("customerSearchList", customerSearchList);
 	             dis.forward(request, response);
 	          } catch (SQLException e) {
 	             e.printStackTrace();
 	          }
-
 	       }//검색
+	      
+	      else if(command.equals("/customerUpdate.cu")){//수정
+	          
+	       }//수정
+	      
    }
 
 }

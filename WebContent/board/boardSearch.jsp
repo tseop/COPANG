@@ -69,28 +69,15 @@
 	</table>
 	<br>
 	<div class="search_area">
-<<<<<<< Updated upstream
 		<ul>
 			<li>
 				<%-- <% if((boardSearchList.size() != 0)) { %>  --%>
 				<input type="button" value="게시글 전체보기" onClick="location.href='boardList.bo'"><%-- <% } %> --%>
 				<!-- 검색한 키워드의 게시물이 없을 경우 미표시 --></li>
-			<li><input type="button" value="게시글쓰기"onClick="location.href='board/boardWrite.jsp'"></li>
+			<li><input type="button" value="게시글쓰기"onClick="location.href='index.jsp?page=board/boardWrite'"></li>
 		</ul>
 	</div>
 	</div>
-=======
-		<form action="boardSearch.bo" method="get">
-			<ul>
-				<li class="search_box"><input type="text" placeholder="게시물 제목" name="searchTitle" autofocus="autofocus" required="required"> 
-				<input type="submit" value="검색"></li>
-				<li><% if((boardSearchList.size() != 0)) { %> 
-					<input type="button" value="게시글 전체보기" onClick="location.href='boardList.bo'"><% } %>
-					<!-- 검색한 키워드의 게시물이 없을 경우 미표시 --></li>
-				<li><input type="button" value="게시글쓰기"onClick="location.href='index.jsp?page=board/boardWrite'"></li>
-			</ul>
-		</form>
->>>>>>> Stashed changes
 	</div>
 </div>
 </div>

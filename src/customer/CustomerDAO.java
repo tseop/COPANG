@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import board.BoardDTO;
+
 
 public class CustomerDAO {
 	private Connection conn;
@@ -15,6 +17,7 @@ public class CustomerDAO {
 	private ResultSet rs;
 	private String sql;
 	private int cnt;
+	private ArrayList<CustomerDTO> customerSearchList;
 
 	public CustomerDAO() {
 		try {
@@ -96,24 +99,23 @@ public class CustomerDAO {
 	      return pageTo;        
 	   }//페이지구현
 	
-	public void customerSearch() {
-		
-	}
-	
-	public CustomerDTO customerSearch(String customerSearch) throws SQLException {
+	public ArrayList<CustomerDTO> customerSearch(String customerSearch) throws SQLException {
 		conn = getConnection();
-		sql = "SELECT * FROM CUSTOMER WHERE NAME=?";
+		sql = "SELECT * FROM CUSTOMER WHERE CUS_NAME LIKE ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, customerSearch);
+		pstmt.setString(1,"%"+customerSearch+"%");
 		rs = pstmt.executeQuery();
+		customerSearchList = new ArrayList<CustomerDTO>();
 		while (rs.next()) {
+			customerDTO = new CustomerDTO();
 			customerDTO.setCusNo(rs.getInt("cusNo"));
 			customerDTO.setCusName(rs.getString("cusName"));
 			customerDTO.setCusManager(rs.getString("cusManager"));
 			customerDTO.setCusTel(rs.getString("cusTel"));
 			customerDTO.setBusinessNo(rs.getString("businessNo"));
+			customerSearchList.add(customerDTO);
 		}
-		return customerDTO;
+		return customerSearchList;
 	}
-	
+
 }
