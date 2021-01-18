@@ -47,7 +47,11 @@ public class CustomerServlet extends HttpServlet {
 	    	  customerDTO.setBusinessNo(request.getParameter("businessNo"));
 	    	  try {
 	              cnt = customerDAO.customerRegister(customerDTO);
-	              out.print("<script>alert('거래처가 " + cnt + "건 등록되었습니다.');location.href='customerList.cu';</script>");
+	              if(cnt==0) {
+		            	out.print("실패!");
+		            }else {
+		            	out.print("<script>alert('거래처가 " + cnt + "건 등록되었습니다.');location.href='customerList.cu';</script>");
+		            }
 	           } catch (SQLException e) {
 	              e.printStackTrace();
 	           }
@@ -77,10 +81,52 @@ public class CustomerServlet extends HttpServlet {
 	          }
 	       }//검색
 	      
-	      else if(command.equals("/customerUpdate.cu")){//수정
-	          
-	       }//수정
+	      else if(command.equals("/customerDetails.cu")){//상세보기
+	    	  	String num = request.getParameter("num");
+				int cusNo = Integer.parseInt(num);
+				try {
+					customerDTO = customerDAO.customerDetail(cusNo);
+					request.setAttribute("customerDTO", customerDTO);
+					dis = request.getRequestDispatcher("index.jsp?page=customer/customerDetails");
+					dis.forward(request, response);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+	    	 
+	      }//상세보기
 	      
+	      else if(command.equals("/customerUpdate.cu")){//수정하기
+	    	  	String num = request.getParameter("num");
+				int cusNo = Integer.parseInt(num);
+				customerDTO.setCusName(request.getParameter("cusName"));
+		    	customerDTO.setCusManager(request.getParameter("cusManager"));
+		    	customerDTO.setCusTel(request.getParameter("cusTel"));
+		    	customerDTO.setBusinessNo(request.getParameter("businessNo"));
+		    	try {
+		            cnt = customerDAO.customerUpdate(cusNo, customerDTO);
+		            if(cnt==0) {
+		            	out.print("실패!");
+		            }else {
+		            	out.print("<script>alert('수정 완료 되었습니다.');location.href='customerList.cu';</script>");
+		            }
+		         } catch (SQLException e) {
+		              e.printStackTrace();
+		         }
+	      
+	      }//수정하기
+	      
+	      else if(command.equals("/customerDelete.cu")){//삭제하기
+
+	    	  String num = request.getParameter("num");
+	          int cusNo = Integer.parseInt(num);
+//	          out.print("<script>alert('정말 삭제하시겠습니까?'); history.back();</script>");
+	          try {
+	             cnt = customerDAO.customerDelete(cusNo);
+	             response.sendRedirect("customerList.cu");
+	          } catch (SQLException e) {
+	             e.printStackTrace();
+	          }
+	      }//삭제
    }
 
 }

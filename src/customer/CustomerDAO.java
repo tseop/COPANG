@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 public class CustomerDAO {
 	private Connection conn;
 	private CustomerDTO customerDTO;
@@ -101,7 +100,7 @@ public class CustomerDAO {
 		conn = getConnection();
 		sql = "SELECT * FROM CUSTOMER WHERE CUS_NAME LIKE ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1,searchCusName);
+		pstmt.setString(1,"%"+searchCusName+"%");
 		rs = pstmt.executeQuery();
 		customerSearchList = new ArrayList<CustomerDTO>();
 		while (rs.next()) {
@@ -115,5 +114,43 @@ public class CustomerDAO {
 		}
 		return customerSearchList;
 	}
-
+	public CustomerDTO customerDetail(int detailNo) throws SQLException {
+		CustomerDTO customerDTO = null;
+		conn = getConnection();
+		sql = "SELECT * FROM CUSTOMER WHERE CUS_NO = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, detailNo);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			customerDTO = new CustomerDTO();
+			customerDTO.setCusNo(rs.getInt("CUS_NO"));
+			customerDTO.setCusName(rs.getString("CUS_NAME"));
+			customerDTO.setCusManager(rs.getString("CUS_MANAGER"));
+			customerDTO.setCusTel(rs.getString("CUS_TEL"));
+			customerDTO.setBusinessNo(rs.getString("BUSINESS_NO"));
+		}
+		return customerDTO;
+	}//상세보기
+	
+	public int customerUpdate(int detailNo, CustomerDTO customerDTO) throws SQLException {
+		conn = getConnection();
+		sql = "UPDATE CUSTOMER SET CUS_NAME=?, CUS_MANAGER=?, CUS_TEL=?, BUSINESS_NO=? WHERE CUS_NO = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, customerDTO.getCusName());
+		pstmt.setString(2, customerDTO.getCusManager());
+		pstmt.setString(3, customerDTO.getCusTel());
+		pstmt.setString(4, customerDTO.getBusinessNo());
+		pstmt.setInt(5, detailNo);
+		cnt = pstmt.executeUpdate();
+		return cnt;
+	}//수정하기
+	
+	public int customerDelete(int deleteNo) throws SQLException {
+		conn = getConnection();
+		sql = "DELETE FROM CUSTOMER WHERE CUS_NO = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, deleteNo);
+		cnt = pstmt.executeUpdate();
+		return cnt;
+	}
 }

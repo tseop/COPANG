@@ -8,15 +8,23 @@
 <title>COPANG</title>
 </head>
 <body>
-	<div id="noticelist">
-		<h1>공지게시판</h1>
+<div class="customer">
+<div class="table">
+<div class="search_area">
+	<form action = "noticeSearch.no" method="get">
+	<h1>공지게시판</h1>
+		<ul style="margin-left: auto; width: fit-content;">
+			<li class="search_box"><input type="text" placeholder="게시물 제목" name="searchTitle" autofocus="autofocus" required="required">
+			<input type="submit" value="검색"></li>
+	</ul>
+	</form>
+		<hr>
 		<table border="1" cellspacing="0" cellpadding="0">
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>날짜</th>
-				<th>&nbsp;</th>
+				<th width="10%">번호</th>
+				<th width="50%">제목</th>
+				<th width="20%">작성자</th>
+				<th width="20%">날짜</th>
 			</tr>
 			<c:forEach items="${list}" var="notice">
 				<tr>
@@ -31,21 +39,19 @@
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="7"><jsp:include page="page.jsp" flush="true" /></td>
+				<td colspan="7" style="border: 1px solid white; padding-top: 2rem;"><jsp:include page="page.jsp" flush="true" /></td>
 			</tr>
 		</table>
-			
+			<br>
 	<div>
-	<form action = "noticeSearch.no" method="get">
-	<ul>
-	<li><input type="text" placeholder="게시물 제목" name="searchTitle" autofocus="autofocus" required="required">
-	<input type="submit" value="검색"></li>
-	</ul>
-	</form>
 	</div>
-		<br> <input type="button" value="게시글쓰기"
-				onClick="location.href='notice/noticeWrite.jsp'">
-
+	<div class="search_area">
+		<ul>
+			<li><input type="button" value="게시글쓰기" onClick="location.href='notice/noticeWrite.jsp'"></li>
+		</ul>
 	</div>
+	</div>
+	</div>
+</div>
 </body>
 </html>

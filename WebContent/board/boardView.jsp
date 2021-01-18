@@ -10,21 +10,7 @@
 <meta charset="UTF-8">
 <title>KHJSP</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<style type="text/css">
-.board_view {width:80%; margin: auto;}
-.board_view h1{font-weight: 100; font-size: 2rem;margin: 1rem;}
-.board_view h3{font-weight: 100; font-size: 1rem;margin-top: 1rem; border-bottom: 1px solid #ccc;line-height: 1.3rem;}
-.board_view .title ul{display: flex;justify-content: space-between;vertical-align: middle;}
-.board_view .title ul li{padding: 0.3rem;font-size: 0.8rem;}
-.board_view .title ul li#title{min-width: 80%;font-size: 1rem;}
-.board_view .content{min-height: 20rem;font-size: 1rem;}
-.board_view .date{margin: 1rem;text-align: right;}
-.board_view .date ul{display: flex;font-size: 0.8rem;width: fit-content;margin-left: auto;}
-.board_view .date ul li{padding-left: 1rem;}
-.customer hr{position: relative;border: none;background: #ccc;height: 1px;}
-input[type=button]{border: 0px; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.8rem;}
-
-</style>
+<link rel="stylesheet" type="text/css" href="css/style.css?v=20">
 </head>
 <body>
 <div class="customer">

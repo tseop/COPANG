@@ -8,22 +8,30 @@
 <head>
 <meta charset="UTF-8">
 <title>COPANG</title>
+<style type="text/css">
+.customer{font-size: 0.8rem;}
+table{width: 100%;}
+table thead th{padding: 1rem;}
+table tbody tr{padding: 1rem; border-bottom: 1px solid #ccc;}
+table tbody td{padding: 1rem;}
+table tbody tr .width{width: 5rem;}
+table tbody tr .height{height: 10rem;}
+.customer .board_view h2{margin:1.5rem 0; text-align: center; font-size: 1.2rem; font-weight: 700; color: #366afe;}
+
+</style>
 </head>
 <body>
-<div class="container">
-	<div class="row">
+<div class="customer">
+<div class="board_view">
 	<%
 		NoticeDTO noticeDTO = (NoticeDTO)request.getAttribute("noticeDTO"); 
 	%>
-	<table style="text-align: center; border: 1px solid #dddddd">
-		<thead>
-			<tr>
-				<th colspan="3" style="background-color:#eeeeee; text-align: center;">공지사항</th>			
-			</tr>
-		</thead>
+		<h2>공지사항</h2>
+		<hr>	
+	<table>
 		<tbody>
 			<tr>
-				<td style="width: 20%;">글 제목</td>
+				<td class="width">글 제목</td>
 				<td colspan="2"><%= noticeDTO.getNotiTitle() %></td>
 			</tr>
 			<tr>
@@ -35,17 +43,21 @@
 				<td colspan="2"><%= noticeDTO.getNotiDate() %></td>
 			</tr>
 			<tr>
-				<td>내용</td>
-				<td colspan="2" style="min-height: 200px; text-align: left;"><%= noticeDTO.getNotiContent() %></td>
+				<td class="height">내용</td>
+				<td colspan="2" style="min-height: 300px;"><%= noticeDTO.getNotiContent() %></td>
 			</tr>
 		</tbody>
 		</table>
-		<a href="noticeList.no">목록</a>
-		
-			<a href="noticeUpdateConfirm.jsp?notiNo=<%= noticeDTO.getNotiNo() %>">수정</a>
-			<a href="#?notiNo=<%= noticeDTO.getNotiNo() %>">삭제</a> 
-		
-</div>	
+		<br><br><br>
+	<div class="search_area">
+	<ul style="justify-content: flex-end;">
+		<li><input type="button" value="목록" onClick="location.href='noticeList.no'" class="btn"></li>&emsp;&emsp;
+		<li><input type ="button" value="수정" onClick="location.href='noticeUpdateConfirm.jsp?notiNo=<%= noticeDTO.getNotiNo() %>" class="btn"></li>&emsp;&emsp;
+		<li><input style="background: #D71427" type ="button" value="삭제" onClick="location.href='#?notiNo=<%= noticeDTO.getNotiNo() %>'" class="btn"></li>
+	</ul>
+	</div>
+
 </div>
+</div>	
 </body>
 </html>

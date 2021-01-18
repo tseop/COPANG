@@ -16,12 +16,12 @@
 	ArrayList<CustomerDTO> customerSearchList = (ArrayList<CustomerDTO>) request.getAttribute("customerSearchList");
 	if (customerSearchList.size() == 0) {
 %>	 <h3>검색 결과가 없습니다..</h3>
-<div class="search_area">
 <%} else {%>
+<div class="search_area">
 	<form action="customerSearch.cu" method="get">
 	<h3>" <%=customerSearch%> " 검색 결과</h3>
 	<ul style="margin-left: auto; width: fit-content;">
-			<li class="search_box"><input type="text" placeholder="게시물 제목" name="searchCusName" required="required">
+			<li class="search_box"><input type="text" placeholder="거래처 이름" name="searchCusName" required="required">
 				<input type="submit" value="검색"></li>
 			</ul>
 	</form>
@@ -46,6 +46,12 @@
 			<td><%=customerDTO.getBusinessNo() %></td>
 		</tr><% }} %>
 	</table>
+	<br>
+	<div class="search_area">
+	<ul style="justify-content: center;">
+		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
+	</ul>
+	</div>
 </div>
 </div>
 </div>

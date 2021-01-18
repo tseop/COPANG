@@ -33,7 +33,7 @@
   		<c:forEach items="${list }" var="customer">
 		  <tr>
 		  <td class="num">${customer.cusNo}</td>
-		     <td>${customer.cusName}</td>
+		     <td><a href='customerDetails.cu?num=${customer.cusNo}'> ${customer.cusName}</a></td>
 		     <td>${customer.cusManager}</td>
 		     <td>${customer.cusTel}</td>
 		     <td>${customer.businessNo}</td>
@@ -46,7 +46,6 @@
 <div class="search_area">
 	<ul>
 		<li><input type="button" value="거래처 등록" onClick="location.href='index.jsp?page=customer/customerRegister'"></li>
-		<li><input type="button" value="거래처 수정" onClick="location.href='customer/customerUpdate.jsp'"></li>
 	</ul>
 </div>
 </div>
