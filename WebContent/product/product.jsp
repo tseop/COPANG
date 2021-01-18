@@ -14,7 +14,7 @@
 <head>
 <style>
 body {
-	font-size: 15px;
+	font-size: 12px;
 }
 .register, .list {
 	margin: 0px 10px;
@@ -23,53 +23,84 @@ body {
 	/*   background:#f00;  */
 }
 .move {
-	padding: 20px 30px;
-	float: center;
+	width: 10%;
+	float: right; 
+	margin: 0px 5px 10px 0px;
+}
+input[type="submit"] {
+	width: 10%;
+	height: 30px;
+	font-family: "맑은 고딕";
+	margin: 0px 0px 5px 0px;
+	float:right;
+	
 }
 
 input[type="button"] {
 	width: 10%;
 	height: 30px;
-	background: skyblue;
-	border-radius: 5px;
-	/*  width: 140px; */
 	font-family: "맑은 고딕";
-	margin-top: 20px;
+	margin: 0px 0px 5px 0px;
+	float:right;
 	
 }
-
-input[type="submit"] {
-	width: 10%;
+#moveMain{
+	width: 20%;
 	height: 30px;
-	background: skyblue;
+	background: gray;
 	border-radius: 5px;
-	/*  width: 140px; */
 	font-family: "맑은 고딕";
 	margin-top: 20px;
 }
 
+.register table, .list table {
+    width: 100%;
+    /* table-layout:fixed; */
+    border: 1px solid #444444;
+  }
 
-table {
+.register th, .list th {
+	/* border: 1px bold black; */
+	background-color: #DEDEDE;
 	border: 1px solid black;
 	border-collapse: collapse;
-}
-
-th {
-	/* border: 1px bold black; */
-	border: 1px solid #444444;
-	border-collapse: collapse;
 	font-weight: 500px;
-	width: 300px;
-	 padding: 10px;
+	width: 100px;
+	padding: 10px;
+	font-size: 15px;
 }
 
-td {
+.register td, .list td {
+	background-color: #F7F6F4;
 	border: 1px solid #444444;
 	text-align: center;
-	width: 4000px;
-	 padding: 10px;
+	font-size: 12px;
+	padding: 10px;
+}
+
+.register table input{
+font-size: 12px;
+	width: 90%;
+}
+.list input{
+	width: 100%;
+}
+
+
+.register #search{
+width: 40px;
+height: 20px;
+float:left;
 }
 </style>
+ <script>
+        function popup(){
+            var url = "productSearchForm.jsp";
+            var name = "popup test";
+            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
+    </script>
 <meta charset="UTF-8">
 <title>Travel</title>
 </head>
@@ -82,27 +113,25 @@ td {
 	<form action="productRegister.pd" method="get">
 		<br><h1 class="title">제품등록</h1><br><br>
 		<div class="register">
+			<input type="submit" value="등록하기">
 			<table border="1" cellspacing="0" cellpadding="0">
 				<tr>
-					<th>제품번호</th> 
-					<th>제품명</th>
-					<th>거래처명</th>
-					<th>입고수량</th>
-					<th>원가</th>
-					<th>소비자판매가</th>
-					<th>첫 입고일</th>
-					<th>마지막입고일</th>
-					<th>재고</th>			<!-- 첫 등록이니까 재고가 입고수량과 같다 -->
+					<th style="width: 10%">제품번호</th> 
+					<th style="width: 10%">제품명</th>
+					<th style="width: 15%">거래처명</th>
+					<th style="width: 5%">입고수량</th>
+					<th style="width: 5%">원가</th>
+					<th style="width: 5%">소비자판매가</th>
+					<th style="width: 10%">첫 입고일</th>
+					<th style="width: 10%">마지막입고일</th>
+					<th style="width: 5%">재고</th>			<!-- 첫 등록이니까 재고가 입고수량과 같다 -->
 					<!-- <th>당일판매량</th> -->
 					<!-- 등록페이지에는 당일판매량은 필요없지 -->
 				</tr>
 				<tr>
 					<td><input type="number" name="proNo" autofocus="autofocus" size="10" maxlength="100" readonly="readonly"></td>
 					<td><input type="text" name="proName" autofocus="autofocus" placeholder="제품명" size="10" maxlength="100"></td>
-					<td>
-					<input type="button" value="검색" onclick='location.href="index.jsp?page=customer/customerSearch"'>
-					<input type="text" name="cusName" placeholder="거래처명" size="10" maxlength="100">
-					</td>
+					<td><input type="button" id="search" value="검색" onclick='location.href="index.jsp?page=customer/customerSearch"'><input type="text" name="cusName" style="width: 70%" placeholder="거래처명" size="10" maxlength="100"></td>
 					<td><input type="number" name="proStoring" placeholder="입고수량" size="10" maxlength="100"></td>
 					<td><input type="number" name="proCost" placeholder="제품원가" size="10" maxlength="100"></td>
 					<td><input type="number" name="proPrice" placeholder="판매가" size="10" maxlength="100"></td>
@@ -111,18 +140,18 @@ td {
 					<td><input type="number" name="proStock" placeholder="재고" size="10" maxlength="100"></td>
 					<!-- <td><input type="number" name="today" placeholder="당일판매" size="10" maxlength="100"></td> -->
 				</tr>
-
 			</table>
-			<div class="move">
-				<br> <input type="submit" value="등록하기">
-				<!-- <a href="student.jsp"></a> <a href="studentList.jsp"></a> -->
-			</div>
 		</div>
 	</form>
 	<br><br>
 	<form action="../productList.pd" method="get">
 		<h1 class="title">제품관리</h1>
 		<div class="list">
+		<div class="move">
+			<input type="button" value="수정" onclick='location.href="index.jsp?page=product/productSearchForm"'>
+			<!-- <input type="button" value="검색" onclick='location.href="index.jsp?page=product/productUpdateForm"'> -->
+			<input type="button" value="검색" onclick='popup()'>
+			</div>
 			<table border="1" cellspacing="0" cellpadding="0">
 				<tr>
 					<th>제품번호</th>
@@ -156,16 +185,13 @@ td {
 					}
 				%>
 			</table>
+			<input type="button" id="moveMain" value="메인페이지" onclick='location.href="index.jsp"'>
 		</div>
 		<br>
-		<div class="move">
-			<!-- <input type="button" value="등록" onclick='location.href="index.jsp?page=product/productRegisterForm"'> -->
-			<input type="button" value="수정" onclick='location.href="index.jsp?page=product/productSearchForm"'>
-			<input type="button" value="검색" onclick='location.href="index.jsp?page=product/productUpdateForm"'>
-			<input type="button" value="메인페이지" onclick='location.href="index.jsp"'>
-		</div>
-
 	</form>
 
 </body>
 </html>
+
+
+

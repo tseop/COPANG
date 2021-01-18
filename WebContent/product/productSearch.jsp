@@ -4,9 +4,10 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="boardSearch" class="product.ProductDAO" scope="page" />
+<%-- <jsp:useBean id="productSearch" class="product.ProductDAO" scope="page" /> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +16,15 @@
 <title>Travel</title>
 </head>
 <body>
-
-	<%
-		ProductDTO productDTO = (ProductDTO) request.getAttribute("productDTO");
-	/* boardSearch.boardReadcount(boardDTO); */
-	%>
+<%
+	String productSearch = request.getParameter("proSearchName");
+	ArrayList<ProductDTO> productSearchList = (ArrayList<ProductDTO>) request.getAttribute("productSearchList");
+	if (productSearchList.size() == 0) {
+%>	 
+<h3>검색 결과가 없습니다..</h3>
+<div class="search_area">
+<%} else {%>
+	<hr>
 	<table border="1" cellspacing="0" cellpadding="0">
 		<tr>
 			<th>제품번호</th>
@@ -33,6 +38,10 @@
 			<th>입고수량</th>
 			<th>당일판매량</th>
 		</tr>
+		<%
+			for (int i = 0; i < productSearchList.size(); i++) {
+				ProductDTO productDTO = productSearchList.get(i);
+		%>
 		<tr>
 			<td><%=productDTO.getProNo()%></td>
 			<td><%=productDTO.getProName()%></td>
@@ -45,6 +54,9 @@
 			<td><%=productDTO.getProStoring()%></td>
 			<td>빈칸</td>
 		</tr>
+		<% }} %>
 	</table>
 </body>
 </html>
+
+

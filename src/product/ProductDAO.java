@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 
+import customer.CustomerDTO;
 import product.ProductDTO;
 import product.PageTo;
 
@@ -166,13 +167,13 @@ public class ProductDAO {
 
 	}
 
-	public ProductDTO productSearch(String proNo) throws SQLException {
+	public ArrayList<ProductDTO> productSearch(String searchProName) throws SQLException {
 		conn = getConnection();
 		sql = "select * from PRODUCT where PRO_NAME=?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, proNo);
+		pstmt.setString(1, searchProName);
 		rs = pstmt.executeQuery();
-
+		productSearchList = new ArrayList<ProductDTO>();
 		while (rs.next()) {
 //			productDTO = new ProductDTO();
 			productDTO.setProNo(rs.getInt("no"));
@@ -184,23 +185,15 @@ public class ProductDAO {
 			productDTO.setProStock(Integer.parseInt(rs.getString("proStock")));
 			productDTO.setCusName(rs.getString("cusName"));
 			productDTO.setProStoring(Integer.parseInt(rs.getString("proStoring")));
-			productList.add(productDTO);
+			productSearchList.add(productDTO);
 		}
-		return productDTO;
+		return productSearchList;
 
 	}
 
-	// public void boardReadcount(ProductDTO productDTO) throws SQLException {
-//		conn = getConnection();
-//		sql = "update BoardA set readcount=? where no=?";
-//		pstmt = conn.prepareStatement(sql);
-//		pstmt.setInt(1, productDTO.getReadcount() + 1);
-//		pstmt.setInt(2, productDTO.getNo());
-//		cnt = pstmt.executeUpdate();
-	// }
 
-	// public int boardUpdateFinal(String searchTitle, ProductDTO productDTO) throws
-	// SQLException {
+// public int boardUpdateFinal(String searchTitle, ProductDTO productDTO) throws
+//	 SQLException {
 //		conn = getConnection();
 //		sql = "update BoardA set title=?, content=?, author=?, nal=?, readcount=? where title=?";
 //		pstmt = conn.prepareStatement(sql);
