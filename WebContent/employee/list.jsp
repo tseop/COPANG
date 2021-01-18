@@ -43,7 +43,7 @@
 			}
 	%>
 	<tr>
-		<td><%=empDTO.getDeptNo() %></td>
+		<td><%=empDTO.getEmpNo() %></td>
 		<td><%=empDTO.getEmpName() %></td>
 		<td><%=empDTO.getEmpTel() %></td>
 		<td><%=empDTO.getEmpAddr() %></td>
