@@ -252,10 +252,7 @@ input[type="button"] {
 						<th style="width: 5%">당일판매량</th>
 						<th style="width: 5%">호잇</th>
 					</tr>
-					<%
-						for (int i = 0; i < productList.size() - 1; i++) {
-						ProductDTO productDTO = productList.get(i);
-					%>
+
 					<c:forEach items="${productList }" var="product">
 						<tr>
 							<td class="num">${product.proNo}</td>
@@ -268,12 +265,10 @@ input[type="button"] {
 							<td>${product.cusName}</td>
 							<td style="text-align: right">${product.proStoring}</td>
 							<td>빈칸</td>
-							<td><a href="productDelete.pd?proNo=<%=productDTO.getProNo()%>">삭제</a>
-							&nbsp;&nbsp;<a href="index.jsp?proNo=<%=productDTO.getProNo()%>&page=product/productUpdateConfirm">수정</a></td>
+							<td><a href="productDelete.pd?proNo=${product.proNo}">삭제</a>
+							&nbsp;&nbsp;<a href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm">수정</a></td>
 					</c:forEach>
-					<%
-						}
-					%>
+
 				</table>
 				<input type="button" id="moveMain" value="메인페이지"
 					onclick='location.href="index.jsp"'>
