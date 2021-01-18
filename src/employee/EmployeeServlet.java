@@ -163,11 +163,13 @@ public class EmployeeServlet extends HttpServlet {
 					empNo = rs.getInt("EMP_NO");
 					out.print("<script>");
 					out.print("alert('찾으시는 사원번호는 "+empNo+"입니다.');");
+					out.print("window.close();");
 					out.print("</script>");
 				}
 				else {
 					out.print("<script>");
 					out.print("alert('해당 주민등록번호로 가입된 사원번호는 없습니다.');");
+					out.print("window.close();");
 					out.print("</script>");
 				}
 			} catch (SQLException e) {
@@ -184,11 +186,13 @@ public class EmployeeServlet extends HttpServlet {
 					pw = rs.getString("EMP_PW");
 					out.print("<script>");
 					out.print("alert('찾으시는 비밀번호는 "+pw+"입니다.');");
+					out.print("window.close();");
 					out.print("</script>");
 				}
 				else {
 					out.print("<script>");
 					out.print("alert('존재하지 않는 사원번호입니다.');");
+					out.print("window.close();");
 					out.print("</script>");
 				}
 			} catch (SQLException e) {

@@ -11,6 +11,7 @@
 	<%
 		EmployeeDTO empDTO = (EmployeeDTO) request.getAttribute("empDTO");
 		String dept_name = null;
+		String rank = null;
 		if (empDTO.getDeptNo() == 1) {
 			dept_name = "물류팀";
 		} else if (empDTO.getDeptNo() == 2) {
@@ -18,6 +19,20 @@
 		} else if (empDTO.getDeptNo() == 3) {
 			dept_name = "경영지원";
 		}
+		else {
+			dept_name = "사장";
+		}
+		
+		if(empDTO.getEmpRank() == 1){
+			rank = "일반사원";
+		}
+		else if(empDTO.getEmpRank() == 2){
+			rank = "팀장";
+		}
+		else if(empDTO.getEmpRank() == 3){
+			rank = "사장";
+		}
+		
 	%>
 	<div class="customer">
 		<div class="table">
@@ -32,7 +47,6 @@
 					<th width="15%">주민등록번호</th>
 					<th width="8%">직급</th>
 					<th width="10%">비밀번호</th>
-					<th width="5%">부서번호</th>
 					<th width="8%">부서이름</th>
 				</tr>
 				<tr>
@@ -41,9 +55,8 @@
 					<td><%=empDTO.getEmpTel()%></td>
 					<td><%=empDTO.getEmpAddr()%></td>
 					<td><%=empDTO.getEmpSecurity()%></td>
-					<td><%=empDTO.getEmpRank()%></td>
+					<td><%=rank%></td>
 					<td><%=empDTO.getEmpPw()%></td>
-					<td><%=empDTO.getDeptNo()%></td>
 					<td><%=dept_name%></td>
 				</tr>
 			</table>

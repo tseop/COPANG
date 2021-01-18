@@ -6,6 +6,12 @@
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/top.js"></script>
 <head>
+<script type="text/javascript">
+function logout(){
+	confirm("로그아웃하시겠습니까?");
+	
+}
+</script>
 <meta charset="UTF-8">
 <title></title>
 </head>
@@ -16,7 +22,8 @@
 		</div>
 		<div class="top-bar">
 			<a href="mypage.ep">마이페이지</a>
-			<a href="logout.ep">로그아웃</a>
+			<a href="logout.ep" onclick="return confirm('로그아웃 하시겠습니까?');">로그아웃</a>
+
 		</div>
 		<div class="menu">
 			<ul>

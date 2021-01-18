@@ -32,6 +32,7 @@
 		for(int i = 0;i<empList.size();i++){
 			EmployeeDTO empDTO = empList.get(i);
 			String dept_name = null;
+			String rank = null;
 			if(empDTO.getDeptNo() == 1){
 				dept_name = "물류팀";
 			}
@@ -41,6 +42,18 @@
 			else if(empDTO.getDeptNo() == 3){
 				dept_name = "경영지원";
 			}
+			else if(empDTO.getDeptNo() == 4){
+				dept_name = "사장";
+			}
+			if(empDTO.getEmpRank() == 1){
+				rank = "일반사원";
+			}
+			else if(empDTO.getEmpRank() == 2){
+				rank = "팀장";
+			}
+			else if(empDTO.getEmpRank() == 3){
+				rank = "사장";
+			}
 	%>
 	<tr>
 		<td><%=empDTO.getEmpNo() %></td>
@@ -49,7 +62,7 @@
 		<td><%=empDTO.getEmpAddr() %></td>
 <%-- 		<td><%=empDTO.getEmpSecurity() %></td> --%>
 		<td>********</td>
-		<td><%=empDTO.getEmpRank() %></td>
+		<td><%=rank %></td>
 <%-- 		<td><%=empDTO.getEmpPw() %></td> --%>
 		<td>********</td>
 		<td><%=empDTO.getDeptNo() %></td>

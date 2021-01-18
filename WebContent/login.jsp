@@ -13,6 +13,12 @@ function inNumber(){    //사원번호 숫자만입력
        event.returnValue = false;
     }   
  }
+ function idPopupOpen(){
+	 window.open("employee/idFind.jsp","사원번호찾기","width=500,height=300","top=200px,left=500px");
+ }
+ function pwPopupOpen(){
+	 window.open("employee/pwFind.jsp","비밀번호찾기","width=500,height=300","top=200,left=500");
+ }
 </script>
 </head>
 <body>
@@ -39,8 +45,8 @@ function inNumber(){    //사원번호 숫자만입력
 		</tr>
 	</table>
 		<div class="link">
-			<p><a href='index.jsp?page=employee/idFind'>사원번호찾기</a>&emsp;
-			<a href='index.jsp?page=employee/pwFind'>비밀번호찾기</a></p>
+			<p><a href=""onclick="idPopupOpen()" style="cursor:hand;">사원번호찾기</a>&emsp;
+			<a href=""onclick="pwPopupOpen()" style="cursor:hand;">비밀번호찾기</a></p>
 			<input type="submit" value="로그인">
 		</div>
 	</form>

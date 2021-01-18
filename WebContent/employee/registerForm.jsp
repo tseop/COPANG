@@ -103,7 +103,7 @@
 <h1>사원등록</h1>
 <hr>
 <form action="employeeRegister.ep" method="get">
-  <input type="hidden" name="rank" value="0">
+  <input type="hidden" name="rank" value="1">
   <select name="dep" required style="width:100px">
     <option value="">부서선택</option>
     <option value="1">물류팀</option>
