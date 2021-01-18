@@ -29,7 +29,8 @@ public class ProductServlet extends HttpServlet {
 	private int cnt;
 	private ResultSet rs;
 	private RequestDispatcher dis;
-	private ArrayList<ProductDTO> productList;
+	private String searchName;
+	private ArrayList<ProductDTO> productSearchList;
 	public ProductServlet() {
 		productDTO = new ProductDTO();
 		productDAO = new ProductDAO();
@@ -96,18 +97,16 @@ public class ProductServlet extends HttpServlet {
 			} 
 		}
 		else if (command.equals("/productSearch.pd")) {
-			String searchProName = request.getParameter("proName");
-//			String r =request.getParameter("r");
-			try {
-				productDTO=productDAO.productSearch(searchProName);
-				RequestDispatcher dis=request.getRequestDispatcher("index.jsp?page=product/productSearch");
-				request.setAttribute("productDTO", productDTO);
-				dis.forward(request, response);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		} 
+			 searchName = request.getParameter("searchProName");
+	          try {
+	        	 productSearchList = productDAO.productSearch(searchName);
+	             dis = request.getRequestDispatcher("index.jsp?page=product/productSearch");
+	             request.setAttribute("productSearchList", productSearchList);
+	             dis.forward(request, response);
+	          } catch (SQLException e) {
+	             e.printStackTrace();
+	          }
+	       }//검색
 		else if (command.equals("/productUpdate.pd")) {
 //			
 		}
