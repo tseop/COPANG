@@ -19,37 +19,41 @@
 			dept_name = "경영지원";
 		}
 	%>
-	<div id="main">
-		<div id="table">
+	<div class="customer">
+		<div class="table">
+		<h1>마이페이지</h1>
+		<hr>
 			<table border="1" cellspacing="0" cellpadding="0">
 				<tr>
-					<th width="80px">사원번호</th>
-					<th width="80px">이름</th>
-					<th width="150px">전화번호</th>
-					<th width="400px">주소</th>
-					<th width="200px">주민등록번호</th>
-					<th width="40px">직급</th>
-					<th width="80px">비밀번호</th>
-					<th width="80px">부서번호</th>
-					<th width="80px">부서이름</th>
+					<th width="5%">사원번호</th>
+					<th width="10%">이름</th>
+					<th width="15%">전화번호</th>
+					<th width="20%">주소</th>
+					<th width="15%">주민등록번호</th>
+					<th width="8%">직급</th>
+					<th width="10%">비밀번호</th>
+					<th width="5%">부서번호</th>
+					<th width="8%">부서이름</th>
 				</tr>
 				<tr>
-					<td width="80px"><%=empDTO.getDeptNo()%></td>
-					<td width="80px"><%=empDTO.getEmpName()%></td>
-					<td width="150px"><%=empDTO.getEmpTel()%></td>
-					<td width="400px"><%=empDTO.getEmpAddr()%></td>
-					<td width="200px"><%=empDTO.getEmpSecurity()%></td>
-					<td width="40px"><%=empDTO.getEmpRank()%></td>
-					<td width="80px"><%=empDTO.getEmpPw()%></td>
-					<td width="80px"><%=empDTO.getDeptNo()%></td>
-					<td width="80px"><%=dept_name%></td>
+					<td><%=empDTO.getDeptNo()%></td>
+					<td><%=empDTO.getEmpName()%></td>
+					<td><%=empDTO.getEmpTel()%></td>
+					<td><%=empDTO.getEmpAddr()%></td>
+					<td><%=empDTO.getEmpSecurity()%></td>
+					<td><%=empDTO.getEmpRank()%></td>
+					<td><%=empDTO.getEmpPw()%></td>
+					<td><%=empDTO.getDeptNo()%></td>
+					<td><%=dept_name%></td>
 				</tr>
 			</table>
 		</div>
-		<a href="index.jsp?page=employee/updateConfirm">수정</a>
-		<div id="board">
-		<a href="#">작성한 게시물</a>
-		</div>
+		
+	<div class="search_area">
+	<ul style="justify-content: center;">
+		<li><input type="button" value="내 정보 수정" onClick="location.href='index.jsp?page=employee/updateConfirm'"></li>
+	</ul>
 	</div>
+</div>
 </body>
 </html>

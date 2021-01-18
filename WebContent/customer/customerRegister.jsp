@@ -56,7 +56,7 @@
 		<li><input type="submit" value="등록하기"></li>
 		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
 	</ul>
-</div>
+	</div>
 </form>
 </div>
 </div>

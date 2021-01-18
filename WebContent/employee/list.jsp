@@ -13,17 +13,18 @@
 <div class="customer">
 <div class="table">
 <h1>사원목록</h1>
+<hr>
 <table border = "1" cellspacing = "0" cellpadding= "0">
 	<tr>
-		<th>사원번호</th>
-		<th>이름</th>
-		<th width="10%">전화번호</th>
-		<th width="30%">주소</th>
-		<th width="10%">주민등록번호</th>
-		<th>직급</th>
-		<th>비밀번호</th>
-		<th>부서번호</th>
-		<th>부서이름</th>
+		<th width="5%">사원번호</th>
+		<th width="10%">이름</th>
+		<th width="15%">전화번호</th>
+		<th width="20%">주소</th>
+		<th width="15%">주민등록번호</th>
+		<th width="8%">직급</th>
+		<th width="10%">비밀번호</th>
+		<th width="5%">부서번호</th>
+		<th width="8%">부서이름</th>
 	</tr>
 	<%
 		ArrayList<EmployeeDTO> empList = (ArrayList<EmployeeDTO>)request.getAttribute("empList");
@@ -42,23 +43,29 @@
 			}
 	%>
 	<tr>
-		<td width="80px"><%=empDTO.getDeptNo() %></td>
-		<td width="80px"><%=empDTO.getEmpName() %></td>
-		<td width="150px"><%=empDTO.getEmpTel() %></td>
-		<td width="400px"><%=empDTO.getEmpAddr() %></td>
-		<td width="200px"><%=empDTO.getEmpSecurity() %></td>
-		<td width="40px"><%=empDTO.getEmpRank() %></td>
-		<td width="80px"><%=empDTO.getEmpPw() %></td>
-		<td width="80px"><%=empDTO.getDeptNo() %></td>
-		<td width="80px"><%=dept_name %></td>
+		<td><%=empDTO.getDeptNo() %></td>
+		<td><%=empDTO.getEmpName() %></td>
+		<td><%=empDTO.getEmpTel() %></td>
+		<td><%=empDTO.getEmpAddr() %></td>
+		<td><%=empDTO.getEmpSecurity() %></td>
+		<td><%=empDTO.getEmpRank() %></td>
+		<td><%=empDTO.getEmpPw() %></td>
+		<td><%=empDTO.getDeptNo() %></td>
+		<td><%=dept_name %></td>
 	</tr>
 	
 	<%
 		}
 	%>
 </table>
+<br>
+<div class="search_area">
+	<ul>
+		<li><input type="button" value="사원 등록" onClick="location.href='index.jsp?page=employee/registerForm'"></li>
+<!-- 		<li><input type="button" value="사원 수정" onClick="location.href=''"></li> -->
+	</ul>
 </div>
-<a href="main.jsp?page=employee/mypage">마이페이지</a>
+</div>
 </div>
 </body>
 </html>

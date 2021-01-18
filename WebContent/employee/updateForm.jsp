@@ -3,34 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-#employee{
-   position: absolute;
-   width: 800px;
-   height: 400px;
-   top: 200px;
-   left: 600px;
-   background-color: aqua;
-}
-
-.update{
-   width: 100px;
-   height: 60px;
-}
-
-.reset {
-   font-size: 20px;
-}
-
-h1 {
-   text-align: center;
-   color: purple;
-}
-
-ul {
-   list-style-type: none;
-}
-</style>
 <script>
 
    function inNumber(){    //사원번호 숫자만입력
@@ -124,51 +96,73 @@ ul {
 </script>
 <meta charset="UTF-8">
 <title>KHJSP</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <div id="employee">
+  <div class="customer">
+        <div class="emp_reg_form">
       <h1>개정정보수정</h1>
+      <hr>
       <form action="update.ep" method="get">
-         <ul>
-            <li>   
-               <select name="dep" required style="width:100px">
-                  <option value="">부서선택</option>
-                  <option value="1">물류팀</option>
-                  <option value="2">경영지원</option>
-                  <option value="3">인사관리</option>
-               </select>
-            </li>
-            <li><label for="no">사원번호</label>
-            <input type="text" name="no" onkeypress = "inNumber()" size="20"maxlength="10" 
-            autofocus="autofocus" required="required" placeholder="사원번호를 입력하세요">
-            <input type="button" required="required" value = "중복체크" onclick="win01(this.form)">
-            </li>
-            <li><label for="pw">비밀번호</label> 
-            <input type="password" name="pw" id="pw" onchange="check_pw(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 입력"> &nbsp;&nbsp; <span
-               name="check" id="check"></span></li>
-            <li><label for="pwc">비밀번호 확인</label> <input type="password" name="pw2" id="pw2" onchange="check_pw2(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 확인"> &nbsp;&nbsp; <span
-               name="check2" id="check2"></span></li>
-            <li><label for="name" size="20">&nbsp;이&nbsp;&nbsp;름&nbsp;&nbsp;</label>
-               <input type="text" name="name" size="20" maxlength="10" autofocus="autofocus" required="required" placeholder="이름을 입력하세요">
-            </li>
-            <label for="security">주민등록번호</label>
-            <input type="text" name="c1" required="required" size="10" maxlength="6"> - <input type="password" name="c2" required="required" size="10" maxlength="7">
-            <input type="button" required="required" value="조회" onclick="c_check(this.form)">
-            
-            <li><label for="tel" width="20">핸&nbsp;드&nbsp;폰</label> 
-            	<input type="text" name="tel" size="20" maxlength="20" required="required" placeholder="010-3114-1041">
-            </li>
-               
-            <li>
-            	<label for="addr">주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소</label>
-        		<input type="text" name="addr" size="20" maxlength="100" required="required" placeholder="주소입력">
-            </li>
-            <li>
-            	<input type="image" src="images/update.png" class="update"> 
-            	<input type="reset" value="되돌리기" class="reset"> 
-            </li>
-         </ul>
+<select name="dep" required style="width:100px">
+   <option value="">부서선택</option>
+   <option value="1">물류팀</option>
+   <option value="2">경영지원</option>
+   <option value="3">인사관리</option>
+</select>
+	<table>
+		<tr>
+         <th><span class="required_content">*</span><label for="no">사원번호</label></th>
+         <td><input type="text" name="no" onkeypress = "inNumber()" size="20"maxlength="10" 
+            autofocus="autofocus" required="required" placeholder="사원번호를 입력하세요" width="8rem">
+            <input type="button" required="required" value = "중복체크" onclick="win01(this.form)"></td>
+      </tr>
+      </table>
+      <table>
+      <tr>
+         <th><span class="required_content">*</span><label for="pw">비밀번호</label></th>
+         <td><input type="password" name="pw" id="pw" onchange="check_pw(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 입력">
+         	<span name="check" id="check"></span></td>
+       </tr>
+       <tr>
+       <th><span class="required_content">*</span><label for="pwc">비밀번호 확인</label></th>
+       <td><input type="password" name="pw2" id="pw2" onchange="check_pw2(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 확인">
+       		<span name="check2" id="check2"></span></td>
+       </tr>
+       </table>
+       <table>
+       <tr>
+         <th><span class="required_content">*</span><label for="name">이름</label></th>
+         <td><input type="text" name="name" size="20" maxlength="10" autofocus="autofocus" required="required" placeholder="이름을 입력하세요"></td>
+       </tr>
+       </table>
+       <table>
+       <tr>
+         <th><span class="required_content">*</span><label for="security">주민등록번호</label></th>
+         <td><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no">-<input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no">
+            <input type="button" required="required" value="조회" onclick="c_check(this.form)"></td>
+       </tr>
+	</table>
+	 <table>
+       <tr>
+         <th><span class="required_content">*</span><label for="tel">핸드폰</label></th>
+         <td><input type="text" name="tel" size="20" maxlength="20" required="required" placeholder="010-3114-1041"></td>
+       </tr>
+	</table>
+	 <table>
+       <tr>
+         <th><span class="required_content">*</span><label for="addr">주소</label></th>
+         <td><input type="text" name="addr" size="20" maxlength="100" required="required" placeholder="주소입력"></td>	
+       </tr>
+	</table>
+	<div class="search_area">
+	<ul style="justify-content: center;">
+		<li><input type="submit" value="수정하기"></li>
+	</ul>
+	</div>
       </form>
+   </div>
    </div>
 </body>
 </html>

@@ -15,6 +15,7 @@
 			<a href="index.jsp"><img src="images/Copang_logo.png"></a>
 		</div>
 		<div class="top-bar">
+			<a href="mypage.ep">마이페이지</a>
 			<a href="logout.ep">로그아웃</a>
 		</div>
 		<div class="menu">

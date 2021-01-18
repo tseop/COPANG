@@ -115,7 +115,7 @@ public class EmployeeServlet extends HttpServlet {
 			}
 		} else if (command.equals("/logout.ep")) {
 			session.invalidate();
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("login.jsp");
 		} else if (command.equals("/empDelete.ep")) {
 			int empNo = (int) session.getAttribute("empNo");
 			out.print(empNo+"<br>");
