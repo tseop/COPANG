@@ -12,17 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.BoardDTO;
 
-@WebServlet({ "*.cu" })
+@WebServlet("*.cu")
 public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CustomerDTO customerDTO;
 	private CustomerDAO customerDAO;
 	private int cnt;
-	private ArrayList<CustomerDTO> customerSearchList;
 	private RequestDispatcher dis;
-	private String customerSearch;
+	private String searchName;
+	private ArrayList<CustomerDTO> customerSearchList;
 	
    public CustomerServlet() {
 	  customerDTO = new CustomerDTO();
@@ -67,9 +66,9 @@ public class CustomerServlet extends HttpServlet {
 	       }//목록
 	    
 	      else if (command.equals("/customerSearch.cu")) {
-	    	  customerSearch = request.getParameter("customerSearch");
+	    	  searchName = request.getParameter("searchCusName");
 	          try {
-	        	 customerSearchList = customerDAO.customerSearch(customerSearch);
+	        	 customerSearchList = customerDAO.customerSearch(searchName);
 	             dis = request.getRequestDispatcher("index.jsp?page=customer/customerSearch");
 	             request.setAttribute("customerSearchList", customerSearchList);
 	             dis.forward(request, response);

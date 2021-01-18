@@ -12,7 +12,7 @@
 <div class="customer">
 <div class="table">	
 <%
-	String customerSearch = request.getParameter("customerSearch");
+	String customerSearch = request.getParameter("searchCusName");
 	ArrayList<CustomerDTO> customerSearchList = (ArrayList<CustomerDTO>) request.getAttribute("customerSearchList");
 	if (customerSearchList.size() == 0) {
 %>	 <h3>검색 결과가 없습니다..</h3>
@@ -21,7 +21,7 @@
 	<form action="customerSearch.cu" method="get">
 	<h3>" <%=customerSearch%> " 검색 결과</h3>
 	<ul style="margin-left: auto; width: fit-content;">
-			<li class="search_box"><input type="text" placeholder="게시물 제목" name="customerSearch" required="required">
+			<li class="search_box"><input type="text" placeholder="게시물 제목" name="searchCusName" required="required">
 				<input type="submit" value="검색"></li>
 			</ul>
 	</form>
@@ -44,8 +44,7 @@
 			<td><%=customerDTO.getCusManager() %></td>
 			<td><%=customerDTO.getCusTel() %></td>
 			<td><%=customerDTO.getBusinessNo() %></td>
-		</tr>
-		<% }} %>
+		</tr><% }} %>
 	</table>
 </div>
 </div>

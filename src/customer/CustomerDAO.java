@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import board.BoardDTO;
-
 
 public class CustomerDAO {
 	private Connection conn;
@@ -18,6 +16,7 @@ public class CustomerDAO {
 	private String sql;
 	private int cnt;
 	private ArrayList<CustomerDTO> customerSearchList;
+	private ArrayList<CustomerDTO> list;
 
 	public CustomerDAO() {
 		try {
@@ -64,7 +63,7 @@ public class CustomerDAO {
 	public PageTo page(int curPage) {//페이지구현
 	      PageTo pageTo = new PageTo();
 	      int totalCount = totalCount();
-	      ArrayList<CustomerDTO> list = new ArrayList<CustomerDTO>();
+	      list = new ArrayList<CustomerDTO>();
 	      try {
 	         conn=getConnection();
 	         sql = "SELECT * FROM CUSTOMER";
@@ -75,7 +74,6 @@ public class CustomerDAO {
 	         if(skip>0){
 	            rs.absolute(skip);
 	         }
-	         //ResultSet의 absolute메소드를 이용하여 해당 페이지의 Cursor 의 위치로 이동...
 	         for(int i=0;i<perPage && rs.next();i++){
 	            int cusNo = rs.getInt("CUS_NO");
 	            String cusName = rs.getString("CUS_NAME");
@@ -99,11 +97,11 @@ public class CustomerDAO {
 	      return pageTo;        
 	   }//페이지구현
 	
-	public ArrayList<CustomerDTO> customerSearch(String customerSearch) throws SQLException {
+	public ArrayList<CustomerDTO> customerSearch(String searchCusName) throws SQLException {
 		conn = getConnection();
-		sql = "SELECT * FROM CUSTOMER WHERE CUS_NAME LIKE ?";
+		sql = "SELECT * FROM CUSTOMER WHERE CUS_NAME LIKE % ? %";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1,"%"+customerSearch+"%");
+		pstmt.setString(1,searchCusName);
 		rs = pstmt.executeQuery();
 		customerSearchList = new ArrayList<CustomerDTO>();
 		while (rs.next()) {
