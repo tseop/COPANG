@@ -7,6 +7,13 @@
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css?v=10">
+<script>
+function inNumber(){    //사원번호 숫자만입력
+    if(event.keyCode < 48 || event.keyCode > 57){
+       event.returnValue = false;
+    }   
+ }
+</script>
 </head>
 <body>
 <div class="box">
@@ -15,7 +22,7 @@
 	<table class="login">
 		<tr>
 			<td><label for="ID">사원번호<img src="images/id.png"></label></td>
-			<td style="border-left: 1px solid #ccc;"><input type="text" name="EMP_NO" required="required" placeholder="아이디(사원번호)">
+			<td style="border-left: 1px solid #ccc;"><input  onkeypress="inNumber()" autofocus="autofocus" type="text" name="EMP_NO" required="required" placeholder="아이디(사원번호)">
 			</td>
 		</tr>
 		<tr style="border: none;">
