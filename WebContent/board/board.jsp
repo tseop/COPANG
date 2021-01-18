@@ -49,7 +49,15 @@
 
 			<div class="search_area">
 					<ul>
+<<<<<<< Updated upstream
 						<li><input type="button" value="게시글쓰기"	 onClick="location.href='board/boardWrite.jsp'"></li>
+=======
+						<li class="search_box"><input type="text"
+							placeholder="게시물 제목" name="searchTitle" required="required">
+							<input type="submit" value="검색"></li>
+						<li><input type="button" value="게시글쓰기"
+							onClick="location.href='index.jsp?page=board/boardWrite'"></li>
+>>>>>>> Stashed changes
 					</ul>
 			</div>
 		</div>

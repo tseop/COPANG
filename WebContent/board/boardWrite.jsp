@@ -21,7 +21,7 @@ li {
 <body>
 	<h1>게시글 쓰기</h1>
 
-	<form action="../boardRegister.bo" method="get">
+	<form action="boardRegister.bo" method="get">
 		<ul>
 			<li><input type="hidden" name="readcount" value="0"></li>
 			<li><input type="text" name="title" autofocus="autofocus"
