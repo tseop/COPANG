@@ -122,12 +122,14 @@
       <tr>
          <th><span class="required_content">*</span><label for="pw">비밀번호</label></th>
          <td><input type="password" name="pw" id="pw" onchange="check_pw(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 입력">
-         	<br><span name="check" id="check"></span></td>
+         	<br><span style="font-size: 0.7rem;" name="check" id="check"></span></td>
        </tr>
+       </table>
+       <table>
        <tr>
        <th><span class="required_content">*</span><label for="pwc">비밀번호 확인</label></th>
        <td><input type="password" name="pw2" id="pw2" onchange="check_pw2(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 확인">
-       		<br><span name="check2" id="check2"></span></td>
+       		<br><span style="font-size: 0.7rem;" name="check2" id="check2"></span></td>
        </tr>
        </table>
        <table>
