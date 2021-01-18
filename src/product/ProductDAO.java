@@ -9,13 +9,18 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 
+import product.ProductDTO;
+import product.PageTo;
+
 public class ProductDAO {
 	private ProductDTO productDTO;
 	private ArrayList<ProductDTO> productList;
+	private ArrayList<ProductDTO> productSearchList;
 
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private String sql;
+	private String sql1;
 	private int cnt;
 	private ResultSet rs;
 	private RequestDispatcher dis;
@@ -49,11 +54,64 @@ public class ProductDAO {
 		}
 
 	}
+	public int totalCount(){//페이징처리:전체레코드개수
+		int count=0;
+		try {
+			conn = getConnection();
+			sql = "SELECT COUNT(*) FROM PRODUCT";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 
+	public PageTo page(int curPage) {//페이지구현
+	      PageTo pageTo = new PageTo();
+	      int totalCount = totalCount();
+	      productList = new ArrayList<ProductDTO>();
+	      try {
+	         conn = getConnection();
+	         sql = "SELECT * FROM PRODUCT";
+	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+	         rs = pstmt.executeQuery();
+	         int perPage = pageTo.getPerPage();//5
+	         int skip = (curPage-1) * perPage;
+	         if(skip>0){
+	            rs.absolute(skip);
+	         }
+	         for(int i=0;i<perPage && rs.next();i++){
+	            int proNo = rs.getInt("PRO_NO");
+	            productDTO = new ProductDTO();
+				productDTO.setProNo(proNo);
+				productDTO.setProName(rs.getString("PRO_NAME"));
+				productDTO.setProCost(Integer.parseInt(rs.getString("PRO_COST")));
+				productDTO.setProPrice(Integer.parseInt(rs.getString("PRO_PRICE")));
+				productDTO.setProFirstNal(rs.getString("PRO_FIRST_DATE"));
+				productDTO.setProLastNal(rs.getString("PRO_LAST_DATE"));
+				productDTO.setProStock(Integer.parseInt(rs.getString("PRO_STOCK")));
+				productDTO.setCusName(rs.getString("CUS_NO"));
+				productDTO.setProStoring(Integer.parseInt(rs.getString("PRO_STORING")));
+				productList.add(productDTO);
+				
+	         }
+	         pageTo.setList(productList);
+	         pageTo.setTotalCount(totalCount);
+	         pageTo.setCurPage(curPage);
+	   } catch (SQLException e) {
+	      e.printStackTrace();
+	   }
+	      return pageTo;        
+	   }//페이지구현
+	
 	public int productRegister(ProductDTO productDTO) throws SQLException {
 		conn = getConnection();
-		sql = "select CUS_NO from CUSTOMER where CUS_NAME=?";
-		pstmt = conn.prepareStatement(sql);
+		sql1 = "select CUS_NO from CUSTOMER where CUS_NAME=?";
+		pstmt = conn.prepareStatement(sql1);
 		pstmt.setString(1, productDTO.getCusName());
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
@@ -63,6 +121,7 @@ public class ProductDAO {
 		// 8개
 		sql = "insert into PRODUCT(PRO_NAME, CUS_NO, PRO_STORING, PRO_COST, PRO_PRICE, PRO_FIRST_DATE, PRO_LAST_DATE, PRO_STOCK) values(?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
+//		pstmt.setInt(1, productDTO.getProNo());
 		pstmt.setString(1, productDTO.getProName());
 		pstmt.setInt(2, productDTO.getCusNo());
 		pstmt.setInt(3, productDTO.getProStoring());
@@ -75,33 +134,33 @@ public class ProductDAO {
 		return cnt;
 	}
 
-	public ArrayList<ProductDTO> productList() throws SQLException {
-		conn = getConnection();
-		sql = "select * from PRODUCT order by PRO_NO asc";
-		pstmt = conn.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		productList = new ArrayList<ProductDTO>();
-//    	while(rs.next()) {
-//    		productDTO=new ProductDTO();
-//    	productDTO.setProNo(rs.getInt("no"));
-//    	productDTO.setProName(rs.getString("proName"));
-//    	productDTO.setProCost(Integer.parseInt(rs.getString("proCost")));
-//    	productDTO.setProPrice(Integer.parseInt(rs.getString("proPrice")));
-//    	productDTO.setProFirstNal(rs.getString("proFirstNal"));
-//    	productDTO.setProLastNal(rs.getString("proLastNal"));
-//    	productDTO.setProStock(Integer.parseInt(rs.getString("proStock")));
-//    	productDTO.setCusName(rs.getString("cusName"));
-//    	productDTO.setProStoring(Integer.parseInt(rs.getString("proStoring")));
-//    	productList.add(productDTO);
-//    	}
-		return productList; // 그냥 배열에 담아버려서 리턴으로 돌려주겠다.
-	}
+//	public ArrayList<ProductDTO> productList() throws SQLException {
+//		conn = getConnection();
+//		sql = "select * from PRODUCT order by PRO_NO asc";
+//		pstmt = conn.prepareStatement(sql);
+//		rs = pstmt.executeQuery();
+//		productList = new ArrayList<ProductDTO>();
+//		while (rs.next()) {
+//			productDTO = new ProductDTO();
+////			productDTO.setProNo(rs.getInt("proNo"));
+//			productDTO.setProName(rs.getString("proName"));
+//			productDTO.setProCost(Integer.parseInt(rs.getString("proCost")));
+//			productDTO.setProPrice(Integer.parseInt(rs.getString("proPrice")));
+//			productDTO.setProFirstNal(rs.getString("proFirstNal"));
+//			productDTO.setProLastNal(rs.getString("proLastNal"));
+//			productDTO.setProStock(Integer.parseInt(rs.getString("proStock")));
+//			productDTO.setCusName(rs.getString("cusName"));
+//			productDTO.setProStoring(Integer.parseInt(rs.getString("proStoring")));
+//			productList.add(productDTO);
+//		}
+//		return productList; // 그냥 배열에 담아버려서 리턴으로 돌려주겠다.
+//	}
 
-	public int productDelete(int proName) throws SQLException {
+	public int productDelete(int no) throws SQLException {
 		conn = getConnection();
 		sql = "delete from PRODUCT where PRO_NO=?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, proName);
+		pstmt.setInt(1, no);
 		cnt = pstmt.executeUpdate();
 		return cnt;
 
