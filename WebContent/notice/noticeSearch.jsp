@@ -52,15 +52,14 @@
 					onmouseout="this.style.color='black'"><%=noticeDTO.getNotiTitle()%></a>&nbsp;</td>
 				<td><%=noticeDTO.getNotiContent()%>&nbsp;</td>
 				<td><%=noticeDTO.getNotiDate()%>&nbsp;</td>
-				<td><%=noticeDTO.getEmpNo() %></td>
+				<td><%=noticeDTO.getEmpNo()%></td>
 			</tr>
 
 			<%
 				}
 			%>
 		</table>
-		<br>
-		<br>
+		<br> <br>
 
 		<%
 			}

@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("*.no")
 public class NoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private NoticeDTO noticeDTO;
 	private NoticeDAO noticeDAO;
 	private RequestDispatcher dis;
-	
+
 	private int cnt;
 	private ArrayList<NoticeDTO> noticeSearchList;
 	private String viewNoticeTitle;
@@ -46,6 +46,7 @@ public class NoticeServlet extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 
+		// 게시글 등록
 		if (command.equals("/noticeRegister.no")) {
 			noticeDTO.setNotiTitle(request.getParameter("title"));
 			noticeDTO.setNotiContent(request.getParameter("content"));
@@ -59,7 +60,10 @@ public class NoticeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} else if (command.equals("/noticeList.no")) {
+		}
+
+		// 게시글 목록
+		else if (command.equals("/noticeList.no")) {
 			int curPage = 1;
 			if (request.getParameter("curPage") != null) {
 				curPage = Integer.parseInt(request.getParameter("curPage"));
@@ -69,7 +73,10 @@ public class NoticeServlet extends HttpServlet {
 			request.setAttribute("page", noticeList);
 			request.setAttribute("list", noticeList.getList());
 			dis.forward(request, response);
-		} else if (command.equals("/noticeView.no")) {
+		}
+
+		// 공지 내용 볼수 있는 화면
+		else if (command.equals("/noticeView.no")) {
 			viewNoticeTitle = request.getParameter("no");
 			int no = Integer.parseInt(viewNoticeTitle);
 			try {
@@ -82,6 +89,7 @@ public class NoticeServlet extends HttpServlet {
 			}
 		}
 
+		// 게시글 삭제
 		else if (command.equals("/noticeDelete.no")) {
 			String no1 = request.getParameter("no");
 			int no = Integer.parseInt(no1);
@@ -102,7 +110,10 @@ public class NoticeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} else if (command.equals("/noticeUpdate.no")) {
+		}
+
+		// 게시글 수정
+		else if (command.equals("/noticeUpdate.no")) {
 
 			String updateNotiNo = request.getParameter("no");
 			int updateFinalNo = Integer.parseInt(updateNotiNo);
@@ -121,7 +132,10 @@ public class NoticeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} else if (command.equals("/noticeUpdateSearch.no")) {
+		}
+
+		// 수정할 게시물 찾기
+		else if (command.equals("/noticeUpdateSearch.no")) {
 			int searchNo = Integer.parseInt(request.getParameter("no"));
 
 			try {

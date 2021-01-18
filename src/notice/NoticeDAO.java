@@ -18,7 +18,7 @@ public class NoticeDAO {
 	private PreparedStatement pstmt;
 	private String sql;
 	private int cnt;
-	
+
 	private ArrayList<NoticeDTO> noticeSearchList;
 
 	public NoticeDAO() {
@@ -47,6 +47,7 @@ public class NoticeDAO {
 		}
 	}
 
+	// 게시글 등록
 	public int noticeWrite(NoticeDTO noticeDTO) throws SQLException {
 		conn = getConnection();
 		sql = "INSERT INTO NOTICE(NOTI_TITLE, NOTI_CONTENT) VALUES(?, ?)";
@@ -58,6 +59,7 @@ public class NoticeDAO {
 		return cnt;
 	}
 
+	// 페이징
 	public int totalCount() {
 		int count = 0;
 		try {
@@ -76,6 +78,7 @@ public class NoticeDAO {
 		return count;
 	}
 
+	// 전체게시판
 	public PageTo page(int curPage) {
 		PageTo pageTo = new PageTo();
 		int totalCount = totalCount();
@@ -117,6 +120,7 @@ public class NoticeDAO {
 		return pageTo;
 	}
 
+	// 공지 내용 보기 화면
 	public NoticeDTO noticeView(int notiNo) throws SQLException {
 		conn = getConnection();
 		sql = "SELECT NOTI_NO, NOTI_TITLE, NOTI_CONTENT, DATE_FORMAT(NOTI_DATE, '%Y-%m-%d %H시 %i분') AS NOTI_DATE, EMP_NO FROM NOTICE WHERE NOTI_NO = ?";
@@ -135,6 +139,7 @@ public class NoticeDAO {
 		return noticeDTO;
 	}
 
+	// 게시물 삭제
 	public int noticeDelete(int no) throws SQLException {
 		conn = getConnection();
 		sql = "DELETE FROM NOTICE WHERE NOTI_NO = ?";
@@ -145,6 +150,7 @@ public class NoticeDAO {
 		return cnt;
 	}
 
+	// 게시물 검색
 	public ArrayList<NoticeDTO> noticeSearch(String searchTitle) throws SQLException {
 		conn = getConnection();
 		sql = "SELECT NOTI_NO, NOTI_TITLE, NOTI_CONTENT, NOTI_DATE, EMP_NO FROM NOTICE WHERE NOTI_TITLE LIKE ?";
@@ -167,6 +173,7 @@ public class NoticeDAO {
 		return noticeSearchList;
 	}
 
+	// 게시물 수정
 	public int noticeUpdate(NoticeDTO noticeDTO) throws SQLException {
 		conn = getConnection();
 		sql = "UPDATE NOTICE SET NOTI_TITLE=?,NOTI_CONTENT=? WHERE NOTI_NO=?";
@@ -179,13 +186,14 @@ public class NoticeDAO {
 		return cnt;
 	}
 
+	// 수정할 게시물 찾기
 	public NoticeDTO noticeUpdateSearch(int searchNo) throws SQLException {
 		conn = getConnection();
 		sql = "SELECT * FROM NOTICE WHERE NOTI_NO = ? ";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, searchNo);
 		rs = pstmt.executeQuery();
-		
+
 		while (rs.next()) {
 			noticeDTO.setNotiNo(rs.getInt("NOTI_NO"));
 			noticeDTO.setNotiTitle(rs.getString("NOTI_TITLE"));

@@ -5,52 +5,52 @@ import java.util.ArrayList;
 
 public class PageTo implements Serializable {
 
-	private ArrayList<NoticeDTO> list; 
+	private ArrayList<NoticeDTO> list;
 	private int curPage;
 	private int perPage;
 	private int totalCount;
-	
-	   public PageTo() {
 
-		      this.perPage = 10;
-		   }
+	public PageTo() {
 
-		   public ArrayList<NoticeDTO> getList() {
-		      return list;
-		   }
+		this.perPage = 10;
+	}
 
-		   public void setList(ArrayList<NoticeDTO> list) {
-		      this.list = list;
-		   }
+	public ArrayList<NoticeDTO> getList() {
+		return list;
+	}
 
-		   public int getCurPage() {
-		      return curPage;
-		   }
+	public void setList(ArrayList<NoticeDTO> list) {
+		this.list = list;
+	}
 
-		   public void setCurPage(int curPage) {
-		      this.curPage = curPage;
-		   }
+	public int getCurPage() {
+		return curPage;
+	}
 
-		   public int getPerPage() {
-		      return perPage;
-		   }
+	public void setCurPage(int curPage) {
+		this.curPage = curPage;
+	}
 
-		   public void setPerPage(int perPage) {
-		      this.perPage = perPage;
-		   }
+	public int getPerPage() {
+		return perPage;
+	}
 
-		   public int getTotalCount() {
-		      return totalCount;
-		   }
+	public void setPerPage(int perPage) {
+		this.perPage = perPage;
+	}
 
-		   public void setTotalCount(int totalCount) {
-		      this.totalCount = totalCount;
-		   }
+	public int getTotalCount() {
+		return totalCount;
+	}
 
-		   @Override
-		   public String toString() {
-		      return "PageTo [list=" + list + ", curPage=" + curPage + ", perPage=" + perPage + ", totalCount=" + totalCount
-		            + "]";
-		   }
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 
-		}
+	@Override
+	public String toString() {
+		return "PageTo [list=" + list + ", curPage=" + curPage + ", perPage=" + perPage + ", totalCount=" + totalCount
+				+ "]";
+	}
+
+}

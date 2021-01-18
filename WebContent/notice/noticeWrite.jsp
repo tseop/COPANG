@@ -15,7 +15,7 @@
 </head>
 <body>
 	<h1>공지사항 글쓰기</h1>
-	<form method="post" action="../noticeRegister.no">
+	<form method="post" action="noticeRegister.no">
 		<ul>
 			<li><input type="text" placeholder="글 제목" name="title"
 				required="required"></li>
