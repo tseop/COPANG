@@ -2,8 +2,8 @@
 
 html{font-size: 20px;}
 body{font-size: 1rem;display:flexd;}
-header{height: 12rem; border:1px solid red;position: relative;}
-main{min-height:40rem;border:1px solid blue;position: relative;}
+header{height: 12rem; position: relative;}
+main{min-height:40rem; position: relative;}
 footer{border:1px solid pink; position: relative;left: 0;bottom: 0;width: 100%;}
 
 /* top */

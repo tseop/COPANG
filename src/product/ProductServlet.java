@@ -29,7 +29,7 @@ public class ProductServlet extends HttpServlet {
 	private int cnt;
 	private ResultSet rs;
 	private RequestDispatcher dis;
-	private String searchName;
+	private String searchProName;
 	private ArrayList<ProductDTO> productSearchList;
 	public ProductServlet() {
 		productDTO = new ProductDTO();
@@ -72,7 +72,8 @@ public class ProductServlet extends HttpServlet {
 			int curPage = 1;//기본페이지
 	          if(request.getParameter("curPage")!=null){
 	             curPage = Integer.parseInt(request.getParameter("curPage"));            
-	          }         
+	          }     
+	          productDTO.setCusName(request.getParameter("cusName"));
 	          PageTo productList = productDAO.page(curPage);
 //	        	 productList = productDAO.productList();
 	             dis = request.getRequestDispatcher("index.jsp?page=product/product");
@@ -97,9 +98,9 @@ public class ProductServlet extends HttpServlet {
 			} 
 		}
 		else if (command.equals("/productSearch.pd")) {
-			 searchName = request.getParameter("searchProName");
+			 searchProName = request.getParameter("searchProName");
 	          try {
-	        	 productSearchList = productDAO.productSearch(searchName);
+	        	 productSearchList = productDAO.productSearch(searchProName);
 	             dis = request.getRequestDispatcher("index.jsp?page=product/productSearch");
 	             request.setAttribute("productSearchList", productSearchList);
 	             dis.forward(request, response);

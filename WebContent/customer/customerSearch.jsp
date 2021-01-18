@@ -49,7 +49,7 @@
 	<br>
 	<div class="search_area">
 	<ul style="justify-content: center;">
-		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
+		<li><input type="button" value="목록으로" onClick="history.go(-1)"></li>
 	</ul>
 	</div>
 </div>

@@ -135,27 +135,6 @@ public class ProductDAO {
 		return cnt;
 	}
 
-//	public ArrayList<ProductDTO> productList() throws SQLException {
-//		conn = getConnection();
-//		sql = "select * from PRODUCT order by PRO_NO asc";
-//		pstmt = conn.prepareStatement(sql);
-//		rs = pstmt.executeQuery();
-//		productList = new ArrayList<ProductDTO>();
-//		while (rs.next()) {
-//			productDTO = new ProductDTO();
-////			productDTO.setProNo(rs.getInt("proNo"));
-//			productDTO.setProName(rs.getString("proName"));
-//			productDTO.setProCost(Integer.parseInt(rs.getString("proCost")));
-//			productDTO.setProPrice(Integer.parseInt(rs.getString("proPrice")));
-//			productDTO.setProFirstNal(rs.getString("proFirstNal"));
-//			productDTO.setProLastNal(rs.getString("proLastNal"));
-//			productDTO.setProStock(Integer.parseInt(rs.getString("proStock")));
-//			productDTO.setCusName(rs.getString("cusName"));
-//			productDTO.setProStoring(Integer.parseInt(rs.getString("proStoring")));
-//			productList.add(productDTO);
-//		}
-//		return productList; // 그냥 배열에 담아버려서 리턴으로 돌려주겠다.
-//	}
 
 	public int productDelete(int no) throws SQLException {
 		conn = getConnection();
@@ -176,15 +155,15 @@ public class ProductDAO {
 		productSearchList = new ArrayList<ProductDTO>();
 		while (rs.next()) {
 //			productDTO = new ProductDTO();
-			productDTO.setProNo(rs.getInt("no"));
-			productDTO.setProName(rs.getString("proName"));
-			productDTO.setProCost(Integer.parseInt(rs.getString("proCost")));
-			productDTO.setProPrice(Integer.parseInt(rs.getString("proPrice")));
-			productDTO.setProFirstNal(rs.getString("proFirstNal"));
-			productDTO.setProLastNal(rs.getString("proLastNal"));
-			productDTO.setProStock(Integer.parseInt(rs.getString("proStock")));
-			productDTO.setCusName(rs.getString("cusName"));
-			productDTO.setProStoring(Integer.parseInt(rs.getString("proStoring")));
+			productDTO.setProNo(rs.getInt("PRO_NO"));
+			productDTO.setProName(rs.getString("PRO_NAME"));
+			productDTO.setProCost(Integer.parseInt(rs.getString("PRO_COST")));
+			productDTO.setProPrice(Integer.parseInt(rs.getString("PRO_PRICE")));
+			productDTO.setProFirstNal(rs.getString("PRO_FIRST_DATE"));
+			productDTO.setProLastNal(rs.getString("PRO_LAST_DATE"));
+			productDTO.setProStock(Integer.parseInt(rs.getString("PRO_STOCK")));
+			productDTO.setCusNo(Integer.parseInt(rs.getString("CUS_NO")));
+			productDTO.setProStoring(Integer.parseInt(rs.getString("PRO_STORING")));
 			productSearchList.add(productDTO);
 		}
 		return productSearchList;

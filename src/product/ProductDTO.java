@@ -13,14 +13,10 @@ public class ProductDTO {
 	private int cusNo;		//거래처번호
 	private String cusName;
 	
-	
-	
 	public ProductDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public int getProNo() {
 		return proNo;
