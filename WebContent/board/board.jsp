@@ -12,7 +12,15 @@
 <body>
 	<div class="customer">
 		<div class="table">
+		<div class="search_area">
+			<form action="boardSearch.bo" method="get">
 			<h1>익명게시판</h1>
+			
+			<ul style="margin-left: auto; width: fit-content;">
+			<li class="search_box"><input type="text" placeholder="게시물 제목" name="searchTitle" required="required">
+				<input type="submit" value="검색"></li>
+			</ul>
+			</form>
 			<hr>
 			<table border="1">
 			<tr>
@@ -40,16 +48,19 @@
 			<br>
 
 			<div class="search_area">
-				<form action="boardSearch.bo" method="get">
 					<ul>
+<<<<<<< Updated upstream
+						<li><input type="button" value="게시글쓰기"	 onClick="location.href='board/boardWrite.jsp'"></li>
+=======
 						<li class="search_box"><input type="text"
 							placeholder="게시물 제목" name="searchTitle" required="required">
 							<input type="submit" value="검색"></li>
 						<li><input type="button" value="게시글쓰기"
-							onClick="location.href='board/boardWrite.jsp'"></li>
+							onClick="location.href='index.jsp?page=board/boardWrite'"></li>
+>>>>>>> Stashed changes
 					</ul>
-				</form>
 			</div>
+		</div>
 		</div>
 	</div>
 </body>

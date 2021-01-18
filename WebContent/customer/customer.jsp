@@ -13,12 +13,11 @@
 <div class="customer">
 <div class="table">
 <div class="search_area">
-	<form action="customerSearch.bo" method="get">
+	<form action="customerSearch.cu" method="get">
 		<h1>거래처 목록</h1>
 		<ul style="margin-left: auto; width: fit-content;">
 			<li class="search_box"><input type="text" placeholder="거래처 이름" name="searchCustomerName" autofocus="autofocus" required="required"> 
 			<input type="submit" value="검색"></li>
-			
 		</ul>
 	</form>
 	</div>
@@ -26,10 +25,10 @@
 	<table>
 		<tr>
 			<th style="width: 10%;">번호</th>
-			<th>이름</th>
-			<th>담당자</th>
-			<th>전화번호</th>
-			<th>사업자번호</th>
+			<th style="width: 25%;">이름</th>
+			<th style="width: 15%;">담당자</th>
+			<th style="width: 25%;">전화번호</th>
+			<th style="width: 25%;">사업자번호</th>
 		</tr>
   		<c:forEach items="${list }" var="customer">
 		  <tr>
@@ -38,7 +37,6 @@
 		     <td>${customer.cusManager}</td>
 		     <td>${customer.cusTel}</td>
 		     <td>${customer.businessNo}</td>
-		    <%--  <td><a href="customerDelete.cu?no=${customer.cusNo }">삭제</a></td> --%>
 		  </tr>
    		</c:forEach>
 	  <tr>

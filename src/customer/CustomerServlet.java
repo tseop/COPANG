@@ -64,6 +64,25 @@ public class CustomerServlet extends HttpServlet {
 	          //page.jsp에서 페이징 처리 데이터 저장
 	          dis.forward(request, response);
 	       }//목록
+	      
+	      else if(command.equals("/customerUpdate.cu")){//수정
+	          
+	    	  
+	    	  
+	       }//수정
+	      
+	      else if (command.equals("/customerSearch.cu")) {
+	     	String customerSearch = request.getParameter("searchCustomerName");
+	          try {
+	        	 customerDTO = customerDAO.customerSearch(customerSearch);
+	             dis = request.getRequestDispatcher("index.jsp?page=customer/customerSearch");
+	             request.setAttribute("customerDTO", customerDTO);
+	             dis.forward(request, response);
+	          } catch (SQLException e) {
+	             e.printStackTrace();
+	          }
+
+	       }//검색
    }
 
 }
