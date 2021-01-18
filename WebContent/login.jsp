@@ -17,12 +17,12 @@ function inNumber(){    //사원번호 숫자만입력
 </head>
 <body>
 <div class="box">
-	<form action="login.ep" method="post">
+	<form action="Login" method="post">
 		<img alt="logo" src="images/Copang_logo.png">
 	<table class="login">
 		<tr>
 			<td><label for="ID">사원번호<img src="images/id.png"></label></td>
-			<td style="border-left: 1px solid #ccc;"><input  onkeypress="inNumber()" autofocus="autofocus" type="text" name="no" required="required" placeholder="아이디(사원번호)">
+			<td style="border-left: 1px solid #ccc;"><input  onkeypress="inNumber()" autofocus="autofocus" type="text" name="EMP_NO" required="required" placeholder="아이디(사원번호)">
 			</td>
 		</tr>
 		<tr style="border: none;">
@@ -32,7 +32,7 @@ function inNumber(){    //사원번호 숫자만입력
 	<table class="login">
 		<tr>
 			<td><label for="PWD">비밀번호<img src="images/pw.png"></label></td>
-			<td style="border-left: 1px solid #ccc;"><input type="password" name="pw" required="required" placeholder="비밀번호"></td>
+			<td style="border-left: 1px solid #ccc;"><input type="password" name="EMP_PW" required="required" placeholder="비밀번호"></td>
 		</tr>
 		<tr style=" border: none;">
 			<td colspan="2" class="PWD_MESG"></td>
