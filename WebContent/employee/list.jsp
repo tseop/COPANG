@@ -23,7 +23,6 @@
 					<th width="15%">주민등록번호</th>
 					<th width="8%">직급</th>
 					<th width="10%">비밀번호</th>
-					<th width="5%">부서번호</th>
 					<th width="8%">부서이름</th>
 				</tr>
 				<%
