@@ -15,15 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("*.bo")
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private RequestDispatcher dis;
+	
 	private BoardDTO boardDTO;
 	private BoardDAO boardDAO;
 	private int cnt;
-	private RequestDispatcher dis;
 	private ArrayList<BoardDTO> boardSearchList;
-	private ArrayList<BoardDTO> boardList;
 	private String viewBoardTitle;
-	private int viewBoardNo;
 	private String searchTitle;
 
 	public BoardServlet() {

@@ -12,32 +12,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 @WebServlet("*.no")
 public class NoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	private NoticeDTO noticeDTO;
 	private NoticeDAO noticeDAO;
+	private RequestDispatcher dis;
+	
 	private int cnt;
-	private ArrayList<NoticeDTO> noticeList;
 	private ArrayList<NoticeDTO> noticeSearchList;
 	private String viewNoticeTitle;
-	private RequestDispatcher dis;
 	private String searchTitle;
-	private String updateNoticeNo;
 
-	
 	public NoticeServlet() {
 		noticeDTO = new NoticeDTO();
 		noticeDAO = new NoticeDAO();
 	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -47,11 +47,11 @@ public class NoticeServlet extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 
 		if (command.equals("/noticeRegister.no")) {
-			noticeDTO.setNotiTitle(request.getParameter("notiTitle"));
-			noticeDTO.setNotiContent(request.getParameter("notiContent"));
-	
+			noticeDTO.setNotiTitle(request.getParameter("title"));
+			noticeDTO.setNotiContent(request.getParameter("content"));
+
 			try {
-			    cnt=noticeDAO.noticeWrite(noticeDTO);
+				cnt = noticeDAO.noticeWrite(noticeDTO);
 				out.print(cnt + "건 게시글이 등록되었습니다.");
 				response.sendRedirect("noticeList.no");
 
@@ -59,10 +59,9 @@ public class NoticeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} 
-		else if (command.equals("/noticeList.no")) { 
-			int curPage = 1; 
-			if(request.getParameter("curPage")!=null) {
+		} else if (command.equals("/noticeList.no")) {
+			int curPage = 1;
+			if (request.getParameter("curPage") != null) {
 				curPage = Integer.parseInt(request.getParameter("curPage"));
 			}
 			PageTo noticeList = noticeDAO.page(curPage);
@@ -70,8 +69,7 @@ public class NoticeServlet extends HttpServlet {
 			request.setAttribute("page", noticeList);
 			request.setAttribute("list", noticeList.getList());
 			dis.forward(request, response);
-		} 
-		else if (command.equals("/noticeView.no")) {
+		} else if (command.equals("/noticeView.no")) {
 			viewNoticeTitle = request.getParameter("no");
 			int no = Integer.parseInt(viewNoticeTitle);
 			try {
@@ -83,47 +81,60 @@ public class NoticeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-	
-	else if (command.equals("/noticeDelete.no")) { 
-			String no1 = request.getParameter("notiNo");
+
+		else if (command.equals("/noticeDelete.no")) {
+			String no1 = request.getParameter("no");
 			int no = Integer.parseInt(no1);
 			try {
-				cnt = noticeDAO.noticeDelete(no); 
+				cnt = noticeDAO.noticeDelete(no);
 				response.sendRedirect("noticeList.no");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-} 
-	else if (command.equals("/noticeSearch.no")) {
-		searchTitle = request.getParameter("searchTitle");
-	try {
-		noticeSearchList = noticeDAO.noticeSearch(searchTitle);
-		dis = request.getRequestDispatcher("index.jsp?page=notice/noticeSearch");
-		request.setAttribute("noticeSearchList", noticeSearchList); //request라고 하는 서버객체에 넣겠다는 의미! 
-		dis.forward(request, response);
-	} catch (SQLException e) {
-		e.printStackTrace();
+		} else if (command.equals("/noticeSearch.no")) {
+			searchTitle = request.getParameter("searchTitle");
+			try {
+				noticeSearchList = noticeDAO.noticeSearch(searchTitle);
+				dis = request.getRequestDispatcher("index.jsp?page=notice/noticeSearch");
+				request.setAttribute("noticeSearchList", noticeSearchList); // request라고 하는 서버객체에 넣겠다는 의미!
+				dis.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/noticeUpdate.no")) {
+
+			String updateNotiNo = request.getParameter("no");
+			int updateFinalNo = Integer.parseInt(updateNotiNo);
+
+			noticeDTO.setNotiNo(updateFinalNo);
+			noticeDTO.setNotiTitle(request.getParameter("title"));
+			noticeDTO.setNotiContent(request.getParameter("content"));
+
+			try {
+				cnt = noticeDAO.noticeUpdate(noticeDTO);
+				dis = request.getRequestDispatcher("noticeList.no");
+				request.setAttribute("noticeDTO", noticeDTO);
+				dis.forward(request, response);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/noticeUpdateSearch.no")) {
+			int searchNo = Integer.parseInt(request.getParameter("no"));
+
+			try {
+				noticeDTO = noticeDAO.noticeUpdateSearch(searchNo);
+				dis = request.getRequestDispatcher("index.jsp?page=notice/noticeUpdateConfirm");
+				request.setAttribute("noticeDTO", noticeDTO);
+				dis.forward(request, response);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
 	}
 
-} else if (command.equals("/noticeUpdate.no")) {
-	updateNoticeNo = request.getParameter("no");
-	int no = Integer.parseInt(updateNoticeNo);
-	noticeDTO.setNotiTitle(request.getParameter("notiTitle"));
-	noticeDTO.setNotiContent(request.getParameter("notiContent"));
-	
-	try {
-	    cnt=noticeDAO.noticeUpdate(noticeDTO);
-		dis = request.getRequestDispatcher("index.jsp?page=notice/noticeList");
-		request.setAttribute("noticeDTO", noticeDTO);
-		dis.forward(request, response);
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-
-} 
 }
-
-}
-
-

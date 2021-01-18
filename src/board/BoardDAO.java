@@ -18,6 +18,7 @@ public class BoardDAO {
 	private ResultSet rs;
 	private String sql;
 	private int cnt;
+	
 	private ArrayList<BoardDTO> boardSearchList;
 
 	public BoardDAO() {
