@@ -233,9 +233,7 @@ public class EmployeeServlet extends HttpServlet {
 						response.sendRedirect("index.jsp?page=employee/updateForm");
 					}
 					else {
-						out.print("<script>");
-						out.print("alert('잘못입력하셨습니다.');");
-						out.print("</script>");
+						out.print("<script>alert('비밀번호가 일치하지 않습니다.');history.back();</script>");
 					}
 				}
 			} catch (SQLException e) {

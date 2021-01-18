@@ -98,7 +98,6 @@ public class ProductDAO {
 				productDTO.setCusName(rs.getString("CUS_NO"));
 				productDTO.setProStoring(Integer.parseInt(rs.getString("PRO_STORING")));
 				productList.add(productDTO);
-				
 	         }
 	         pageTo.setList(productList);
 	         pageTo.setTotalCount(totalCount);
@@ -169,7 +168,26 @@ public class ProductDAO {
 		return productSearchList;
 
 	}
-
+	public void proUpdate(ProductDTO productDTO,int proNo) throws SQLException {
+		sql = "UPDATE PRODUCT SET PRO_NAME=?,PRO_STORING=?,PRO_COST=?,PRO_PRICE=?,PRO_FIRST_DATE=?,PRO_LAST_DATE=?,PRO_STOCK=? WHERE PRO_NO=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productDTO.getProName());
+		pstmt.setInt(2, productDTO.getProStoring());
+		pstmt.setInt(3, productDTO.getProCost());
+		pstmt.setInt(4, productDTO.getProPrice());
+		pstmt.setString(5, productDTO.getProFirstNal());
+		pstmt.setString(6, productDTO.getProLastNal());
+		pstmt.setInt(7, productDTO.getProStock());
+		pstmt.setInt(8, proNo);
+		pstmt.executeUpdate();
+	}
+//	public void cusNameUpdate(ProductDTO productDTO,String cusName) throws SQLException {
+//		sql = "UPDATE CUSTOMER SET CUS_NAME = ? WHERE CUS_NAME = ?";
+//		pstmt = conn.prepareStatement(sql);
+//		pstmt.setString(1, productDTO.getCusName());
+//		pstmt.setString(2, cusName);
+//		pstmt.executeUpdate();
+//	}
 
 // public int boardUpdateFinal(String searchTitle, ProductDTO productDTO) throws
 //	 SQLException {

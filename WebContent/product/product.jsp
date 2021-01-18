@@ -1,3 +1,4 @@
+<%@page import="customer.CustomerDTO"%>
 <%@page import="product.ProductDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -32,9 +33,9 @@ body {
 	margin: 20px 0 0 0;
 }
 
-.wrap label{
-font-size: 30px;
-font-weight: 500;
+.wrap label {
+	font-size: 30px;
+	font-weight: 500;
 }
 
 .register, .list {
@@ -100,7 +101,7 @@ input[type="button"] {
 	font-size: 15px;
 }
 
-.register td{
+.register td {
 	background-color: #F7F6F4;
 	border: 1px solid #444444;
 	text-align: center;
@@ -135,7 +136,7 @@ input[type="button"] {
 	text-decoration: none;
 }
 
-.search ul li{
+.search ul li {
 	float: left;
 }
 
@@ -157,8 +158,6 @@ input[type="button"] {
 .search_box {
 	border: 1px solid #ccc;
 }
-
-
 </style>
 <script>
 	function popup() {
@@ -177,14 +176,15 @@ input[type="button"] {
 		<form action="productSearch.pd" method="get">
 			<div class="search">
 				<ul style="margin-left: auto; width: fit-content;">
-					<li class="search_box"><input type="text" placeholder="상품 이름" name="searchProName" autofocus="autofocus" required="required"></li>
+					<li class="search_box"><input type="text" placeholder="상품 이름"
+						name="searchProName" autofocus="autofocus" required="required"></li>
 					<li><input type="submit" value="검색"></li>
 				</ul>
 			</div>
 		</form>
 		<form action="productRegister.pd" method="get">
-			<img src="images/table.svg"><label class="title">
-				제품 등록</label> <br>
+			<img src="images/table.svg"><label class="title"> 제품 등록</label>
+			<br>
 			<div class="register">
 				<input type="submit" value="등록하기">
 				<table border="1" cellspacing="0" cellpadding="0">
@@ -207,19 +207,18 @@ input[type="button"] {
 						<td><input type="text" name="proName" autofocus="autofocus"
 							placeholder="제품명" size="10" maxlength="100"></td>
 						<td><input type="button" id="search" value="검색"
-							onclick='popup()'><input
-							type="text" name="cusName" style="width: 60%" placeholder="거래처명"
-							size="10" maxlength="100"></td>
+							onclick='popup()'><input type="text" name="cusName"
+							style="width: 60%" placeholder="거래처명" size="10" maxlength="100"></td>
 						<td><input type="number" name="proStoring" placeholder="입고수량"
 							size="10" maxlength="100"></td>
 						<td><input type="number" name="proCost" placeholder="제품원가"
 							size="10" maxlength="100"></td>
 						<td><input type="number" name="proPrice" placeholder="판매가"
 							size="10" maxlength="100"></td>
-						<td><input type="date" name="proFirstNal" style="width: 70%" placeholder="첫입고일"
-							size="10" maxlength="100"></td>
-						<td><input type="date" name="proLastNal" style="width: 70%"placeholder="마지막입고일"
-							size="10" maxlength="100"></td>
+						<td><input type="date" name="proFirstNal" style="width: 70%"
+							placeholder="첫입고일" size="10" maxlength="100"></td>
+						<td><input type="date" name="proLastNal" style="width: 70%"
+							placeholder="마지막입고일" size="10" maxlength="100"></td>
 						<td><input type="number" name="proStock" placeholder="재고"
 							size="10" maxlength="100"></td>
 						<!-- <td><input type="number" name="today" placeholder="당일판매" size="10" maxlength="100"></td> -->
@@ -227,19 +226,18 @@ input[type="button"] {
 				</table>
 			</div>
 		</form>
-		<br> <br>
+
 		<%
 			ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>) request.getAttribute("productList");
-		if (productList.size() == 0) {
 		%>
-		<h3>데이터가 존재하지 않습니다</h3>
-		<%} else {%>
-		<form action="productList.pd" method="get">
-			<img src="images/table.svg"><label class="title"> 제품 관리</label>
+		<br>
+		<br>
+		<form action="../productList.pd" method="get">
+			<h1 class="title">&nbsp;&nbsp;제품관리</h1>
 			<div class="list">
-				<input type="button" value="수정"
-					onclick='location.href="index.jsp?page=product/productUpdateForm"'>
-				<input type="button" value="검색" onclick='popup()'>
+				<div class="move">
+					<input type="button" value="검색" onclick='popup()'>
+				</div>
 				<table border="1" cellspacing="0" cellpadding="0">
 					<tr>
 						<th style="width: 5%">제품번호</th>
@@ -255,12 +253,12 @@ input[type="button"] {
 						<th style="width: 5%">호잇</th>
 					</tr>
 					<%
-						for (int i = 0; i < productList.size()-1; i++) {
+						for (int i = 0; i < productList.size() - 1; i++) {
 						ProductDTO productDTO = productList.get(i);
 					%>
 					<c:forEach items="${productList }" var="product">
 						<tr>
-							<td class="num"> ${product.proNo}</td>
+							<td class="num">${product.proNo}</td>
 							<td>${product.proName}</td>
 							<td style="text-align: right">${product.proPrice}</td>
 							<td style="text-align: right">${product.proCost}</td>
@@ -270,13 +268,11 @@ input[type="button"] {
 							<td>${product.cusName}</td>
 							<td style="text-align: right">${product.proStoring}</td>
 							<td>빈칸</td>
-							<td><a
-								href="productDelete.pd?proNo=<%=productDTO.getProNo()%>">삭제</a></td>
-						</tr>
+							<td><a href="productDelete.pd?proNo=<%=productDTO.getProNo()%>">삭제</a>
+							&nbsp;&nbsp;<a href="index.jsp?proNo=<%=productDTO.getProNo()%>&page=product/productUpdateConfirm">수정</a></td>
 					</c:forEach>
 					<%
 						}
-					}
 					%>
 				</table>
 				<input type="button" id="moveMain" value="메인페이지"
