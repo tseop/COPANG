@@ -15,11 +15,11 @@
 			<a href="index.jsp"><img src="images/Copang_logo.png"></a>
 		</div>
 		<div class="top-bar">
-			<a href=member/logout.jsp>로그아웃</a>
+			<a href="logout.ep">로그아웃</a>
 		</div>
 		<div class="menu">
 			<ul>
-				<li><a href="#">사원조회</a></li>
+				<li><a href="empList.ep">사원조회</a></li>
 				<li><a href="#">재고관리</a></li>
 				<li><a href="#">공지사항</a></li>
 				<li><a href="boardList.bo">익명게시판</a></li>

@@ -163,9 +163,8 @@ ul {
         		<input type="text" name="addr" size="20" maxlength="100" required="required" placeholder="주소입력">
             </li>
             <li>
-            	<input type="image" src="images/member.png" class="register"> 
-            	<input type="reset" value="되돌리기" class="reset"> 
-            	<a href="#"> <img src="images/login.jpg" class="login"></a>
+            	<input type="submit" value="등록">
+            	<input type="reset" value="되돌리기"> 
             </li>
          </ul>
       </form>

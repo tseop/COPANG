@@ -5,33 +5,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-#main{
-	position: absolute;
-   width: 1400px;
-   height: 400px;
-   top: 200px;
-   left: 600px;
-   background-color: aqua;
-}
-</style>
+<link>
 <meta charset="UTF-8">
 <title>KHJSP</title>
 </head>
 <body>
-<div id="main">
+<div class="customer">
+<div class="table">
 <h1>사원목록</h1>
 <table border = "1" cellspacing = "0" cellpadding= "0">
 	<tr>
-		<th width="80px">사원번호</th>
-		<th width="80px">이름</th>
-		<th width="150px">전화번호</th>
-		<th width="400px">주소</th>
-		<th width="200px">주민등록번호</th>
-		<th width="40px">직급</th>
-		<th width="80px">비밀번호</th>
-		<th width="80px">부서번호</th>
-		<th width="80px">부서이름</th>
+		<th>사원번호</th>
+		<th>이름</th>
+		<th width="10%">전화번호</th>
+		<th width="30%">주소</th>
+		<th width="10%">주민등록번호</th>
+		<th>직급</th>
+		<th>비밀번호</th>
+		<th>부서번호</th>
+		<th>부서이름</th>
 	</tr>
 	<%
 		ArrayList<EmployeeDTO> empList = (ArrayList<EmployeeDTO>)request.getAttribute("empList");
@@ -65,7 +57,8 @@
 		}
 	%>
 </table>
-<a href="index.jsp">홈</a>
+</div>
+<a href="main.jsp?page=employee/mypage">마이페이지</a>
 </div>
 </body>
 </html>

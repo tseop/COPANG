@@ -39,6 +39,8 @@ function inNumber(){    //사원번호 숫자만입력
 		</tr>
 	</table>
 		<div class="link">
+			<p><a href='index.jsp?page=employee/idFind'>사원번호찾기</a>&emsp;
+				<a href='index.jsp?page=employee/pwFind'>비밀번호찾기</a></p>
 			<input type="submit" value="로그인">
 		</div>
 	</form>
