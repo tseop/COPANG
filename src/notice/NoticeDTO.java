@@ -8,7 +8,7 @@ public class NoticeDTO implements Serializable {
 	private String notiContent;
 	private String notiDate;
 	private int empNo;
-	
+
 	public int getNotiNo() {
 		return notiNo;
 	}
@@ -69,5 +69,4 @@ public class NoticeDTO implements Serializable {
 
 	}
 
-	
 }

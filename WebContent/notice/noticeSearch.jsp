@@ -28,9 +28,6 @@
 		} else {
 	%>
 
-	<h3>
-		"<%=searchTitle%>" 키워드를 포함한 익명 게시글
-	</h3>
 	<br>
 
 	<div id="noticeSearch">
@@ -38,6 +35,7 @@
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
+				<th>내용</th>
 				<th>날짜</th>
 				<th>작성자</th>
 			</tr>
@@ -52,25 +50,16 @@
 					style="color: black; text-decoration: none;"
 					onmouseover="this.style.color='blue'"
 					onmouseout="this.style.color='black'"><%=noticeDTO.getNotiTitle()%></a>&nbsp;</td>
+				<td><%=noticeDTO.getNotiContent()%>&nbsp;</td>
 				<td><%=noticeDTO.getNotiDate()%>&nbsp;</td>
-				<td><%=noticeDTO.getEmpNo() %></td>
+				<td><%=noticeDTO.getEmpNo()%></td>
 			</tr>
 
 			<%
 				}
 			%>
 		</table>
-		<br>
-		<div>
-			<form action="noticeSearch.no" method="get">
-				<ul>
-					<li><input type="text" placeholder="게시물 제목" name="searchTitle"
-						autofocus="autofocus" required="required"> <input
-						type="submit" value="검색"></li>
-				</ul>
-			</form>
-		</div>
-		<br>
+		<br> <br>
 
 		<%
 			}
