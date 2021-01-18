@@ -16,7 +16,7 @@
 	<form action="customerSearch.cu" method="get">
 		<h1>거래처 목록</h1>
 		<ul style="margin-left: auto; width: fit-content;">
-			<li class="search_box"><input type="text" placeholder="거래처 이름" name="customerSearch" autofocus="autofocus" required="required"> 
+			<li class="search_box"><input type="text" placeholder="거래처 이름" name="searchCusName" autofocus="autofocus" required="required"> 
 			<input type="submit" value="검색"></li>
 		</ul>
 	</form>

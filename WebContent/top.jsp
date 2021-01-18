@@ -22,7 +22,7 @@
 			<ul>
 				<li><a href="empList.ep">사원조회</a></li>
 				<li><a href="productList.pd">재고관리</a></li>
-				<li><a href="#">공지사항</a></li>
+				<li><a href="noticeList.no">공지사항</a></li>
 				<li><a href="boardList.bo">익명게시판</a></li>
 				<li><a href="customerList.cu">거래처</a></li>
 
