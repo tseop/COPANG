@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import product.PageTo;
+
 //import org.eclipse.jdt.internal.compiler.env.IGenericField;
 
 
@@ -26,6 +28,7 @@ public class ProductServlet extends HttpServlet {
 	private Connection conn;
 	private int cnt;
 	private ResultSet rs;
+	private RequestDispatcher dis;
 	private ArrayList<ProductDTO> productList;
 	public ProductServlet() {
 		productDTO = new ProductDTO();
@@ -54,27 +57,27 @@ public class ProductServlet extends HttpServlet {
 			productDTO.setProPrice(Integer.parseInt(request.getParameter("proPrice")));
 			productDTO.setProFirstNal(request.getParameter("proFirstNal"));
 			productDTO.setProLastNal(request.getParameter("proLastNal"));
+			productDTO.setProStock(Integer.parseInt(request.getParameter("proStock")));
 			try {
 				productDAO.productRegister(productDTO);
-				out.print("<script>alert('1건이 등록되었습니다'); location.href='index.jsp?page=product/productRegister';</script>");
-				response.sendRedirect("productList.pb"); // doPost의 인자로 있다 response
+				out.print("<script>alert('상품등록이 완료되었습니다'; location.href='productList.pd';</script>");
+//				response.sendRedirect("productList.pd"); // doPost의 인자로 있다 response
 			} catch (SQLException e) {
 				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			} 
 		}
 		
-		
 		else if(command.equals("/productList.pd")) {
-	         try {
-	        	 productList = productDAO.productList();
-	             RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=board/boardList");
-	             request.setAttribute("productList", productList);
+			int curPage = 1;//기본페이지
+	          if(request.getParameter("curPage")!=null){
+	             curPage = Integer.parseInt(request.getParameter("curPage"));            
+	          }         
+	          PageTo productList = productDAO.page(curPage);
+//	        	 productList = productDAO.productList();
+	             dis = request.getRequestDispatcher("index.jsp?page=product/product");
+	             request.setAttribute("page", productList);
+	             request.setAttribute("productList", productList.getList());
 	             dis.forward(request, response);
-	         } catch (SQLException e) {
-	            e.printStackTrace();
-	         }
 	      }
 		
 		else if(command.equals("/productDelete.pd")){
