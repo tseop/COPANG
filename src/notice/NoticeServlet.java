@@ -22,10 +22,10 @@ public class NoticeServlet extends HttpServlet {
 	private int cnt;
 	private ArrayList<NoticeDTO> noticeList;
 	private ArrayList<NoticeDTO> noticeSearchList;
-	private String titleSearch;
 	private String viewNoticeTitle;
 	private RequestDispatcher dis;
 	private String searchTitle;
+	private String updateNoticeNo;
 
 	
 	public NoticeServlet() {
@@ -66,7 +66,7 @@ public class NoticeServlet extends HttpServlet {
 				curPage = Integer.parseInt(request.getParameter("curPage"));
 			}
 			PageTo noticeList = noticeDAO.page(curPage);
-			RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=notice/listPage");
+			dis = request.getRequestDispatcher("index.jsp?page=notice/listPage");
 			request.setAttribute("page", noticeList);
 			request.setAttribute("list", noticeList.getList());
 			dis.forward(request, response);
@@ -104,34 +104,24 @@ public class NoticeServlet extends HttpServlet {
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	}
-	
-/* else if(command.equals("/noticeUpdateSearch.no")) {
-		titleSearch = request.getParameter("titleSearch");
-		try {
-			noticeDTO = noticeDAO.noticeSearch(titleSearch);
-			RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=notice/noticeUpdateConfirm"); 
-			request.setAttribute("noticeDTO", noticeDTO);
-			dis.forward(request, Response);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-} else if (command.equals("/noticeUpdateFinal.no")) {
-	titleSearch = request.getParameter("titleSearch");
-	noticeDTO.setNotiNo(Integer.parseInt(request.getParameter("notiNo")));
+
+} else if (command.equals("/noticeUpdate.no")) {
+	updateNoticeNo = request.getParameter("no");
+	int no = Integer.parseInt(updateNoticeNo);
 	noticeDTO.setNotiTitle(request.getParameter("notiTitle"));
 	noticeDTO.setNotiContent(request.getParameter("notiContent"));
-	noticeDTO.setNotiDate(request.getParameter("notiDate"));
+	
 	try {
-		cnt = noticeDAO.noticeUpdateFinal(noticeDTO, titleSearch);
-		noticeList = noticeDAO.boardList;
-		RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=notice/noticeList");
-		request.setAttribute("noticeList", noticeList);
+	    cnt=noticeDAO.noticeUpdate(noticeDTO);
+		dis = request.getRequestDispatcher("index.jsp?page=notice/noticeList");
+		request.setAttribute("noticeDTO", noticeDTO);
 		dis.forward(request, response);
+		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-}*/
+
+} 
 }
 
 }

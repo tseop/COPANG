@@ -179,7 +179,7 @@ public class NoticeDAO {
 
 	public int noticeDelete(int notiNo) throws SQLException {
 		conn = getConnection();
-		sql = "delete from NOTICE where NOTI_NO = ?";
+		sql = "DELETE FROM NOTICE WHERE NOTI_NO = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, notiNo);
 		cnt = pstmt.executeUpdate();
@@ -209,15 +209,15 @@ public class NoticeDAO {
 		return noticeSearchList;
 	}
 
-	public int noticeUpdateFinal(NoticeDTO noticeDTO, String titleSearch) throws SQLException {
+	public int noticeUpdate(NoticeDTO noticeDTO) throws SQLException {
 		conn = getConnection();
-		sql = "UPDATE NOTICE SET NOTI_TITLE=?, NOTI_CONTENT=?, NOTI_DATE=? WHERE TITLE=?";
+		sql = "UPDATE NOTICE SET NOTI_TITLE=?, NOTI_CONTENT=? WHERE NOTI_NO=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, noticeDTO.getNotiTitle());
-		pstmt.setString(2, noticeDTO.getNotiContent());
-		pstmt.setString(3, noticeDTO.getNotiDate());
-		pstmt.setString(4, titleSearch);
+		pstmt.setString(2, noticeDTO.getNotiContent()); 
+		pstmt.setInt(3, noticeDTO.getNotiNo());
 		cnt = pstmt.executeUpdate();
+		
 		return cnt;
 	}
 }

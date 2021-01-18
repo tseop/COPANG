@@ -48,6 +48,7 @@ table tbody tr .height{height: 10rem;}
 			</tr>
 		</tbody>
 		</table>
+<<<<<<< Updated upstream
 		<br><br><br>
 	<div class="search_area">
 	<ul style="justify-content: flex-end;">
@@ -57,6 +58,14 @@ table tbody tr .height{height: 10rem;}
 	</ul>
 	</div>
 
+=======
+		<a href="noticeList.no">목록</a>
+		
+			<a href="notice/noticeUpdateConfirm.jsp?notiNo=<%= noticeDTO.getNotiNo() %>">수정</a>
+			<a href="notice/listPage.jsp">삭제</a> 
+		
+</div>	
+>>>>>>> Stashed changes
 </div>
 </div>	
 </body>
