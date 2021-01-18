@@ -39,11 +39,11 @@
 				CustomerDTO customerDTO = customerSearchList.get(i);
 		%>
 		<tr>
-			<td><%customerDTO.getCusNo(); %></td>
-			<td><%customerDTO.getCusName(); %></td>
-			<td><%customerDTO.getCusManager(); %></td>
-			<td><%customerDTO.getCusTel(); %></td>
-			<td><%customerDTO.getBusinessNo(); %></td>
+			<td><%=customerDTO.getCusNo() %></td>
+			<td><%=customerDTO.getCusName() %></td>
+			<td><%=customerDTO.getCusManager() %></td>
+			<td><%=customerDTO.getCusTel() %></td>
+			<td><%=customerDTO.getBusinessNo() %></td>
 		</tr>
 		<% }} %>
 	</table>
