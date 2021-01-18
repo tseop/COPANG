@@ -30,10 +30,11 @@
 	<h3>" <%=searchTitle%> " 키워드를 포함한 익명 게시글</h3>
 	<hr>
 	<table>
-		<tr><th>번호</th>
-			<th>제목</th>
-			<th>날짜</th>
-			<th>조회수</th></tr>
+		<tr><th width="10%">번호</th>
+			<th width="60%">제목</th>
+			<th width="20%">날짜</th>
+			<th width="10%">조회수</th>
+		</tr>
 		<%
 			for (int i = 0; i < boardSearchList.size(); i++) {
 					BoardDTO boardDTO = boardSearchList.get(i);
