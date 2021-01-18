@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
    <!--뒤로가기기능-->
    function goBack() { 
@@ -29,7 +29,7 @@ li {
          <li><input type="text" name="title" autofocus="autofocus"
             required="required" placeholder="제목을 입력하세요" size="50"
             mexlength="100"></li>
-         <li><textarea rows="20" cols="60" name="content"
+         <li><textarea name="content"
                placeholder="내용을 입력하세요" id="editor"></textarea></li>
          <li><input type="submit"><input type="button" value="취소"
             onClick="goBack()"></li> <!--뒤로가기 삽입-->
@@ -37,14 +37,7 @@ li {
    </form>
    
        <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'), {
-
-               // removePlugins:['ImageUpload']
-            })
-            .catch(error => {
-                console.error(error);
-            });
+       CKEDITOR.replace( 'content' );
     </script>
    
 </body>
