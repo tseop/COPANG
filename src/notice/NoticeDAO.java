@@ -209,12 +209,14 @@ public class NoticeDAO {
 		return noticeSearchList;
 	}
 
-	public int noticeUpdate(NoticeDTO noticeDTO, String titleSearch) throws SQLException {
+	public int noticeUpdateFinal(NoticeDTO noticeDTO, String titleSearch) throws SQLException {
 		conn = getConnection();
-		sql = "UPDATE NOTICE SET (NOTI_TITLE, NOTI_CONTENT) VALUES(?, ?)";
+		sql = "UPDATE NOTICE SET NOTI_TITLE=?, NOTI_CONTENT=?, NOTI_DATE=? WHERE TITLE=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, noticeDTO.getNotiTitle());
 		pstmt.setString(2, noticeDTO.getNotiContent());
+		pstmt.setString(3, noticeDTO.getNotiDate());
+		pstmt.setString(4, titleSearch);
 		cnt = pstmt.executeUpdate();
 		return cnt;
 	}
