@@ -8,7 +8,6 @@
 <title>KHJSP</title>
 </head>
 <body>
-테스트입니다
 	<%
 		EmployeeDTO empDTO = (EmployeeDTO) request.getAttribute("empDTO");
 		String dept_name = null;
