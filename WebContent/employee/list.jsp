@@ -47,9 +47,11 @@
 		<td><%=empDTO.getEmpName() %></td>
 		<td><%=empDTO.getEmpTel() %></td>
 		<td><%=empDTO.getEmpAddr() %></td>
-		<td><%=empDTO.getEmpSecurity() %></td>
+<%-- 		<td><%=empDTO.getEmpSecurity() %></td> --%>
+		<td>********</td>
 		<td><%=empDTO.getEmpRank() %></td>
-		<td><%=empDTO.getEmpPw() %></td>
+<%-- 		<td><%=empDTO.getEmpPw() %></td> --%>
+		<td>********</td>
 		<td><%=empDTO.getDeptNo() %></td>
 		<td><%=dept_name %></td>
 	</tr>
