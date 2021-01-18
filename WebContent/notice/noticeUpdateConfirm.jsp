@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>COPANG</title>
 </head>
 <body>
 
@@ -21,10 +21,6 @@
 %>
 	<form action="noticeUpdateFinal.no" method="get">
 	<ul>
-	<li><label for="번호">번호</label>
-	<input type="number" readonly="readonly" value="<%=noticeDTO.getNotiNo() %>">
-	<input type="hidden" name="no" value="<%=noticeDTO.getNotiNo() %>">
-	</li>
 	<li><label for="제목">제목</label>
 	<input type="text" name="title" autofocus="autofocus" required="required" placeholder="변경할 제목을 입력해주세요.">
 	<input type="hidden" name="titleSearch" value="<%= noticeDTO.getNotiTitle()%>">

@@ -98,7 +98,7 @@ public class NoticeServlet extends HttpServlet {
 		searchTitle = request.getParameter("searchTitle");
 	try {
 		noticeSearchList = noticeDAO.noticeSearch(searchTitle);
-		RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=notice/noticeSearch");
+		dis = request.getRequestDispatcher("index.jsp?page=notice/noticeSearch");
 		request.setAttribute("noticeSearchList", noticeSearchList); //request라고 하는 서버객체에 넣겠다는 의미! 
 		dis.forward(request, response);
 	} catch (SQLException e) {
