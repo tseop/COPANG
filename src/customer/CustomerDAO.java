@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class CustomerDAO {
 	private Connection conn;
+	private CustomerDTO customerDTO;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private String sql;
@@ -93,4 +95,25 @@ public class CustomerDAO {
 	   }
 	      return pageTo;        
 	   }//페이지구현
+	
+	public void customerSearch() {
+		
+	}
+	
+	public CustomerDTO customerSearch(String customerSearch) throws SQLException {
+		conn = getConnection();
+		sql = "SELECT * FROM CUSTOMER WHERE NAME=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, customerSearch);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			customerDTO.setCusNo(rs.getInt("cusNo"));
+			customerDTO.setCusName(rs.getString("cusName"));
+			customerDTO.setCusManager(rs.getString("cusManager"));
+			customerDTO.setCusTel(rs.getString("cusTel"));
+			customerDTO.setBusinessNo(rs.getString("businessNo"));
+		}
+		return customerDTO;
+	}
+	
 }

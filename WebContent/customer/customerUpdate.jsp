@@ -5,37 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>COPANG</title>
-<link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <div class="customer">
 <div class="reg_form">
 <h1>거래처 정보를 입력해주세요</h1>
 <hr>
-<form action="customerRegister.cu" method="post">
+<form action="customerUpdate.cu" method="post">
 	<table>
 		<tr>
          <th><span class="required_content">*</span>거래처 명</th>
-         <td><input type="text" name="cusName" required="required"></td>
+         <td><input type="text" name="cusName" required="required" value=""></td>
       </tr>
       </table>
       <table>
       <tr>
          <th><span class="required_content">*</span>담당자</th>
-         <td><input type="text" name="cusManager" required="required"></td>
+         <td><input type="text" name="cusManager" required="required" value=""></td>
        </tr>
        </table>
        <table>
        <tr>
          <th><span class="required_content">*</span>전화번호</th>
-         <td><input type="text" name="cusTel" placeholder="000-0000-0000" required="required"></td>
+         <td><input type="text" name="cusTel" placeholder="000-0000-0000" required="required" value=""></td>
        </tr>
        </table>
        <table>
        <tr>
          <th><span class="required_content">*</span>사업자번호</th>
-         <td><input type="text" name="businessNo" required="required"></td>
+         <td><input type="text" name="businessNo" required="required" value=""></td>
        </tr>
 	</table>	
 	<div class="search_area">

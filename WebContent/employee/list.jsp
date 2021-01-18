@@ -16,9 +16,9 @@
 <hr>
 <table border = "1" cellspacing = "0" cellpadding= "0">
 	<tr>
-		<th width="5%">사원번호</th>
+		<th width="10%">사원번호</th>
 		<th width="10%">이름</th>
-		<th width="15%">전화번호</th>
+		<th width="10%">전화번호</th>
 		<th width="20%">주소</th>
 		<th width="15%">주민등록번호</th>
 		<th width="8%">직급</th>

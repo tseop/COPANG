@@ -59,7 +59,7 @@ footer{border:1px solid pink; position: relative;left: 0;bottom: 0;width: 100%;}
 .search_area input[type=text]{padding: 0.5rem;width: 15rem;border: none;}
 .search_area input[type=submit]{border: none; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.8rem;}
 
-/* EMP_REGISTER */
+/* EMPLOYEE_REGISTER */
 .customer .emp_reg_form{width: 50%;margin: auto;}
 .customer .emp_reg_form table{width: 30rem;margin: auto;font-size: 0.9rem;font-weight: 100;margin-bottom: 1rem;}
 .customer .emp_reg_form table tr{height: 3rem;}
@@ -71,3 +71,16 @@ footer{border:1px solid pink; position: relative;left: 0;bottom: 0;width: 100%;}
 .customer .emp_reg_form input[type=text],input[type=password]{padding: 0.5rem; border: 1px solid #ccc;width: 15rem;}
 .customer .emp_reg_form input.security_no {width: 6.7rem;}
 .customer .emp_reg_form .search_area ul li{margin:2rem 2rem;}
+
+/* CUSTOMER_REGISTER */
+.customer .reg_form{width: 50%;margin: auto;}
+.customer .reg_form table{margin: auto;font-size: 0.9rem;font-weight: 100;margin-bottom: 1rem;}
+.customer .reg_form table tr{height: 3rem;}
+.customer .reg_form table th{width: 8rem;vertical-align: middle;text-align: left;}
+.customer .reg_form table td{vertical-align: middle;}
+.customer .reg_form table th>span.required_content{position:absolute;margin-left:-.65em;color:red;}
+.customer .reg_form hr{margin: 1rem;}
+.customer .reg_form h1{padding-left: 3rem;}
+.customer .reg_form input[type=text]{padding: 0.5rem; border: 1px solid #ccc;width: 15rem;}
+.customer .reg_form .search_area ul li{margin:2rem 2rem;}
+
