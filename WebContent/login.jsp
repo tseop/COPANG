@@ -45,9 +45,9 @@ function inNumber(){    //사원번호 숫자만입력
 		</tr>
 	</table>
 		<div class="link">
-			<p><a href=""onclick="idPopupOpen()" style="cursor:hand;">사원번호찾기</a>&emsp;
-			<a href=""onclick="pwPopupOpen()" style="cursor:hand;">비밀번호찾기</a></p>
-			<input type="submit" value="로그인">
+			<p><input type="submit" value="로그인"></p>
+         <a href=""onclick="idPopupOpen()" style="cursor:hand;">사원번호찾기</a>&emsp;
+         <a href=""onclick="pwPopupOpen()" style="cursor:hand;">비밀번호찾기</a>
 		</div>
 	</form>
 	<hr>

@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import employee.EmployeeDAO;
+import employee.EmployeeDTO;
+import employee.Login;
 import product.PageTo;
 
 //import org.eclipse.jdt.internal.compiler.env.IGenericField;
@@ -24,6 +27,8 @@ public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductDTO productDTO;
 	private ProductDAO productDAO;
+	private EmployeeDTO empDTO;
+	private EmployeeDAO empDAO;
 	
 	private Connection conn;
 	private int cnt;
@@ -34,6 +39,8 @@ public class ProductServlet extends HttpServlet {
 	public ProductServlet() {
 		productDTO = new ProductDTO();
 		productDAO = new ProductDAO();
+		empDTO =new EmployeeDTO();
+		empDAO =new EmployeeDAO();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -107,13 +114,46 @@ public class ProductServlet extends HttpServlet {
 	             e.printStackTrace();
 	          }
 	       }//검색
+		else if (command.equals("/productConfirm.pd")) {
+			String pw = request.getParameter("pw");
+			int proNo = Integer.parseInt(request.getParameter("proNo"));
+			int empNo = (int)Login.session.getAttribute("EMP_NO");
+			try {
+				rs = empDAO.pwFind(empNo);
+				if(rs.next()) {
+					//empDTO.setEmpPw(rs.getString("EMP_PW"));
+					if(pw.equals(rs.getString("EMP_PW"))) {
+//						RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=product/productUpdateForm");
+//						request.setAttribute("proNo", proNo);
+//						dis.forward(request,response);
+						response.sendRedirect("index.jsp?proNo="+proNo+"&page=product/productUpdateForm");
+					}
+					else {
+						out.print("<script>alert('비밀번호가 일치하지 않습니다.');history.back();</script>");
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		else if (command.equals("/productUpdate.pd")) {
-//			
+			int proNo = Integer.parseInt(request.getParameter("proNo"));
+			productDTO.setProName(request.getParameter("proName"));
+			productDTO.setCusName(request.getParameter("cusName"));
+			productDTO.setProStoring(Integer.parseInt(request.getParameter("proStoring")));
+			productDTO.setProCost(Integer.parseInt(request.getParameter("proCost")));
+			productDTO.setProPrice(Integer.parseInt(request.getParameter("proPrice")));
+			productDTO.setProFirstNal(request.getParameter("proFirstNal"));
+			productDTO.setProLastNal(request.getParameter("proLastNal"));
+			productDTO.setProStock(Integer.parseInt(request.getParameter("proStock")));
+			try {
+				productDAO.proUpdate(productDTO,proNo);
+//				productDAO.cusNameUpdate(productDTO,cusName);
+				response.sendRedirect("productList.pd");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		else if (command.equals("/productUpdateFinal.pd")) {
-			
-		}
-		
 	}
 
 }

@@ -1,3 +1,4 @@
+<%@page import="customer.CustomerDTO"%>
 <%@page import="product.ProductDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -111,7 +112,7 @@ float:left;
 		ProductDTO productDTO = productList.get(i);
 	%>
 	<form action="productRegister.pd" method="get">
-		<br><h1 class="title">제품등록</h1><br><br>
+		<br><h1 class="title">&nbsp;&nbsp;제품등록</h1><br><br>
 		<div class="register">
 			<input type="submit" value="등록하기">
 			<table border="1" cellspacing="0" cellpadding="0">
@@ -145,10 +146,10 @@ float:left;
 	</form>
 	<br><br>
 	<form action="../productList.pd" method="get">
-		<h1 class="title">제품관리</h1>
+		<h1 class="title">&nbsp;&nbsp;제품관리</h1>
 		<div class="list">
 		<div class="move">
-			<input type="button" value="수정" onclick='location.href="index.jsp?page=product/productSearchForm"'>
+<!-- 			<input type="button" value="수정" onclick='location.href="index.jsp?page=product/productUpdateConfirm"'> -->
 			<!-- <input type="button" value="검색" onclick='location.href="index.jsp?page=product/productUpdateForm"'> -->
 			<input type="button" value="검색" onclick='popup()'>
 			</div>
@@ -178,7 +179,7 @@ float:left;
 						<td>${product.cusName}</td>
 						<td>${product.proStoring}</td>
 						<td>빈칸</td>
-						<td><a href="productDelete.pd?proNo=<%=productDTO.getProNo()%>">삭제</a></td>
+						<td><a href="productDelete.pd?proNo=<%=productDTO.getProNo()%>">삭제</a>&nbsp;&nbsp;<a href="index.jsp?proNo=<%=productDTO.getProNo()%>&page=product/productUpdateConfirm">수정</a></td>
 					</tr>
 				</c:forEach>
 				<%

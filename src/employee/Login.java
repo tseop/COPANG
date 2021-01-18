@@ -43,6 +43,8 @@ public class Login extends HttpServlet {
 				out.print("<script>alert('사원정보가 일치하지 않습니다.');history.back();</script>");
 			} else {
 				session.setAttribute("EMP_NO", empNo);
+				session.setAttribute("EMP_RANK",empDTO.getEmpRank());
+				session.setAttribute("EMP_DEPT", empDTO.getDeptNo());
 				response.sendRedirect("index.jsp");				
 			}
 		} catch (SQLException e) {
