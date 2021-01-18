@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>COPANG</title>
 </head>
 <body>
 <div class="container">
 	<div class="row">
-	<form method="post" action="writeAction.jsp">
-	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+	<form method="post" action="noticeRegister.no">
+	<table style="text-align: center; border: 1px solid #dddddd">
 		<thead>
 			<tr>
 				<th colspan="2" style="background-color:#eeeeee; text-align: center;">공지사항 글쓰기</th>			
@@ -25,7 +25,8 @@
 			</tr>
 		</tbody>
 		</table>
-		<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+		<input type="submit" value="글쓰기">
+		<input type="reset" value="취소">
 		</form>
 </div>	
 </div>

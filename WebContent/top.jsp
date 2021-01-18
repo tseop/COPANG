@@ -49,7 +49,7 @@
 					}else{
 						out.print("<a href=# onclick=alert('로그인하세요')>재고관리</a>");
 				}%></li>
-				<li><a href="#">공지사항</a></li>
+				<li><a href="noticeList.no">공지사항</a></li>
 				<li><a href="#">익명게시판</a></li>
 				<li><a href="#">포트폴리오</a></li>
 			</ul>
