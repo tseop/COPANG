@@ -33,13 +33,6 @@ public class MainBoardServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		
-		try {
-			list = mainDAO.mainBoardList();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		request.setAttribute("list", list);
 		dis = request.getRequestDispatcher("index.jsp?page=test");
 		dis.forward(request, response);

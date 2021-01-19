@@ -4,7 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <jsp:useBean id="mainDAO" class="board.MainDAO" scope="page" />
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +19,9 @@
 </style>
 </head>
 <body>
-
+<%
+ResultSet rs = mainDAO.mainBoardList();
+%>
 <div class="wrapper_main">
 <div class="box1">
 
@@ -35,23 +36,18 @@
 			<th width="10%">조회수</th>
 		</tr>
 		</thead>
-	<tbody>
+		<tbody>
 <%
-	ArrayList<BoardDTO> boardSearchList = (ArrayList<BoardDTO>) request.getAttribute("list");
-			for (int i = 0; i < boardSearchList.size(); i++) {
-				BoardDTO boardDTO = boardSearchList.get(i);
-		%><tr>
-			<td><%=boardDTO.getBoardNo() %></td>
-			<td><a href='customerDetails.cu?num=<%=boardDTO.getBoardNo() %>'
-					style="color: black; text-decoration: none;"
-					onmouseover="this.style.color='blue'"
-					onmouseout="this.style.color='black'"> <%=boardDTO.getBoardTitle() %></a></td>
-			<td><%=boardDTO.getBoardDate() %></td>
-			<td><%=boardDTO.getBoardReadcount() %></td>
-			<% } %>
-		</tr>
-	
-	</tbody>
+while (rs.next()) {
+	BoardDTO data = new BoardDTO();
+	int boardNo = rs.getInt("BOARD_NO");
+	String boardTitle = rs.getString("BOARD_TITLE");
+	String boardDate = rs.getString("BOARD_DATE");
+	int boardReadcount = rs.getInt("BOARD_READCOUNT");
+	out.print("<tr><td>" + boardNo + "</td><td>" + boardTitle + "</td><td>" + boardDate + "</td><td>" + boardReadcount + "</td></tr>");
+}
+			%>
+		</tbody>
 </table>
 </div>
 	<div class="box3">

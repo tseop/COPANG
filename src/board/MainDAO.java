@@ -20,26 +20,13 @@ public class MainDAO {
 		conn = DriverManager.getConnection(dbURL, dbID, dbPWD);
 	}
 	
-	public ArrayList<BoardDTO> mainBoardList() throws SQLException {
-		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
-		
+	public ResultSet mainBoardList() throws SQLException {
 		String sql = "SELECT * FROM BOARD order by BOARD_DATE DESC limit 0, 5";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
-		while (rs.next()) {
-			BoardDTO data = new BoardDTO();
-			int boardNo = rs.getInt("BOARD_NO");
-			String boardTitle = rs.getString("BOARD_TITLE");
-			String boardDate = rs.getString("BOARD_DATE");
-			int boardReadcount = rs.getInt("BOARD_READCOUNT");
-			
-			data.setBoardNo(boardNo);
-			data.setBoardTitle(boardTitle);
-			data.setBoardDate(boardDate);
-			data.setBoardReadcount(boardReadcount);
-			list.add(data);
+		return rs;
 		}
-		return list;
-	}
+
+	
 	
 }
