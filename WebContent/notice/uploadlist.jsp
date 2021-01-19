@@ -8,8 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${list}" var="file">
-		<h2>${requestScope.fileName }</h2>
-	</c:forEach>
+	<%
+		String fileName = (String)request.getAttribute("fileName");
+		long fileSize = (long)request.getAttribute("fileSize");
+	%>
+	<h2>파일명</h2>&nbsp;<a href="FileDown?fileName=<%=fileName%>"><%=fileName %></a>
+	<h2>사이즈</h2>&nbsp;<%=fileSize %>
 </body>
 </html>

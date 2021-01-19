@@ -11,11 +11,11 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <script type="text/javascript">
-	$function(){
-		$("#btnList").on("click", function(){
-			location.href="${path}/notice_servlete/noticeRegister.no"; /* 업로드 경로 설정하는거 같은데.. 이게 맞는건지..? upload폴더에 넣을 순 없는건가?  */
-		});
-	});
+// 	$function(){
+// 		$("#btnList").on("click", function(){
+// 			location.href="${path}/notice_servlete/noticeRegister.no"; /* 업로드 경로 설정하는거 같은데.. 이게 맞는건지..? upload폴더에 넣을 순 없는건가?  */
+// 		});
+// 	});
 </script>
 </head>
 <body>
@@ -23,6 +23,8 @@
 		<div class="noti_view">
 			<%
 				NoticeDTO noticeDTO = (NoticeDTO) request.getAttribute("noticeDTO");
+				String fileName = (String)request.getAttribute("fileName");
+				//long fileSize = (long)request.getAttribute("fileSize");
 			%>
 			<h2>공지사항</h2>
 			<hr>
@@ -43,7 +45,7 @@
 					<tr style="height: 70%;">
 					<tr>
 						<td>첨부파일</td>
-						<td colspan="2"><%=noticeDTO.getFileNo()%>
+						<td colspan="2"><a href="FileDown?fileName=<%=fileName%>"><%=fileName %></a></td>
 						<!-- 더 추가해야하는데 모르겠다... -->
 					</tr>
 					<tr>

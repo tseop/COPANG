@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ import javax.servlet.http.Part;
 @WebServlet("*.no")
 public class NoticeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String UPLOAD_DIR = "filefolder";
 
 	private NoticeDTO noticeDTO;
 	private NoticeDAO noticeDAO;
@@ -36,6 +38,12 @@ public class NoticeServlet extends HttpServlet {
 	private String viewNoticeTitle;
 	private String searchTitle;
 
+	private String realPath;
+	private String uploadPath;
+	private File fileSaveDir;
+	private Part filePart;
+	private String fileName;
+	
 	public NoticeServlet() {
 		noticeDTO = new NoticeDTO();
 		noticeDAO = new NoticeDAO();
@@ -60,29 +68,35 @@ public class NoticeServlet extends HttpServlet {
 		// 게시글 등록
 		if (command.equals("/noticeRegister.no")) {
 			noticeDTO.setNotiTitle(request.getParameter("title"));
-			noticeDTO.setNotiContent(request.getParameter("content"));
+			noticeDTO.setNotiContent(request.getParameter("content"));			
 			
-			Part filePart = request.getPart("file");
-			String fileName = filePart.getSubmittedFileName();
-			InputStream fis = filePart.getInputStream();
+			realPath = request.getServletContext().getRealPath("");
+			uploadPath = realPath + UPLOAD_DIR;
+
+			fileSaveDir = new File(uploadPath);
+			filePart = request.getPart("file");
+		
+			//fileName = null;
+
+			// 파일 경로 없으면 생성
+			if (!fileSaveDir.exists()) {
+				fileSaveDir.mkdirs();
+			}
 			
-			String realPath = request.getServletContext().getRealPath("/upload");
-			
-			String filePath = realPath + File.separator + fileName;
-			FileOutputStream fos = new FileOutputStream(filePath);
-			
-			byte[] buf = new byte[1024];
-			int size = 0;
-			while((size = fis.read(buf)) != -1) 
-				fos.write(buf,0,size); //size는 길이 
-			
-			fos.close();
-			fis.close();   // 근데,, 우리가 첨부파일 게시글에 올린걸 서버쪽에 저장할 필요가 있는거겠죠..?  
+
+			//fileName = getFileName(part);
+			fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+			filePart.write(uploadPath + File.separator + fileName);
+
+
+			request.setAttribute("fileName", fileName);			
 			
 			try {
 				cnt = noticeDAO.noticeWrite(noticeDTO);
+				request.setAttribute("noticeDTO", noticeDTO);
 				out.print(cnt + "건 게시글이 등록되었습니다.");
-				response.sendRedirect("noticeList.no");
+				//response.sendRedirect("noticeList.no");
+				getServletContext().getRequestDispatcher("/notice/noticeView.jsp").forward(request, response);
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -111,6 +125,8 @@ public class NoticeServlet extends HttpServlet {
 				noticeDTO = noticeDAO.noticeView(no);
 				dis = request.getRequestDispatcher("index.jsp?page=notice/noticeView");
 				request.setAttribute("noticeDTO", noticeDTO);
+				request.setAttribute("fileName", fileName);
+				
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -177,6 +193,19 @@ public class NoticeServlet extends HttpServlet {
 			}
 
 		}
+	}
+	
+	private String getFileName(Part part) {
+		String contentDisp = part.getHeader("content-disposition");
+		String[] tokens = contentDisp.split(";");
+
+		for (String token : tokens) {
+			if (token.trim().startsWith("filename")) {
+				return token.substring(token.indexOf("=") + 2, token.length() - 1);
+			}
+		}
+
+		return "";
 	}
 
 }
