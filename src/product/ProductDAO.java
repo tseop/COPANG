@@ -201,6 +201,24 @@ public class ProductDAO {
 		}
 		return customerSearchList;
 	}
+	public int stockUpdate(int todayValue, int num) throws SQLException {
+		conn = getConnection();
+		sql = "UPDATE PRODUCT SET PRO_STOCK =(SELECT PRO_STOCK - ?) WHERE PRO_NO = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, todayValue);
+		pstmt.setInt(2, num);
+		cnt=pstmt.executeUpdate();
+		productList = new ArrayList<ProductDTO>();
+		while (rs.next()) {
+			productDTO = new ProductDTO();
+			productDTO.setProStock(rs.getInt("PRO_STOCT"));
+			productList.add(productDTO);
+		}
+		return cnt;
+	}
+	
+	
+	
 //	public void cusNameUpdate(ProductDTO productDTO,String cusName) throws SQLException {
 //		sql = "UPDATE CUSTOMER SET CUS_NAME = ? WHERE CUS_NAME = ?";
 //		pstmt = conn.prepareStatement(sql);

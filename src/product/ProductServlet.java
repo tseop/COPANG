@@ -171,6 +171,24 @@ public class ProductServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		else if(command.equals("/stockUpdate.pd")) {
+			int todayValue = Integer.parseInt(request.getParameter("todayValue"));
+			int num = Integer.parseInt(request.getParameter("num"));
+	        try {
+				productDAO.stockUpdate(todayValue, num);
+				dis = request.getRequestDispatcher("productList.pd");
+				request.setAttribute("productList", productDTO);
+				dis.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (ServletException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	      }
 	}
-
 }
+
+
