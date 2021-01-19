@@ -33,6 +33,18 @@
 }
 .inputfile:focus + label {outline: 1px dotted #000; outline: -webkit-focus-ring-color auto 5px;}
 </style>
+<script>	
+$(function(){
+	$('#file').on('change', function(){
+		var fileyn = $('#file').val();
+		var arr = fileyn.split('\\');
+
+		if(fileyn != null || fileyn != ""){
+			$('#fileYN').text(arr[2]);
+		}
+	});
+});	
+</script>
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
@@ -47,8 +59,8 @@
 				<ul class=titleandfile>
 					<li><input type="text" placeholder="글 제목" name="title"
 						required="required"></li>
-					<li><input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple/>
-						<label for="file">파일 선택</label></li>
+					<li><input type="file" name="file" id="file" class="inputfile"/>
+						<label for="file" id="fileYN">파일 선택</label></li>
 				</ul>
 				<ul>
 					<li><textarea name="content" required="required"></textarea></li>
