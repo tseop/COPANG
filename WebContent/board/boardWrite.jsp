@@ -19,13 +19,6 @@
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
-<style type="text/css">
-.write_area{width: 60%; margin: auto;}
-.write_area h1{font-size: 1rem;font-weight: 700;}
-.write_area input[type=text]{border: 1px solid #fff;padding: 0.3rem;width: 98%;margin-bottom: 0.5rem;}
-.write_area input[type=button],[type=submit]{border: 0px; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.7rem;}
-.write_area .btns {display: flex;justify-content: space-between;margin: 2rem 0;} 
-</style>
 </head>
 <body>
 <div class="customer">

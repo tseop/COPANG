@@ -14,20 +14,25 @@
 <title>COPANG</title>
 </head>
 <body>
+<div class="customer">
+<div class="write_area">
 	<h1>공지사항 글쓰기</h1>
+<hr>
 	<form method="post" action="noticeRegister.no">
 		<ul>
 			<li><input type="text" placeholder="글 제목" name="title"
 				required="required"></li>
 			<li><textarea name="content" required="required"></textarea></li>
-			<li><input type="submit" value="글쓰기"> <input
-				type="button" value="취소" onClick="goBack()"></li>
 		</ul>
+		<ul class="btns">
+	      <li><input type="submit" value="글쓰기"></li>
+	      <li><input type="button" value="취소" onClick="goBack()"></li>
+      	</ul>
 	</form>
-
-
 	<script>
 		CKEDITOR.replace('content');
 	</script>
+</div>
+</div>
 </body>
 </html>

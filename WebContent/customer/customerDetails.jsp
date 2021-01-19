@@ -43,30 +43,30 @@ CustomerDTO customerDTO = (CustomerDTO) request.getAttribute("customerDTO");
 <hr>
 <form name="update" action="customerUpdate.cu" method="post">
 <input type="hidden" name="num" value=<%=customerDTO.getCusNo() %>>
-	<table>
+	<table><thead>
 		<tr>
          <th><span class="required_content">*</span>거래처 명</th>
          <td><input type="text" name="cusName" required="required" value="<%=customerDTO.getCusName() %>"></td>
       </tr>
-      </table>
-      <table>
+      </thead></table>
+      <table><thead>
       <tr>
          <th><span class="required_content">*</span>담당자</th>
          <td><input type="text" name="cusManager" required="required" value="<%=customerDTO.getCusManager() %>"></td>
        </tr>
-       </table>
-       <table>
+       </thead></table>
+       <table><thead>
        <tr>
          <th><span class="required_content">*</span>전화번호</th>
          <td><input type="text" name="cusTel" required="required" value="<%=customerDTO.getCusTel() %>"></td>
        </tr>
-       </table>
-       <table>
+       </thead></table>
+       <table><thead>
        <tr>
          <th><span class="required_content">*</span>사업자번호</th>
          <td><input type="text" name="businessNo" required="required" value="<%=customerDTO.getBusinessNo() %>"></td>
        </tr>
-	</table>	
+	</thead></table>	
 	<div class="search_area">
 	<ul style="justify-content: center;">
 		<li><input type="button" value="수정하기" onclick= "button_submit()"></li>

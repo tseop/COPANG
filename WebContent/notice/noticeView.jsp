@@ -20,7 +20,7 @@
 			<h2>공지사항</h2>
 			<hr>
 			<table>
-				<tbody>
+				<thead>
 					<tr style="height: 10%;">
 						<td class="width">글 제목</td>
 						<td colspan="2"><%=noticeDTO.getNotiTitle()%></td>
@@ -37,7 +37,7 @@
 						<td class="height">내용</td>
 						<td colspan="2"><%=noticeDTO.getNotiContent()%></td>
 					</tr>
-				</tbody>
+				</thead>
 			</table>
 
 			<br> <br> <br>
