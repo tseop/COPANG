@@ -42,6 +42,7 @@ public class Login extends HttpServlet {
 			if(!(empNo == empDTO.getEmpNo()) || !(empPw.equals(empDTO.getEmpPw()))) {
 				out.print("<script>alert('사원정보가 일치하지 않습니다.');history.back();</script>");
 			} else {
+				session.setAttribute("empDTO", empDTO);
 				session.setAttribute("EMP_NO", empNo);
 				session.setAttribute("EMP_RANK",empDTO.getEmpRank());
 				session.setAttribute("EMP_DEPT", empDTO.getDeptNo());

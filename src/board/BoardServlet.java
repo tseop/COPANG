@@ -51,7 +51,8 @@ public class BoardServlet extends HttpServlet {
 			boardDTO.setBoardReadcount(Integer.parseInt(request.getParameter("readcount")));
 			try {
 				cnt = boardDAO.boardWrite(boardDTO);
-				response.sendRedirect("boardList.bo");
+				request.setAttribute("boardDTO", boardDTO);
+				getServletContext().getRequestDispatcher("/index.jsp?page=board/boardView").forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -77,6 +78,7 @@ public class BoardServlet extends HttpServlet {
 				boardDTO = boardDAO.boardView(no);
 				dis = request.getRequestDispatcher("index.jsp?page=board/boardView");
 				request.setAttribute("boardDTO", boardDTO);
+				
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();

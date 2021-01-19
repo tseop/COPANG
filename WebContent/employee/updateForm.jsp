@@ -1,3 +1,4 @@
+<%@page import="employee.EmployeeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -100,47 +101,65 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<%
+	EmployeeDTO empDTO = (EmployeeDTO)session.getAttribute("empDTO");
+	String dept_name = null;
+	int index = empDTO.getEmpSecurity().indexOf("-");
+	int len = empDTO.getEmpSecurity().length();
+	String c1 = empDTO.getEmpSecurity().substring(0,index);
+	String c2 = empDTO.getEmpSecurity().substring(7,len);
+	if(empDTO.getDeptNo() == 1){
+		dept_name="물류팀";
+	}
+	else if(empDTO.getDeptNo() == 2){
+		dept_name = "인사관리";
+	}
+	else if(empDTO.getDeptNo() == 3){
+		dept_name="경영지원";
+	}
+	else{
+		dept_name="부서선택";
+	}
+%>
 <div class="customer">
 <div class="emp_reg_form">
 <form action="update.ep" method="get">
 	<div class="select_box_top">
     <h1>개인 정보수정</h1>
 	<select name="dep" class="select_box">
-		<option value="">부서선택</option>
-		<option value="1">물류팀</option>
-		<option value="2">경영지원</option>
-		<option value="3">인사관리</option>
+		<option value="<%=dept_name %>"><%=dept_name %></option>
+		
 	</select>
 </div>
 <hr>
 	<table><thead>
 		<tr>
          <th><span class="required_content">*</span><label for="no">사원번호</label></th>
-         <td><input type="text" name="no" onkeypress = "inNumber()" size="20"maxlength="10" 
-            autofocus="autofocus" required="required" placeholder="사원번호를 입력하세요" width="8rem">
-            <input type="button" class="check" required="required" value = "중복체크" onclick="win01(this.form)"></td>
+         <td><input type="text" name="no" onkeypress = "inNumber()" size="20"maxlength="10" value="<%=empDTO.getEmpNo() %>"
+            autofocus="autofocus" required="required" placeholder="<%=empDTO.getEmpNo() %>" width="8rem" readonly>
+           </td>
       </tr>
       </thead></table><table><thead>
       <tr>
          <th><span class="required_content">*</span><label for="pw">비밀번호</label></th>
-         <td><input type="password" name="pw" id="pw" onchange="check_pw(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 입력">
-         	<span name="check" id="check"></span></td>
+         <td><input type="password" name="pw" id="pw" onchange="check_pw(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 입력"><br>
+         	<span name="check" id="check"><br></span></td>
        </tr>
        <tr>
        <th><span class="required_content">*</span><label for="pwc">비밀번호 확인</label></th>
-       <td><input type="password" name="pw2" id="pw2" onchange="check_pw2(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 확인">
+       <td><input type="password" name="pw2" id="pw2" onchange="check_pw2(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 확인"><br>
        		<span name="check2" id="check2"></span></td>
        </tr>
        </thead></table><table><thead>
        <tr>
          <th><span class="required_content">*</span><label for="name">이름</label></th>
-         <td><input type="text" name="name" size="20" maxlength="10" autofocus="autofocus" required="required" placeholder="이름을 입력하세요"></td>
+         <td><input type="text" name="name" size="20" maxlength="10" autofocus="autofocus" required="required" value="<%=empDTO.getEmpName() %>"placeholder="<%=empDTO.getEmpName() %>" readonly></td>
        </tr>
         </thead></table><table><thead>
        <tr>
          <th><span class="required_content">*</span><label for="security">주민등록번호</label></th>
-         <td><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no"> - <input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no">
-            <input type="button" class="check" required="required" value="조회" onclick="c_check(this.form)"></td>
+         <td><input type="text" name="c1" placeholder="<%=c1 %>" required="required" size="10" maxlength="6" class="security_no" readonly> - <input type="password" name="c2" value="<%=c2 %>" placeholder="*******" required="required" size="10" maxlength="7" class="security_no" readonly>
+            </td>
        </tr>
      </thead></table><table><thead>
        <tr>

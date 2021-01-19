@@ -140,7 +140,7 @@
        <tr>
          <th><span class="required_content">*</span><label for="security">주민등록번호</label></th>
          <td><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no"> - <input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no">
-            <input type="button" class="check" required="required" value="조회" onclick="c_check(this.form)"></td>
+            <input type="button" class="check" value="조회" onclick="c_check(this.form)"></td>
        </tr>
 	</thead></table><table><thead> 
        <tr>
