@@ -29,14 +29,14 @@ public class MainNotice extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		list = noticeDAO.mainNotice();
-		request.setAttribute("list", list);
-		dis = request.getRequestDispatcher("index.jsp?page=test");
-		dis.forward(request, response);
+//		request.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html;charset=UTF-8");
+//		PrintWriter out = response.getWriter();
+//		
+//		list = noticeDAO.mainNotice();
+//		request.setAttribute("list", list);
+//		dis = request.getRequestDispatcher("index.jsp?page=test");
+//		dis.forward(request, response);
 	}
 
 }

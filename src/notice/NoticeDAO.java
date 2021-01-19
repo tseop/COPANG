@@ -83,37 +83,7 @@ public class NoticeDAO {
 		}
 
 		return count;
-	}
-	
-	public ArrayList<NoticeDTO> mainNotice() {
-		ArrayList<NoticeDTO> list = new ArrayList<NoticeDTO>();
-		try {
-			conn = getConnection();
-			sql = "SELECT NOTI_NO, NOTI_TITLE, EMP_NAME, NOTI_DATE FROM NOTICE ORDER BY NOTI_NO DESC LIMIT 5";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				NoticeDTO data = new NoticeDTO();
-				
-				int notiNo = rs.getInt("NOTI_NO");
-				String notiTitle = rs.getString("NOTI_TITLE");
-				String notiAuthor = rs.getString("EMP_NAME");
-				String notiDate = rs.getString("NOTI_DATE");
-				
-				data.setNotiNo(notiNo);
-				data.setNotiTitle(notiTitle);
-				data.setNotiDate(notiDate);
-				data.setEmpName(notiAuthor);
-				list.add(data);
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
+	}	
 
 	// 전체게시판
 	public PageTo page(int curPage) {
@@ -121,8 +91,8 @@ public class NoticeDAO {
 		int totalCount = totalCount();
 		ArrayList<NoticeDTO> list = new ArrayList<NoticeDTO>();
 		try {
-			conn = getConnection();
-			sql = "SELECT NOTI_NO, NOTI_TITLE, DATE_FORMAT(NOTI_DATE, '%m/%d') AS NOTI_DATE, EMP_NAME FROM NOTICE ORDER BY NOTI_NO DESC";
+			conn = getConnection();			
+			sql = "SELECT N.NOTI_NO, N.NOTI_TITLE, DATE_FORMAT(N.NOTI_DATE, '%m/%d') AS NOTI_DATE, E.EMP_NAME FROM NOTICE N LEFT JOIN EMPLOYEE E ON N.EMP_NO = E.EMP_NO ORDER BY NOTI_NO DESC";
 			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = pstmt.executeQuery();
 
@@ -159,8 +129,8 @@ public class NoticeDAO {
 
 	// 공지 내용 보기 화면
 	public NoticeDTO noticeView(int notiNo) throws SQLException {
-		conn = getConnection();
-		sql = "SELECT NOTI_NO, NOTI_TITLE, NOTI_CONTENT, DATE_FORMAT(NOTI_DATE, '%Y-%m-%d %H시 %i분') AS NOTI_DATE, EMP_NAME, FILE_NAME FROM NOTICE WHERE NOTI_NO = ?";
+		conn = getConnection();		
+		sql = "SELECT N.NOTI_NO, N.NOTI_TITLE, N.NOTI_CONTENT, DATE_FORMAT(N.NOTI_DATE, '%Y-%m-%d %H시 %i분') AS NOTI_DATE, E.EMP_NAME, N.FILE_NAME FROM NOTICE N LEFT JOIN EMPLOYEE E ON N.EMP_NO = E.EMP_NO WHERE N.NOTI_NO = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, notiNo);
 		rs = pstmt.executeQuery();
@@ -191,7 +161,8 @@ public class NoticeDAO {
 	// 게시물 검색
 	public ArrayList<NoticeDTO> noticeSearch(String searchTitle) throws SQLException {
 		conn = getConnection();
-		sql = "SELECT NOTI_NO, NOTI_TITLE, NOTI_CONTENT, NOTI_DATE, EMP_NO FROM NOTICE WHERE NOTI_TITLE LIKE ?";
+		sql = "SELECT N.NOTI_NO, N.NOTI_TITLE, N.NOTI_CONTENT, DATE_FORMAT(N.NOTI_DATE, '%m/%d') AS NOTI_DATE, E.EMP_NAME FROM NOTICE N LEFT JOIN EMPLOYEE E ON N.EMP_NO = E.EMP_NO WHERE N.NOTI_TITLE LIKE ?"; 
+
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, "%" + searchTitle + "%");
 		rs = pstmt.executeQuery();
@@ -203,7 +174,7 @@ public class NoticeDAO {
 			noticeDTO.setNotiTitle(rs.getString("NOTI_TITLE"));
 			noticeDTO.setNotiContent(rs.getString("NOTI_CONTENT"));
 			noticeDTO.setNotiDate(rs.getString("NOTI_DATE"));
-			noticeDTO.setEmpNo(rs.getInt("EMP_NO"));
+			noticeDTO.setEmpName(rs.getString("EMP_NAME"));
 
 			noticeSearchList.add(noticeDTO);
 		}

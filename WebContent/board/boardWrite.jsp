@@ -5,7 +5,14 @@
 <head>
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
+$(function(){
+   $('#editor').on('blur', function(){
+      var editorVal = $('#editor').val();
+      console.log(editorVal);
+   });
+   
 
+});
    function goBack() { 
       window.history.back();
    }
