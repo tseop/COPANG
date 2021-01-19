@@ -99,68 +99,63 @@
 </head>
 <body>
 <div class="customer">
-<div class="emp_reg_form">
-<h1>사원등록</h1>
-<hr>
+<div class="emp_reg_form" >
 <form action="employeeRegister.ep" method="get">
-  <input type="hidden" name="rank" value="1">
-  <select name="dep" required style="width:100px">
-    <option value="">부서선택</option>
-    <option value="1">물류팀</option>
-    <option value="2">경영지원</option>
-    <option value="3">인사관리</option>
+	<div class="select_box_top">
+	<h1>사원등록</h1>
+	  <input type="hidden" name="rank" value="1">
+	  <select name="dep" required="required" class="select_box">
+	    <option value="">부서선택</option>
+	    <option value="1">물류팀</option>
+	    <option value="2">경영지원</option>
+	    <option value="3">인사관리</option>
  </select>
-	<table>
+ 	</div>
+ <hr>
+	<table><thead>
 		<tr>
          <th><span class="required_content">*</span><label for="no">사원번호</label></th>
          <td><input type="text" name="no" onkeypress = "inNumber()" size="20"maxlength="10" 
             autofocus="autofocus" required="required" placeholder="사원번호를 입력하세요" width="8rem">
-            <input type="button" required="required" value = "중복체크" onclick="win01(this.form)"></td>
+            <input type="button" class="check" required="required" value = "중복체크" onclick="win01(this.form)"></td>
       </tr>
-      </table>
-      <table>
+      </thead></table><table><thead> 
       <tr>
          <th><span class="required_content">*</span><label for="pw">비밀번호</label></th>
          <td><input type="password" name="pw" id="pw" onchange="check_pw(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 입력">
          	<br><span style="font-size: 0.7rem;" name="check" id="check"></span></td>
        </tr>
-       </table>
-       <table>
+       </thead></table><table><thead> 
        <tr>
        <th><span class="required_content">*</span><label for="pwc">비밀번호 확인</label></th>
        <td><input type="password" name="pw2" id="pw2" onchange="check_pw2(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 확인">
        		<br><span style="font-size: 0.7rem;" name="check2" id="check2"></span></td>
        </tr>
-       </table>
-       <table>
+       </thead></table><table><thead> 
        <tr>
          <th><span class="required_content">*</span><label for="name">이름</label></th>
          <td><input type="text" name="name" size="20" maxlength="10" autofocus="autofocus" required="required" placeholder="이름을 입력하세요"></td>
        </tr>
-       </table>
-       <table>
+       </thead></table><table><thead> 
        <tr>
          <th><span class="required_content">*</span><label for="security">주민등록번호</label></th>
-         <td><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no">-<input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no">
-            <input type="button" required="required" value="조회" onclick="c_check(this.form)"></td>
+         <td><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no"> - <input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no">
+            <input type="button" class="check" required="required" value="조회" onclick="c_check(this.form)"></td>
        </tr>
-	</table>
-	 <table>
+	</thead></table><table><thead> 
        <tr>
          <th><span class="required_content">*</span><label for="tel">핸드폰</label></th>
          <td><input type="text" name="tel" size="20" maxlength="20" required="required" placeholder="010-3114-1041"></td>
        </tr>
-	</table>
-	 <table>
+	</thead></table><table><thead> 
        <tr>
          <th><span class="required_content">*</span><label for="addr">주소</label></th>
          <td><input type="text" name="addr" size="20" maxlength="100" required="required" placeholder="주소입력"></td>	
        </tr>
-	</table>
-	
+	</thead></table>
 	<div class="search_area">
 	<ul style="justify-content: center;">
-		<li><input type="submit" value="등록하기"></li>
+		<li><input type="submit" value="등록하기" class="sbm"></li>
 		<li><input type="button" value="목록으로" onClick="location.href='empList.ep'"></li>
 	</ul>
 </div>

@@ -112,14 +112,14 @@
    <option value="3">인사관리</option>
 </select>
 	<table>
+	<thead>
 		<tr>
          <th><span class="required_content">*</span><label for="no">사원번호</label></th>
          <td><input type="text" name="no" onkeypress = "inNumber()" size="20"maxlength="10" 
             autofocus="autofocus" required="required" placeholder="사원번호를 입력하세요" width="8rem">
-            <input type="button" required="required" value = "중복체크" onclick="win01(this.form)"></td>
+            <input type="button" class="check" required="required" value = "중복체크" onclick="win01(this.form)"></td>
       </tr>
-      </table>
-      <table>
+      </thead></table><table><thead>
       <tr>
          <th><span class="required_content">*</span><label for="pw">비밀번호</label></th>
          <td><input type="password" name="pw" id="pw" onchange="check_pw(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 입력">
@@ -130,32 +130,28 @@
        <td><input type="password" name="pw2" id="pw2" onchange="check_pw2(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 확인">
        		<span name="check2" id="check2"></span></td>
        </tr>
-       </table>
-       <table>
+       </thead></table><table><thead>
        <tr>
          <th><span class="required_content">*</span><label for="name">이름</label></th>
          <td><input type="text" name="name" size="20" maxlength="10" autofocus="autofocus" required="required" placeholder="이름을 입력하세요"></td>
        </tr>
-       </table>
-       <table>
+        </thead></table><table><thead>
        <tr>
          <th><span class="required_content">*</span><label for="security">주민등록번호</label></th>
          <td><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no">-<input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no">
-            <input type="button" required="required" value="조회" onclick="c_check(this.form)"></td>
+            <input type="button" class="check" required="required" value="조회" onclick="c_check(this.form)"></td>
        </tr>
-	</table>
-	 <table>
+     </thead></table><table><thead>
        <tr>
          <th><span class="required_content">*</span><label for="tel">핸드폰</label></th>
          <td><input type="text" name="tel" size="20" maxlength="20" required="required" placeholder="010-3114-1041"></td>
        </tr>
-	</table>
-	 <table>
-       <tr>
+     </thead></table><table><thead>      
+     	<tr>
          <th><span class="required_content">*</span><label for="addr">주소</label></th>
          <td><input type="text" name="addr" size="20" maxlength="100" required="required" placeholder="주소입력"></td>	
        </tr>
-	</table>
+       </thead></table>
 	<div class="search_area">
 	<ul style="justify-content: center;">
 		<li><input type="submit" value="수정하기"></li>
