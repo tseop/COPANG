@@ -24,7 +24,7 @@
 	<ul>
 		<li>&emsp;<%=boardDTO.getBoardNo()%></li>
 		<li id="title"><%=boardDTO.getBoardTitle()%></li>
-		<li>조회수 &emsp;<%=boardDTO.getBoardReadcount()+1%></li>
+		<li>조회수 &emsp;<%=boardDTO.getBoardReadcount()%></li>
 	</ul>
 </div>
 <hr>
@@ -42,6 +42,10 @@
 <div class="search_area">
 	<ul>
 		<li><input type="button" value="목록으로" onClick="location.href='boardList.bo'" class="btn"></li>
+		
+		<%
+		String EMP_RANK = (String) session.getAttribute("EMP_RANK");
+		%>
 		<li><input style="background: #D71427" type ="button" value="삭제하기" onClick="location.href='boardDelete.bo?no=<%=boardDTO.getBoardNo()%>'" class="btn"></li>
 	</ul>
 </div>
