@@ -107,7 +107,9 @@
 	int index = empDTO.getEmpSecurity().indexOf("-");
 	int len = empDTO.getEmpSecurity().length();
 	String c1 = empDTO.getEmpSecurity().substring(0,index);
-	String c2 = empDTO.getEmpSecurity().substring(7,len);
+	String c2 = empDTO.getEmpSecurity().substring(index+1);
+	//940524-105 4  1  1  9   999-999
+	//012345678910 11 12 	  0123456
 	if(empDTO.getDeptNo() == 1){
 		dept_name="물류팀";
 	}
