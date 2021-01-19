@@ -7,7 +7,6 @@
 <head>
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
-<!--뒤로가기기능-->
 	function goBack() {
 		window.history.back();
 	}
