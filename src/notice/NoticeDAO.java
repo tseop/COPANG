@@ -52,14 +52,13 @@ public class NoticeDAO {
 	// 게시글 등록
 	public int noticeWrite(NoticeDTO noticeDTO) throws SQLException {
 		conn = getConnection();
-		sql = "INSERT INTO NOTICE(NOTI_TITLE, NOTI_CONTENT, EMP_NO, FILE_NAME, EMP_NAME) VALUES(?, ?, ?, ?, (SELECT EMP_NAME FROM EMPLOYEE WHERE EMP_NO = ?))";
+		sql = "INSERT INTO NOTICE(NOTI_TITLE, NOTI_CONTENT, EMP_NO, FILE_NAME) VALUES(?, ?, ?, ?)";
 		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, noticeDTO.getNotiTitle());
 		pstmt.setString(2, noticeDTO.getNotiContent());
 		pstmt.setInt(3, noticeDTO.getEmpNo());
 		pstmt.setString(4, noticeDTO.getFileName());
-		pstmt.setInt(5, noticeDTO.getEmpNo());
 
 		cnt = pstmt.executeUpdate();
 
