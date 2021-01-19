@@ -104,7 +104,7 @@
 <div class="emp_reg_form">
 <form action="update.ep" method="get">
 	<div class="select_box_top">
-    <h1>개정정보수정</h1>
+    <h1>개인 정보수정</h1>
 	<select name="dep" class="select_box">
 		<option value="">부서선택</option>
 		<option value="1">물류팀</option>
@@ -139,7 +139,7 @@
         </thead></table><table><thead>
        <tr>
          <th><span class="required_content">*</span><label for="security">주민등록번호</label></th>
-         <td><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no">-<input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no">
+         <td><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no"> - <input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no">
             <input type="button" class="check" required="required" value="조회" onclick="c_check(this.form)"></td>
        </tr>
      </thead></table><table><thead>

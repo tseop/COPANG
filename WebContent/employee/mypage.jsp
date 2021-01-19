@@ -39,6 +39,7 @@
 		<h1>마이페이지</h1>
 		<hr>
 			<table border="1" cellspacing="0" cellpadding="0">
+			<thead>
 				<tr>
 					<th width="5%">사원번호</th>
 					<th width="10%">이름</th>
@@ -49,6 +50,7 @@
 					<th width="10%">비밀번호</th>
 					<th width="8%">부서이름</th>
 				</tr>
+			
 				<tr>
 					<td><%=empDTO.getEmpNo()%></td>
 					<td><%=empDTO.getEmpName()%></td>
@@ -59,6 +61,7 @@
 					<td><%=empDTO.getEmpPw()%></td>
 					<td><%=dept_name%></td>
 				</tr>
+			</thead>
 			</table>
 		</div>
 		
