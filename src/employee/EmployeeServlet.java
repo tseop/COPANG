@@ -169,7 +169,7 @@ public class EmployeeServlet extends HttpServlet {
 				else {
 					out.print("<script>");
 					out.print("alert('해당 주민등록번호로 가입된 사원번호는 없습니다.');");
-					out.print("window.close();");
+					out.print("window.open('employee/idFind.jsp','사원번호찾기','width=500,height=300','top=200,left=500');");
 					out.print("</script>");
 				}
 			} catch (SQLException e) {
@@ -192,7 +192,7 @@ public class EmployeeServlet extends HttpServlet {
 				else {
 					out.print("<script>");
 					out.print("alert('존재하지 않는 사원번호입니다.');");
-					out.print("window.close();");
+					out.print("window.open('employee/pwFind.jsp','비밀번호찾기','width=500,height=300','top=200,left=500');");
 					out.print("</script>");
 				}
 			} catch (SQLException e) {
