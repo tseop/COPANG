@@ -127,7 +127,7 @@
 	<div class="select_box_top">
     <h1>개인 정보수정</h1>
 	<select name="dep" class="select_box">
-		<option value="<%=dept_name %>"><%=dept_name %></option>
+		<option value="<%=empDTO.getDeptNo() %>"><%=dept_name %></option>
 		
 	</select>
 </div>
@@ -158,7 +158,7 @@
         </thead></table><table><thead>
        <tr>
          <th><span class="required_content">*</span><label for="security">주민등록번호</label></th>
-         <td><input type="text" name="c1" placeholder="<%=c1 %>" required="required" size="10" maxlength="6" class="security_no" readonly> - <input type="password" name="c2" value="<%=c2 %>" placeholder="*******" required="required" size="10" maxlength="7" class="security_no" readonly>
+         <td><input type="text" name="c1" value="<%=c1 %>" placeholder="<%=c1 %>" required="required" size="10" maxlength="6" class="security_no" readonly> - <input type="password" name="c2" value="<%=c2 %>" placeholder="*******" required="required" size="10" maxlength="7" class="security_no" readonly>
             </td>
        </tr>
      </thead></table><table><thead>
