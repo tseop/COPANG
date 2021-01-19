@@ -173,13 +173,11 @@ public class NoticeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		// 수정할 게시물 찾기
 		else if (command.equals("/noticeUpdateSearch.no")) {
 			int searchNo = Integer.parseInt(request.getParameter("no"));
-
 			try {
 				noticeDTO = noticeDAO.noticeUpdateSearch(searchNo);
 				dis = request.getRequestDispatcher("index.jsp?page=notice/noticeUpdateConfirm");
