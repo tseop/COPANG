@@ -1,4 +1,3 @@
-<%@page import="customer.CustomerDTO"%>
 <%@page import="product.ProductDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -6,7 +5,6 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -34,7 +32,7 @@ body {
 }
 
 .wrap label {
-	font-size: 30px;
+	font-size: 20px;
 	font-weight: 500;
 }
 
@@ -167,7 +165,6 @@ input[type="button"] {
 		window.open(url, name, option);
 	}
 </script>
-<link rel="stylesheet" type="text/css" href="css/reset.css">
 <meta charset="UTF-8">
 <title>Travel</title>
 </head>
@@ -267,9 +264,11 @@ input[type="button"] {
 							<td>빈칸</td>
 							<td><a href="productDelete.pd?proNo=<%=productDTO.getProNo()%>">삭제</a>
 							&nbsp;&nbsp;
-							<a href="index.jsp?proNo=<%=productDTO.getProNo()%>&page=product/productUpdateConfirm">수정</a></td>
+							<a href="index.jsp?page=product/productUpdateConfirm?proNo=<%=productDTO.getProNo()%>">수정</a></td>
 					</c:forEach>
-
+					<%
+						}
+					%>
 				</table>
 				<input type="button" id="moveMain" value="메인페이지"
 					onclick='location.href="index.jsp"'>
