@@ -1,17 +1,14 @@
 
-
 .wrap {
 	padding: 2rem;
-	min-height: 30rem;
 	font-size: 1.1rem;
-	min-width: 40rem;
+	min-width: 50rem;
 	margin: 0 2rem 2rem 2rem;
 }
 
 .wrap img {
 	width: 20px;
 	height: 20px;
-	margin: 20px 0 0 0;
 }
 
 .wrap label {
@@ -20,16 +17,8 @@
 }
 
 .register, .list {
-	margin: 0px 10px;
-	padding: 0px 0px;
 	text-align: center;
 	/*   background:#f00;  */
-}
-
-.move {
-	width: 10%;
-	float: right;
-	margin: 0px 5px 10px 0px;
 }
 
 .register input[type="submit"] {
@@ -109,7 +98,6 @@ input[type="button"] {
 .register #search {
 	width: 40px;
 	height: 20px;
-	float: right;
 }
 
 .search ul {
@@ -134,8 +122,4 @@ input[type="button"] {
 	font-family: "맑은 고딕";
 	margin: 0px 5px 0px 10px;
 	float: right;
-}
-
-.search_box {
-	border: 1px solid #ccc;
 }

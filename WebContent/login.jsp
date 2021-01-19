@@ -28,7 +28,7 @@ function inNumber(){    //사원번호 숫자만입력
 	<table class="login">
 		<tr>
 			<td><label for="ID">사원번호<img src="images/id.png"></label></td>
-			<td style="border-left: 1px solid #ccc;"><input  onkeypress="inNumber()" autofocus="autofocus" type="text" name="EMP_NO" required="required" placeholder="아이디(사원번호)">
+			<td style="border-left: 1px solid #ccc;"><input  onkeypress="inNumber()" maxlength="8" autofocus="autofocus" type="text" name="EMP_NO" required="required" placeholder="아이디(사원번호)">
 			</td>
 		</tr>
 		<tr style="border: none;">
