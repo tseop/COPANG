@@ -43,6 +43,21 @@ select {
 		var option = "width = 1000, height = 600, top = 100, left = 200, location = no"
 		window.open(url, name, option);
 	}
+	
+	function result(){
+
+		var data1=document.getElementById('todayValue').value;
+		document.getElementById('proStockvalue').innerText=data1;
+		/* document.getElementById("proStockvalue").submit(); */
+
+		/* history.go(0); */ 
+		/* window.location.reload(0);*/
+	 }
+	
+	function stockmove(){
+		location.href="../stockUpdate.pd";
+	}
+	
 </script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/product.css?v=3">
@@ -51,6 +66,7 @@ select {
 </head>
 <body>
 <div class="wrap">
+
 <form action="productRegister.pd" method="get">
 	<div class="title_area">
 		<a><img src="images/table.svg"> 제품 등록</a>
@@ -59,7 +75,6 @@ select {
 	<div class="register">
 		<table border="1">
 			<tr>
-				<th style="width: 10%">제품번호</th>
 				<th style="width: 10%">제품명</th>
 				<th style="width: 20%">거래처명</th>
 				<th style="width: 7%">입고수량</th>
@@ -73,7 +88,6 @@ select {
 				<!-- 등록페이지에는 당일판매량은 필요없지 -->
 			</tr>
 			<tr>
-				<td></td>
 				<td><input type="text" name="proName" autofocus="autofocus"
 					placeholder="제품명" size="10" maxlength="100" required="required"></td>
 				<td><input type="button" id="search" value="검색"
@@ -121,25 +135,26 @@ select {
 	</div>
 </form>
 
-<form action="../productList.pd" method="get" >
+<!-- <form action="../productList.pd" method="get" > -->
 	<div class="list">
 		<table border="1">
 			<tr>
-				<th style="width: 5%">제품번호</th>
+				<th style="width: 4%">제품번호</th>
 				<th style="width: 10%">제품명</th>
-				<th style="width: 7%">원가</th>
-				<th style="width: 7%">소비자판매가</th>
-				<th style="width: 10%">첫 입고일</th>
-				<th style="width: 10%">마지막입고일</th>
+				<th style="width: 5%">원가</th>
+				<th style="width: 5%">소비자판매가</th>
+				<th style="width: 5%">첫 입고일</th>
+				<th style="width: 5%">마지막입고일</th>
 				<th style="width: 5%">재고</th>
 				<th style="width: 7%">거래처명</th>
-				<th style="width: 5%">입고수량</th>
-				<th style="width: 5%">당일판매량</th>
-				<th style="width: 5%">관리</th>
+				<th style="width: 3%">입고수량</th>
+				<th style="width: 10%">당일판매량</th>
+				<th style="width: 7%">관리</th>
 			</tr>
-			<%
+			<%-- <%
 				ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>) request.getAttribute("productList");
-			%>
+			%> --%>
+			
 			<c:forEach items="${productList }" var="product">
 				<tr>
 					<td class="num">${product.proNo}</td>
@@ -148,16 +163,23 @@ select {
 					<td style="text-align: right">${product.proCost}</td>
 					<td>${product.proFirstNal}</td>
 					<td>${product.proLastNal}</td>
-					<td style="text-align: right">${product.proStock}</td>
+					<td id="proStockvalue" style="text-align: right">${product.proStock}</td>
 					<td>${product.cusName}</td>
 					<td style="text-align: right">${product.proStoring}</td>
-					<td>빈칸</td>
+					<td>
+					<form action="stockUpdate.pd" method="get" >
+						<input type="hidden" name="num" value="${product.proNo}">
+						<input type="number" name="todayValue" id="todayValue" style="width: 50%" placeholder="당일판매량" size="10" maxlength="100">
+						<input type="submit" id="go" value="입력" style="width: 20%; height:20px; font-size:10px; margin: 0px 0px">
+						<!-- <input type="button" id="go" value="입력" style="width: 20%; height:20px; font-size:10px; margin: 0px 0px" onclick="result()"> -->
+					</form>
+					</td>
 					<td><a href="productDelete.pd?proNo=${product.proNo}" id="remove">삭제</a>
 						<a href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm" id="update">수정</a></td>
 			</c:forEach>
 		</table>
 	</div>
-</form>
+<!-- </form> -->
 </div>
 </body>
 </html>

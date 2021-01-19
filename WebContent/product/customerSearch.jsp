@@ -33,10 +33,7 @@ function back(){    //사원번호 숫자만입력
 <div class="search_area">
 	<form action="customerSearch.cu" method="get">
 	<h3>" <%=customerSearch%> " 검색 결과</h3>
-	<ul style="margin-left: auto; width: fit-content;">
-			<li class="search_box"><input type="text" placeholder="거래처 이름" name="searchCusName" required="required">
-				<input type="submit" value="검색"></li>
-			</ul>
+	
 	</form>
 	<hr>
 	<table>
@@ -65,8 +62,8 @@ function back(){    //사원번호 숫자만입력
 	<div class="search_area">
 	<ul style="justify-content: center;">
 		<li>
-		<input type="button" value="이전페이지" onClick="history.go(-1)">
-		<input type="button" value="돌아가기" onClick="back()">
+		<input type="button" value="다시검색하기" onClick="history.go(-1)">
+		<input type="button" value="창 닫기" onClick="back()">
 		</li>
 	</ul>
 	</div>
