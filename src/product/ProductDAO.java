@@ -77,7 +77,7 @@ public class ProductDAO {
 	      productList = new ArrayList<ProductDTO>();
 	      try {
 	         conn = getConnection();
-	         sql = "SELECT * FROM PRODUCT";
+	         sql = "SELECT PRO_NO, PRO_NAME, PRO_COST, PRO_PRICE, DATE_FORMAT(PRO_FIRST_DATE, '%m/%d') AS PRO_FIRST_DATE, DATE_FORMAT(PRO_LAST_DATE, '%m/%d') AS PRO_LAST_DATE, PRO_STOCK, CUS_NO, PRO_STORING FROM PRODUCT ORDER BY PRO_NO ASC";
 	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	         rs = pstmt.executeQuery();
 	         int perPage = pageTo.getPerPage();//5
