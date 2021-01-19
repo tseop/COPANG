@@ -47,8 +47,8 @@
 
 					<%
 						int EMP_RANK = (int) session.getAttribute("EMP_RANK");
-						int EMP_DEPT = (int) session.getAttribute("EMP_DEPT");
-						if (EMP_RANK == 3) {
+					
+						if (EMP_RANK == 3) { //버튼 세션값에 따라 나타내는거
 					%>
 					<li><input style="background: #D71427" type="button"
 						value="삭제하기"
