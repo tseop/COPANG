@@ -14,7 +14,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .top .top-bar{min-width: 30rem;margin-bottom:1rem;position: relative;text-align: right;font-size: 13px;padding-right: 1rem;}
 .top .top-bar a {margin-left: 2px;color: #366afe;text-decoration: none;font-weight: 800;}
 .top .top-bar a:hover {text-decoration: underline;}
-.top .menu {height: 45px;background: #4285f4;text-align:center;margin-top:1rem;}
+.top .menu {height: 44.5px;background: #4285f4;text-align:center;margin-top:1rem;}
 .top .menu ul {list-style: none;padding: 0;margin: 0;display:inline-block;}
 .top .menu ul li {float:left;overflow: hidden;text-align: center;line-height: 45px;boder: 1px solid red;}
 .top .menu ul li a {position: relative;display: block;width: 8rem;height: 45px;color: #FFF;font-family:;font-size: 12px;letter-spacing: 1px;text-transform: uppercase;text-decoration: none;cursor: pointer;}
