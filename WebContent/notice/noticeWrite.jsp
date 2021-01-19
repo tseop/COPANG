@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
+
 <html>
 <head>
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
@@ -10,6 +12,24 @@
 		window.history.back();
 	}
 </script>
+
+<style>
+.titleandfile{display: flex;justify-content: space-between;}
+.titleandfile input[type=file]{display: none;}
+label.fileupload{display:block;
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    color: #f1e5e6;
+    background-color: #d3394c;
+}
+</style>
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
@@ -21,11 +41,13 @@
 				enctype="multipart/form-data">
 				<!-- enctype="multipart/form-data" -->
 				<hr>
-				<ul>
+				<ul class=titleandfile>
 					<li><input type="text" placeholder="글 제목" name="title"
 						required="required"></li>
-					<li><label for="첨부파일">첨부파일</label> <input type="file"
+					<li><label for="첨부파일" class="fileupload">첨부파일</label> <input type="file"
 						name="file"></li>
+				</ul>
+				<ul>
 					<li><textarea name="content" required="required"></textarea></li>
 				</ul>
 				<ul class="btns">

@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <title>사원번호찾기</title>
 <link rel="stylesheet" type="text/css" href="../css/reset.css">
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css?v=5">
 </head>
 <body style="height: 0;">
 <div class="wrap_popup">
-<ul><li><img src="../images/Copang_logo.png"></li>
+<ul style="padding-top: 1rem;"><li><img src="../images/Copang_logo.png"></li>
 <li>사원번호 찾기</li></ul>
 <hr>
 <div class="popup">

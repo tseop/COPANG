@@ -18,7 +18,7 @@ function inNumber(){    //사원번호 숫자만입력
 </head>
 <body style="height: 0;">
 <div class="wrap_popup">
-<ul><li><img src="../images/Copang_logo.png"></li>
+<ul style="padding-top: 1rem;"><li><img src="../images/Copang_logo.png"></li>
 <li>비밀번호 찾기</li></ul>
 <hr>
 <div id="pwFind" class="popup">
