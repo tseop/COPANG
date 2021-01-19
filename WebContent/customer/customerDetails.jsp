@@ -41,7 +41,7 @@ $(function() {
 		 $dle = $('#delete').attr('disabled', false);
 		 $dle = $('#delete').css('cursor', 'pointer');
 		 $dle = $('#delete').css('background', '#D71427');
-	 }else if(emprank==2){
+	 }else if(emprank==3){
 		 $dle = $('#delete').attr('disabled', false);
 		 $dle = $('#delete').css('cursor', 'pointer');
 		 $dle = $('#delete').css('background', '#D71427');
