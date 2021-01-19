@@ -11,6 +11,7 @@
 <script type="text/javascript">
 $(function() {
 	 var updt = document.getElementById('updt');
+	 var dle = document.getElementById('delete');
 	 var empdept = '<%=(int)session.getAttribute("EMP_DEPT")%>';
 	 var emprank = '<%=(int)session.getAttribute("EMP_RANK")%>';
 	    console.log(empdept);
@@ -31,7 +32,22 @@ $(function() {
 	     $updt = $('.updt').css('font-weight', '700');
 	     $updt = $('.updt').css('cursor', 'pointer');
 	 }  
+	 
+	 if(empdept==1){
+		 $dle = $('#delete').attr('disabled', false);
+		 $dle = $('#delete').css('cursor', 'pointer');
+		 $dle = $('#delete').css('background', '#D71427');
+	 }else if(emprank==2){
+		 $dle = $('#delete').attr('disabled', false);
+		 $dle = $('#delete').css('cursor', 'pointer');
+		 $dle = $('#delete').css('background', '#D71427');
+	 }else if(emprank==2){
+		 $dle = $('#delete').attr('disabled', false);
+		 $dle = $('#delete').css('cursor', 'pointer');
+		 $dle = $('#delete').css('background', '#D71427');
+	 }
 })
+
 
 function button_event(){
 	if (confirm("정말 삭제하시겠습니까??") == true){
@@ -95,7 +111,7 @@ CustomerDTO customerDTO = (CustomerDTO) request.getAttribute("customerDTO");
 	<div class="search_area">
 	<ul style="justify-content: center;">
 		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
-		<li><input style="background: #D71427" type ="button" value="삭제하기" disabled="true" onclick="button_event()" class="btn"></li>
+		<li><input style="background: #ababab" id="delete" type ="button" value="삭제하기" disabled="true" onclick="button_event()" class="btn"></li>
 	</ul>
 	</div>
 </form>
