@@ -121,7 +121,7 @@ select {
 	</div>
 </form>
 
-<form action="../productList.pd" method="get">
+<form action="../productList.pd" method="get" >
 	<div class="list">
 		<table border="1">
 			<tr>
