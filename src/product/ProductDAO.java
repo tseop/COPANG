@@ -78,7 +78,7 @@ public class ProductDAO {
 	      productList = new ArrayList<ProductDTO>();
 	      try {
 	         conn = getConnection();
-	         sql = "SELECT PRO_NO, PRO_NAME, PRO_COST, PRO_PRICE, DATE_FORMAT(PRO_FIRST_DATE, '%m/%d') AS PRO_FIRST_DATE, DATE_FORMAT(PRO_LAST_DATE, '%m/%d') AS PRO_LAST_DATE, PRO_STOCK, CUS_NO, PRO_STORING FROM PRODUCT ORDER BY PRO_NO ASC";
+	         sql = "SELECT P.PRO_NO, P.PRO_NAME, P.PRO_COST, P.PRO_PRICE, DATE_FORMAT(P.PRO_FIRST_DATE, '%m/%d') AS PRO_FIRST_DATE, DATE_FORMAT(P.PRO_LAST_DATE, '%m/%d') AS PRO_LAST_DATE, P.PRO_STOCK, C.CUS_NAME, P.PRO_STORING FROM PRODUCT P LEFT JOIN CUSTOMER C ON P.CUS_NO=C.CUS_NO ORDER BY PRO_NO ASC";
 	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	         rs = pstmt.executeQuery();
 	         int perPage = pageTo.getPerPage();//5
@@ -96,7 +96,7 @@ public class ProductDAO {
 				productDTO.setProFirstNal(rs.getString("PRO_FIRST_DATE"));
 				productDTO.setProLastNal(rs.getString("PRO_LAST_DATE"));
 				productDTO.setProStock(Integer.parseInt(rs.getString("PRO_STOCK")));
-				productDTO.setCusName(rs.getString("CUS_NO"));
+				productDTO.setCusName(rs.getString("CUS_NAME"));
 				productDTO.setProStoring(Integer.parseInt(rs.getString("PRO_STORING")));
 				productList.add(productDTO);
 	         }
