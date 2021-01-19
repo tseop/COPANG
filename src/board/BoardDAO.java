@@ -153,7 +153,7 @@ public class BoardDAO {
 	public ArrayList<BoardDTO> boardSearch(String searchTitle) throws SQLException { 
 
 		conn = getConnection();
-		sql = "SELECT * FROM BOARD WHERE BOARD_TITLE LIKE ?";
+		sql = "SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, DATE_FORMAT(BOARD_DATE, '%m/%d') AS BOARD_DATE, BOARD_READCOUNT FROM BOARD WHERE BOARD_TITLE LIKE ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, "%" + searchTitle + "%");
 		rs = pstmt.executeQuery();
