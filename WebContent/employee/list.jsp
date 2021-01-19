@@ -32,7 +32,7 @@
 						EmployeeDTO empDTO = empList.get(i);
 						String deptName = null;
 						String empRank = null;
-						
+
 						if (empDTO.getDeptNo() == 1) {
 							deptName = "물류";
 						} else if (empDTO.getDeptNo() == 2) {
@@ -42,7 +42,7 @@
 						} else if (empDTO.getDeptNo() == 4) {
 							deptName = "사장";
 						}
-						
+
 						if (empDTO.getEmpRank() == 1) {
 							empRank = "사원";
 						} else if (empDTO.getEmpRank() == 2) {
@@ -71,9 +71,17 @@
 			<br>
 			<div class="search_area">
 				<ul>
+					<%
+						int EMP_RANK = (int) session.getAttribute("EMP_RANK");
+						int EMP_DEPT = (int) session.getAttribute("EMP_DEPT");
+						if (EMP_RANK == 2 || EMP_RANK == 3) { //버튼 세션값에 따라 나타내는거
+					%>
 					<li><input type="button" value="사원 등록"
 						onClick="location.href='index.jsp?page=employee/registerForm'"></li>
 					<!-- 		<li><input type="button" value="사원 수정" onClick="location.href=''"></li> -->
+					<%
+						}
+					%>
 				</ul>
 			</div>
 		</div>

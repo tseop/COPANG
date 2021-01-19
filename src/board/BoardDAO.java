@@ -59,6 +59,7 @@ public class BoardDAO {
 		pstmt.setString(1, boardDTO.getBoardTitle());
 		pstmt.setString(2, boardDTO.getBoardContent());
 		pstmt.setInt(3, boardDTO.getBoardReadcount());
+//		pstmt.setString(4, "now()");
 		cnt = pstmt.executeUpdate();
 
 		return cnt;

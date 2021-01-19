@@ -84,28 +84,36 @@ CustomerDTO customerDTO = (CustomerDTO) request.getAttribute("customerDTO");
 		<tr>
          <th><span class="required_content">*</span>거래처 명</th>
          <td><input type="text" name="cusName" required="required" maxlength="50" value="<%=customerDTO.getCusName() %>">
+
          		<input type="button" value="수정" onclick="button_submit()" class="updt" disabled="true"></td>
+
       </tr>
       </thead></table>
       <table><thead>
       <tr>
          <th><span class="required_content">*</span>담당자</th>
          <td><input type="text" name="cusManager" required="required" maxlength="20" value="<%=customerDTO.getCusManager() %>">
+
        			 <input type="button" value="수정" onclick="button_submit()" class="updt" disabled="true"></td>
+
        </tr>
        </thead></table>
        <table><thead>
        <tr>
          <th><span class="required_content">*</span>전화번호</th>
          <td><input type="text" name="cusTel" required="required" maxlength="15" value="<%=customerDTO.getCusTel() %>">
+
          		<input type="button" value="수정" onclick="button_submit()" class="updt" disabled="true"></td>
+
        </tr>
        </thead></table>
        <table><thead>
        <tr>
          <th><span class="required_content">*</span>사업자번호</th>
          <td><input type="text" name="businessNo" required="required" maxlength="30" value="<%=customerDTO.getBusinessNo() %>">
+
          		<input type="button" value="수정" onclick="button_submit()" class="updt" disabled="true"></td>
+
        </tr>
 	</thead></table>	
 	<div class="search_area">

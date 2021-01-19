@@ -19,9 +19,9 @@
 </style>
 </head>
 <body>
-<%
-ResultSet rs = mainDAO.mainBoardList();
-%>
+<%-- <% --%>
+<!-- // ResultSet rs = mainDAO.mainBoardList(); -->
+<%-- %> --%>
 <div class="wrapper_main">
 <div class="box1">
 
@@ -37,16 +37,16 @@ ResultSet rs = mainDAO.mainBoardList();
 		</tr>
 		</thead>
 		<tbody>
-<%
-while (rs.next()) {
-	BoardDTO data = new BoardDTO();
-	int boardNo = rs.getInt("BOARD_NO");
-	String boardTitle = rs.getString("BOARD_TITLE");
-	String boardDate = rs.getString("BOARD_DATE");
-	int boardReadcount = rs.getInt("BOARD_READCOUNT");
-	out.print("<tr><td>" + boardNo + "</td><td>" + boardTitle + "</td><td>" + boardDate + "</td><td>" + boardReadcount + "</td></tr>");
-}
-			%>
+<%-- <% --%>
+<!-- // while (rs.next()) { -->
+<!-- // 	BoardDTO data = new BoardDTO(); -->
+<!-- // 	int boardNo = rs.getInt("BOARD_NO"); -->
+<!-- // 	String boardTitle = rs.getString("BOARD_TITLE"); -->
+<!-- // 	String boardDate = rs.getString("BOARD_DATE"); -->
+<!-- // 	int boardReadcount = rs.getInt("BOARD_READCOUNT"); -->
+<!-- // 	out.print("<tr><td>" + boardNo + "</td><td>" + boardTitle + "</td><td>" + boardDate + "</td><td>" + boardReadcount + "</td></tr>"); -->
+<!-- // } -->
+<%-- 			%> --%>
 		</tbody>
 </table>
 </div>
