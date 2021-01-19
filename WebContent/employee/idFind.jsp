@@ -17,7 +17,7 @@
 	<form action="../idFind.ep" method="get">
 		<ul>
 			<li><label for="security">주민등록번호를 입력하세요</label></li>
-			<li><input type="text" name="c1" required="required" size="10" maxlength="6" class="security_no"> - <input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no"></li>
+			<li><input type="text" name="c1" autofocus="autofocus" required="required" size="10" maxlength="6" class="security_no"> - <input type="password" name="c2" required="required" size="10" maxlength="7" class="security_no"></li>
 			<li><input type="submit" value="사원번호찾기"></li>
 		</ul>  
 	</form>

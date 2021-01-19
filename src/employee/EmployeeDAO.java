@@ -111,7 +111,7 @@ public class EmployeeDAO {
 		rs = pstmt.executeQuery();
 		return rs;
 	}
-	
+
 	public void empUpdate(EmployeeDTO empDTO,int empNo) throws SQLException {
 		sql = "update EMPLOYEE set EMP_NO=?,EMP_NAME=?,EMP_TEL=?,EMP_ADDR=?,EMP_SECURITY=?,EMP_PW=?,DEPT_NO=? where EMP_NO =?";
 		pstmt = conn.prepareStatement(sql);
@@ -126,7 +126,7 @@ public class EmployeeDAO {
 		pstmt.executeUpdate();
 	}
 	public EmployeeDTO empLogin(int empNo, String empPw) throws SQLException {
-		sql = "SELECT EMP_NO, EMP_PW FROM EMPLOYEE WHERE EMP_NO = ? AND EMP_PW = ?";
+		sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = ? AND EMP_PW = ?";
 		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, empNo);
@@ -134,8 +134,14 @@ public class EmployeeDAO {
 		rs = pstmt.executeQuery();
 		
 		if(rs.next()) {
+			empDTO.setDeptNo(rs.getInt("DEPT_NO"));
+			empDTO.setEmpAddr(rs.getString("EMP_ADDR"));
+			empDTO.setEmpName(rs.getString("EMP_NAME"));
 			empDTO.setEmpNo(rs.getInt("EMP_NO"));
 			empDTO.setEmpPw(rs.getString("EMP_PW"));
+			empDTO.setEmpRank(rs.getInt("EMP_RANK"));
+			empDTO.setEmpSecurity(rs.getString("EMP_SECURITY"));
+			empDTO.setEmpTel(rs.getString("EMP_TEL"));
 		}
 		return empDTO;
 	}
