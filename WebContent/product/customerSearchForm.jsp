@@ -7,8 +7,8 @@
 <head>
 <style type="text/css">
 .search_area ul{
-margin:2rem 2rem;
-text-decoration: none;
+	margin:2rem 2rem;
+	text-decoration: none;
 }
 .search_box{
 border:1px solid #ccc;
@@ -41,7 +41,7 @@ font-size: 30px;
 <div class="wrap">
 <form action="customerSearch.cu" method="get">
 	<div class="search_area">
-		<img src="images/table.svg"><label class="title">   제품 등록</label> <br>
+		<img src="images/table.svg"><label class="title">   거래처 검색</label> <br>
 		<ul style="margin-left: auto; width: fit-content;">
 			<li class="search_box">
 				<input type="text" placeholder="거래처 이름" name="searchCusName" autofocus="autofocus" required="required"> 

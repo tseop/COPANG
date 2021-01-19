@@ -11,6 +11,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+select {
+	width: 100px;
+	height: 38px;
+	float: left; padding : .8em .5em;
+	border: 1px solid #999;
+	font-family: inherit;
+	background: url('arrow.jpg') no-repeat 95% 50%;
+	border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding: .8em .5em;
+}
+</style>
 <script>
 	function popup() {
 		var url = "index.jsp?page=product/customerSearchForm";
@@ -26,15 +41,6 @@
 </head>
 <body>
 	<div class="wrap">
-		<form action="productSearch.pd" method="get">
-			<div class="search">
-				<ul style="margin-left: auto; width: fit-content;">
-					<li class="search_box"><input type="text" placeholder="상품 이름"
-						name="searchProName" autofocus="autofocus" required="required"></li>
-					<li><input type="submit" value="검색"></li>
-				</ul>
-			</div>
-		</form>
 		<form action="productRegister.pd" method="get">
 			<img src="images/table.svg"><label class="title"> 제품 등록</label>
 			<br>
@@ -58,20 +64,22 @@
 					<tr>
 						<td></td>
 						<td><input type="text" name="proName" autofocus="autofocus"
-							placeholder="제품명" size="10" maxlength="100"></td>
+							placeholder="제품명" size="10" maxlength="100" required="required"></td>
 						<td><input type="button" id="search" value="검색"
 							onclick='popup()'><input type="text" name="cusName"
-							style="width: 60%" placeholder="거래처명" size="10" maxlength="100"></td>
+							style="width: 60%" placeholder="거래처명" size="10" maxlength="100"
+							required="required"></td>
 						<td><input type="number" name="proStoring" placeholder="입고수량"
-							size="10" maxlength="100"></td>
+							size="10" maxlength="100" required="required"></td>
 						<td><input type="number" name="proCost" placeholder="제품원가"
-							size="10" maxlength="100"></td>
+							size="10" maxlength="100" required="required"></td>
 						<td><input type="number" name="proPrice" placeholder="판매가"
-							size="10" maxlength="100"></td>
+							size="10" maxlength="100" required="required"></td>
 						<td><input type="date" name="proFirstNal" style="width: 70%"
-							placeholder="첫입고일" size="10" maxlength="100"></td>
+							placeholder="첫입고일" size="10" maxlength="100" required="required"></td>
 						<td><input type="date" name="proLastNal" style="width: 70%"
-							placeholder="마지막입고일" size="10" maxlength="100"></td>
+							placeholder="마지막입고일" size="10" maxlength="100"
+							required="required"></td>
 						<td><input type="number" name="proStock" placeholder="재고"
 							size="10" maxlength="100"></td>
 						<!-- <td><input type="number" name="today" placeholder="당일판매" size="10" maxlength="100"></td> -->
@@ -79,10 +87,25 @@
 				</table>
 			</div>
 		</form>
-		<br>
-		<br>
+		<br> <br>
+		<form action="productSearch.pd" method="get">
+
+			<div class="search">
+				<ul style="margin-left: auto; width: fit-content;">
+					<select name="colum">
+						<option value="">컬럼</option>
+						<option value="제품명">제품명</option>
+						<option value="거래처명">거래처명</option>
+					</select>
+					<li class="search_box"><input type="text" placeholder="상품 이름"
+						name="searchProName" autofocus="autofocus" required="required"></li>
+					<li><input type="submit" value="검색"></li>
+				</ul>
+			</div>
+		</form>
 		<form action="../productList.pd" method="get">
-			<img src="images/table.svg"><h1 class="title">제품 관리</h1>
+			<img src="images/table.svg">
+			<h1 class="title">제품 관리</h1>
 			<div class="list">
 				<div class="move">
 					<input type="button" value="검색" onclick='popup()'>
@@ -102,7 +125,7 @@
 						<th style="width: 5%">호잇</th>
 					</tr>
 					<%
-					ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>) request.getAttribute("productList");
+						ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>) request.getAttribute("productList");
 					%>
 					<c:forEach items="${productList }" var="product">
 						<tr>
@@ -116,8 +139,8 @@
 							<td>${product.cusName}</td>
 							<td style="text-align: right">${product.proStoring}</td>
 							<td>빈칸</td>
-							<td><a href="productDelete.pd?proNo=${product.proNo}">삭제</a>
-							&nbsp;&nbsp;<a href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm">수정</a></td>
+							<td><a href="productDelete.pd?proNo=${product.proNo}" id="remove">삭제</a>
+								&nbsp;&nbsp;<a href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm" id="update">수정</a></td>
 					</c:forEach>
 				</table>
 				<input type="button" id="moveMain" value="메인페이지"
