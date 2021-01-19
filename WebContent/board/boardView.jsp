@@ -19,7 +19,7 @@
 		BoardDTO boardDTO = (BoardDTO) request.getAttribute("boardDTO");
 		boardView.boardReadCount(boardDTO);
 	%>
-<h1>게시물</h1><br>
+<h1>익명 게시판</h1><hr>
 <div class="title">
 	<ul>
 		<li>&emsp;<%=boardDTO.getBoardNo()%></li>
@@ -37,6 +37,7 @@
 	<li>작성 날짜</li>
 	<li><%=boardDTO.getBoardDate()%></li>
 </ul>
+<br>
 </div>
 <div class="search_area">
 	<ul>

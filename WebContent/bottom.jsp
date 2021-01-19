@@ -4,20 +4,10 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COPANG</title>
-<style type="text/css">
-.footer-content{background:#888; text-align: center; height:9rem; line-height: 1.5rem; width: 100%; margin:auto; color: white; padding-top: 2rem;}
-.footer-content p{font-size: 0.9rem; font-weight: 50;}
-.footer-content hr{width: 2.5rem; height: 0.15rem; border: none; background: white; margin-top: 1rem; margin-bottom: 1rem;}
-.footer-content .sns-link ul li{display: inline;}
-.footer-content .sns-link a{text-decoration:none; height:4rem;font-size: 0.9rem;}
-.footer-content .sns-link img{width: 2.5rem; margin-left:1rem ; margin-right: 1rem;}
-.copyright{background-color: white; font-size:0.7rem; width: 100%; position: relative; height: 2rem; line-height: 2rem;text-align: center;min-width: 30rem;}
-.footer-content .con{min-width: 30rem;}
-.footer-content .con a{text-decoration: none; color:white; font-weight: 700;}
-</style>
 </head>
 <body>
 <div class="footer-content">

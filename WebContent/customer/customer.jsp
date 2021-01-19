@@ -23,6 +23,7 @@
 	</div>
 <hr>
 	<table>
+	<thead>
 		<tr>
 			<th style="width: 10%;">번호</th>
 			<th style="width: 25%;">이름</th>
@@ -30,6 +31,7 @@
 			<th style="width: 25%;">전화번호</th>
 			<th style="width: 25%;">사업자번호</th>
 		</tr>
+	</thead>
   		<c:forEach items="${list }" var="customer">
 		  <tr>
 		  <td class="num">${customer.cusNo}</td>
@@ -39,9 +41,11 @@
 		     <td>${customer.businessNo}</td>
 		  </tr>
    		</c:forEach>
+   	  <tfoot>
 	  <tr>
 	      <td colspan="5" style="border: 1px solid white; padding-top: 2rem;"><jsp:include page="page.jsp" flush="true"/></td>
 	  </tr>
+	  </tfoot>
 	</table>
 <div class="search_area">
 	<ul>

@@ -27,6 +27,7 @@
 	</form>
 	<hr>
 	<table>
+	<thead>
 		<tr>
 			<th style="width: 10%;">번호</th>
 			<th style="width: 25%;">이름</th>
@@ -34,6 +35,7 @@
 			<th style="width: 25%;">전화번호</th>
 			<th style="width: 25%;">사업자번호</th>
 		</tr>
+	</thead>
 		<%
 			for (int i = 0; i < customerSearchList.size(); i++) {
 				CustomerDTO customerDTO = customerSearchList.get(i);

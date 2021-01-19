@@ -13,9 +13,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css?v=011502">
+<link rel="stylesheet" href="css/style.css?v=011504">
 </head>
 <body>
+<div class="all">
 	<header>
 		<jsp:include page="top.jsp" />
 	</header>
@@ -25,5 +26,6 @@
 	<footer>
 		<jsp:include page="bottom.jsp" />
 	</footer>
+</div>
 </body>
 </html>

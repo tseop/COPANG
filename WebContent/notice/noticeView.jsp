@@ -8,48 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>COPANG</title>
-<style type="text/css">
-.customer {
-	font-size: 0.8rem;
-}
-
-table {
-	width: 100%;
-}
-
-table thead th {
-	padding: 1rem;
-}
-
-table tbody tr {
-	padding: 1rem;
-	border-bottom: 1px solid #ccc;
-}
-
-table tbody td {
-	padding: 1rem;
-}
-
-table tbody tr .width {
-	width: 5rem;
-}
-
-table tbody tr .height {
-	height: 10rem;
-}
-
-.customer .board_view h2 {
-	margin: 1.5rem 0;
-	text-align: center;
-	font-size: 1.2rem;
-	font-weight: 700;
-	color: #366afe;
-}
-</style>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<div class="customer">
-		<div class="board_view">
+		<div class="noti_view">
 			<%
 				NoticeDTO noticeDTO = (NoticeDTO) request.getAttribute("noticeDTO");
 			%>
@@ -57,21 +21,21 @@ table tbody tr .height {
 			<hr>
 			<table>
 				<tbody>
-					<tr>
+					<tr style="height: 10%;">
 						<td class="width">글 제목</td>
 						<td colspan="2"><%=noticeDTO.getNotiTitle()%></td>
 					</tr>
-					<tr>
+					<tr style="height: 10%;">
 						<td>작성자</td>
 						<td colspan="2"><%=noticeDTO.getEmpNo()%></td>
 					</tr>
-					<tr>
+					<tr style="height: 10%;">
 						<td>작성일자</td>
 						<td colspan="2"><%=noticeDTO.getNotiDate()%></td>
 					</tr>
-					<tr>
+					<tr style="height: 70%;">
 						<td class="height">내용</td>
-						<td colspan="2" style="min-height: 300px;"><%=noticeDTO.getNotiContent()%></td>
+						<td colspan="2"><%=noticeDTO.getNotiContent()%></td>
 					</tr>
 				</tbody>
 			</table>

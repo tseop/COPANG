@@ -43,11 +43,13 @@
 	</form>
 	<hr>
 	<table>
+	<thead>
 		<tr><th width="10%">번호</th>
 			<th width="60%">제목</th>
 			<th width="20%">날짜</th>
 			<th width="10%">조회수</th>
 		</tr>
+	</thead>
 		<%
 			for (int i = 0; i < boardSearchList.size(); i++) {
 					BoardDTO boardDTO = boardSearchList.get(i);
@@ -62,6 +64,7 @@
 			<td><%=boardDTO.getBoardDate()%>&nbsp;</td>
 			<td><%=boardDTO.getBoardReadcount()%></td>
 		</tr>
+		
 		<%
 			}
 			}

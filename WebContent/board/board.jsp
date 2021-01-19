@@ -23,12 +23,14 @@
 			</form>
 			<hr>
 			<table border="1">
+			<thead>
 			<tr>
 				<th width="10%">번호</th>
 				<th width="60%">제목</th>
 				<th width="20%">날짜</th>
 				<th width="10%">조회수</th>
 			</tr>
+			</thead>
 				<c:forEach items="${list}" var="board">
 					<tr>
 						<td>${board.boardNo}</td>
@@ -40,10 +42,12 @@
 						<td>${board.boardReadcount}</td>
 					</tr>
 				</c:forEach>
+				<tfoot>
 				<tr>
 					<td colspan="5" style="border: 1px solid white; padding-top: 2rem;"><jsp:include
 							page="page.jsp" flush="true" /></td>
 				</tr>
+				</tfoot>
 			</table>
 			<br>
 

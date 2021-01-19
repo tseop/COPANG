@@ -12,10 +12,10 @@
 <body>
 <!-- <<<<<<< HEAD -->
 <div class="customer">
-<div class="table">
+<div class="table" style="min-width: 1012px;">
 <h1>사원목록</h1>
 <hr>
-<table border = "1" cellspacing = "0" cellpadding= "0">
+<table>
 	<tr>
 		<th width="10%">사원번호</th>
 		<th width="10%">이름</th>

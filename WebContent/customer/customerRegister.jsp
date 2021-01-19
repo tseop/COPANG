@@ -14,33 +14,34 @@
 <h1>거래처 정보를 입력해주세요</h1>
 <hr>
 <form action="customerRegister.cu" method="post">
-	<table>
+	<table><thead>
 		<tr>
          <th><span class="required_content">*</span>거래처 명</th>
          <td><input type="text" name="cusName" required="required"></td>
       </tr>
-      </table>
-      <table>
+      </thead></table>
+      <table><thead>
       <tr>
          <th><span class="required_content">*</span>담당자</th>
          <td><input type="text" name="cusManager" required="required"></td>
        </tr>
-       </table>
-       <table>
+       </thead></table>
+      <table><thead>
        <tr>
          <th><span class="required_content">*</span>전화번호</th>
          <td><input type="text" name="cusTel" placeholder="000-0000-0000" required="required"></td>
        </tr>
-       </table>
-       <table>
+       </thead></table>
+       
+       <table><thead>
        <tr>
          <th><span class="required_content">*</span>사업자번호</th>
          <td><input type="text" name="businessNo" required="required"></td>
        </tr>
-	</table>	
+	  </thead></table>	
 	<div class="search_area">
 	<ul style="justify-content: center;">
-		<li><input type="submit" value="등록하기"></li>
+		<li><input type="submit" value="등록하기" class="sbm"></li>
 		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
 	</ul>
 	</div>
