@@ -250,22 +250,22 @@ input[type="button"] {
 						for (int i = 0; i < productList.size() - 1; i++) {
 						ProductDTO productDTO = productList.get(i);
 					%>
-					<c:forEach items="${productList }" var="product">
+					<%-- <c:forEach items="${productList }" var="product"> --%>
 						<tr>
-							<td class="num">${product.proNo}</td>
-							<td>${product.proName}</td>
-							<td style="text-align: right">${product.proPrice}</td>
-							<td style="text-align: right">${product.proCost}</td>
-							<td>${product.proFirstNal}</td>
-							<td>${product.proLastNal}</td>
-							<td style="text-align: right">${product.proStock}</td>
-							<td>${product.cusName}</td>
-							<td style="text-align: right">${product.proStoring}</td>
+							<td class="num"><%=productDTO.getProNo()%></td>
+							<td><%=productDTO.getProName() %></td>
+							<td style="text-align: right"><%=productDTO.getProCost() %></td>
+							<td style="text-align: right"><%=productDTO.getProPrice() %></td>
+							<td><%=productDTO.getProFirstNal() %></td>
+							<td><%=productDTO.getProLastNal() %></td>
+							<td style="text-align: right"><%=productDTO.getProStock()%></td>
+							<td><%=productDTO.getCusName() %></td>
+							<td style="text-align: right"><%=productDTO.getProStoring() %></td>
 							<td>빈칸</td>
 							<td><a href="productDelete.pd?proNo=<%=productDTO.getProNo()%>">삭제</a>
 							&nbsp;&nbsp;
 							<a href="index.jsp?page=product/productUpdateConfirm?proNo=<%=productDTO.getProNo()%>">수정</a></td>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 					<%
 						}
 					%>

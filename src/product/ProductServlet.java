@@ -68,8 +68,8 @@ public class ProductServlet extends HttpServlet {
 			productDTO.setProStock(Integer.parseInt(request.getParameter("proStock")));
 			try {
 				productDAO.productRegister(productDTO);
-				out.print("<script>alert('상품등록이 완료되었습니다'; location.href='productList.pd';</script>");
-//				response.sendRedirect("productList.pd"); // doPost의 인자로 있다 response
+				//out.print("<script>alert('상품등록이 완료되었습니다'; location.href='productList.pd';</script>");
+				response.sendRedirect("productList.pd"); // doPost의 인자로 있다 response
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} 
