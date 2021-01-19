@@ -74,21 +74,25 @@ public class NoticeServlet extends HttpServlet {
 			noticeDTO.setNotiContent(request.getParameter("content"));			
 			noticeDTO.setEmpNo((int)Login.session.getAttribute("EMP_NO"));
 			
-			realPath = request.getServletContext().getRealPath("");
-			uploadPath = realPath + UPLOAD_DIR;
+			try {
+				realPath = request.getServletContext().getRealPath("");
+				uploadPath = realPath + UPLOAD_DIR;
 
-			fileSaveDir = new File(uploadPath);
-			filePart = request.getPart("file");
+				fileSaveDir = new File(uploadPath);
+				filePart = request.getPart("file");
 
-			// 파일 경로 없으면 생성
-			if (!fileSaveDir.exists()) {
-				fileSaveDir.mkdirs();
-			}			
+				// 파일 경로 없으면 생성
+				if (!fileSaveDir.exists()) {
+					fileSaveDir.mkdirs();
+				}			
 
-			fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-			filePart.write(uploadPath + File.separator + fileName);						
-			
-			noticeDTO.setFileName(fileName);
+				fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+				filePart.write(uploadPath + File.separator + fileName);						
+				
+				noticeDTO.setFileName(fileName);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 			
 			try {
 				cnt = noticeDAO.noticeWrite(noticeDTO);
