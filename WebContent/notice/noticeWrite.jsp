@@ -17,11 +17,17 @@
 <div class="customer">
 <div class="write_area">
 	<h1>공지사항 글쓰기</h1>
+<<<<<<< HEAD
+	<form method="post" action="noticeRegister.no" enctype="multipart/form-data" > <!-- enctype="multipart/form-data" -->
+=======
 <hr>
 	<form method="post" action="noticeRegister.no">
+>>>>>>> a44cc4c4ce39f82f9c8e90cd4d78f2cc30b08b92
 		<ul>
 			<li><input type="text" placeholder="글 제목" name="title"
 				required="required"></li>
+			<li><label for="첨부파일">첨부파일</label>
+			<input type="file" name="file"></li>
 			<li><textarea name="content" required="required"></textarea></li>
 		</ul>
 		<ul class="btns">

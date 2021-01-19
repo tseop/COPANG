@@ -50,10 +50,11 @@ public class NoticeDAO {
 	// 게시글 등록
 	public int noticeWrite(NoticeDTO noticeDTO) throws SQLException {
 		conn = getConnection();
-		sql = "INSERT INTO NOTICE(NOTI_TITLE, NOTI_CONTENT) VALUES(?, ?)";
+		sql = "INSERT INTO NOTICE(NOTI_TITLE, NOTI_CONTENT, FILE_NO) VALUES(?, ?, ?)"; //파일 번호만 있으면 되는건가..? 파일이 통째로 있어야 하는건 아닌것인지..
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, noticeDTO.getNotiTitle());
 		pstmt.setString(2, noticeDTO.getNotiContent());
+		pstmt.setInt(3, noticeDTO.getFileNo());
 		cnt = pstmt.executeUpdate();
 
 		return cnt;

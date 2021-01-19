@@ -1,16 +1,27 @@
 package notice;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+@MultipartConfig(
+		fileSizeThreshold=1024*1024, //전송하는 데이터가 1MG가 넘을경우 디스크를 사용하자
+		maxFileSize=1024*1024*5, //하나의 파일 사이즈 ->5MG가 하나의 파일에 최대크기 
+		maxRequestSize=1024*1024*5*5 //전체 파일 사이즈 -> 전체 용량은 25메가를 초과할 수 없다.
+		)
 
 @WebServlet("*.no")
 public class NoticeServlet extends HttpServlet {
@@ -50,7 +61,24 @@ public class NoticeServlet extends HttpServlet {
 		if (command.equals("/noticeRegister.no")) {
 			noticeDTO.setNotiTitle(request.getParameter("title"));
 			noticeDTO.setNotiContent(request.getParameter("content"));
-
+			
+			Part filePart = request.getPart("file");
+			String fileName = filePart.getSubmittedFileName();
+			InputStream fis = filePart.getInputStream();
+			
+			String realPath = request.getServletContext().getRealPath("/upload");
+			
+			String filePath = realPath + File.separator + fileName;
+			FileOutputStream fos = new FileOutputStream(filePath);
+			
+			byte[] buf = new byte[1024];
+			int size = 0;
+			while((size = fis.read(buf)) != -1) 
+				fos.write(buf,0,size); //size는 길이 
+			
+			fos.close();
+			fis.close();   // 근데,, 우리가 첨부파일 게시글에 올린걸 서버쪽에 저장할 필요가 있는거겠죠..?  
+			
 			try {
 				cnt = noticeDAO.noticeWrite(noticeDTO);
 				out.print(cnt + "건 게시글이 등록되었습니다.");

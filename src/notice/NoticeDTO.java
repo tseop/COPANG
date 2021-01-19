@@ -8,6 +8,27 @@ public class NoticeDTO implements Serializable {
 	private String notiContent;
 	private String notiDate;
 	private int empNo;
+	private int fileNo;
+
+	public NoticeDTO() {
+		super();
+	}
+
+	public NoticeDTO(int notiNo, String notiTitle, String notiContent, String notiDate, int empNo, int fileNo) {
+		super();
+		this.notiNo = notiNo;
+		this.notiTitle = notiTitle;
+		this.notiContent = notiContent;
+		this.notiDate = notiDate;
+		this.empNo = empNo;
+		this.fileNo = fileNo;
+	}
+
+	@Override
+	public String toString() {
+		return "NoticeDTO [notiNo=" + notiNo + ", notiTitle=" + notiTitle + ", notiContent=" + notiContent
+				+ ", notiDate=" + notiDate + ", empNo=" + empNo + ", fileNo=" + fileNo + "]";
+	}
 
 	public int getNotiNo() {
 		return notiNo;
@@ -49,24 +70,12 @@ public class NoticeDTO implements Serializable {
 		this.empNo = empNo;
 	}
 
-	@Override
-	public String toString() {
-		return "NoticeDTO [notiNo=" + notiNo + ", notiTitle=" + notiTitle + ", notiContent=" + notiContent
-				+ ", notiDate=" + notiDate + ", empNo=" + empNo + "]";
+	public int getFileNo() {
+		return fileNo;
 	}
 
-	public NoticeDTO(int notiNo, String notiTitle, String notiContent, String notiDate, int empNo) {
-		super();
-		this.notiNo = notiNo;
-		this.notiTitle = notiTitle;
-		this.notiContent = notiContent;
-		this.notiDate = notiDate;
-		this.empNo = empNo;
-	}
-
-	public NoticeDTO() {
-		super();
-
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
 	}
 
 }
