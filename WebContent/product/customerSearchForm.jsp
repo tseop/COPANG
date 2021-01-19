@@ -5,51 +5,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-.search_area ul{
-	margin:2rem 2rem;
-	text-decoration: none;
-}
-.search_box{
-border:1px solid #ccc;
-}
-
-.wrap {
-	padding: 2rem;
-	min-height: 30rem;
-	font-size: 1.1rem;
-	min-width: 40rem;
-	margin: 0 2rem 2rem 2rem;
-}
-
-.wrap img {
-	width: 20px;
-	height: 20px;
-	margin: 20px 0 0 0;
-}
-
-.wrap label{
-font-size: 30px;
-}
-
-</style>
 <meta charset="UTF-8">
-<title>COPANG</title>
-
+<title>KHJSP</title>
+<script>
+function back(){    //사원번호 숫자만입력
+	window.close();
+ }
+function cuslist(){    //사원번호 숫자만입력
+	location.href="../customerList.cu";
+ }
+</script>
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
-<body>
-<div class="wrap">
-<form action="customerSearch.cu" method="get">
-	<div class="search_area">
-		<img src="images/table.svg"><label class="title">   거래처 검색</label> <br>
-		<ul style="margin-left: auto; width: fit-content;">
-			<li class="search_box">
-				<input type="text" placeholder="거래처 이름" name="searchCusName" autofocus="autofocus" required="required"> 
-				<input type="submit" value="검색">
+<body style="height: 0;">
+<div class="wrap_popup">
+<ul>
+<li><img src="../images/Copang_logo.png"></li>
+<li>거래처 찾기</li>
+</ul>
+<hr>
+<div id="customerFind" class="popup">
+	<form action="../customerSearch.pd" method="get">
+		<ul>
+			<li>
+				<label for="searchCusName">거래처 정보를 찾기위한 페이지입니다</label>
+			</li>
+			<li style="border: 1px solid #ccc;">
+			<input type="text" name="searchCusName" size="20"maxlength="10" autofocus="autofocus" required="required" placeholder="거래처명을 입력하세요" class="emp_no">
+			<input type="submit" value="거래처찾기">
+			</li>
+			<li>
+			<input type="submit" value="거래처 전체리스트" onclick="cuslist()">
+			<input type="submit" value="돌아가기" onclick="back()">
 			</li>
 		</ul>
-	</div>
-</form>
-	</div>
+	</form>
+</div>
+</div>
 </body>
 </html>

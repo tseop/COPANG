@@ -15,9 +15,10 @@ import product.PageTo;
 
 public class ProductDAO {
 	private ProductDTO productDTO;
+	private CustomerDTO customerDTO;
 	private ArrayList<ProductDTO> productList;
 	private ArrayList<ProductDTO> productSearchList;
-
+	private ArrayList<CustomerDTO> customerSearchList;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private String sql;
@@ -180,6 +181,25 @@ public class ProductDAO {
 		pstmt.setInt(7, productDTO.getProStock());
 		pstmt.setInt(8, proNo);
 		pstmt.executeUpdate();
+	}
+	
+	public ArrayList<CustomerDTO> customerSearch(String searchCusName) throws SQLException {
+		conn = getConnection();
+		sql = "SELECT * FROM CUSTOMER WHERE CUS_NAME LIKE ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,"%"+searchCusName+"%");
+		rs = pstmt.executeQuery();
+		customerSearchList = new ArrayList<CustomerDTO>();
+		while (rs.next()) {
+			customerDTO = new CustomerDTO();
+			customerDTO.setCusNo(rs.getInt("CUS_NO"));
+			customerDTO.setCusName(rs.getString("CUS_NAME"));
+			customerDTO.setCusManager(rs.getString("CUS_MANAGER"));
+			customerDTO.setCusTel(rs.getString("CUS_TEL"));
+			customerDTO.setBusinessNo(rs.getString("BUSINESS_NO"));
+			customerSearchList.add(customerDTO);
+		}
+		return customerSearchList;
 	}
 //	public void cusNameUpdate(ProductDTO productDTO,String cusName) throws SQLException {
 //		sql = "UPDATE CUSTOMER SET CUS_NAME = ? WHERE CUS_NAME = ?";

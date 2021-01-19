@@ -28,7 +28,7 @@ select {
 </style>
 <script>
 	function popup() {
-		var url = "index.jsp?page=product/customerSearchForm";
+		var url = "product/customerSearchForm.jsp";
 		var name = "popup test";
 		var option = "width = 1000, height = 600, top = 100, left = 200, location = no"
 		window.open(url, name, option);
@@ -48,7 +48,6 @@ select {
 				<input type="submit" value="등록하기">
 				<table border="1" cellspacing="0" cellpadding="0">
 					<tr>
-						<th style="width: 10%">제품번호</th>
 						<th style="width: 10%">제품명</th>
 						<th style="width: 20%">거래처명</th>
 						<th style="width: 7%">입고수량</th>
@@ -62,7 +61,6 @@ select {
 						<!-- 등록페이지에는 당일판매량은 필요없지 -->
 					</tr>
 					<tr>
-						<td></td>
 						<td><input type="text" name="proName" autofocus="autofocus"
 							placeholder="제품명" size="10" maxlength="100" required="required"></td>
 						<td><input type="button" id="search" value="검색"
@@ -122,7 +120,7 @@ select {
 						<th style="width: 7%">거래처명</th>
 						<th style="width: 5%">입고수량</th>
 						<th style="width: 5%">당일판매량</th>
-						<th style="width: 5%">호잇</th>
+						<th style="width: 5%">관리</th>
 					</tr>
 					<%
 						ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>) request.getAttribute("productList");
