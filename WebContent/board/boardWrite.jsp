@@ -31,8 +31,7 @@
          <li><input type="text" name="title" autofocus="autofocus"
             required="required" placeholder="제목을 입력하세요" size="50"
             mexlength="100"></li>
-         <li><textarea name="content"
-               placeholder="내용을 입력하세요" id="editor"></textarea></li>
+         <li><textarea name="content" id="editor"></textarea></li>
       </ul>
       <ul class="btns">
 	      <li><input type="submit"></li>
