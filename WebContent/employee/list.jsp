@@ -20,54 +20,52 @@
 		<th width="10%">사원번호</th>
 		<th width="10%">이름</th>
 		<th width="10%">전화번호</th>
-		<th width="20%">주소</th>
-		<th width="15%">주민등록번호</th>
+		<th width="8%">부서</th>
 		<th width="8%">직급</th>
-		<th width="10%">비밀번호</th>
-		<th width="5%">부서번호</th>
-		<th width="8%">부서이름</th>
+		<th width="20%">주소</th>
+		<th width="15%">주민등록번호</th>		
+		<th width="10%">비밀번호</th>		
 	</tr>
 	<%
 		ArrayList<EmployeeDTO> empList = (ArrayList<EmployeeDTO>)request.getAttribute("empList");
 		
 		for(int i = 0;i<empList.size();i++){
 			EmployeeDTO empDTO = empList.get(i);
-			String dept_name = null;
-			String rank = null;
+			String deptName = null;
+			String empRank = null;
 			if(empDTO.getDeptNo() == 1){
-				dept_name = "물류팀";
+				deptName = "물류";
 			}
 			else if(empDTO.getDeptNo() == 2){
-				dept_name = "인사관리";
+				deptName = "인사관리";
 			}
 			else if(empDTO.getDeptNo() == 3){
-				dept_name = "경영지원";
+				deptName = "경영지원";
 			}
 			else if(empDTO.getDeptNo() == 4){
-				dept_name = "사장";
+				deptName = "사장";
 			}
 			if(empDTO.getEmpRank() == 1){
-				rank = "일반사원";
+				empRank = "사원";
 			}
 			else if(empDTO.getEmpRank() == 2){
-				rank = "팀장";
+				empRank = "팀장";
 			}
 			else if(empDTO.getEmpRank() == 3){
-				rank = "사장";
+				empRank = "사장";
 			}
 	%>
 	<tr>
 		<td><%=empDTO.getEmpNo() %></td>
 		<td><%=empDTO.getEmpName() %></td>
 		<td><%=empDTO.getEmpTel() %></td>
+		<td><%=deptName %></td>
+		<td><%=empRank %></td>
 		<td><%=empDTO.getEmpAddr() %></td>
 <%-- 		<td><%=empDTO.getEmpSecurity() %></td> --%>
-		<td>********</td>
-		<td><%=rank %></td>
+		<td>********</td>		
 <%-- 		<td><%=empDTO.getEmpPw() %></td> --%>
-		<td>********</td>
-		<td><%=empDTO.getDeptNo() %></td>
-		<td><%=dept_name %></td>
+		<td>********</td>		
 	</tr>
 	
 	<%
