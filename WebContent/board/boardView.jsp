@@ -1,7 +1,10 @@
 <%@page import="board.BoardDTO"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <jsp:useBean id="boardView" class="board.BoardDAO" scope="page" />
 
 <!DOCTYPE html>
@@ -37,17 +40,19 @@
 				<ul>
 					<li>작성 날짜</li>
 					<%
+						Date nowTime = new Date();
+						SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH시 mm분");
 						if (boardDTO.getBoardDate() == null) {
 					%>
-					<li>방금</li>
+					<li><%=sf.format(nowTime)%></li>
 					<%
 						} else {
 					%>
 					<li><%=boardDTO.getBoardDate()%></li>
-						<%
-							}
-						%>
-					
+					<%
+						}
+					%>
+
 				</ul>
 				<br>
 			</div>
