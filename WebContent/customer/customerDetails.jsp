@@ -9,13 +9,10 @@
 <title>COPANG</title>
 
 <script type="text/javascript">
-
-
 function button_event(){
 	if (confirm("정말 삭제하시겠습니까??") == true){
    		/* location.href='customerDelete.cu'; */
-   		document.update.action = 'customerDelete.cu'; 
-   		//해당 버튼을 눌럿을때 action의 경로를 바꾸어줌
+   		document.update.action = 'customerDelete.cu';//해당 버튼을 눌럿을때 action의 경로를 바꾸어줌
    		document.update.submit();
 	}else{
 	    return false;
@@ -29,10 +26,35 @@ function button_submit(){
 		 return false;
 	}
 }
+function update(){
+window.screen.width
+window.screen.height
+	var popupWidth = 400;
+	var popupHeight = 300;
+	var popupX = (window.screen.width / 2) - (popupWidth / 2);
+	var popupY= (window.screen.height / 2) - (popupHeight / 2);
+window.open('customer/bnoUpdateForm.jsp', '거래처 사업자번호 변경', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+
+}
+
+function mypage_check(){ 
+<%-- 	<%CustomerDTO customerDTO = (CustomerDTO) request.getAttribute("customerDTO"); %> --%>
+    var empdept = '<%=(int)session.getAttribute("EMP_DEPT")%>';
+    var emprank = '<%=(int)session.getAttribute("EMP_RANK")%>';
+    console.log(empdept);
+    console.log(emprank);
+      if(empdeptno==0){
+    	 disabled=false;
+     }else if(emprank==0){
+    	 disabled=false;
+     } 
+}   
+
+
 </script>
 
 </head>
-<body>
+<body onload="mypage_check()">
 
 <div class="customer">
 <div class="reg_form">
@@ -64,20 +86,12 @@ CustomerDTO customerDTO = (CustomerDTO) request.getAttribute("customerDTO");
        <table><thead>
        <tr>
          <th><span class="required_content">*</span>사업자번호</th>
-         <td><input type="text" name="businessNo" required="required" maxlength="30" value="<%=customerDTO.getBusinessNo() %>"></td>
+         <td><%=customerDTO.getBusinessNo() %><input type="button" value="수정하기" onclick="update()" disabled="disabled"></td>
        </tr>
 	</thead></table>	
 	<div class="search_area">
 	<ul style="justify-content: center;">
 		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
-	<%
-	int empDept = (int)session.getAttribute("EMP_DEPT");
-	int empRank = (int)session.getAttribute("EMP_RANK");
-	if (empRank !=1 || empDept !=1){
-		out.print("<li><input type=\"button\" value=\"수정하기\" onclick= \"button_submit()\"></li>");
-		out.print("<li><input style=\"background: #D71427\" type =\"button\" value=\"삭제하기\" onclick=\"button_event()\" class=\"btn\"></li>");
-	}
-	%>
 	</ul>
 	</div>
 </form>
