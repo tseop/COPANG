@@ -23,7 +23,8 @@
 		<div class="noti_view">
 			<%
 				NoticeDTO noticeDTO = (NoticeDTO) request.getAttribute("noticeDTO");
-				String fileName = (String)request.getAttribute("fileName");
+				//String empName = (String)request.getAttribute("empName");
+				//String fileName = (String)request.getAttribute("fileName");
 				//long fileSize = (long)request.getAttribute("fileSize");
 			%>
 			<h2>공지사항</h2>
@@ -36,7 +37,7 @@
 					</tr>
 					<tr style="height: 10%;">
 						<td>작성자</td>
-						<td colspan="2"><%=noticeDTO.getEmpNo()%></td>
+						<td colspan="2"><%=noticeDTO.getEmpName()%></td>
 					</tr>
 					<tr style="height: 10%;">
 						<td>작성일자</td>
@@ -45,7 +46,16 @@
 					<tr style="height: 70%;">
 					<tr>
 						<td>첨부파일</td>
-						<td colspan="2"><a href="FileDown?fileName=<%=fileName%>"><%=fileName %></a></td>
+						<%
+							if(noticeDTO.getFileName() == null){
+						%>
+						<td colspan="2">첨부파일 없음</td>		
+						<%
+							} else {
+						%>
+						
+						<td colspan="2"><a href="FileDown?fileName=<%=noticeDTO.getFileName()%>"><%=noticeDTO.getFileName() %></a></td>
+						<%} %>
 						<!-- 더 추가해야하는데 모르겠다... -->
 					</tr>
 					<tr>
