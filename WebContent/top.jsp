@@ -21,7 +21,7 @@ function logout(){
 			<a href="index.jsp"><img src="images/Copang_logo.png"></a>
 		</div>
 		<div class="top-bar">
-			<a href="mypage.ep">마이페이지</a>
+			<a href="mypage.ep">마이페이지</a>&emsp;
 			<a href="logout.ep" onclick="return confirm('로그아웃 하시겠습니까?');">로그아웃</a>
 
 		</div>

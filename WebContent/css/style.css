@@ -12,9 +12,9 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .top {font-weight:lighter;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: auto;font-size: 1rem;min-width: 40rem;max-width: 100%;margin: auto;background: white;padding: 30px;}
 .top .logo {text-align: center;}
 .top .top-bar{min-width: 30rem;margin-bottom:1rem;position: relative;text-align: right;font-size: 13px;padding-right: 1rem;}
-.top .top-bar a {margin-left: 2px;color: #550000;text-decoration: none;font-weight: 800;}
+.top .top-bar a {margin-left: 2px;color: #366afe;text-decoration: none;font-weight: 800;}
 .top .top-bar a:hover {text-decoration: underline;}
-.top .menu {height: 45px;background: #4285f4;text-align:center;margin-top:1rem;}
+.top .menu {height: 44.5px;background: #4285f4;text-align:center;margin-top:1rem;}
 .top .menu ul {list-style: none;padding: 0;margin: 0;display:inline-block;}
 .top .menu ul li {float:left;overflow: hidden;text-align: center;line-height: 45px;boder: 1px solid red;}
 .top .menu ul li a {position: relative;display: block;width: 8rem;height: 45px;color: #FFF;font-family:;font-size: 12px;letter-spacing: 1px;text-transform: uppercase;text-decoration: none;cursor: pointer;}
@@ -35,6 +35,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .table table tr td{border:1px solid #ccc;padding: 0.7rem;font-size: 0.7rem; border-right:none;border-left:none;}
 .search_box{border:1px solid #ccc;}
 .customer table tbody tr:hover{background: #e8e8e8;}
+
 
 /* login */
 .box{text-align: center; padding: 5rem; margin: auto;width: 17rem;}
@@ -95,6 +96,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .customer .emp_reg_form .check{border: none; background:white; color: #366afe; font-size:0.6rem; font-weight: 700;}
 .select_box_top{display: flex;justify-content: space-between;}
 .select_box{padding:0.5rem; position: relative;width: 8rem; border: 1px solid #ccc;font-size: 0.7rem; color: #60666d;}
+
 
 /* CUSTOMER_REGISTER */
 .customer .reg_form{width: 50%;margin: auto;}
