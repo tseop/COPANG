@@ -8,8 +8,56 @@
 <head>
 <meta charset="UTF-8">
 <title>COPANG</title>
+<<<<<<< Updated upstream
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
+=======
+<style type="text/css">
+.customer {
+	font-size: 0.8rem;
+}
+
+table {
+	width: 100%;
+}
+
+table thead th {
+	padding: 1rem;
+}
+
+table tbody tr {
+	padding: 1rem;
+	border-bottom: 1px solid #ccc;
+}
+
+table tbody td {
+	padding: 1rem;
+}
+
+table tbody tr .width {
+	width: 5rem;
+}
+
+table tbody tr .height {
+	height: 10rem;
+}
+
+.customer .board_view h2 {
+	margin: 1.5rem 0;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: #366afe;
+}
+</style>
+<script type="text/javascript">
+	$function(){
+		$("#btnList").on("click", function(){
+			location.href="${path}/notice_servlete/noticeRegister.no"; /* 업로드 경로 설정하는거 같은데.. 이게 맞는건지..? upload폴더에 넣을 순 없는건가?  */
+		});
+	});
+</script>
+>>>>>>> Stashed changes
 </head>
 <body>
 	<div class="customer">
@@ -33,7 +81,16 @@
 						<td>작성일자</td>
 						<td colspan="2"><%=noticeDTO.getNotiDate()%></td>
 					</tr>
+<<<<<<< Updated upstream
 					<tr style="height: 70%;">
+=======
+					<tr>
+						<td>첨부파일</td>
+						<td colspan="2"><%=noticeDTO.getFileNo()%>
+						<!-- 더 추가해야하는데 모르겠다... -->
+					</tr>
+					<tr>
+>>>>>>> Stashed changes
 						<td class="height">내용</td>
 						<td colspan="2"><%=noticeDTO.getNotiContent()%></td>
 					</tr>
