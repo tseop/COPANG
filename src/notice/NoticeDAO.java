@@ -84,6 +84,36 @@ public class NoticeDAO {
 
 		return count;
 	}
+	
+	public ArrayList<NoticeDTO> mainNotice() {
+		ArrayList<NoticeDTO> list = new ArrayList<NoticeDTO>();
+		try {
+			conn = getConnection();
+			sql = "SELECT NOTI_NO, NOTI_TITLE, EMP_NAME, NOTI_DATE FROM NOTICE ORDER BY NOTI_NO DESC LIMIT 5";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				NoticeDTO data = new NoticeDTO();
+				
+				int notiNo = rs.getInt("NOTI_NO");
+				String notiTitle = rs.getString("NOTI_TITLE");
+				String notiAuthor = rs.getString("EMP_NAME");
+				String notiDate = rs.getString("NOTI_DATE");
+				
+				data.setNotiNo(notiNo);
+				data.setNotiTitle(notiTitle);
+				data.setNotiDate(notiDate);
+				data.setEmpName(notiAuthor);
+				list.add(data);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 
 	// 전체게시판
 	public PageTo page(int curPage) {
