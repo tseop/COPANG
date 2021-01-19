@@ -17,26 +17,26 @@
 	<table><thead>
 		<tr>
          <th><span class="required_content">*</span>거래처 명</th>
-         <td><input type="text" name="cusName" required="required"></td>
+         <td><input type="text" name="cusName" required="required" maxlength="50"></td>
       </tr>
       </thead></table>
       <table><thead>
       <tr>
          <th><span class="required_content">*</span>담당자</th>
-         <td><input type="text" name="cusManager" required="required"></td>
+         <td><input type="text" name="cusManager" required="required" maxlength="20"></td>
        </tr>
        </thead></table>
       <table><thead>
        <tr>
          <th><span class="required_content">*</span>전화번호</th>
-         <td><input type="text" name="cusTel" placeholder="000-0000-0000" required="required"></td>
+         <td><input type="text" name="cusTel" placeholder="000-0000-0000" required="required" maxlength="15"></td>
        </tr>
        </thead></table>
        
        <table><thead>
        <tr>
          <th><span class="required_content">*</span>사업자번호</th>
-         <td><input type="text" name="businessNo" required="required"></td>
+         <td><input type="text" name="businessNo" required="required" maxlength="30"></td>
        </tr>
 	  </thead></table>	
 	<div class="search_area">

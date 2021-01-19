@@ -12,7 +12,7 @@
    for (int i = 1; i <= totalPage; i++) {
       if (curPage == i) {
          out.print(
-               "<strong><font color='#0074E9' style='font-size: 1.1rem;'>" + i + "</font></strong>&nbsp;");
+               "<strong><font color='#0074E9' style='font-size: 0.75rem;'>" + i + "</font></strong>&nbsp;");
       } else {
          out.print("<a href='noticeList.no?curPage=" + i + "'>" + i + "</a>&nbsp;");
       }

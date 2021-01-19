@@ -28,17 +28,16 @@
 			<th style="width: 10%;">번호</th>
 			<th style="width: 25%;">이름</th>
 			<th style="width: 15%;">담당자</th>
-			<th style="width: 25%;">전화번호</th>
-			<th style="width: 25%;">사업자번호</th>
 		</tr>
 	</thead>
   		<c:forEach items="${list }" var="customer">
 		  <tr>
 		  <td class="num">${customer.cusNo}</td>
-		     <td><a href='customerDetails.cu?num=${customer.cusNo}'> ${customer.cusName}</a></td>
+		     <td><a href='customerDetails.cu?num=${customer.cusNo}'
+					style="color: black; text-decoration: none;"
+					onmouseover="this.style.color='blue'"
+					onmouseout="this.style.color='black'"> ${customer.cusName}</a></td>
 		     <td>${customer.cusManager}</td>
-		     <td>${customer.cusTel}</td>
-		     <td>${customer.businessNo}</td>
 		  </tr>
    		</c:forEach>
    	  <tfoot>

@@ -46,32 +46,38 @@ CustomerDTO customerDTO = (CustomerDTO) request.getAttribute("customerDTO");
 	<table><thead>
 		<tr>
          <th><span class="required_content">*</span>거래처 명</th>
-         <td><input type="text" name="cusName" required="required" value="<%=customerDTO.getCusName() %>"></td>
+         <td><input type="text" name="cusName" required="required" maxlength="50" value="<%=customerDTO.getCusName() %>"></td>
       </tr>
       </thead></table>
       <table><thead>
       <tr>
          <th><span class="required_content">*</span>담당자</th>
-         <td><input type="text" name="cusManager" required="required" value="<%=customerDTO.getCusManager() %>"></td>
+         <td><input type="text" name="cusManager" required="required" maxlength="20" value="<%=customerDTO.getCusManager() %>"></td>
        </tr>
        </thead></table>
        <table><thead>
        <tr>
          <th><span class="required_content">*</span>전화번호</th>
-         <td><input type="text" name="cusTel" required="required" value="<%=customerDTO.getCusTel() %>"></td>
+         <td><input type="text" name="cusTel" required="required" maxlength="15" value="<%=customerDTO.getCusTel() %>"></td>
        </tr>
        </thead></table>
        <table><thead>
        <tr>
          <th><span class="required_content">*</span>사업자번호</th>
-         <td><input type="text" name="businessNo" required="required" value="<%=customerDTO.getBusinessNo() %>"></td>
+         <td><input type="text" name="businessNo" required="required" maxlength="30" value="<%=customerDTO.getBusinessNo() %>"></td>
        </tr>
 	</thead></table>	
 	<div class="search_area">
 	<ul style="justify-content: center;">
-		<li><input type="button" value="수정하기" onclick= "button_submit()"></li>
 		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
-		<li><input style="background: #D71427" type ="button" value="삭제하기" onclick="button_event()" class="btn"></li>
+	<%
+	int empDept = (int)session.getAttribute("EMP_DEPT");
+	int empRank = (int)session.getAttribute("EMP_RANK");
+	if (empRank !=1 || empDept !=1){
+		out.print("<li><input type=\"button\" value=\"수정하기\" onclick= \"button_submit()\"></li>");
+		out.print("<li><input style=\"background: #D71427\" type =\"button\" value=\"삭제하기\" onclick=\"button_event()\" class=\"btn\"></li>");
+	}
+	%>
 	</ul>
 	</div>
 </form>

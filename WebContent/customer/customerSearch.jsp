@@ -15,7 +15,7 @@
 	String customerSearch = request.getParameter("searchCusName");
 	ArrayList<CustomerDTO> customerSearchList = (ArrayList<CustomerDTO>) request.getAttribute("customerSearchList");
 	if (customerSearchList.size() == 0) {
-%>	 <h3>검색 결과가 없습니다..</h3>
+%>	 <h3 style="text-align: center;">검색 결과가 없습니다..</h3><br>
 <%} else {%>
 <div class="search_area">
 	<form action="customerSearch.cu" method="get">
@@ -32,8 +32,6 @@
 			<th style="width: 10%;">번호</th>
 			<th style="width: 25%;">이름</th>
 			<th style="width: 15%;">담당자</th>
-			<th style="width: 25%;">전화번호</th>
-			<th style="width: 25%;">사업자번호</th>
 		</tr>
 	</thead>
 		<%
@@ -42,11 +40,13 @@
 		%>
 		<tr>
 			<td><%=customerDTO.getCusNo() %></td>
-			<td><%=customerDTO.getCusName() %></td>
+			<td><a href='customerDetails.cu?num=<%=customerDTO.getCusNo() %>'
+					style="color: black; text-decoration: none;"
+					onmouseover="this.style.color='blue'"
+					onmouseout="this.style.color='black'"> <%=customerDTO.getCusName() %></a></td>
 			<td><%=customerDTO.getCusManager() %></td>
-			<td><%=customerDTO.getCusTel() %></td>
-			<td><%=customerDTO.getBusinessNo() %></td>
-		</tr><% }} %>
+			<% }} %>
+		</tr>
 	</table>
 	<br>
 	<div class="search_area">
