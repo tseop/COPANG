@@ -141,7 +141,10 @@ public class NoticeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/noticeSearch.no")) {
+		} 
+		
+		//  게시글 수정
+		else if (command.equals("/noticeSearch.no")) {
 			searchTitle = request.getParameter("searchTitle");
 			try {
 				noticeSearchList = noticeDAO.noticeSearch(searchTitle);
