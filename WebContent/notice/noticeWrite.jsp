@@ -12,23 +12,26 @@
 		window.history.back();
 	}
 </script>
-
 <style>
 .titleandfile{display: flex;justify-content: space-between;}
-.titleandfile input[type=file]{display: none;}
-label.fileupload{display:block;
-    max-width: 80%;
-    font-size: 1.25rem;
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    padding: 0.625rem 1.25rem;
-    color: #f1e5e6;
-    background-color: #d3394c;
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }
+.inputfile+label{
+    font-size: 0.7em;
+    font-weight: 700;
+    color: #366afe;
+    padding:0.5rem;
+    display: inline-block;
+	cursor: pointer;
+}
+.inputfile:focus + label {outline: 1px dotted #000; outline: -webkit-focus-ring-color auto 5px;}
 </style>
 <meta charset="UTF-8">
 <title>COPANG</title>
@@ -44,8 +47,8 @@ label.fileupload{display:block;
 				<ul class=titleandfile>
 					<li><input type="text" placeholder="글 제목" name="title"
 						required="required"></li>
-					<li><label for="첨부파일" class="fileupload">첨부파일</label> <input type="file"
-						name="file"></li>
+					<li><input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple/>
+						<label for="file">파일 선택</label></li>
 				</ul>
 				<ul>
 					<li><textarea name="content" required="required"></textarea></li>

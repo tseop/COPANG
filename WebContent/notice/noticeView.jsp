@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=125">
 <script type="text/javascript">
 // 	$function(){
 // 		$("#btnList").on("click", function(){
