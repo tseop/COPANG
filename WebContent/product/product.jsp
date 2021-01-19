@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/product.css">
 <meta charset="UTF-8">
-<title>Travel</title>
+<title>COPANG</title>
 </head>
 <body>
 	<div class="wrap">
@@ -103,28 +103,22 @@
 					</tr>
 					<%
 					ArrayList<ProductDTO> productList = (ArrayList<ProductDTO>) request.getAttribute("productList");
-						for (int i = 0; i < productList.size() - 1; i++) {
-						ProductDTO productDTO = productList.get(i);
 					%>
-					<%-- <c:forEach items="${productList }" var="product"> --%>
+					<c:forEach items="${productList }" var="product">
 						<tr>
-							<td class="num"><%=productDTO.getProNo()%></td>
-							<td><%=productDTO.getProName() %></td>
-							<td style="text-align: right"><%=productDTO.getProCost() %></td>
-							<td style="text-align: right"><%=productDTO.getProPrice() %></td>
-							<td><%=productDTO.getProFirstNal() %></td>
-							<td><%=productDTO.getProLastNal() %></td>
-							<td style="text-align: right"><%=productDTO.getProStock()%></td>
-							<td><%=productDTO.getCusName() %></td>
-							<td style="text-align: right"><%=productDTO.getProStoring() %></td>
+							<td class="num">${product.proNo}</td>
+							<td>${product.proName}</td>
+							<td style="text-align: right">${product.proPrice}</td>
+							<td style="text-align: right">${product.proCost}</td>
+							<td>${product.proFirstNal}</td>
+							<td>${product.proLastNal}</td>
+							<td style="text-align: right">${product.proStock}</td>
+							<td>${product.cusName}</td>
+							<td style="text-align: right">${product.proStoring}</td>
 							<td>빈칸</td>
-							<td><a href="productDelete.pd?proNo=<%=productDTO.getProNo()%>">삭제</a>
-							&nbsp;&nbsp;
-							<a href="index.jsp?page=product/productUpdateConfirm?proNo=<%=productDTO.getProNo()%>">수정</a></td>
-					<%-- </c:forEach> --%>
-					<%
-						}
-					%>
+							<td><a href="productDelete.pd?proNo=${product.proNo}">삭제</a>
+							&nbsp;&nbsp;<a href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm">수정</a></td>
+					</c:forEach>
 				</table>
 				<input type="button" id="moveMain" value="메인페이지"
 					onclick='location.href="index.jsp"'>
