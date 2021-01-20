@@ -179,7 +179,7 @@ public class ProductDAO {
 	}
 	
 	public ProductDTO productUpdateConfirm(int proNo)throws SQLException{
-		sql = "SELECT P.PRO_NO, P.PRO_NAME, FORMAT(P.PRO_COST, 0) AS PRO_COST, FORMAT(P.PRO_PRICE, 0) AS PRO_PRICE, P.PRO_FIRST_DATE, P.PRO_LAST_DATE, FORMAT(P.PRO_STOCK, 0) AS PRO_STOCK ,C.CUS_NAME, FORMAT(P.PRO_STORING ,0) AS PRO_STORING FROM PRODUCT P LEFT JOIN CUSTOMER C ON P.CUS_NO=C.CUS_NO WHERE P.PRO_NO=?";
+		sql = "SELECT P.PRO_NO, P.PRO_NAME, P.PRO_COST, P.PRO_PRICE, P.PRO_FIRST_DATE, P.PRO_LAST_DATE, P.PRO_STOCK ,C.CUS_NAME, P.PRO_STORING FROM PRODUCT P LEFT JOIN CUSTOMER C ON P.CUS_NO=C.CUS_NO WHERE P.PRO_NO=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, proNo);
 		rs = pstmt.executeQuery();
@@ -199,18 +199,19 @@ public class ProductDAO {
 		return productDTO;
 	}
 
-	public void proUpdate(ProductDTO productDTO, int proNo) throws SQLException {
-		sql = "UPDATE PRODUCT SET PRO_NAME=?,PRO_STORING=?,PRO_COST=?,PRO_PRICE=?,PRO_FIRST_DATE=?,PRO_LAST_DATE=?,PRO_STOCK=? WHERE PRO_NO=?";
+	public int proUpdate(ProductDTO productDTO, int proNo) throws SQLException {
+		sql = "UPDATE PRODUCT SET PRO_NAME=?,PRO_STORING=?,PRO_COST=?,PRO_PRICE=?,PRO_LAST_DATE=?,PRO_STOCK=? WHERE PRO_NO=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, productDTO.getProName());
 		pstmt.setString(2, productDTO.getProStoring());
 		pstmt.setString(3, productDTO.getProCost());
 		pstmt.setString(4, productDTO.getProPrice());
-		pstmt.setString(5, productDTO.getProFirstNal());
-		pstmt.setString(6, productDTO.getProLastNal());
-		pstmt.setString(7, productDTO.getProStock());
-		pstmt.setInt(8, proNo);
-		pstmt.executeUpdate();
+		pstmt.setString(5, productDTO.getProLastNal());
+		pstmt.setString(6, productDTO.getProStock());
+		pstmt.setInt(7, proNo);
+		cnt = pstmt.executeUpdate();
+		
+		return cnt;
 	}
 
 	public ArrayList<CustomerDTO> customerSearch(String searchCusName) throws SQLException {

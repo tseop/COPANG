@@ -149,17 +149,19 @@ public class ProductServlet extends HttpServlet {
 		else if (command.equals("/productUpdate.pd")) {
 			int proNo = Integer.parseInt(request.getParameter("proNo"));
 			productDTO.setProName(request.getParameter("proName"));
-			productDTO.setCusName(request.getParameter("cusName"));
 			productDTO.setProStoring(request.getParameter("proStoring"));
 			productDTO.setProCost(request.getParameter("proCost"));
 			productDTO.setProPrice(request.getParameter("proPrice"));
-			productDTO.setProFirstNal(request.getParameter("proFirstNal"));
 			productDTO.setProLastNal(request.getParameter("proLastNal"));
 			productDTO.setProStock(request.getParameter("proStock"));
 			try {
-				productDAO.proUpdate(productDTO,proNo);
+				cnt = productDAO.proUpdate(productDTO,proNo);
 //				productDAO.cusNameUpdate(productDTO,cusName);
-				response.sendRedirect("productList.pd");
+//				response.sendRedirect("productList.pd");
+				dis = request.getRequestDispatcher("productList.pd");
+				request.setAttribute("productDTO", productDTO);
+				dis.forward(request, response);
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
