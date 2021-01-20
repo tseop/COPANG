@@ -98,7 +98,7 @@
 								<option value="1" selected="selected">물류</option>
 							</select>
 							<%
-								} else if (empDTO.getDeptNo() == 3) {
+								} else if (empDTO.getDeptNo() == 2) {
 							%>
 							<select name="dept_name" class="select_box">
 								<option value="2" selected="selected">경영지원</option>
