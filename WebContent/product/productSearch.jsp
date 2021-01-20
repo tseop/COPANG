@@ -57,7 +57,7 @@
 <body>
 <div class="wrap">
 	<%
-		String productSearch = request.getParameter("proSearchName");
+		/* String productSearch = request.getParameter("proSearchName"); */
 		ArrayList<ProductDTO> productSearchList = (ArrayList<ProductDTO>) request.getAttribute("productSearchList");
 		if (productSearchList.size() == 0) {
 	%>
@@ -99,6 +99,7 @@
 			}
 			%>
 		</table>
+		<br><br>
 		<input type="submit" value="다시검색하기" onclick='history.go(-1)'>
 	</div>
 	</div>

@@ -37,7 +37,7 @@ public class ProductServlet extends HttpServlet {
 	private int cnt;
 	private ResultSet rs;
 	private RequestDispatcher dis;
-	private String searchProName, searchCusName;
+	private String searchData, searchCusName;
 	private ArrayList<ProductDTO> productSearchList;
 	private ArrayList<CustomerDTO> customerSearchList;
 	public ProductServlet() {
@@ -108,24 +108,14 @@ public class ProductServlet extends HttpServlet {
 				e.printStackTrace();
 			} 
 		}
+		
 		else if (command.equals("/productSearch.pd")) {
-			 searchProName = request.getParameter("searchProName");
+			searchData = request.getParameter("searchData");
+			 String colum=request.getParameter("colum");
 	          try {
-	        	 productSearchList = productDAO.productSearch(searchProName);
+	        	 productSearchList = productDAO.productSearch(searchData, colum);
 	             dis = request.getRequestDispatcher("index.jsp?page=product/productSearch");
 	             request.setAttribute("productSearchList", productSearchList);
-	             dis.forward(request, response);
-	          } catch (SQLException e) {
-	             e.printStackTrace();
-	          }
-	       }//검색
-		
-		else if (command.equals("/customerSearch.pd")) {
-	    	  searchCusName = request.getParameter("searchCusName");
-	          try {
-	        	 customerSearchList = productDAO.customerSearch(searchCusName);
-	             dis = request.getRequestDispatcher("product/customerSearch.jsp");
-	             request.setAttribute("customerSearchList", customerSearchList);
 	             dis.forward(request, response);
 	          } catch (SQLException e) {
 	             e.printStackTrace();
@@ -188,6 +178,41 @@ public class ProductServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 	      }
+
+		else if (command.equals("/customerSearch.pd")) {
+	          
+	    	  searchCusName = request.getParameter("searchCusName");
+	          try {
+	        	 customerSearchList = productDAO.customerSearch(searchCusName);
+	             dis = request.getRequestDispatcher("product/customerSearch.jsp");
+	             request.setAttribute("customerSearchList", customerSearchList);
+	             dis.forward(request, response);
+	          } catch (SQLException e) {
+	             e.printStackTrace();
+	          }
+//	          
+	          int curPage = 1;//기본페이지
+	          if(request.getParameter("curPage")!=null){
+	             curPage = Integer.parseInt(request.getParameter("curPage"));            
+	          }         
+	          customer.PageTo customerList = customerDAO.page(curPage);
+	          dis = request.getRequestDispatcher("product/customerSearch.jsp");
+	          request.setAttribute("page", customerList);
+	          request.setAttribute("list", customerList.getList());
+	          dis.forward(request, response);
+//
+//			  int curPage = 1;//기본페이지
+//	          if(request.getParameter("curPage")!=null){
+//	             curPage = Integer.parseInt(request.getParameter("curPage"));            
+//	          }         
+//	          PageTo customerList = productDAO.page1(curPage);
+//	          dis = request.getRequestDispatcher("product/customerSearchForm.jsp");
+//	          request.setAttribute("page1", customerList);
+//	          request.setAttribute("list1", customerList.getList1());
+//	          dis.forward(request, response);
+	          
+	       }//검색
+	
 	}
 }
 
