@@ -32,17 +32,18 @@
 
 		$('#datepicker').datepicker();
 		
-	});
-	//////////////////////////////////////////////////////////////////
-	var strtxt = ("저의 홈페이지를 방문해 주셔서 감사합니다. 사장님 한마디 ㅎㅎ/끝. ");
-	var strlaenge = strtxt.length;
-	window.onload = function() {
-		document.forms[0].display.value = strtxt;
-		strtxt = strtxt.substring(1, strlaenge) + strtxt.substring(0, 1);
-		setTimeout("scroll();", 200);
-		}
+	});	
 </script>
-
+<script type="text/javascript">
+	var space = "                       ";
+	var strtxt = (space + "혼자서 해낼 수 있는 일은 세상에 별로 없습니다. 저희 회사도 여러분 모두의 공로가 들어가 있기에 지속적인 성장을 할 수 있는 점에 감사드리며 회사의 덕은 여러분의 덕임을 잊지 마시고 오늘도 행복한 하루 보내시기 바랍니다.");
+        var strlaenge = strtxt.length;
+        function scroll() {
+            document.forms[0].display.value = strtxt
+            strtxt = strtxt.substring(1, strlaenge) + strtxt.substring(0, 1);
+            setTimeout("scroll();", 200);
+        }
+</script>
 <style type="text/css">
 .wrapper_main{padding: 1rem 2rem 6rem 2rem; min-width: 40rem; width: 80%;margin: auto;}
 .title_more{ display: flex;justify-content: space-between; margin: none;}
@@ -64,7 +65,7 @@
 </style>
 
 </head>
-<body>
+<body onload="scroll()">
 	<%
 		ResultSet noticeRs = mainDAO.mainNoticeList();
 		ResultSet productRs = mainDAO.mainProductList();
