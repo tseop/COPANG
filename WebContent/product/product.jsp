@@ -19,6 +19,7 @@
 		var option = "width = 1000, height = 600, top = 100, left = 200, location = no"
 		window.open(url, name, option);
 	}
+	
 </script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/product.css?v=45">
@@ -27,7 +28,6 @@
 </head>
 <body>
 	<div class="wrap">
-
 		<form action="productRegister.pd" method="get">
 			<div class="title_area">
 				<a><img src="images/table.svg"> 제품 등록</a> 
@@ -89,9 +89,9 @@
 								<option value="제품명" selected="selected">제품명</option>
 								<option value="거래처명">거래처명</option>
 						</select></li>
-						<li class="search_box"><input type="text" placeholder="상품 이름"
-							name="searchData" autofocus="autofocus" required="required">
-							<input type="submit" value="검색"></li>
+						<li class="search_box">
+						<input type="text" placeholder="검색어를 입력해주세요" name="searchData" autofocus="autofocus" required="required">
+						<input type="submit" value="검색"></li>
 					</ul>
 				</div>
 			</div>
@@ -103,11 +103,11 @@
 					<th style="width: 7%">제품명</th>
 					<th style="width: 5%">원가</th>
 					<th style="width: 5%">소비자판매가</th>
-					<th style="width: 5%">첫 입고일</th>
-					<th style="width: 5%">마지막입고일</th>
-					<th style="width: 5%">재고</th>
 					<th style="width: 7%">거래처명</th>
 					<th style="width: 5%">입고수량</th>
+					<th style="width: 5%">재고</th>
+					<th style="width: 5%">첫 입고일</th>
+					<th style="width: 5%">마지막입고일</th>
 					<%
 						
 						if (!(empRank == 1 && deptNo == 2 || empRank == 1 && deptNo == 3 || empRank == 2 && deptNo == 3)) { //버튼 세션값에 따라 나타내는거
@@ -122,13 +122,13 @@
 					<tr>
 						<td class="num">${product.proNo}</td>
 						<td>${product.proName}</td>
-						<td style="text-align: right">${product.proPrice} 원</td>
 						<td style="text-align: right">${product.proCost} 원</td>
-						<td>${product.proFirstNal}</td>
-						<td>${product.proLastNal}</td>
-						<td id="proStockvalue" style="text-align: right">${product.proStock} 개</td>
+						<td style="text-align: right">${product.proPrice} 원</td>
 						<td>${product.cusName}</td>
 						<td style="text-align: right">${product.proStoring} 개</td>
+						<td id="proStockvalue" style="text-align: right">${product.proStock} 개</td>
+						<td>${product.proFirstNal}</td>
+						<td>${product.proLastNal}</td>
 						<%
 						
 						if (!(empRank == 1 && deptNo == 2 || empRank == 1 && deptNo == 3 || empRank == 2 && deptNo == 3)) { //버튼 세션값에 따라 나타내는거
@@ -144,12 +144,18 @@
 							href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm"
 							id="update" style="color: #366afe;">수정</a> <a
 							href="productDelete.pd?proNo=${product.proNo}" id="remove"
-							style="color: #D71427;">삭제</a>
+							style="color: #D71427;" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
 						</td>
 						<%
 						}
 						%>
 				</c:forEach>
+				<tfoot style="background-color:white;">
+					<tr>
+						<td colspan="5" style="border: 1px solid white; padding-top: 2rem; background-color:white; font-size: 0.7rem;">
+							<jsp:include page="page.jsp" flush="true" /></td>
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 	</div>

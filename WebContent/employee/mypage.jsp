@@ -13,7 +13,7 @@
 		String dept_name = null;
 		String rank = null;
 		if (empDTO.getDeptNo() == 1) {
-			dept_name = "물류팀";
+			dept_name = "물류";
 		} else if (empDTO.getDeptNo() == 3) {
 			dept_name = "인사관리";
 		} else if (empDTO.getDeptNo() == 2) {
@@ -24,7 +24,7 @@
 		}
 		
 		if(empDTO.getEmpRank() == 1){
-			rank = "일반사원";
+			rank = "사원";
 		}
 		else if(empDTO.getEmpRank() == 2){
 			rank = "팀장";
@@ -46,7 +46,7 @@
 					<th width="15%">전화번호</th>
 					<th width="20%">주소</th>
 					<th width="8%">직급</th>
-					<th width="8%">부서이름</th>
+					<th width="8%">부서</th>
 				</tr>
 			
 				<tr>

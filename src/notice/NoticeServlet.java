@@ -92,6 +92,7 @@ public class NoticeServlet extends HttpServlet {
 				noticeDTO.setFileName(fileName);
 			} catch (Exception e1) {
 				e1.printStackTrace();
+				noticeDTO.setFileName(null);
 			}
 			
 			try {

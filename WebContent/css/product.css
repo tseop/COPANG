@@ -155,6 +155,7 @@ select {
 .wrap a{font-size: 1rem; font-weight: 700;padding: 5px;}
 .title_area{display: flex;justify-content: space-between; line-height: 30px; font-size: 1rem;}
 .register, .list{margin: 1rem 0;}
+.title_area input[type=text]{width: 50px;}
 .title_area input[type=submit]{border: none;background: #366afe; color: white; padding: 0.5rem 1rem; font-size: 0.7rem; font-weight: 700;}
 .wrap table td a{text-decoration: none; padding: 0 3px;}
 .wrap table td a:hover {text-decoration: underline;}

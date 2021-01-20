@@ -13,7 +13,7 @@
         if(  curPage == i ){
           out.print( "<strong><font color='#0074E9' style='font-size: 1.1rem;'>"+i+"</font></strong>&nbsp;" );            
         }else{
-         out.print( "<a href='customerList.cu?curPage="+i+"'>"+i+"</a>&nbsp;" );
+         out.print( "<a href='productList.pd?curPage="+i+"'>"+i+"</a>&nbsp;" );
         }//end if
       }
 %>
