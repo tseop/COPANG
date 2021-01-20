@@ -2,7 +2,6 @@
 .wrap {
 	padding: 2rem;
 	font-size: 1.1rem;
-	min-width: 50rem;
 	margin: 0 2rem 2rem 2rem;
 }
 
@@ -69,7 +68,7 @@ input[type="button"] {
 	font-weight: 200px;
 	width: 100px;
 	padding: 10px;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .register td {
@@ -129,9 +128,9 @@ input[type="button"] {
 	color: black;
 	padding: 0px;
 	font-size: 12px; 
-	
+	margin-top: 3px;
 }
-
+.list input[type=submit]:hover {background: #DEDEDE;}
 .list input[type=number]{width: 50% }
 
 select {
@@ -140,7 +139,8 @@ select {
 	float: left; padding : .8em .5em;
 	font-family: inherit;
 	border-radius: 0px;
-	background: url('../images/arrow.jpeg') no-repeat 95% 50%;
+	background: url('../images/arrow.jpeg') no-repeat 100% 50%;
+	background-size: 30px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -151,14 +151,16 @@ select {
 
 #search{border: 1px solid black; background: #DEDEDE; color: black;}
 #remove, #update{font-size: 12px;}
+#remove:hover, #update:hover{text-decoration: underline;}
 .wrap .box{margin: 1rem 0;}
 .wrap a{font-size: 1rem; font-weight: 700;padding: 5px;}
 .title_area{display: flex;justify-content: space-between; line-height: 30px; font-size: 1rem;}
 .register, .list{margin: 1rem 0;}
-.list a{font-size: 0.8rem; font-weight: 500;}
-.wrap .title_area input[type=text]{width: 50%;border: 1px solid #ccc;}
-.wrap .title_area input.pro_smb{border: none;background: #366afe; color: white; padding: 0.5rem 1rem; font-size: 0.7rem; font-weight: 700;}
+.list a{font-size: 0.7rem; font-weight: 300;}
+.list a:hover{text-decoration: none;}
+.wrap .title_area input[type=text]{width: 50%;border: 1px solid #ccc;border-left: none;}
+.wrap .title_area input.pro_smb{border: none;background: #366afe; color: white; padding: 0.5rem 1rem; font-size: 0.7rem; font-weight: 500;}
 .wrap table tr td a{text-decoration: none; padding: 0 3px; color:black;}
-.wrap table td a:hover {text-decoration: underline;}
 #go{width: 40px;  background: #DEDEDE; color: black; border: 1px solid black; padding: 0;}
+
 
