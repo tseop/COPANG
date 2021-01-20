@@ -72,7 +72,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%; min-width: 40rem;}
 .board_view .title ul{display: flex;justify-content: space-between;vertical-align: middle;}
 .board_view .title ul li{padding: 0.3rem;font-size: 0.7rem;}
 .board_view .title ul li#title{min-width: 80%;font-size: 0.8rem;}
-.board_view .content{min-height: 20rem;font-size: 0.7rem; padding: 0.5rem;}
+.board_view .content{line-height:1.1rem; overflow: auto; min-height: 20rem;font-size: 0.7rem; padding: 0.5rem;}
 .board_view .date{margin: 1rem;text-align: right;}
 .board_view .date ul{display: flex;font-size: 0.7rem;width: fit-content;margin-left: auto;}
 .board_view .date ul li{padding-left: 1rem;}
@@ -184,7 +184,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%; min-width: 40rem;}
 .display_board input {width: 70%; height: 1rem; padding: 0.5rem; border: 0;background: #f3f3f3;}
 
 @media all and (max-width:960px) {
-.calender {padding-left: 0rem;}
+.calender {padding-left: 0rem;margin-top: 1rem;}
 .ui-datepicker {width: 12rem;}
 .wrapper_main{min-width: 20rem;max-width: 100%;}
 .top {min-width: 20rem;max-width: 100%;}
@@ -193,6 +193,27 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%; min-width: 40rem;}
 header,main,footer{min-width: 20rem;max-width: 100%;}
 .table {min-width: 20rem;max-width: 100%;}
 .table table {min-width: 20rem;max-width: 100%;}
-.first_line {margin: auto;display: block;width: 20rem;max-width: 100%;}
+.first_line {margin: auto;display: unset;width: 20rem;max-width: 100%;}
 .noti_preview table {min-width: 20rem;max-width: 100%;}
 .ui-widget.ui-widget-content {margin: auto;}
+.wrap {min-width: 20rem; padding: 0px;}
+.register table input {width: 50%;}
+.register th, .list th{font-size: 10px;}
+.register td {font-size: 10px;padding: 3px;vertical-align: middle;}
+}
+
+@media all and (max-width:1024px) {
+.wrap {min-width: 30rem; padding: 0px;}
+.register table input {width: 50%;}
+.register th, .list th{font-size: 10px;}
+.register td {font-size: 10px;padding: 3px;vertical-align: middle;}
+.search_area input[type="submit"]{padding: 0.5rem 1.2rem;}
+.search_box{height: -moz-available;}
+select{height: 40px;}
+.board_view .title ul li#title {min-width: 70%;}
+.search_area input.btn{padding: 0.8rem 1.5rem;}
+.write_area {width: 79%;}
+}
+
+
+
