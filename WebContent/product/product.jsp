@@ -22,7 +22,7 @@
 	
 </script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/product.css?v=46">
+<link rel="stylesheet" type="text/css" href="css/product.css?v=47">
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
