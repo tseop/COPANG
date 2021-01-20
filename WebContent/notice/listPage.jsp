@@ -6,6 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>COPANG</title>
+<script type="text/javascript">
+function rank(){
+	<% int rank = (int) session.getAttribute("EMP_RANK"); 
+	 if (rank == 1) { %>
+		 alert("작성 권한이 없습니다."); 
+		 document.location.href="noticeList.no";
+	 <% } else { %>
+	 	document.laocation.href="noticeWrite.jsp";
+	<% } %>
+ }
+</script>
 </head>
 <body>
 	<div class="customer">
@@ -21,14 +32,14 @@
 				</form>
 				<hr>
 				<table>
-				<thead>
-					<tr>
-						<th width="10%">번호</th>
-						<th width="50%">제목</th>
-						<th width="20%">작성자</th>
-						<th width="20%">날짜</th>
-					</tr>
-				</thead>
+					<thead>
+						<tr>
+							<th width="10%">번호</th>
+							<th width="50%">제목</th>
+							<th width="20%">작성자</th>
+							<th width="20%">날짜</th>
+						</tr>
+					</thead>
 					<c:forEach items="${list}" var="notice">
 						<tr>
 							<td>${notice.notiNo }</td>
@@ -41,19 +52,21 @@
 						</tr>
 					</c:forEach>
 					<tfoot>
-					<tr>
-						<td colspan="7"
-							style="border: 1px solid white; padding-top: 2rem;"><jsp:include
-								page="page.jsp" flush="true" /></td>
-					</tr>
+						<tr>
+							<td colspan="7"
+								style="border: 1px solid white; padding-top: 2rem;"><jsp:include
+									page="page.jsp" flush="true" /></td>
+						</tr>
 					</tfoot>
 				</table>
 				<br>
 				<div></div>
 				<div class="search_area">
 					<ul>
+						
 						<li><input type="button" value="게시글쓰기"
-							onClick="location.href='index.jsp?page=notice/noticeWrite'"></li>
+							 onClick="rank()"></li>
+						
 					</ul>
 				</div>
 			</div>
