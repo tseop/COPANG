@@ -137,7 +137,7 @@ public class ProductDAO {
 
 	public ArrayList<ProductDTO> productSearch(String searchData, String colum) throws SQLException {
 		if (colum.equals("제품명")) {
-			sql = "select * from PRODUCT where PRO_NAME=?";
+			sql = "SELECT P.PRO_NO, P.PRO_NAME, P.PRO_COST, P.PRO_PRICE, DATE_FORMAT(P.PRO_FIRST_DATE, '%m/%d') AS PRO_FIRST_DATE, DATE_FORMAT(P.PRO_LAST_DATE, '%m/%d') AS PRO_LAST_DATE, P.PRO_STOCK, C.CUS_NAME, P.PRO_STORING FROM PRODUCT P LEFT JOIN CUSTOMER C ON P.CUS_NO=C.CUS_NO WHERE P.PRO_NAME=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchData);
 			rs = pstmt.executeQuery();
@@ -151,7 +151,7 @@ public class ProductDAO {
 				productDTO.setProFirstNal(rs.getString("PRO_FIRST_DATE"));
 				productDTO.setProLastNal(rs.getString("PRO_LAST_DATE"));
 				productDTO.setProStock(Integer.parseInt(rs.getString("PRO_STOCK")));
-				productDTO.setCusNo(Integer.parseInt(rs.getString("CUS_NO")));
+				productDTO.setCusName(rs.getString("CUS_NAME"));
 				productDTO.setProStoring(Integer.parseInt(rs.getString("PRO_STORING")));
 				productSearchList.add(productDTO);
 			}
