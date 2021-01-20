@@ -137,8 +137,10 @@ public class NoticeServlet extends HttpServlet {
 
 		// 게시글 삭제
 		else if (command.equals("/noticeDelete.no")) {
+			out.print(123);
 			String no1 = request.getParameter("no");
 			int no = Integer.parseInt(no1);
+			out.print(no);
 			try {
 				cnt = noticeDAO.noticeDelete(no);
 				response.sendRedirect("noticeList.no");

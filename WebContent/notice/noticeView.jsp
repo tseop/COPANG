@@ -10,7 +10,17 @@
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css?v=125">
+<script type="text/javascript">
+	function del() {
 
+		if (confirm("정말로 파일을 삭제할건가요?") == true) {
+			document.update.action = "noticeDelete.no";
+			document.update.submit();
+		} else {
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="customer">
@@ -23,6 +33,8 @@
 			%>
 			<h2>공지사항</h2>
 			<hr>
+			<form name = "update" action = "noticeUpdateSearch.no" method="post"> 
+			<input type="hidden" name="no" value="<%=noticeDTO.getNotiNo()%>">
 			<table>
 				<thead>
 					<tr style="height: 10%;">
@@ -61,7 +73,7 @@
 					</tr>
 				</thead>
 			</table>
-
+			
 			<br> <br> <br>
 			<div class="search_area">
 				<ul style="justify-content: flex-end;">
@@ -72,22 +84,19 @@
 						String deptName = null;
 						int EMP_DEPT = (int) session.getAttribute("EMP_DEPT");
 
-					
 						if (EMP_RANK == 1 && EMP_DEPT == 3 || EMP_RANK == 2 || EMP_RANK == 3) { //버튼 세션값에 따라 나타내는거
 					%>
-					<li><input type="button" value="수정"
-						onClick="location.href='noticeUpdateSearch.no?no=<%=noticeDTO.getNotiNo()%>'"
+					<li><input type="submit" value="수정"
 						class="btn"></li>&emsp;&emsp;
 
 					<li><input style="background: #D71427" type="button"
-						value="삭제"
-						onClick="location.href='noticeDelete.no?no=<%=noticeDTO.getNotiNo()%>'"
-						class="btn"></li>
+						value="삭제" onClick="del()"></li>
 					<%
 						}
 					%>
 				</ul>
 			</div>
+			</form> 
 		</div>
 	</div>
 </body>
