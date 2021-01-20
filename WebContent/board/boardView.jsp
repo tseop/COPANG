@@ -10,6 +10,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script type="text/javascript">
+
+function button_event(){
+	if (confirm("정말 삭제하시겠습니까??") == true){
+   		document.update.action = 'boardDelete.bo';
+   		document.update.submit();
+	}else{
+	    return false;
+	}
+}
+
+</script>
 <meta charset="UTF-8">
 <title>KHJSP</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
@@ -24,6 +37,8 @@
 			%>
 			<h1>익명 게시판</h1>
 			<hr>
+			<form action="" method="post" name ="update">
+			<input type="hidden" name="no" value=<%=boardDTO.getBoardNo()%>>
 			<div class="title">
 				<ul>
 					<li>&emsp;<%=boardDTO.getBoardNo()%></li>
@@ -68,14 +83,14 @@
 					%>
 					<li><input style="background: #D71427" type="button"
 						value="삭제하기"
-						onClick="location.href='boardDelete.bo?no=<%=boardDTO.getBoardNo()%>'"
+						onClick="button_event()"
 						class="btn"></li>
-
 					<%
 						}
 					%>
 				</ul>
 			</div>
+			</form>
 		</div>
 	</div>
 </body>
