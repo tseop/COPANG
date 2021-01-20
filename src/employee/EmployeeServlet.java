@@ -142,10 +142,11 @@ public class EmployeeServlet extends HttpServlet {
 		} 
 		
 		else if (command.equals("/empDelete1.ep")) {
-			out.print("<script>confirm('정말 삭제하시겠습니까?');</script>");
 			int empNo = Integer.parseInt(request.getParameter("empNo"));
+			out.print(empNo);
 			try {
-				empDAO.empDelete(empNo);
+				cnt = empDAO.empDelete(empNo);
+				out.print(empNo);
 				response.sendRedirect("empList.ep");
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -231,7 +232,15 @@ public class EmployeeServlet extends HttpServlet {
 		else if (command.equals("/empView.ep")) {
 			int empNo = Integer.parseInt(request.getParameter("empNo"));
 			try {
-				empDTO = empDAO.empView(empNo);
+				rs = empDAO.empView(empNo);
+				while(rs.next()) {
+					empDTO.setEmpNo(rs.getInt("EMP_NO"));
+					empDTO.setEmpName(rs.getString("EMP_NAME"));
+					empDTO.setEmpTel(rs.getString("EMP_TEL"));
+					empDTO.setEmpAddr(rs.getString("EMP_ADDR"));
+					empDTO.setDeptNo(rs.getInt("DEPT_NO"));
+					empDTO.setEmpRank(rs.getInt("EMP_RANK"));
+				}
 				RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=employee/empView");
 				request.setAttribute("empDTO", empDTO);
 				dis.forward(request, response);
@@ -270,7 +279,44 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/update.ep")) {
+		}
+		else if(command.equals("/updateConfirm1.ep")) {
+			out.print("123");
+			empDTO = (EmployeeDTO) session.getAttribute("updateDTO");
+			out.print("456");
+			int empNoUp = empDTO.getEmpNo();
+			//int empNoUp = Integer.parseInt(request.getParameter("empNo"));
+			out.print("123");
+			String pwUp = request.getParameter("pw");
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
+			try {
+				rs = empDAO.pwFind(empNo);
+				if(rs.next()) {
+					if(pwUp.equals(rs.getString("EMP_PW"))){
+						rs = empDAO.empView(empNoUp);
+						while(rs.next()) {
+							empDTO.setEmpNo(rs.getInt("EMP_NO"));
+							empDTO.setEmpName(rs.getString("EMP_NAME"));
+							empDTO.setEmpTel(rs.getString("EMP_TEL"));
+							empDTO.setEmpAddr(rs.getString("EMP_ADDR"));
+							empDTO.setDeptNo(rs.getInt("DEPT_NO"));
+							empDTO.setEmpRank(rs.getInt("EMP_RANK"));
+							empDTO.setEmpSecurity(rs.getString("EMP_SECURITY"));
+							empDTO.setEmpRank(rs.getInt("EMP_RANK"));
+						}
+						RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=employee/updateForm1");
+						request.setAttribute("empDTO", empDTO);
+						dis.forward(request, response);
+						
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		else if (command.equals("/update.ep")) {
 			int empNo = (int) Login.session.getAttribute("EMP_NO");
 			String c1 = request.getParameter("c1");
 			String c2 = request.getParameter("c2");
@@ -290,6 +336,28 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		else if(command.equals("/update1.ep")) {
+			int empNo = Integer.parseInt(request.getParameter("no"));
+			String c1 = request.getParameter("c1");
+			String c2 = request.getParameter("c2");
+			String c = c1.concat("-");
+			c = c.concat(c2);
+			empDTO.setDeptNo(Integer.parseInt((request.getParameter("dep"))));
+			empDTO.setEmpAddr(request.getParameter("addr"));
+			empDTO.setEmpName(request.getParameter("name"));
+			empDTO.setEmpNo(empNo);
+			empDTO.setEmpPw(request.getParameter("pw"));
+			empDTO.setEmpSecurity(c);
+			empDTO.setEmpTel(request.getParameter("tel"));
+			try {
+				empDAO.empUpdate(empDTO, empNo);
+				response.sendRedirect("empList.ep");
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 		}
 	}
 }

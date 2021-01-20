@@ -64,11 +64,12 @@ public class EmployeeDAO {
 		return rs;
 	}
 
-	public void empDelete(int empNo) throws SQLException {
+	public int empDelete(int empNo) throws SQLException {
 		sql = "delete from EMPLOYEE where EMP_NO=?";
 		pstmt=conn.prepareStatement(sql);
 		pstmt.setInt(1, empNo);
 		pstmt.executeUpdate();
+		return cnt;
 	}
 	
 	public ArrayList<EmployeeDTO> empList() throws SQLException{
@@ -162,20 +163,13 @@ public class EmployeeDAO {
 		rs = pstmt.executeQuery();
 		return rs;
 	}
-	public EmployeeDTO empView(int empNo) throws SQLException {
-		sql = "SELECT EMP_NO, EMP_NAME, EMP_TEL, EMP_ADDR, DEPT_NO, EMP_RANK FROM EMPLOYEE WHERE EMP_NO = ?";
+	public ResultSet empView(int empNo) throws SQLException {
+		sql = "SELECT * FROM EMPLOYEE WHERE EMP_NO = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, empNo);
 		rs = pstmt.executeQuery();
-		while(rs.next()) {
-			empDTO.setEmpNo(rs.getInt("EMP_NO"));
-			empDTO.setEmpName(rs.getString("EMP_NAME"));
-			empDTO.setEmpTel(rs.getString("EMP_TEL"));
-			empDTO.setEmpAddr(rs.getString("EMP_ADDR"));
-			empDTO.setDeptNo(rs.getInt("DEPT_NO"));
-			empDTO.setEmpRank(rs.getInt("EMP_RANK"));
-		}
-		return empDTO;
+		
+		return rs;
 	}
 	public ArrayList<EmployeeDTO> empSearch(String searchEmpName) throws SQLException{
 		sql = "SELECT * FROM EMPLOYEE WHERE EMP_NAME LIKE ?";

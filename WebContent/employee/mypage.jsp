@@ -14,13 +14,13 @@
 		String rank = null;
 		if (empDTO.getDeptNo() == 1) {
 			dept_name = "물류팀";
-		} else if (empDTO.getDeptNo() == 2) {
-			dept_name = "인사관리";
 		} else if (empDTO.getDeptNo() == 3) {
+			dept_name = "인사관리";
+		} else if (empDTO.getDeptNo() == 2) {
 			dept_name = "경영지원";
 		}
 		else {
-			dept_name = "사장";
+			dept_name = "대표";
 		}
 		
 		if(empDTO.getEmpRank() == 1){
@@ -30,7 +30,7 @@
 			rank = "팀장";
 		}
 		else if(empDTO.getEmpRank() == 3){
-			rank = "사장";
+			rank = "대표";
 		}
 		
 	%>
