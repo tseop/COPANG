@@ -45,18 +45,17 @@
 
 <style type="text/css">
 .wrapper_main{padding: 1rem 2rem 6rem 2rem; min-width: 40rem; width: 80%;margin: auto;}
-.wrapper_main .noti_preview .link{display: flex;justify-content: space-between; margin: none;}
-.wrapper_main .noti_preview .link p{margin-bottom: 0.5rem; font-weight:700; color:#366afe; padding-left: 1rem;}
-.wrapper_main .noti_preview .link a{cursor:pointer; text-decoration: none; font-size: 0.7rem; color:#366afe;}
-.wrapper_main .noti_preview .link a:hover{text-decoration: underline; cursor:pointer;}
+.title_more{ display: flex;justify-content: space-between; margin: none;}
+.title_more p{margin-bottom: 0.5rem; font-weight:700; color:#366afe; padding-left: 1rem;}
+.title_more a{padding-right:0.5rem; cursor:pointer; text-decoration: none; font-size: 0.7rem; color:#366afe;}
 .first_line {display: flex; justify-content: center;width: 100%}
 .noti_preview {width: 100%;margin: auto;}
 .noti_preview table{width: 100%;min-width: 22rem;margin: auto;}
-.noti_preview table tbody tr:hover{background: #e8e8e8;}
+/* .noti_preview table tbody tr:hover{background: #e8e8e8;} */
 .noti_preview table tr{border-bottom: 1px solid #ddd;}
 .noti_preview table tr th{vertical-align: middle; background-color:#f3f3f3; color: black; font-size:0.7rem; height: 1.5rem; padding: 0.5rem; border-bottom:1px solid #ddd;}
 .noti_preview table tr td{text-align: center;padding: 0.5rem; font-size: 0.7rem;}
-.calender { padding-left: 5rem; width: fit-content; margin: auto;}
+.calender { padding-left: 5rem; padding-top:1.5rem; width: fit-content; margin: auto;}
 .ui-datepicker{font-size: 16px;}
 .ui-datepicker select.ui-datepicker-month{ width:30%; font-size: 11px; }
 .ui-datepicker select.ui-datepicker-year{ width:40%; font-size: 11px; }
@@ -73,8 +72,8 @@
 <div class="wrapper_main">
 <div class="first_line">
 	<div class="noti_preview">
-	<div class="link">
-	<p>공지사항</p><a href="noticeList.no">더 보기</a></div>
+	<div class="title_more">
+	<p>공지사항</p><a href="noticeList.no">더 보기 ></a></div>
 		<table>
 			<thead>
 				<tr>
@@ -105,8 +104,10 @@
 <div class="display_board">
     <form><p><input type="text" name="display" readonly="readonly"></p></form>
 </div>
-<h1>입고현황</h1>
+
 <div class="noti_preview">
+	<div class="title_more">
+	<p>입고현황</p><a href="productList.pd">재고관리 ></a></div>
 	<table>
 		<thead>
 			<tr>
