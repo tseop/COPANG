@@ -123,8 +123,16 @@ select {
 
 		<form action="productRegister.pd" method="get">
 			<div class="title_area">
-				<a><img src="images/table.svg"> 제품 등록</a> <input type="submit"
-					value="등록하기">
+				<a><img src="images/table.svg"> 제품 등록</a> 
+			<%
+						int empRank = (int) session.getAttribute("EMP_RANK");
+						int deptNo = (int) session.getAttribute("DEPT_NO");
+						if (!(empRank == 1 && deptNo == 2 || empRank == 1 && deptNo == 3 || empRank == 2 && deptNo == 3)) { //버튼 세션값에 따라 나타내는거
+					%>
+				<input type="submit" value="등록하기">
+				<%
+						}
+					%>
 			</div>
 			<div class="register">
 				<table border="1">
@@ -193,8 +201,15 @@ select {
 					<th style="width: 5%">재고</th>
 					<th style="width: 7%">거래처명</th>
 					<th style="width: 5%">입고수량</th>
+					<%
+						
+						if (!(empRank == 1 && deptNo == 2 || empRank == 1 && deptNo == 3 || empRank == 2 && deptNo == 3)) { //버튼 세션값에 따라 나타내는거
+					%>
 					<th style="width: 10%">당일판매량</th>
 					<th style="width: 7%">관리</th>
+					<%
+						}
+					%>
 				</tr>
 				<c:forEach items="${productList }" var="product">
 					<tr>
@@ -207,6 +222,10 @@ select {
 						<td id="proStockvalue" style="text-align: right">${product.proStock} 개</td>
 						<td>${product.cusName}</td>
 						<td style="text-align: right">${product.proStoring} 개</td>
+						<%
+						
+						if (!(empRank == 1 && deptNo == 2 || empRank == 1 && deptNo == 3 || empRank == 2 && deptNo == 3)) { //버튼 세션값에 따라 나타내는거
+					%>
 						<td>
 							<form action="stockUpdate.pd" method="get">
 								<input type="hidden" name="num" value="${product.proNo}" >
@@ -218,7 +237,11 @@ select {
 							href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm"
 							id="update" style="color: blue">수정</a> <a
 							href="productDelete.pd?proNo=${product.proNo}" id="remove"
-							style="color: red">삭제</a></td>
+							style="color: red">삭제</a>
+						</td>
+						<%
+						}
+						%>
 				</c:forEach>
 			</table>
 		</div>
