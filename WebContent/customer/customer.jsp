@@ -52,9 +52,9 @@
 			<div class="search_area">
 				<ul>
 					<%
-						int EMP_RANK = (int) session.getAttribute("EMP_RANK");
-						int EMP_DEPT = (int) session.getAttribute("EMP_DEPT");
-						if (EMP_RANK == 2 && EMP_DEPT == 2 || EMP_RANK == 2 && EMP_DEPT == 1 || EMP_RANK == 4) { //버튼 세션값에 따라 나타내는거
+						int empRank = (int) session.getAttribute("EMP_RANK");
+						int deptNo = (int) session.getAttribute("EMP_DEPT");
+						if (empRank == 2 && deptNo == 2 || empRank == 2 && deptNo == 1 || empRank == 4) { //버튼 세션값에 따라 나타내는거
 					%>
 					<li><input type="button" value="거래처 등록"
 						onClick="location.href='index.jsp?page=customer/customerRegister'"></li>

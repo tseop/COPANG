@@ -51,7 +51,6 @@
 .first_line {display: flex; justify-content: center;width: 100%}
 .noti_preview {width: 100%;margin: auto;}
 .noti_preview table{width: 100%;min-width: 22rem;margin: auto;}
-/* .noti_preview table tbody tr:hover{background: #e8e8e8;} */
 .noti_preview table tr{border-bottom: 1px solid #ddd;}
 .noti_preview table tr th{vertical-align: middle; background-color:#f3f3f3; color: black; font-size:0.7rem; height: 1.5rem; padding: 0.5rem; border-bottom:1px solid #ddd;}
 .noti_preview table tr td{text-align: center;padding: 0.5rem; font-size: 0.7rem;}
