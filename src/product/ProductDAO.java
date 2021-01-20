@@ -219,7 +219,7 @@ public class ProductDAO {
 		productList = new ArrayList<ProductDTO>();
 		while (rs.next()) {
 			productDTO = new ProductDTO();
-			productDTO.setProStock(rs.getString("PRO_STOCT"));
+			productDTO.setProStock(rs.getString("PRO_STOCK"));
 			productList.add(productDTO);
 		}
 		return cnt;
