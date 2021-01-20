@@ -34,7 +34,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%; min-width: 40rem;}
 .table table tr th{padding: 0.7rem;font-size: 0.7rem;color: #0074E9;}
 .table table tr td{border:1px solid #ccc;padding: 0.7rem;font-size: 0.7rem; border-right:none;border-left:none;}
 .search_box{border:1px solid #ccc;width: auto;margin-left: auto;}
-.search_box2{border:1px solid #fff;width: auto;margin-left: auto;}
+.search_box2{display: contents; border:1px solid #fff;width: auto;margin-left: auto;}
 .customer table tbody tr:hover{background: #e8e8e8;}
 
 
