@@ -34,6 +34,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%; min-width: 40rem;}
 .table table tr th{padding: 0.7rem;font-size: 0.7rem;color: #0074E9;}
 .table table tr td{border:1px solid #ccc;padding: 0.7rem;font-size: 0.7rem; border-right:none;border-left:none;}
 .search_box{border:1px solid #ccc;width: auto;margin-left: auto;}
+.search_box2{border:1px solid #fff;width: auto;margin-left: auto;}
 .customer table tbody tr:hover{background: #e8e8e8;}
 
 
@@ -58,8 +59,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%; min-width: 40rem;}
 
 /* board */
 .search_area ul{display: flex; justify-content: space-between;}
-.search_area input[type=button]{border: 0px; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.7rem;}
-.search_area input[type=submit]{border: none; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.7rem;}
+.search_area input[type=button],input[type=submit]{border: 0px; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.7rem;}
 .search_area input[type=button]:hover,input[type=submit]:hover{background: #0a62f2;}
 .search_area input[type=text]{padding: 0.5rem;width: 15rem;border: none;}
 .search_area input.sbm{padding: 0.8rem 1.5rem;}
@@ -207,12 +207,12 @@ header,main,footer{min-width: 20rem;max-width: 100%;}
 .register table input {width: 50%;}
 .register th, .list th{font-size: 10px;}
 .register td {font-size: 10px;padding: 3px;vertical-align: middle;}
-.search_area input[type="submit"]{padding: 0.5rem 1.2rem;}
+.search_area .pro_smb{padding: 0.5rem 1.2rem;}
 .search_box{height: -moz-available;}
 select{height: 40px;}
 .board_view .title ul li#title {min-width: 70%;}
-.search_area input.btn{padding: 0.8rem 1.5rem;}
-.write_area {width: 79%;}
+.write_area {width: 80%;}
+.emp_reg_form #check, #check2 {font-size: 0.6rem;}
 }
 
 

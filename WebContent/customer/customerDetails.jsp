@@ -87,7 +87,7 @@ CustomerDTO customerDTO = (CustomerDTO) request.getAttribute("customerDTO");
 	</thead></table>	
 	<div class="search_area">
 	<ul style="justify-content: center;">
-		<li><input type ="submit" value="수정하기" class="btns"></li>
+		<li><input type ="submit" value="수정하기" class="btn"></li>
 		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
 		<li><input style="background: #D71427" type ="button" value="삭제하기" onclick="button_event()" class="btns"></li>
 	</ul>

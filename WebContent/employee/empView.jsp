@@ -154,7 +154,7 @@
 						%>
 						<li><input type="button" value="삭제하기" onclick="button_event()"style="background: #D71427"></li>
 						<li><input type="button" value="목록으로"	onClick="location.href='empList.ep'"></li>
-						<li><input type ="submit" value="수정하기"></li>
+						<li><input type ="submit" value="수정하기" class="btn"></li>
 						<%
 							} else {
 						%>
