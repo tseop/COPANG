@@ -48,7 +48,9 @@
 							deptName = "경영지원";
 						} else if (empDTO.getDeptNo() == 3) {
 							deptName = "인사관리";
-						} 
+						} else {
+							deptName = "";
+						}
 
 						if (empDTO.getEmpRank() == 1) {
 							empRank = "사원";

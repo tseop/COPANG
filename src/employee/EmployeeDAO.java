@@ -112,7 +112,7 @@ public class EmployeeDAO {
 	      int totalCount = totalCount();
 	      empList = new ArrayList<EmployeeDTO>();
 	      try {
-	         sql = "SELECT * FROM EMPLOYEE";
+	         sql = "SELECT * FROM EMPLOYEE ORDER BY DEPT_NO DESC, EMP_RANK DESC";
 	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	         rs = pstmt.executeQuery();
 	         int perPage = pageTo.getPerPage();//5
