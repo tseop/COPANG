@@ -108,7 +108,9 @@
 		int index = empDTO.getEmpSecurity().indexOf("-");
 		int len = empDTO.getEmpSecurity().length();
 		String c1 = empDTO.getEmpSecurity().substring(0, index);
-		String c2 = empDTO.getEmpSecurity().substring(7, len);
+		String c2 = empDTO.getEmpSecurity().substring(index+1);
+		//999-999
+		//0123456 index = 3 
 		if (empDTO.getDeptNo() == 1) {
 			dept_name = "물류팀";
 		} else if (empDTO.getDeptNo() == 2) {
@@ -125,7 +127,7 @@
 				<div class="select_box_top">
 					<h1>개인 정보수정</h1>
 					<select name="dep" class="select_box">
-						<option value="<%=dept_name%>"><%=dept_name%></option>
+						<option value="<%=empDTO.getDeptNo()%>"><%=dept_name%></option>
 
 					</select>
 				</div>
@@ -168,7 +170,7 @@
 						<tr>
 							<!--수정 불가 -->
 							<th><span class="required_content">*</span><label for="name">이름</label></th>
-							<td><input type="text" size="20" maxlength="10"
+							<td><input type="text" size="20" maxlength="10" value="<%=empDTO.getEmpName()%>"
 								placeholder="<%=empDTO.getEmpName()%>" readonly="readonly">
 								<input type="hidden" name="name"
 								value="<%=empDTO.getEmpName()%>"></td>
@@ -181,7 +183,7 @@
 							<!--수정 불가 -->
 							<th><span class="required_content">*</span><label
 								for="security">주민등록번호</label></th>
-							<td><input type="text" name="c1" placeholder="<%=c1%>"
+							<td><input type="text" name="c1" value="<%=c1 %>" placeholder="<%=c1%>"
 								required="required" size="10" maxlength="6" class="security_no"
 								readonly> - <input type="password" name="c2"
 								value="<%=c2%>" placeholder="*******" required="required"

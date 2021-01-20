@@ -35,7 +35,7 @@
 <hr>
    <form action="boardRegister.bo" method="get" onsubmit="return check()">
       <ul>
-         <li><input type="hidden" name="readcount" value="1"></li>
+         <li><input type="hidden" name="readcount" value="0"></li>
          <li><input type="text" name="title" autofocus="autofocus"
             required="required" placeholder="제목을 입력하세요" size="50"
             mexlength="100"></li>
