@@ -23,8 +23,8 @@
 </head>
 <body>
 
-	<div class="employee">
-		<div class="emp_form">
+	<div class="customer">
+		<div class="reg_form">
 			<%
 				EmployeeDTO empDTO = (EmployeeDTO) request.getAttribute("empDTO");
 				String dept_name = null;
@@ -90,11 +90,11 @@
 				<table>
 					<thead>
 						<tr>
-							<th><span class="required_content">*</span>부서이름</th>
+							<th><span class="required_content">*</span>부서이름</th><td style="width: 16rem;">
 							<%
 								if (empDTO.getDeptNo() == 1) {
 							%>
-							<select name="dept_name">
+							<select name="dept_name" class="select_box">
 								<option value="1" selected="selected">물류팀</option>
 								<option value="2">경영지원</option>
 								<option value="3">인사관리</option>
@@ -102,7 +102,7 @@
 							<%
 								} else if (empDTO.getDeptNo() == 3) {
 							%>
-							<select name="dept_name">
+							<select name="dept_name" class="select_box">
 								<option value="1">물류팀</option>
 								<option value="2" selected="selected">경영지원</option>
 								<option value="3">인사관리</option>
@@ -110,7 +110,7 @@
 							<%
 								} else {
 							%>
-							<select name="dept_name">
+							<select name="dept_name" class="select_box">
 								<option value="1">물류팀</option>
 								<option value="2">경영지원</option>
 								<option value="3" selected="selected">인사관리</option>
@@ -118,25 +118,26 @@
 							<%
 								}
 							%>
+							</td>
 						</tr>
 					</thead>
 				</table>
 				<table>
 					<thead>
 						<tr>
-							<th><span class="required_content">*</span>직급</th>
+							<th><span class="required_content">*</span>직급</th><td style="width: 16rem;">
 							<%
 								if (empDTO.getEmpRank() == 1) {
 							%>
-							<select name="rank">
-								<option value="1" selected="selected">일반사원</option>
+							<select name="rank"class="select_box">
+								<option value="1" selected="selected" >일반사원</option>
 								<option value="2">팀장</option>
 								<option value="3">대표</option>
 							</select>
 							<%
 								} else if (empDTO.getDeptNo() == 2) {
 							%>
-							<select name="rank">
+							<select name="rank" class="select_box">
 								<option value="1">일반사원</option>
 								<option value="2" selected="selected">팀장</option>
 								<option value="3">대표</option>
@@ -144,7 +145,7 @@
 							<%
 								} else {
 							%>
-							<select name="rank">
+							<select name="rank" class="select_box">
 								<option value="1">일반사원</option>
 								<option value="2">팀장</option>
 								<option value="3" selected="selected">대표</option>
@@ -152,6 +153,7 @@
 							<%
 								}
 							%>
+							</td>
 						</tr>
 					</thead>
 				</table>
@@ -162,7 +164,7 @@
 							int EMP_DEPT = (int) session.getAttribute("EMP_DEPT");
 							if (EMP_RANK == 3 || EMP_RANK == 2 || EMP_DEPT == 3) {
 						%>
-						<li><input  type="button" value="삭제하기" onclick="button_event()"></li>
+						<li><input type="button" value="삭제하기" onclick="button_event()"style="background: #D71427"></li>
 						<li><input type="button" value="목록으로"	onClick="location.href='empList.ep'"></li>
 						<li><input type ="submit" value="수정하기"></li>
 						<%
@@ -176,5 +178,6 @@
 			</form>
 		</div>
 	</div>
+	
 </body>
 </html>

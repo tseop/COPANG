@@ -15,15 +15,12 @@ $(function() {
 	 if(empdept==1){
 	     $('.read').attr('readonly', false);
 	     $('.btns').css('display', 'block');
-	     $('.btns').css('padding', '0.8rem 1.5rem');
 	 }else if(emprank==2){
 	     $('.read').attr('readonly', false);
 	     $('.btns').css('display', 'block');
-	     $('.btns').css('padding', '0.8rem 1.5rem');
 	 }else if(emprank==3){
 	     $('.read').attr('readonly', false);
 	     $('.btns').css('display', 'block');
-	     $('.btns').css('padding', '0.8rem 1.5rem');
 	 }  
 })
 
