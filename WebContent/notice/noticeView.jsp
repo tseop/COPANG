@@ -13,7 +13,7 @@
 <script type="text/javascript">
 	function del() {
 
-		if (confirm("정말로 파일을 삭제할건가요?") == true) {
+		if (confirm("정말로 게시글을 삭제하시겠습니까?") == true) {
 			document.update.action = "noticeDelete.no";
 			document.update.submit();
 		} else {
