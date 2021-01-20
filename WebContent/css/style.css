@@ -109,7 +109,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .customer .reg_form h1{padding-left: 3rem;}
 .customer .reg_form input[type=text]{padding: 0.5rem; border: 1px solid #ccc;width: 15rem;}
 .customer .reg_form .search_area ul li{margin:2rem 2rem;}
-.btns{display: none;}
+.customer .reg_form .search_area .btns{display: none;}
 
 /* bottom */
 .footer-content{background:#888; text-align: center; height:9rem; line-height: 1.5rem; width: 100%; margin:auto; color: white; padding-top: 2rem;}

@@ -13,17 +13,17 @@ $(function() {
 	 var empdept = '<%=(int)session.getAttribute("EMP_DEPT")%>';
 	 var emprank = '<%=(int)session.getAttribute("EMP_RANK")%>';
 	 if(empdept==1){
-	     $buttons = $('.read').attr('readonly', false);
-	     $buttons = $('.btns').css('display', 'block');
-	     $buttons = $('.btns').css('padding', '0.8rem 1.5rem');
+	     $('.read').attr('readonly', false);
+	     $('.btns').css('display', 'block');
+	     $('.btns').css('padding', '0.8rem 1.5rem');
 	 }else if(emprank==2){
-	     $buttons = $('.read').attr('readonly', false);
-	     $buttons = $('.btns').css('display', 'block');
-	     $buttons = $('.btns').css('padding', '0.8rem 1.5rem');
+	     $('.read').attr('readonly', false);
+	     $('.btns').css('display', 'block');
+	     $('.btns').css('padding', '0.8rem 1.5rem');
 	 }else if(emprank==3){
-	     $buttons = $('.read').attr('readonly', false);
-	     $buttons = $('.btns').css('display', 'block');
-	     $buttons = $('.btns').css('padding', '0.8rem 1.5rem');
+	     $('.read').attr('readonly', false);
+	     $('.btns').css('display', 'block');
+	     $('.btns').css('padding', '0.8rem 1.5rem');
 	 }  
 })
 
@@ -46,11 +46,11 @@ function button_submit(){
 }
 </script>
 <style>
-
 </style>
 </head>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/style.css?v=5">
 <body>
-
 <div class="customer">
 <div class="reg_form">
 <%
