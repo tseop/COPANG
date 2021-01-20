@@ -50,11 +50,13 @@ function popup() {
 					</tr>
 					<tr>
 						<td><input type="text" name="proName" autofocus="autofocus"
-							value=<%=productDTO.getProName()%> size="10" maxlength="100" required="required"></td>
-						<td><input type="button" id="search" value="검색"
-							onclick='popup()'><input type="text" name="cusName"
+							value='<%=productDTO.getProName()%>' size="10" maxlength="100" required="required"></td>
+						<td>
+<!-- 						<input type="button" id="search" value="검색" -->
+<!-- 							onclick='popup()'> -->
+							<input type="text" name="cusName"
 							style="width: 60%" value=<%=productDTO.getCusName()%> size="10" maxlength="100"
-							required="required"></td>
+							required="required" readonly="readonly"></td>
 						<td><input type="text" name="proStoring" onkeypress="inNumber()" value=<%=productDTO.getProStoring()%>
 							size="10" maxlength="100" required="required"></td>
 						<td><input type="text" name="proCost" onkeypress="inNumber()" value=<%=productDTO.getProCost()%>
@@ -62,11 +64,11 @@ function popup() {
 						<td><input type="text" name="proPrice" onkeypress="inNumber()" value=<%=productDTO.getProPrice()%>
 							size="10" maxlength="100" required="required"></td>
 						<td><input type="date" name="proFirstNal" style="width: 70%"
-							value=<%=productDTO.getProFirstNal()%> size="10" maxlength="100" required="required"></td>
+							value=<%=productDTO.getProFirstNal()%> size="10" maxlength="100" readonly="readonly" required="required"></td>
 						<td><input type="date" name="proLastNal" style="width: 70%"
 							value=<%=productDTO.getProLastNal()%> size="10" maxlength="100"
 							required="required"></td>
-						<td><input type="number" name="proStock" value=<%=productDTO.getProStock()%>
+						<td><input type="text" name="proStock" onkeypress="inNumber()" value=<%=productDTO.getProStock()%>
 							size="10" maxlength="100"></td>
 						<!-- <td><input type="number" name="today" placeholder="당일판매" size="10" maxlength="100"></td> -->
 					</tr>
