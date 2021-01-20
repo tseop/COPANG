@@ -74,7 +74,7 @@ function button_event(){
 			<div class="search_area">
 				<ul>
 					<li><input type="button" value="목록으로"
-						onClick="location.href='boardList.bo'" class="btn"></li>
+						onClick="button_event()" class="btn"></li>
 
 					<%
 						int EMP_RANK = (int) session.getAttribute("EMP_RANK");
