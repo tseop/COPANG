@@ -125,7 +125,7 @@
 				<div class="select_box_top">
 					<h1>개인 정보수정</h1>
 					<select name="dep" class="select_box">
-						<option value="<%=dept_name%>"><%=dept_name%></option>
+						<option value="<%=empDTO.getDeptNo()%>"><%=dept_name%></option>
 
 					</select>
 				</div>
