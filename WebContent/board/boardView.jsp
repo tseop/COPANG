@@ -28,7 +28,7 @@
 				<ul>
 					<li>&emsp;<%=boardDTO.getBoardNo()%></li>
 					<li id="title"><%=boardDTO.getBoardTitle()%></li>
-					<li>조회수 &emsp;<%=boardDTO.getBoardReadcount()%></li>
+					<li>조회수 &emsp;<%=boardDTO.getBoardReadcount()+1%></li>
 				</ul>
 			</div>
 			<hr>
