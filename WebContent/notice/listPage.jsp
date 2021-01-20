@@ -24,7 +24,7 @@ function rank(){
 			deptName = "경영지원";
 		} 
 		
-		if (rank == 1 && dept == 1 || dept == 2) { %>
+		if (rank == 1 && dept == 1 || rank == 1 && dept == 2) { %>
 		 alert("작성 권한이 없습니다."); 
 		return false;
 		
