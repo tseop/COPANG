@@ -37,7 +37,7 @@
 }
 </style>
 <meta charset="UTF-8">
-<title>KHJSP</title>
+<title>COPANG</title>
 </head>
 <body>
 <%

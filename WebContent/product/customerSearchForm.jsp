@@ -1,8 +1,10 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="customer.CustomerDTO"%>
 <%@page import="product.ProductDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="customerDAO" class="customer.CustomerDAO" scope="page" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +44,7 @@
 			</li>
 		</ul>
 	</form> -->
+
 			<div class="customer">
 				<div class="table">
 					<div class="search_area">
@@ -63,16 +66,17 @@
 								<th style="width: 15%;">담당자</th>
 							</tr>
 						</thead>
-						<c:forEach items="${list }" var="customer">
-							<tr>
-								<td class="num">${customer.cusNo}</td>
-								<td><a href='customerDetails.cu?num=${customer.cusNo}'
-									style="color: black; text-decoration: none;"
-									onmouseover="this.style.color='blue'"
-									onmouseout="this.style.color='black'"> ${customer.cusName}</a></td>
-								<td>${customer.cusManager}</td>
-							</tr>
-						</c:forEach>
+			<%
+			ResultSet rs = customerDAO.customerList();
+				while (rs.next()) {
+					CustomerDTO customerDTO = new CustomerDTO();
+					int cusNo = rs.getInt("CUS_NO");
+					String cusName = rs.getString("CUS_NAME");
+					String cusManager = rs.getString("CUS_MANAGER");
+					out.print("<tr><td>" + cusNo + "</td><td>" + cusName + "</td><td>" + cusManager
+					+ "</td></tr>");
+				}
+			%>
 						<tfoot>
 							<tr>
 								<td colspan="5"

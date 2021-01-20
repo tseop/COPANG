@@ -16,6 +16,7 @@ public class CustomerDAO {
 	private String sql;
 	private CustomerDTO customerDTO;
 	private ArrayList<CustomerDTO> customerSearchList;
+	private ArrayList<CustomerDTO> customerList;
 	private ArrayList<CustomerDTO> list;
 	
 	public CustomerDAO() {
@@ -149,5 +150,13 @@ public class CustomerDAO {
 		pstmt.setInt(1, deleteNo);
 		cnt = pstmt.executeUpdate();
 		return cnt;
+	}
+	
+	public ResultSet customerList() throws SQLException {
+		sql = "SELECT * FROM CUSTOMER";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		return rs;
+
 	}
 }

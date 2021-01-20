@@ -52,7 +52,7 @@
 
 </style>
 <meta charset="UTF-8">
-<title>Travel</title>
+<title>COPANG</title>
 </head>
 <body>
 <div class="wrap">

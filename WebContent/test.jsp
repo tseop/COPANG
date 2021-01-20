@@ -13,9 +13,9 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"  type="text/css" />
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$.datepicker.setDefaults({
@@ -44,26 +44,6 @@
             setTimeout("scroll();", 200);
         }
 </script>
-<style type="text/css">
-.wrapper_main{padding: 1rem 2rem 6rem 2rem; min-width: 40rem; width: 80%;margin: auto;}
-.title_more{ display: flex;justify-content: space-between; margin: none;}
-.title_more p{margin-bottom: 0.5rem; font-weight:700; color:#366afe; padding-left: 1rem;}
-.title_more a{padding-right:0.5rem; cursor:pointer; text-decoration: none; font-size: 0.7rem; color:#366afe;}
-.first_line {display: flex; justify-content: center;width: 100%}
-.noti_preview {width: 100%;margin: auto;}
-.noti_preview table{width: 100%;min-width: 22rem;margin: auto;}
-.noti_preview table tr{border-bottom: 1px solid #ddd;}
-.noti_preview table tr th{vertical-align: middle; background-color:#f3f3f3; color: black; font-size:0.7rem; height: 1.5rem; padding: 0.5rem; border-bottom:1px solid #ddd;}
-.noti_preview table tr td{text-align: center;padding: 0.5rem; font-size: 0.7rem;}
-.calender { padding-left: 5rem; padding-top:1.5rem; width: fit-content; margin: auto;}
-.ui-datepicker{font-size: 16px;}
-.ui-datepicker select.ui-datepicker-month{ width:30%; font-size: 11px; }
-.ui-datepicker select.ui-datepicker-year{ width:40%; font-size: 11px; }
-.display_board p{margin: 0 0 2rem 0;text-align: center; background: #f3f3f3; }
-.display_board h2{color:#366afe; font-size: 0.9rem; margin: 0 auto 0.5rem auto;width: fit-content;}
-.display_board input {width: 70%; height: 1rem; padding: 0.5rem; border: 0;background: #f3f3f3;}
-hr{margin:3rem 0; border: none; height: 1px; background: #ccc;}
-</style>
 
 </head>
 <body onload="scroll()">

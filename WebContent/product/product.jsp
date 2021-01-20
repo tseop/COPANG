@@ -11,88 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-select {
-	width: 100px;
-	height: 40px;
-	float: left;
-	padding: .8em .5em;
-	border: 1px solid #ccc;
-	border-right: none;
-	font-family: inherit;
-	background: url('arrow.jpg') no-repeat 95% 50%;
-	border-radius: 0px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	padding: .8em .5em;
-}
 
-#search {
-	border: 1px solid black;
-	background: #DEDEDE;;
-	color: black;
-}
-
-#remove, #update {
-	font-size: 12px;
-}
-
-.list input[type=submit] {
-	width: 30%; 
-	height: 20px; 
-	border: 1px solid black;
-	background: #DEDEDE;;
-	color: black;
-	padding: 0px;
-	font-size: 12px; 
-	
-}
-
-.list input[type=number]{
-	width: 50% 
-}
-
-.wrap .box {
-	margin: 1rem 0;
-}
-
-.wrap a {
-	font-size: 1rem;
-	font-weight: 700;
-	padding: 5px;
-}
-
-.title_area {
-	display: flex;
-	justify-content: space-between;
-	line-height: 30px;
-	font-size: 1rem;
-}
-
-.register, .list {
-	margin: 1rem 0;
-}
-
-.title_area input[type=submit] {
-	border: none;
-	background: #366afe;
-	color: white;
-	padding: 0.5rem 1rem;
-	font-size: 0.7rem;
-	font-weight: 700;
-}
-
-.wrap table td a {
-	color: black;
-	text-decoration: none;
-	padding: 0 3px;
-}
-
-.wrap table td a:hover {
-	text-decoration: underline;
-}
-</style>
 <script>
 	function popup() {
 		var url = "product/customerSearchForm.jsp";
@@ -102,7 +21,7 @@ select {
 	}
 </script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/product.css?v=44">
+<link rel="stylesheet" type="text/css" href="css/product.css?v=45">
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
@@ -223,9 +142,9 @@ select {
 						</td>
 						<td><a
 							href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm"
-							id="update" style="color: blue">수정</a> <a
+							id="update" style="color: #366afe;">수정</a> <a
 							href="productDelete.pd?proNo=${product.proNo}" id="remove"
-							style="color: red">삭제</a>
+							style="color: #D71427;">삭제</a>
 						</td>
 						<%
 						}

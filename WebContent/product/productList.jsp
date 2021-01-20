@@ -52,7 +52,7 @@ td {
 </style>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <meta charset="UTF-8">
-<title>Travel</title>
+<title>COPANG</title>
 </head>
 <body>
 	<%

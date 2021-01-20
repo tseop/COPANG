@@ -28,12 +28,12 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .link a{color:white; font-size:0.7rem; text-decoration: none;}
 .link a.btn{width: 3rem; padding: 1rem 4rem 1rem 4rem;border: none;height: 1.5rem;background: #0074E9;box-shadow: inset 0 -2px 0 rgba(0,0,0,0.35);text-shadow: 1px 1px 1px rgba(255,255,255, .22);}
 .table{width:80%; min-width: 30rem;margin: 0 auto 2rem auto;frame:void;}
-.table h1{font-size: 1.5rem; font-weight: 600;}
+.table h1{font-size: 1.5rem; font-weight: 600;margin-bottom: 1rem;}
 .table table{text-align: center; margin: auto; min-width: 30rem;width: 100%;}
 .table table a{color: black; font-size:0.7rem; text-decoration: none;}
 .table table tr th{padding: 0.7rem;font-size: 0.7rem;color: #0074E9;}
 .table table tr td{border:1px solid #ccc;padding: 0.7rem;font-size: 0.7rem; border-right:none;border-left:none;}
-.search_box{border:1px solid #ccc;}
+.search_box{border:1px solid #ccc;width: auto;margin-left: auto;}
 .customer table tbody tr:hover{background: #e8e8e8;}
 
 
@@ -114,7 +114,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 /* bottom */
 .footer-content{background:#888; text-align: center; height:9rem; line-height: 1.5rem; width: 100%; margin:auto; color: white; padding-top: 2rem;}
 .footer-content p{font-size: 0.7rem; font-weight: 50;}
-.footer-content hr{width: 2.5rem; height: 0.1rem; border: none; background: white; margin-top: 1rem; margin-bottom: 1rem;}
+.footer-content hr{width: 2.5rem; height: 0.1rem; border: none; background: white; margin: 1rem auto;}
 .footer-content .sns-link ul li{display: inline;}
 .footer-content .sns-link a{text-decoration:none; height:4rem;font-size: 0.9rem;}
 .footer-content .sns-link img{width: 2rem; margin-left:1rem ; margin-right: 1rem;}
@@ -156,4 +156,24 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .popup .emp_no {width: 7rem; padding:0.7rem; border:none;}
 
 
+/* main */
+.wrapper_main{padding: 1rem 2rem 6rem 2rem; min-width: 40rem; width: 80%;margin: auto;}
+.title_more{ display: flex;justify-content: space-between; margin: none;}
+.title_more p{margin-bottom: 0.5rem; font-weight:700; color:#366afe; padding-left: 1rem;}
+.title_more a{padding-right:0.5rem; cursor:pointer; text-decoration: none; font-size: 0.7rem; color:#366afe;}
+.first_line {display: flex; justify-content: center;width: 100%}
+.noti_preview {width: 100%;margin: auto;}
+.noti_preview table{width: 100%;min-width: 22rem;margin: auto;}
+.noti_preview table tr{border-bottom: 1px solid #ddd;}
+.noti_preview table tr th{vertical-align: middle; background-color:#f3f3f3; color: black; font-size:0.7rem; height: 1.5rem; padding: 0.5rem; border-bottom:1px solid #ddd;}
+.noti_preview table tr td{text-align: center;padding: 0.5rem; font-size: 0.7rem;}
+.calender { padding-left: 5rem; padding-top:1.5rem; width: fit-content; margin: auto;}
+.ui-datepicker{font-size: 16px;}
+.ui-datepicker select.ui-datepicker-month{ width:30%; font-size: 11px; }
+.ui-datepicker select.ui-datepicker-year{ width:40%; font-size: 11px; }
+.display_board{text-align: center;}
+.display_board p{margin: 0 0 2rem 0;text-align: center; background: #f3f3f3; }
+.display_board h2{color:#366afe; font-size: 0.9rem; margin: 0 auto 0.5rem auto;width: fit-content;}
+.display_board input {width: 70%; height: 1rem; padding: 0.5rem; border: 0;background: #f3f3f3;}
+.wrapper_main hr{margin:3rem 0; border: none; height: 1px; background: #ccc;}
 

@@ -22,7 +22,7 @@ public class CustomerServlet extends HttpServlet {
 	private RequestDispatcher dis;
 	private String searchName;
 	private ArrayList<CustomerDTO> customerSearchList;
-	
+	private ArrayList<CustomerDTO> cusList;
    public CustomerServlet() {
 	  customerDTO = new CustomerDTO();
 	  customerDAO = new CustomerDAO();

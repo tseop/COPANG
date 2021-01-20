@@ -62,7 +62,7 @@ function back(){    //사원번호 숫자만입력
 	<div class="search_area">
 	<ul style="justify-content: center;">
 		<li>
-		<input type="button" value="다시검색하기" onClick="history.go(-1)">
+		<input type="button" value="다시검색하기" onClick="history.back()">
 		<input type="button" value="창 닫기" onClick="back()">
 		</li>
 	</ul>
