@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import employee.Login;
+
 @MultipartConfig(
 		fileSizeThreshold=1024*1024, //전송하는 데이터가 1MG가 넘을경우 디스크를 사용하자
 		maxFileSize=1024*1024*5, //하나의 파일 사이즈 ->5MG가 하나의 파일에 최대크기 
@@ -43,6 +45,7 @@ public class NoticeServlet extends HttpServlet {
 	private File fileSaveDir;
 	private Part filePart;
 	private String fileName;
+	private int empNo;
 	
 	public NoticeServlet() {
 		noticeDTO = new NoticeDTO();
@@ -69,34 +72,34 @@ public class NoticeServlet extends HttpServlet {
 		if (command.equals("/noticeRegister.no")) {
 			noticeDTO.setNotiTitle(request.getParameter("title"));
 			noticeDTO.setNotiContent(request.getParameter("content"));			
+			noticeDTO.setEmpNo((int)Login.session.getAttribute("EMP_NO"));
 			
-			realPath = request.getServletContext().getRealPath("");
-			uploadPath = realPath + UPLOAD_DIR;
+			try {
+				realPath = request.getServletContext().getRealPath("");
+				uploadPath = realPath + UPLOAD_DIR;
 
-			fileSaveDir = new File(uploadPath);
-			filePart = request.getPart("file");
-		
-			//fileName = null;
+				fileSaveDir = new File(uploadPath);
+				filePart = request.getPart("file");
 
-			// 파일 경로 없으면 생성
-			if (!fileSaveDir.exists()) {
-				fileSaveDir.mkdirs();
+				// 파일 경로 없으면 생성
+				if (!fileSaveDir.exists()) {
+					fileSaveDir.mkdirs();
+				}			
+
+				fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+				filePart.write(uploadPath + File.separator + fileName);						
+				
+				noticeDTO.setFileName(fileName);
+			} catch (Exception e1) {
+				e1.printStackTrace();
 			}
-			
-
-			//fileName = getFileName(part);
-			fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-			filePart.write(uploadPath + File.separator + fileName);
-
-
-			request.setAttribute("fileName", fileName);			
 			
 			try {
 				cnt = noticeDAO.noticeWrite(noticeDTO);
 				request.setAttribute("noticeDTO", noticeDTO);
 				out.print(cnt + "건 게시글이 등록되었습니다.");
-				//response.sendRedirect("noticeList.no");
-				getServletContext().getRequestDispatcher("/notice/noticeView.jsp").forward(request, response);
+				response.sendRedirect("noticeList.no");
+				//getServletContext().getRequestDispatcher("/index.jsp?page=notice/noticeView").forward(request, response);
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -125,7 +128,6 @@ public class NoticeServlet extends HttpServlet {
 				noticeDTO = noticeDAO.noticeView(no);
 				dis = request.getRequestDispatcher("index.jsp?page=notice/noticeView");
 				request.setAttribute("noticeDTO", noticeDTO);
-				request.setAttribute("fileName", fileName);
 				
 				dis.forward(request, response);
 			} catch (SQLException e) {
@@ -143,7 +145,10 @@ public class NoticeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/noticeSearch.no")) {
+		} 
+		
+		//  게시글 검색
+		else if (command.equals("/noticeSearch.no")) {
 			searchTitle = request.getParameter("searchTitle");
 			try {
 				noticeSearchList = noticeDAO.noticeSearch(searchTitle);
@@ -175,13 +180,11 @@ public class NoticeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		// 수정할 게시물 찾기
 		else if (command.equals("/noticeUpdateSearch.no")) {
 			int searchNo = Integer.parseInt(request.getParameter("no"));
-
 			try {
 				noticeDTO = noticeDAO.noticeUpdateSearch(searchNo);
 				dis = request.getRequestDispatcher("index.jsp?page=notice/noticeUpdateConfirm");
@@ -193,19 +196,6 @@ public class NoticeServlet extends HttpServlet {
 			}
 
 		}
-	}
-	
-	private String getFileName(Part part) {
-		String contentDisp = part.getHeader("content-disposition");
-		String[] tokens = contentDisp.split(";");
-
-		for (String token : tokens) {
-			if (token.trim().startsWith("filename")) {
-				return token.substring(token.indexOf("=") + 2, token.length() - 1);
-			}
-		}
-
-		return "";
-	}
+	}	
 
 }

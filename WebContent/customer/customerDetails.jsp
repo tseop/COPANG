@@ -9,13 +9,50 @@
 <title>COPANG</title>
 
 <script type="text/javascript">
+$(function() {
+	 var updt = document.getElementById('updt');
+	 var dle = document.getElementById('delete');
+	 var empdept = '<%=(int)session.getAttribute("EMP_DEPT")%>';
+	 var emprank = '<%=(int)session.getAttribute("EMP_RANK")%>';
+	    console.log(empdept);
+	    console.log(emprank);
+	 if(empdept==1){
+	     $updt = $('.updt').attr('disabled', false);
+	     $updt = $('.updt').css('color', '#366afe');
+	     $updt = $('.updt').css('font-weight', '700');
+	     updt = $('.updt').css('cursor', 'pointer');
+	 }else if(emprank==2){
+	     $updt = $('.updt').attr('disabled', false);
+	     $updt = $('.updt').css('color', '#366afe');
+	     $updt = $('.updt').css('font-weight', '700');
+	     $updt = $('.updt').css('cursor', 'pointer');
+	 }else if(emprank==3){
+	     $updt = $('.updt').attr('disabled', false);
+	     $updt = $('.updt').css('color', '#366afe');
+	     $updt = $('.updt').css('font-weight', '700');
+	     $updt = $('.updt').css('cursor', 'pointer');
+	 }  
+	 
+	 if(empdept==1){
+		 $dle = $('#delete').attr('disabled', false);
+		 $dle = $('#delete').css('cursor', 'pointer');
+		 $dle = $('#delete').css('background', '#D71427');
+	 }else if(emprank==2){
+		 $dle = $('#delete').attr('disabled', false);
+		 $dle = $('#delete').css('cursor', 'pointer');
+		 $dle = $('#delete').css('background', '#D71427');
+	 }else if(emprank==3){
+		 $dle = $('#delete').attr('disabled', false);
+		 $dle = $('#delete').css('cursor', 'pointer');
+		 $dle = $('#delete').css('background', '#D71427');
+	 }
+})
 
 
 function button_event(){
 	if (confirm("정말 삭제하시겠습니까??") == true){
    		/* location.href='customerDelete.cu'; */
-   		document.update.action = 'customerDelete.cu'; 
-   		//해당 버튼을 눌럿을때 action의 경로를 바꾸어줌
+   		document.update.action = 'customerDelete.cu';//해당 버튼을 눌럿을때 action의 경로를 바꾸어줌
    		document.update.submit();
 	}else{
 	    return false;
@@ -39,45 +76,50 @@ function button_submit(){
 <%
 CustomerDTO customerDTO = (CustomerDTO) request.getAttribute("customerDTO");
 %>
-<h1>거래처 수정</h1>
+<h1>거래처 상세보기</h1>
 <hr>
 <form name="update" action="customerUpdate.cu" method="post">
 <input type="hidden" name="num" value=<%=customerDTO.getCusNo() %>>
 	<table><thead>
 		<tr>
          <th><span class="required_content">*</span>거래처 명</th>
-         <td><input type="text" name="cusName" required="required" maxlength="50" value="<%=customerDTO.getCusName() %>"></td>
+         <td><input type="text" name="cusName" required="required" maxlength="50" value="<%=customerDTO.getCusName() %>">
+
+         		<input type="button" value="수정" onclick="button_submit()" class="updt" disabled="true"></td>
+
       </tr>
       </thead></table>
       <table><thead>
       <tr>
          <th><span class="required_content">*</span>담당자</th>
-         <td><input type="text" name="cusManager" required="required" maxlength="20" value="<%=customerDTO.getCusManager() %>"></td>
+         <td><input type="text" name="cusManager" required="required" maxlength="20" value="<%=customerDTO.getCusManager() %>">
+
+       			 <input type="button" value="수정" onclick="button_submit()" class="updt" disabled="true"></td>
+
        </tr>
        </thead></table>
        <table><thead>
        <tr>
          <th><span class="required_content">*</span>전화번호</th>
-         <td><input type="text" name="cusTel" required="required" maxlength="15" value="<%=customerDTO.getCusTel() %>"></td>
+         <td><input type="text" name="cusTel" required="required" maxlength="15" value="<%=customerDTO.getCusTel() %>">
+
+         		<input type="button" value="수정" onclick="button_submit()" class="updt" disabled="true"></td>
+
        </tr>
        </thead></table>
        <table><thead>
        <tr>
          <th><span class="required_content">*</span>사업자번호</th>
-         <td><input type="text" name="businessNo" required="required" maxlength="30" value="<%=customerDTO.getBusinessNo() %>"></td>
+         <td><input type="text" name="businessNo" required="required" maxlength="30" value="<%=customerDTO.getBusinessNo() %>">
+
+         		<input type="button" value="수정" onclick="button_submit()" class="updt" disabled="true"></td>
+
        </tr>
 	</thead></table>	
 	<div class="search_area">
 	<ul style="justify-content: center;">
 		<li><input type="button" value="목록으로" onClick="location.href='customerList.cu'"></li>
-	<%
-	int empDept = (int)session.getAttribute("EMP_DEPT");
-	int empRank = (int)session.getAttribute("EMP_RANK");
-	if (empRank !=1 || empDept !=1){
-		out.print("<li><input type=\"button\" value=\"수정하기\" onclick= \"button_submit()\"></li>");
-		out.print("<li><input style=\"background: #D71427\" type =\"button\" value=\"삭제하기\" onclick=\"button_event()\" class=\"btn\"></li>");
-	}
-	%>
+		<li><input style="background: #ababab" id="delete" type ="button" value="삭제하기" disabled="true" onclick="button_event()" class="btn"></li>
 	</ul>
 	</div>
 </form>

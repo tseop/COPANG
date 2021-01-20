@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import employee.Login;
 import notice.NoticeDTO;
 import notice.PageTo;
 
@@ -18,6 +19,7 @@ public class NoticeDAO {
 	private PreparedStatement pstmt;
 	private String sql;
 	private int cnt;
+	private String empName;
 
 	private ArrayList<NoticeDTO> noticeSearchList;
 
@@ -45,16 +47,19 @@ public class NoticeDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}	
 
 	// 게시글 등록
 	public int noticeWrite(NoticeDTO noticeDTO) throws SQLException {
 		conn = getConnection();
-		sql = "INSERT INTO NOTICE(NOTI_TITLE, NOTI_CONTENT) VALUES(?, ?)"; //파일 번호만 있으면 되는건가..? 파일이 통째로 있어야 하는건 아닌것인지..
+		sql = "INSERT INTO NOTICE(NOTI_TITLE, NOTI_CONTENT, EMP_NO, FILE_NAME) VALUES(?, ?, ?, ?)";
+		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, noticeDTO.getNotiTitle());
 		pstmt.setString(2, noticeDTO.getNotiContent());
-		
+		pstmt.setInt(3, noticeDTO.getEmpNo());
+		pstmt.setString(4, noticeDTO.getFileName());
+
 		cnt = pstmt.executeUpdate();
 
 		return cnt;
@@ -77,7 +82,7 @@ public class NoticeDAO {
 		}
 
 		return count;
-	}
+	}	
 
 	// 전체게시판
 	public PageTo page(int curPage) {
@@ -85,8 +90,8 @@ public class NoticeDAO {
 		int totalCount = totalCount();
 		ArrayList<NoticeDTO> list = new ArrayList<NoticeDTO>();
 		try {
-			conn = getConnection();
-			sql = "SELECT NOTI_NO, NOTI_TITLE, DATE_FORMAT(NOTI_DATE, '%m/%d') AS NOTI_DATE, EMP_NO FROM NOTICE";
+			conn = getConnection();			
+			sql = "SELECT N.NOTI_NO, N.NOTI_TITLE, DATE_FORMAT(N.NOTI_DATE, '%m/%d') AS NOTI_DATE, E.EMP_NAME FROM NOTICE N LEFT JOIN EMPLOYEE E ON N.EMP_NO = E.EMP_NO ORDER BY NOTI_NO DESC";
 			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = pstmt.executeQuery();
 
@@ -100,7 +105,7 @@ public class NoticeDAO {
 			for (int i = 0; i < perPage && rs.next(); i++) {
 				int notiNo = rs.getInt("NOTI_NO");
 				String notiTitle = rs.getString("NOTI_TITLE");
-				int notiAuthor = rs.getInt("EMP_NO");
+				String notiAuthor = rs.getString("EMP_NAME");
 				String notiDate = rs.getString("NOTI_DATE");
 
 				NoticeDTO data = new NoticeDTO();
@@ -108,7 +113,7 @@ public class NoticeDAO {
 				data.setNotiNo(notiNo);
 				data.setNotiTitle(notiTitle);
 				data.setNotiDate(notiDate);
-				data.setEmpNo(notiAuthor);
+				data.setEmpName(notiAuthor);
 				list.add(data);
 			}
 			pageTo.setList(list);
@@ -123,8 +128,8 @@ public class NoticeDAO {
 
 	// 공지 내용 보기 화면
 	public NoticeDTO noticeView(int notiNo) throws SQLException {
-		conn = getConnection();
-		sql = "SELECT NOTI_NO, NOTI_TITLE, NOTI_CONTENT, DATE_FORMAT(NOTI_DATE, '%Y-%m-%d %H시 %i분') AS NOTI_DATE, EMP_NO FROM NOTICE WHERE NOTI_NO = ?";
+		conn = getConnection();		
+		sql = "SELECT N.NOTI_NO, N.NOTI_TITLE, N.NOTI_CONTENT, DATE_FORMAT(N.NOTI_DATE, '%Y-%m-%d %H시 %i분') AS NOTI_DATE, E.EMP_NAME, N.FILE_NAME FROM NOTICE N LEFT JOIN EMPLOYEE E ON N.EMP_NO = E.EMP_NO WHERE N.NOTI_NO = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, notiNo);
 		rs = pstmt.executeQuery();
@@ -133,7 +138,8 @@ public class NoticeDAO {
 			noticeDTO.setNotiNo(rs.getInt("NOTI_NO"));
 			noticeDTO.setNotiTitle(rs.getString("NOTI_TITLE"));
 			noticeDTO.setNotiDate(rs.getString("NOTI_DATE"));
-			noticeDTO.setEmpNo(rs.getInt("EMP_NO"));
+			noticeDTO.setEmpName(rs.getString("EMP_NAME"));
+			noticeDTO.setFileName(rs.getString("FILE_NAME"));
 			noticeDTO.setNotiContent(rs.getString("NOTI_CONTENT"));
 		}
 
@@ -154,7 +160,8 @@ public class NoticeDAO {
 	// 게시물 검색
 	public ArrayList<NoticeDTO> noticeSearch(String searchTitle) throws SQLException {
 		conn = getConnection();
-		sql = "SELECT NOTI_NO, NOTI_TITLE, NOTI_CONTENT, NOTI_DATE, EMP_NO FROM NOTICE WHERE NOTI_TITLE LIKE ?";
+		sql = "SELECT N.NOTI_NO, N.NOTI_TITLE, N.NOTI_CONTENT, DATE_FORMAT(N.NOTI_DATE, '%m/%d') AS NOTI_DATE, E.EMP_NAME FROM NOTICE N LEFT JOIN EMPLOYEE E ON N.EMP_NO = E.EMP_NO WHERE N.NOTI_TITLE LIKE ?"; 
+
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, "%" + searchTitle + "%");
 		rs = pstmt.executeQuery();
@@ -166,7 +173,7 @@ public class NoticeDAO {
 			noticeDTO.setNotiTitle(rs.getString("NOTI_TITLE"));
 			noticeDTO.setNotiContent(rs.getString("NOTI_CONTENT"));
 			noticeDTO.setNotiDate(rs.getString("NOTI_DATE"));
-			noticeDTO.setEmpNo(rs.getInt("EMP_NO"));
+			noticeDTO.setEmpName(rs.getString("EMP_NAME"));
 
 			noticeSearchList.add(noticeDTO);
 		}

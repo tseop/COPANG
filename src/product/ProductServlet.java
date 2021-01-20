@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import customer.CustomerDAO;
+import customer.CustomerDTO;
 import employee.EmployeeDAO;
 import employee.EmployeeDTO;
 import employee.Login;
@@ -27,6 +29,7 @@ public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductDTO productDTO;
 	private ProductDAO productDAO;
+	private CustomerDAO customerDAO;
 	private EmployeeDTO empDTO;
 	private EmployeeDAO empDAO;
 	
@@ -34,8 +37,9 @@ public class ProductServlet extends HttpServlet {
 	private int cnt;
 	private ResultSet rs;
 	private RequestDispatcher dis;
-	private String searchProName;
+	private String searchProName, searchCusName;
 	private ArrayList<ProductDTO> productSearchList;
+	private ArrayList<CustomerDTO> customerSearchList;
 	public ProductServlet() {
 		productDTO = new ProductDTO();
 		productDAO = new ProductDAO();
@@ -115,6 +119,18 @@ public class ProductServlet extends HttpServlet {
 	             e.printStackTrace();
 	          }
 	       }//검색
+		
+		else if (command.equals("/customerSearch.pd")) {
+	    	  searchCusName = request.getParameter("searchCusName");
+	          try {
+	        	 customerSearchList = productDAO.customerSearch(searchCusName);
+	             dis = request.getRequestDispatcher("product/customerSearch.jsp");
+	             request.setAttribute("customerSearchList", customerSearchList);
+	             dis.forward(request, response);
+	          } catch (SQLException e) {
+	             e.printStackTrace();
+	          }
+	       }//검색
 		else if (command.equals("/productConfirm.pd")) {
 			String pw = request.getParameter("pw");
 			int proNo = Integer.parseInt(request.getParameter("proNo"));
@@ -155,6 +171,24 @@ public class ProductServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		else if(command.equals("/stockUpdate.pd")) {
+			int todayValue = Integer.parseInt(request.getParameter("todayValue"));
+			int num = Integer.parseInt(request.getParameter("num"));
+	        try {
+				productDAO.stockUpdate(todayValue, num);
+				dis = request.getRequestDispatcher("productList.pd");
+				request.setAttribute("productList", productDTO);
+				dis.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (ServletException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	      }
 	}
-
 }
+
+

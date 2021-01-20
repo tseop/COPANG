@@ -18,7 +18,6 @@
 	border: 1px solid #444444;
 	margin: 0px 10px;
 }
-
 .list th {
 	/* border: 1px bold black; */
 	background-color: #DEDEDE;
@@ -29,7 +28,6 @@
 	padding: 10px;
 	font-size: 15px;
 }
-
 .list td {
 	background-color: #F7F6F4;
 	border: 1px solid #444444;
@@ -101,6 +99,7 @@
 			}
 			%>
 		</table>
+		<input type="submit" value="다시검색하기" onclick='history.go(-1)'>
 	</div>
 	</div>
 </body>

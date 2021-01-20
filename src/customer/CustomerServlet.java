@@ -107,7 +107,7 @@ public class CustomerServlet extends HttpServlet {
 		            if(cnt==0) {
 		            	out.print("실패!");
 		            }else {
-		            	out.print("<script>alert('수정 완료 되었습니다.');location.href='customerList.cu';</script>");
+		            	out.print("<script>alert('수정 완료 되었습니다.');location.href='customerDetails.cu?num="+num+"';</script>");
 		            }
 		         } catch (SQLException e) {
 		              e.printStackTrace();
@@ -116,10 +116,8 @@ public class CustomerServlet extends HttpServlet {
 	      }//수정하기
 	      
 	      else if(command.equals("/customerDelete.cu")){//삭제하기
-
 	    	  String num = request.getParameter("num");
 	          int cusNo = Integer.parseInt(num);
-//	          out.print("<script>alert('정말 삭제하시겠습니까?'); history.back();</script>");
 	          try {
 	             cnt = customerDAO.customerDelete(cusNo);
 	             response.sendRedirect("customerList.cu");

@@ -15,9 +15,10 @@ import product.PageTo;
 
 public class ProductDAO {
 	private ProductDTO productDTO;
+	private CustomerDTO customerDTO;
 	private ArrayList<ProductDTO> productList;
 	private ArrayList<ProductDTO> productSearchList;
-
+	private ArrayList<CustomerDTO> customerSearchList;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private String sql;
@@ -77,7 +78,7 @@ public class ProductDAO {
 	      productList = new ArrayList<ProductDTO>();
 	      try {
 	         conn = getConnection();
-	         sql = "SELECT PRO_NO, PRO_NAME, PRO_COST, PRO_PRICE, DATE_FORMAT(PRO_FIRST_DATE, '%m/%d') AS PRO_FIRST_DATE, DATE_FORMAT(PRO_LAST_DATE, '%m/%d') AS PRO_LAST_DATE, PRO_STOCK, CUS_NO, PRO_STORING FROM PRODUCT ORDER BY PRO_NO ASC";
+	         sql = "SELECT P.PRO_NO, P.PRO_NAME, P.PRO_COST, P.PRO_PRICE, DATE_FORMAT(P.PRO_FIRST_DATE, '%m/%d') AS PRO_FIRST_DATE, DATE_FORMAT(P.PRO_LAST_DATE, '%m/%d') AS PRO_LAST_DATE, P.PRO_STOCK, C.CUS_NAME, P.PRO_STORING FROM PRODUCT P LEFT JOIN CUSTOMER C ON P.CUS_NO=C.CUS_NO ORDER BY PRO_NO ASC";
 	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	         rs = pstmt.executeQuery();
 	         int perPage = pageTo.getPerPage();//5
@@ -95,7 +96,7 @@ public class ProductDAO {
 				productDTO.setProFirstNal(rs.getString("PRO_FIRST_DATE"));
 				productDTO.setProLastNal(rs.getString("PRO_LAST_DATE"));
 				productDTO.setProStock(Integer.parseInt(rs.getString("PRO_STOCK")));
-				productDTO.setCusName(rs.getString("CUS_NO"));
+				productDTO.setCusName(rs.getString("CUS_NAME"));
 				productDTO.setProStoring(Integer.parseInt(rs.getString("PRO_STORING")));
 				productList.add(productDTO);
 	         }
@@ -181,6 +182,43 @@ public class ProductDAO {
 		pstmt.setInt(8, proNo);
 		pstmt.executeUpdate();
 	}
+	
+	public ArrayList<CustomerDTO> customerSearch(String searchCusName) throws SQLException {
+		conn = getConnection();
+		sql = "SELECT * FROM CUSTOMER WHERE CUS_NAME LIKE ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,"%"+searchCusName+"%");
+		rs = pstmt.executeQuery();
+		customerSearchList = new ArrayList<CustomerDTO>();
+		while (rs.next()) {
+			customerDTO = new CustomerDTO();
+			customerDTO.setCusNo(rs.getInt("CUS_NO"));
+			customerDTO.setCusName(rs.getString("CUS_NAME"));
+			customerDTO.setCusManager(rs.getString("CUS_MANAGER"));
+			customerDTO.setCusTel(rs.getString("CUS_TEL"));
+			customerDTO.setBusinessNo(rs.getString("BUSINESS_NO"));
+			customerSearchList.add(customerDTO);
+		}
+		return customerSearchList;
+	}
+	public int stockUpdate(int todayValue, int num) throws SQLException {
+		conn = getConnection();
+		sql = "UPDATE PRODUCT SET PRO_STOCK =(SELECT PRO_STOCK - ?) WHERE PRO_NO = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, todayValue);
+		pstmt.setInt(2, num);
+		cnt=pstmt.executeUpdate();
+		productList = new ArrayList<ProductDTO>();
+		while (rs.next()) {
+			productDTO = new ProductDTO();
+			productDTO.setProStock(rs.getInt("PRO_STOCT"));
+			productList.add(productDTO);
+		}
+		return cnt;
+	}
+	
+	
+	
 //	public void cusNameUpdate(ProductDTO productDTO,String cusName) throws SQLException {
 //		sql = "UPDATE CUSTOMER SET CUS_NAME = ? WHERE CUS_NAME = ?";
 //		pstmt = conn.prepareStatement(sql);

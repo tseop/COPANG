@@ -13,6 +13,7 @@
 		window.history.back();
 	}
 </script>
+
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
@@ -25,13 +26,17 @@
 			<ul>
 				<li><label for="제목">제목</label> <input type="text" name="title"
 					required="required" value="<%=noticeDTO.getNotiTitle()%>">
-					<input type="hidden" name="no" value="<%=noticeDTO.getNotiNo()%>">
-				</li>
+					<input type="hidden" name="no" value="<%=noticeDTO.getNotiNo()%>"></li>
+
+				<li><input type="file" name="file" id="file" class="inputfile" />
+					<label for="file" id="fileYN">파일 선택</label></li>
+
 				<li><label for="내용">내용</label> <textarea name="content"
 						required="required" id="editor"><%=noticeDTO.getNotiContent()%></textarea></li>
 
 				<li><input type="submit" value="수정"><input
 					type="button" value="취소" onClick="goBack()"></li>
+
 			</ul>
 		</form>
 	</div>

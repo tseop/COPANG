@@ -8,31 +8,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerDAO {
+	
 	private Connection conn;
-	private CustomerDTO customerDTO;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	private String sql;
 	private int cnt;
+	private String sql;
+	private CustomerDTO customerDTO;
 	private ArrayList<CustomerDTO> customerSearchList;
 	private ArrayList<CustomerDTO> list;
-
+	
 	public CustomerDAO() {
+		String dbURL = "jdbc:mysql://bbr123.cafe24.com:3306/bbr123?characterEncoding=utf8";
+		String dbID = "bbr123";
+		String dbPWD = "alstjr95!";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			conn = DriverManager.getConnection(dbURL, dbID, dbPWD);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
-	public Connection getConnection() throws SQLException {
-		conn = DriverManager.getConnection("jdbc:mysql://bbr123.cafe24.com:3306/bbr123", "bbr123", "alstjr95!");
-		return conn;
-	}
-	
 	public int customerRegister(CustomerDTO customerDTO) throws SQLException {
-		conn = getConnection();
 		sql = "INSERT INTO CUSTOMER (CUS_NAME, CUS_MANAGER, CUS_TEL, BUSINESS_NO) VALUES (?, ?, ?, ?);";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, customerDTO.getCusName());
@@ -46,7 +48,6 @@ public class CustomerDAO {
 	public int totalCount(){//페이징처리:전체레코드개수
 		int count=0;
 		try {
-			conn = getConnection();
 			sql = "SELECT COUNT(*) FROM CUSTOMER";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -64,7 +65,6 @@ public class CustomerDAO {
 	      int totalCount = totalCount();
 	      list = new ArrayList<CustomerDTO>();
 	      try {
-	         conn=getConnection();
 	         sql = "SELECT * FROM CUSTOMER";
 	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 	         rs = pstmt.executeQuery();
@@ -97,7 +97,6 @@ public class CustomerDAO {
 	   }//페이지구현
 	
 	public ArrayList<CustomerDTO> customerSearch(String searchCusName) throws SQLException {
-		conn = getConnection();
 		sql = "SELECT * FROM CUSTOMER WHERE CUS_NAME LIKE ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,"%"+searchCusName+"%");
@@ -114,9 +113,9 @@ public class CustomerDAO {
 		}
 		return customerSearchList;
 	}
+	
 	public CustomerDTO customerDetail(int detailNo) throws SQLException {
 		CustomerDTO customerDTO = null;
-		conn = getConnection();
 		sql = "SELECT * FROM CUSTOMER WHERE CUS_NO = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, detailNo);
@@ -133,7 +132,6 @@ public class CustomerDAO {
 	}//상세보기
 	
 	public int customerUpdate(int detailNo, CustomerDTO customerDTO) throws SQLException {
-		conn = getConnection();
 		sql = "UPDATE CUSTOMER SET CUS_NAME=?, CUS_MANAGER=?, CUS_TEL=?, BUSINESS_NO=? WHERE CUS_NO = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, customerDTO.getCusName());
@@ -146,7 +144,6 @@ public class CustomerDAO {
 	}//수정하기
 	
 	public int customerDelete(int deleteNo) throws SQLException {
-		conn = getConnection();
 		sql = "DELETE FROM CUSTOMER WHERE CUS_NO = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, deleteNo);

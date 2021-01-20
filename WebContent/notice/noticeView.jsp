@@ -9,13 +9,9 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=125">
 <script type="text/javascript">
-// 	$function(){
-// 		$("#btnList").on("click", function(){
-// 			location.href="${path}/notice_servlete/noticeRegister.no"; /* 업로드 경로 설정하는거 같은데.. 이게 맞는건지..? upload폴더에 넣을 순 없는건가?  */
-// 		});
-// 	});
+	
 </script>
 </head>
 <body>
@@ -23,7 +19,8 @@
 		<div class="noti_view">
 			<%
 				NoticeDTO noticeDTO = (NoticeDTO) request.getAttribute("noticeDTO");
-				String fileName = (String)request.getAttribute("fileName");
+				//String empName = (String)request.getAttribute("empName");
+				//String fileName = (String)request.getAttribute("fileName");
 				//long fileSize = (long)request.getAttribute("fileSize");
 			%>
 			<h2>공지사항</h2>
@@ -36,7 +33,7 @@
 					</tr>
 					<tr style="height: 10%;">
 						<td>작성자</td>
-						<td colspan="2"><%=noticeDTO.getEmpNo()%></td>
+						<td colspan="2"><%=noticeDTO.getEmpName()%></td>
 					</tr>
 					<tr style="height: 10%;">
 						<td>작성일자</td>
@@ -45,8 +42,20 @@
 					<tr style="height: 70%;">
 					<tr>
 						<td>첨부파일</td>
-						<td colspan="2"><a href="FileDown?fileName=<%=fileName%>"><%=fileName %></a></td>
-						<!-- 더 추가해야하는데 모르겠다... -->
+						<%
+							if (noticeDTO.getFileName() == null) {
+						%>
+						<td colspan="2">첨부파일 없음</td>
+						<%
+							} else {
+						%>
+
+						<td colspan="2"><a
+							href="FileDown?fileName=<%=noticeDTO.getFileName()%>"><%=noticeDTO.getFileName()%></a></td>
+						<%
+							}
+						%>
+
 					</tr>
 					<tr>
 						<td class="height">내용</td>

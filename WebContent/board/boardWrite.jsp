@@ -5,12 +5,17 @@
 <head>
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
-   <!--뒤로가기기능-->
+$(function(){
+   $('#editor').on('blur', function(){
+      var editorVal = $('#editor').val();
+      console.log(editorVal);
+   });
+   
+
+});
    function goBack() { 
       window.history.back();
    }
-
-    
 </script>
 <style type="text/css">
 
@@ -27,12 +32,11 @@
 <hr>
    <form action="boardRegister.bo" method="get">
       <ul>
-         <li><input type="hidden" name="readcount" value="0"></li>
+         <li><input type="hidden" name="readcount" value="1"></li>
          <li><input type="text" name="title" autofocus="autofocus"
             required="required" placeholder="제목을 입력하세요" size="50"
             mexlength="100"></li>
-         <li><textarea name="content"
-               placeholder="내용을 입력하세요" id="editor"></textarea></li>
+         <li><textarea name="content" id="editor"></textarea></li>
       </ul>
       <ul class="btns">
 	      <li><input type="submit"></li>

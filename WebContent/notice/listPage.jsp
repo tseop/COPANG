@@ -36,7 +36,7 @@
 								style="color: black; text-decoration: none;"
 								onmouseover="this.style.color='#0074E9'"
 								onmouseout="this.style.color='black'">${notice.notiTitle}</a></td>
-							<td>${notice.empNo }</td>
+							<td>${notice.empName }</td>
 							<td>${notice.notiDate }</td>
 						</tr>
 					</c:forEach>

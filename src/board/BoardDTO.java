@@ -21,7 +21,6 @@ public class BoardDTO implements Serializable {
 
 	public BoardDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getBoardNo() {
