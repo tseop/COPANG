@@ -16,15 +16,6 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<style type="text/css">
-.wrapper_main{padding: 2rem;min-width: 40rem; width: 80%;margin: auto;}
-.firs_tline {display: flex; justify-content: space-between;}
-.noti_preview {	border: 1px solid black; width: 40%;}
-.calender {	border: 1px solid blue; width: 40%}
-.box2 {	border: 1px solid red;}
-
-</style>
 <script type="text/javascript">
 	$(function(){
 		$.datepicker.setDefaults({
@@ -52,6 +43,24 @@
 		}
 </script>
 
+<style type="text/css">
+.wrapper_main{padding: 1rem 2rem 6rem 2rem; min-width: 40rem; width: 80%;margin: auto;}
+.wrapper_main h1{margin-bottom: 0.5rem; color:#366afe; padding-left: 1rem;}
+.first_line {display: flex; justify-content: center;width: 100%}
+.noti_preview {width: 100%;margin: auto;}
+.noti_preview table{width: 100%;min-width: 22rem;margin: auto;}
+.noti_preview table tbody tr:hover{background: #e8e8e8;}
+.noti_preview table tr{border-bottom: 1px solid #ddd;}
+.noti_preview table tr th{vertical-align: middle; background-color:#f3f3f3; color: black; font-size:0.7rem; height: 1.5rem; padding: 0.5rem; border-bottom:1px solid #ddd;}
+.noti_preview table tr td{text-align: center;padding: 0.5rem; font-size: 0.7rem;}
+.calender { padding-left: 5rem; width: fit-content; margin: auto;}
+.ui-datepicker{font-size: 16px;}
+.ui-datepicker select.ui-datepicker-month{ width:30%; font-size: 11px; }
+.ui-datepicker select.ui-datepicker-year{ width:40%; font-size: 11px; }
+.display_board p{padding: 2rem;text-align: center;}
+.display_board input {width: 50%; height: 1rem; padding: 0.5rem; border: 1px solid #ddd;}
+</style>
+
 </head>
 <body>
 	<%
@@ -59,15 +68,16 @@
 		ResultSet productRs = mainDAO.mainProductList();
 	%>
 <div class="wrapper_main">
+	<h1>공지사항</h1>
 <div class="first_line">
 	<div class="noti_preview">
 		<table>
 			<thead>
 				<tr>
-					<th width="10%">번호</th>
-					<th width="60%">제목</th>
+					<th width="15%">번호</th>
+					<th width="50%">제목</th>
 					<th width="20%">작성자</th>
-					<th width="10%">날짜</th>
+					<th width="25%">날짜</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -91,7 +101,8 @@
 <div class="display_board">
     <form><p><input type="text" name="display" readonly="readonly"></p></form>
 </div>
-<div class="box2">
+<h1>입고현황</h1>
+<div class="noti_preview">
 	<table>
 		<thead>
 			<tr>
