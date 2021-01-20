@@ -21,6 +21,7 @@
 	/*   background:#f00;  */
 }
 
+
 .register input[type="submit"] {
 	width: 10%;
 	height: 30px;
@@ -91,6 +92,10 @@ input[type="button"] {
 	width: 90%;
 }
 
+.list table input {
+	font-size: 12px;
+	width: 90%;
+}
 .list input {
 	width: 100%;
 }
