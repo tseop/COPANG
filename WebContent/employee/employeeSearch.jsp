@@ -53,9 +53,9 @@
 
 								if (empDTO.getDeptNo() == 1) {
 									deptName = "물류";
-								} else if (empDTO.getDeptNo() == 2) {
-									deptName = "인사관리";
 								} else if (empDTO.getDeptNo() == 3) {
+									deptName = "인사관리";
+								} else if (empDTO.getDeptNo() == 2) {
 									deptName = "경영지원";
 								} else if (empDTO.getDeptNo() == 4) {
 									deptName = "사장";

@@ -118,9 +118,9 @@
 		//0123456 index = 3 
 		if (empDTO.getDeptNo() == 1) {
 			dept_name = "물류팀";
-		} else if (empDTO.getDeptNo() == 2) {
-			dept_name = "인사관리";
 		} else if (empDTO.getDeptNo() == 3) {
+			dept_name = "인사관리";
+		} else if (empDTO.getDeptNo() == 2) {
 			dept_name = "경영지원";
 		} else {
 			dept_name = "부서선택";
