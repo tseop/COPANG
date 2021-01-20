@@ -76,7 +76,7 @@ $(function(){
 					<li><textarea name="content" id="editor"></textarea></li>
 				</ul>
 				<ul class="btns">
-					<li><input type="submit" value="글쓰기"></li>
+					<li><input type="submit" value="작성"></li>
 					<li><input type="button" value="취소" onClick="goBack()"></li>
 				</ul>
 			</form>
