@@ -95,7 +95,7 @@
 								if (empDTO.getDeptNo() == 1) {
 							%>
 							<select name="dept_name" class="select_box">
-								<option value="1" selected="selected">물류팀</option>
+								<option value="1" selected="selected">물류</option>
 								<option value="2">경영지원</option>
 								<option value="3">인사관리</option>
 							</select>
@@ -103,7 +103,7 @@
 								} else if (empDTO.getDeptNo() == 3) {
 							%>
 							<select name="dept_name" class="select_box">
-								<option value="1">물류팀</option>
+								<option value="1">물류</option>
 								<option value="2" selected="selected">경영지원</option>
 								<option value="3">인사관리</option>
 							</select>
@@ -111,7 +111,7 @@
 								} else {
 							%>
 							<select name="dept_name" class="select_box">
-								<option value="1">물류팀</option>
+								<option value="1">물류</option>
 								<option value="2">경영지원</option>
 								<option value="3" selected="selected">인사관리</option>
 							</select>
@@ -130,15 +130,15 @@
 								if (empDTO.getEmpRank() == 1) {
 							%>
 							<select name="rank"class="select_box">
-								<option value="1" selected="selected" >일반사원</option>
+								<option value="1" selected="selected" >사원</option>
 								<option value="2">팀장</option>
 								<option value="3">대표</option>
 							</select>
 							<%
-								} else if (empDTO.getDeptNo() == 2) {
+								} else if (empDTO.getEmpRank() == 2) {
 							%>
 							<select name="rank" class="select_box">
-								<option value="1">일반사원</option>
+								<option value="1">사원</option>
 								<option value="2" selected="selected">팀장</option>
 								<option value="3">대표</option>
 							</select>
@@ -146,7 +146,7 @@
 								} else {
 							%>
 							<select name="rank" class="select_box">
-								<option value="1">일반사원</option>
+								<option value="1">사원</option>
 								<option value="2">팀장</option>
 								<option value="3" selected="selected">대표</option>
 							</select>
