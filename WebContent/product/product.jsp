@@ -144,7 +144,7 @@
 							href="index.jsp?proNo=${product.proNo}&page=product/productUpdateConfirm"
 							id="update" style="color: #366afe;">수정</a> <a
 							href="productDelete.pd?proNo=${product.proNo}" id="remove"
-							style="color: #D71427;" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
+							style="color: red;" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
 						</td>
 						<%
 						}
