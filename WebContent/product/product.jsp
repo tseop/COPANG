@@ -100,18 +100,6 @@ select {
 		var option = "width = 1000, height = 600, top = 100, left = 200, location = no"
 		window.open(url, name, option);
 	}
-
-	/* function result() {
-
-		var data1 = document.getElementById('todayValue').value;
-		document.getElementById('proStockvalue').innerText = data1;
-		/* history.go(0); */
-		/* window.location.reload(0);*/
-/*	} */
-/* 
-	function stockmove() {
-		location.href = "../stockUpdate.pd";
-	} */
 </script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/product.css?v=44">
@@ -126,7 +114,7 @@ select {
 				<a><img src="images/table.svg"> 제품 등록</a> 
 			<%
 						int empRank = (int) session.getAttribute("EMP_RANK");
-						int deptNo = (int) session.getAttribute("DEPT_NO");
+						int deptNo = (int) session.getAttribute("EMP_DEPT");
 						if (!(empRank == 1 && deptNo == 2 || empRank == 1 && deptNo == 3 || empRank == 2 && deptNo == 3)) { //버튼 세션값에 따라 나타내는거
 					%>
 				<input type="submit" value="등록하기">
