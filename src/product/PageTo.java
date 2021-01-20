@@ -3,10 +3,13 @@ package product;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import customer.CustomerDTO;
 import product.ProductDTO;
 
 public class PageTo implements Serializable {
    private ArrayList<ProductDTO> list; //목록리스트저장
+   private ArrayList<CustomerDTO> list1; //목록리스트저장
+   
     private int curPage;//현재 페이지 번호
     private int perPage;//페이지당 보여줄 레코드 개수
     private int totalCount;//전체레코드개수
@@ -21,6 +24,12 @@ public class PageTo implements Serializable {
    public void setList(ArrayList<ProductDTO> productList) {
       this.list = productList;
    }
+   public ArrayList<CustomerDTO> getList1() {
+	      return list1;
+	   }
+   public void setList1(ArrayList<CustomerDTO> customerList) {
+	      this.list1 = customerList;
+	   }
    public int getCurPage() {
       return curPage;
    }

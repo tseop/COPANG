@@ -118,9 +118,9 @@ public class EmployeeServlet extends HttpServlet {
 			response.sendRedirect("login.jsp");
 		} else if (command.equals("/empDelete.ep")) {
 			int empNo = (int) Login.session.getAttribute("EMP_NO");
-			out.print(empNo+"<br>");
+			out.print(empNo + "<br>");
 			String deletePw = request.getParameter("pw");
-			out.print(deletePw+"<br>");
+			out.print(deletePw + "<br>");
 			try {
 				rs = empDAO.pwFind(empNo);
 				if (rs.next()) {
@@ -140,18 +140,16 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/empList.ep")) {
+		} else if (command.equals("/empList.ep")) {
 			try {
 				empList = empDAO.empList();
 				RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=employee/list");
 				request.setAttribute("empList", empList);
-				dis.forward(request,response);
+				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/idFind.ep")) {
+		} else if (command.equals("/idFind.ep")) {
 			String c1 = request.getParameter("c1");
 			String c2 = request.getParameter("c2");
 			String c = c1.concat("-");
@@ -159,14 +157,13 @@ public class EmployeeServlet extends HttpServlet {
 			c = c.concat(c2);
 			try {
 				rs = empDAO.idFind(c);
-				if(rs.next()) {
+				if (rs.next()) {
 					empNo = rs.getInt("EMP_NO");
 					out.print("<script>");
-					out.print("alert('찾으시는 사원번호는 "+empNo+"입니다.');");
+					out.print("alert('찾으시는 사원번호는 " + empNo + "입니다.');");
 					out.print("window.close();");
 					out.print("</script>");
-				}
-				else {
+				} else {
 					out.print("<script>");
 					out.print("alert('해당 주민등록번호로 가입된 사원번호는 없습니다.');");
 					out.print("window.open('employee/idFind.jsp','사원번호찾기','width=500,height=300','top=200,left=500');");
@@ -175,21 +172,19 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/pwFind.ep")) {
+		} else if (command.equals("/pwFind.ep")) {
 			int empNo = Integer.parseInt(request.getParameter("no"));
 			empDTO.setEmpNo(Integer.parseInt((request.getParameter("no"))));
 			String pw = null;
 			try {
 				rs = empDAO.pwFind(empNo);
-				if(rs.next()) {
+				if (rs.next()) {
 					pw = rs.getString("EMP_PW");
 					out.print("<script>");
-					out.print("alert('찾으시는 비밀번호는 "+pw+"입니다.');");
+					out.print("alert('찾으시는 비밀번호는 " + pw + "입니다.');");
 					out.print("window.close();");
 					out.print("</script>");
-				}
-				else {
+				} else {
 					out.print("<script>");
 					out.print("alert('존재하지 않는 사원번호입니다.');");
 					out.print("window.open('employee/pwFind.jsp','비밀번호찾기','width=500,height=300','top=200,left=500');");
@@ -198,12 +193,11 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/mypage.ep")) {
-			int empNo = (int)Login.session.getAttribute("EMP_NO");
+		} else if (command.equals("/mypage.ep")) {
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
 			try {
 				rs = empDAO.mypage(empNo);
-				while(rs.next()) {
+				while (rs.next()) {
 					empDTO.setDeptNo(rs.getInt("DEPT_NO"));
 					empDTO.setEmpAddr(rs.getString("EMP_ADDR"));
 					empDTO.setEmpName(rs.getString("EMP_NAME"));
@@ -215,33 +209,65 @@ public class EmployeeServlet extends HttpServlet {
 				}
 				RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=employee/mypage");
 				request.setAttribute("empDTO", empDTO);
-				dis.forward(request,response);
+				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/updateConfirm.ep")) {
+
+		else if (command.equals("/empView.ep")) {
+			int empNo = Integer.parseInt(request.getParameter("empNo"));
+			try {
+				empDTO = empDAO.empView(empNo);
+				RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=employee/empView");
+				request.setAttribute("empDTO", empDTO);
+				dis.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} 
+		
+		else if (command.equals("/empSearch.ep")) {
+			String searchEmpName = request.getParameter("searchEmpName");
+			try {
+				empList = empDAO.empSearch(searchEmpName);
+				RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=employee/employeeSearch");
+				request.setAttribute("empList", empList);
+				dis.forward(request, response);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/empDelete.ep")) {
+			int empNo = Integer.parseInt(request.getParameter("empNo"));
+			try {
+				empDAO.empDelete(empNo);
+				response.sendRedirect("empList.ep");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if (command.equals("/updateConfirm.ep")) {
 			String pwUp = request.getParameter("pw");
-			out.print(pwUp+"<br>");
-			int empNo = (int)Login.session.getAttribute("EMP_NO");
-			out.print(empNo+"<br>");
+			out.print(pwUp + "<br>");
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
+			out.print(empNo + "<br>");
 			try {
 				rs = empDAO.pwFind(empNo);
-				if(rs.next()) {
+				if (rs.next()) {
 					empDTO.setEmpPw(rs.getString("EMP_PW"));
-					if(pwUp.equals(empDTO.getEmpPw())) {
+					if (pwUp.equals(empDTO.getEmpPw())) {
 						response.sendRedirect("index.jsp?page=employee/updateForm");
-					}
-					else {
+					} else {
 						out.print("<script>alert('비밀번호가 일치하지 않습니다.');history.back();</script>");
 					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/update.ep")) {
-			int empNo = (int)Login.session.getAttribute("EMP_NO");
+		} else if (command.equals("/update.ep")) {
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
 			String c1 = request.getParameter("c1");
 			String c2 = request.getParameter("c2");
 			String c = c1.concat("-");
@@ -254,7 +280,7 @@ public class EmployeeServlet extends HttpServlet {
 			empDTO.setEmpTel(request.getParameter("tel"));
 			empDTO.setEmpAddr(request.getParameter("addr"));
 			try {
-				empDAO.empUpdate(empDTO,empNo);
+				empDAO.empUpdate(empDTO, empNo);
 				Login.session.setAttribute("EMP_NO", empDTO.getEmpNo());
 				response.sendRedirect("mypage.ep");
 			} catch (SQLException e) {

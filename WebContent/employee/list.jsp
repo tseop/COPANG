@@ -10,9 +10,18 @@
 <title></title>
 </head>
 <body>
-	<div class="customer">
+	<div class="employee">
 		<div class="table" style="min-width: 1012px;">
-			<h1>사원목록</h1>
+			<div class="search_area">
+				<form action="empSearch.ep" method="get">
+					<h1>사원 목록</h1>
+					<ul style="margin-left: auto; width: fit-content;">
+						<li class="search_box"><input type="text" placeholder="사원 이름"
+							name="searchEmpName" autofocus="autofocus" required="required">
+							<input type="submit" value="검색"></li>
+					</ul>
+				</form>
+			</div>
 			<hr>
 			<table>
 				<tr>
@@ -21,9 +30,6 @@
 					<th width="10%">전화번호</th>
 					<th width="8%">부서</th>
 					<th width="8%">직급</th>
-					<th width="20%">주소</th>
-					<th width="15%">주민등록번호</th>
-					<th width="10%">비밀번호</th>
 				</tr>
 				<%
 					ArrayList<EmployeeDTO> empList = (ArrayList<EmployeeDTO>) request.getAttribute("empList");
@@ -53,15 +59,14 @@
 				%>
 				<tr>
 					<td><%=empDTO.getEmpNo()%></td>
-					<td><%=empDTO.getEmpName()%></td>
+					<td><a href='empView.ep?empNo=<%=empDTO.getEmpNo() %>'
+						style="color: black; text-decoration: none;"
+						onmouseover="this.style.color='#0074E9'"
+						onmouseout="this.style.color='black'"><%=empDTO.getEmpName()%></a></td>
 					<td><%=empDTO.getEmpTel()%></td>
 					<td><%=deptName%></td>
 					<td><%=empRank%></td>
-					<td><%=empDTO.getEmpAddr()%></td>
-					<%-- 		<td><%=empDTO.getEmpSecurity() %></td> --%>
-					<td>********</td>
-					<%-- 		<td><%=empDTO.getEmpPw() %></td> --%>
-					<td>********</td>
+
 				</tr>
 
 				<%
