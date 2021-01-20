@@ -44,9 +44,9 @@ select {
 	border: 1px solid black;
 	background: #DEDEDE;;
 	color: black;
-	padding: 10px;
+	padding: 0px;
 	font-size: 12px; 
-	margin: 0px 0px;
+	
 }
 
 .list input[type=number]{
