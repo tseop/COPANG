@@ -9,7 +9,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 
 
 /* top */
-.top {font-weight:lighter;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: auto;font-size: 1rem;min-width: 40rem;max-width: 100%;margin: auto;background: white;padding: 30px;}
+.top {font-weight:lighter;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: auto;font-size: 1rem;min-width: 40rem;max-width: 100%;margin: 30px auto auto auto;background: white;padding: 30px;}
 .top .logo {text-align: center;}
 .top .top-bar{min-width: 30rem;margin-bottom:1rem;position: relative;text-align: right;font-size: 13px;padding-right: 1rem;}
 .top .top-bar a {margin-left: 2px;color: #366afe;text-decoration: none;font-weight: 800;}
