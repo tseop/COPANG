@@ -16,6 +16,8 @@
          alert("사원번호를 입력해주세요");
          return;
       }
+      //location.href = "noDupleCheck.ep?no="+noform.no.value;
+      //location.href("noDupleCheck.ep?no=+"noform.no.value);
       window.open("noDupleCheck.ep?no="+noform.no.value,"win01","width=300 height=250");
    }
    
@@ -124,6 +126,7 @@
             autofocus="autofocus" required="required" placeholder="사원번호를 입력하세요" width="8rem">
             <input type="button" class="check" required="required" value = "중복체크" onclick="win01(this.form)"></td>
       </tr>
+
       </thead></table><table><thead> 
       <tr>
          <th><span class="required_content">*</span><label for="pw">비밀번호</label></th>

@@ -72,16 +72,21 @@ public class EmployeeServlet extends HttpServlet {
 		}
 
 		else if (command.equals("/noDupleCheck.ep")) {
-			int noSearch = Integer.parseInt(request.getParameter("no"));
+			Integer noSearch = Integer.parseInt(request.getParameter("no"));
 			int no;
+//			if(noSearch == null) {
+//		         out.print("<script>alert('사원번호를 입력하세요');</script>");
+//			}
 			try {
 				rs = empDAO.idDupleCheck(noSearch);
 				if (rs.next()) {
 					no = rs.getInt("EMP_NO");
 					if (no == noSearch) {
+						//out.print("<script>alert('이미 있는 사원번호입니다.');</script>");
 						out.print("이미 있는 사원번호입니다.<br>");
 					}
 				} else {
+					//out.print("<script>alert('사용가능합니다.');</script>");
 					out.print("사용가능합니다.<br>");
 				}
 				out.print("<input type = 'button' value ='종료' onClick='self.close()'>");
