@@ -22,7 +22,7 @@
 	
 </script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/product.css?v=45">
+<link rel="stylesheet" type="text/css" href="css/product.css?v=46">
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
@@ -89,9 +89,9 @@
 								<option value="제품명" selected="selected">제품명</option>
 								<option value="거래처명">거래처명</option>
 						</select></li>
-						<li class="search_box">
+						<li class="search_box2">
 						<input type="text" placeholder="검색어를 입력해주세요" name="searchData" autofocus="autofocus" required="required">
-						<input type="submit" value="검색"></li>
+						<input type="submit" value="검색" class="pro_smb"></li>
 					</ul>
 				</div>
 			</div>

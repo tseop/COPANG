@@ -135,18 +135,16 @@ input[type="button"] {
 .list input[type=number]{width: 50% }
 
 select {
-	width: 100px;
-	height: 52px;
+	width: 80px;
+	height: auto;
 	float: left; padding : .8em .5em;
-	border: 1px solid #ccc;
-	border-right:none;
 	font-family: inherit;
-	background: url('arrow.jpg') no-repeat 95% 50%;
 	border-radius: 0px;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 	padding: .8em .5em;
+	border: none;
 }
 
 #search{border: 1px solid black; background: #DEDEDE; color: black;}
@@ -155,12 +153,10 @@ select {
 .wrap a{font-size: 1rem; font-weight: 700;padding: 5px;}
 .title_area{display: flex;justify-content: space-between; line-height: 30px; font-size: 1rem;}
 .register, .list{margin: 1rem 0;}
-.title_area input[type=text]{width: 50px;}
-.title_area input[type=submit]{border: none;background: #366afe; color: white; padding: 0.5rem 1rem; font-size: 0.7rem; font-weight: 700;}
-.wrap table td a{text-decoration: none; padding: 0 3px;}
+.list a{font-size: 0.8rem; font-weight: 500;}
+.wrap .title_area input[type=text]{width: 62%;}
+.wrap .title_area input.pro_smb{border: none;background: #366afe; color: white; padding: 0.5rem 1rem; font-size: 0.7rem; font-weight: 700;}
+.wrap table tr td a{text-decoration: none; padding: 0 3px; color:black;}
 .wrap table td a:hover {text-decoration: underline;}
 #go{width: 40px;  background: #DEDEDE; color: black; border: 1px solid black; padding: 0;}
-
-
-
 
