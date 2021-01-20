@@ -45,7 +45,10 @@
 
 <style type="text/css">
 .wrapper_main{padding: 1rem 2rem 6rem 2rem; min-width: 40rem; width: 80%;margin: auto;}
-.wrapper_main h1{margin-bottom: 0.5rem; color:#366afe; padding-left: 1rem;}
+.wrapper_main .noti_preview .link{display: flex;justify-content: space-between; margin: none;}
+.wrapper_main .noti_preview .link p{margin-bottom: 0.5rem; font-weight:700; color:#366afe; padding-left: 1rem;}
+.wrapper_main .noti_preview .link a{cursor:pointer; text-decoration: none; font-size: 0.7rem; color:#366afe;}
+.wrapper_main .noti_preview .link a:hover{text-decoration: underline; cursor:pointer;}
 .first_line {display: flex; justify-content: center;width: 100%}
 .noti_preview {width: 100%;margin: auto;}
 .noti_preview table{width: 100%;min-width: 22rem;margin: auto;}
@@ -68,9 +71,10 @@
 		ResultSet productRs = mainDAO.mainProductList();
 	%>
 <div class="wrapper_main">
-	<h1>공지사항</h1>
 <div class="first_line">
 	<div class="noti_preview">
+	<div class="link">
+	<p>공지사항</p><a href="noticeList.no">더 보기</a></div>
 		<table>
 			<thead>
 				<tr>
