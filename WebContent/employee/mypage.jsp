@@ -20,7 +20,7 @@
 			dept_name = "경영지원";
 		}
 		else {
-			dept_name = "대표";
+			dept_name = "";
 		}
 		
 		if(empDTO.getEmpRank() == 1){
