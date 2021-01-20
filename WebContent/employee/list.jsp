@@ -12,8 +12,8 @@
 <title></title>
 </head>
 <body>
-	<div class="employee">
-		<div class="table" style="min-width: 1012px;">
+<div class="customer">
+	<div class="table">
 			<div class="search_area">
 				<form action="empSearch.ep" method="get">
 					<h1>사원 목록</h1>
