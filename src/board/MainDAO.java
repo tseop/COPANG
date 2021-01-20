@@ -21,7 +21,14 @@ public class MainDAO {
 	}
 	
 	public ResultSet mainBoardList() throws SQLException {
-		String sql = "SELECT * FROM BOARD order by BOARD_DATE DESC limit 0, 5";
+		String sql = "SELECT * FROM BOARD ORDER BY BOARD_DATE DESC limit 0, 5";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		return rs;
+		}
+	
+	public ResultSet mainNoticeList() throws SQLException {
+		String sql = "SELECT * FROM NOTICE ORDER BY NOTI_DATE DESC limit 0, 5";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		return rs;

@@ -11,31 +11,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-select {
-	width: 100px;
-	height: 40px;
-	float: left; padding : .8em .5em;
-	border: 1px solid #ccc;
-	border-right:none;
-	font-family: inherit;
-	background: url('arrow.jpg') no-repeat 95% 50%;
-	border-radius: 0px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	padding: .8em .5em;
-}
-#search{border: 1px solid black; background: #DEDEDE;;color: black;}
-#remove, #update{font-size: 12px;}
-.wrap .box{margin: 1rem 0;}
-.wrap a{font-size: 1rem; font-weight: 700;padding: 5px;}
-.title_area{display: flex;justify-content: space-between; line-height: 30px; font-size: 1rem;}
-.register, .list{margin: 1rem 0;}
-.title_area input[type=submit]{border: none;background: #366afe; color: white; padding: 0.5rem 1rem; font-size: 0.7rem; font-weight: 700;}
-.wrap table td a{color: black; text-decoration: none; padding: 0 3px;}
-.wrap table td a:hover {text-decoration: underline;}
-</style>
 <script>
 	function popup() {
 		var url = "product/customerSearchForm.jsp";
@@ -60,7 +35,7 @@ select {
 	
 </script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/product.css?v=3">
+<link rel="stylesheet" type="text/css" href="css/product.css?v=44">
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
@@ -170,7 +145,7 @@ select {
 					<form action="stockUpdate.pd" method="get" >
 						<input type="hidden" name="num" value="${product.proNo}">
 						<input type="number" name="todayValue" id="todayValue" style="width: 50%" placeholder="당일판매량" size="10" maxlength="100">
-						<input type="submit" id="go" value="입력" style="width: 20%; height:20px; font-size:10px; margin: 0px 0px">
+						<input type="submit" id="go" value="입력" >
 						<!-- <input type="button" id="go" value="입력" style="width: 20%; height:20px; font-size:10px; margin: 0px 0px" onclick="result()"> -->
 					</form>
 					</td>

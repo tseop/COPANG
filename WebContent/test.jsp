@@ -1,9 +1,12 @@
+<%@page import="notice.NoticeDAO"%>
+<%@page import="notice.NoticeDTO"%>
 <%@page import="board.BoardDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <jsp:useBean id="mainDAO" class="board.MainDAO" scope="page" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,16 +18,31 @@
 .wrapper_main{display: flex; padding: 2rem; min-width: 40rem;}
 .box1{border: 1px solid black;}
 .box2{border: 1px solid red;}
+.box2 table tr{border: 1px solid pink;}
+.box2 table tr td{border: 1px solid pink;}
 .box3{border: 1px solid blue;}
 </style>
 </head>
 <body>
-<%-- <% --%>
-<!-- // ResultSet rs = mainDAO.mainBoardList(); -->
-<%-- %> --%>
+<%
+ResultSet rs = mainDAO.mainBoardList();
+
+%>
 <div class="wrapper_main">
 <div class="box1">
+<table>
+	<thead>
+		<tr>
+			<th width="10%">번호</th>
+			<th width="50%">제목</th>
+			<th width="20%">작성자</th>
+			<th width="20%">날짜</th>
+		</tr>
+		</thead>
+		<tbody>
 
+		</tbody>
+</table>
 </div>
 <div class="box2">
 <table>
@@ -37,16 +55,16 @@
 		</tr>
 		</thead>
 		<tbody>
-<%-- <% --%>
-<!-- // while (rs.next()) { -->
-<!-- // 	BoardDTO data = new BoardDTO(); -->
-<!-- // 	int boardNo = rs.getInt("BOARD_NO"); -->
-<!-- // 	String boardTitle = rs.getString("BOARD_TITLE"); -->
-<!-- // 	String boardDate = rs.getString("BOARD_DATE"); -->
-<!-- // 	int boardReadcount = rs.getInt("BOARD_READCOUNT"); -->
-<!-- // 	out.print("<tr><td>" + boardNo + "</td><td>" + boardTitle + "</td><td>" + boardDate + "</td><td>" + boardReadcount + "</td></tr>"); -->
-<!-- // } -->
-<%-- 			%> --%>
+<%
+while (rs.next()) {
+ 	BoardDTO data = new BoardDTO();
+ 	int boardNo = rs.getInt("BOARD_NO");
+ 	String boardTitle = rs.getString("BOARD_TITLE");
+	String boardDate = rs.getString("BOARD_DATE");
+	int boardReadcount = rs.getInt("BOARD_READCOUNT");
+	out.print("<tr><td>" + boardNo + "</td><td>" + boardTitle + "</td><td>" + boardDate + "</td><td>" + boardReadcount + "</td></tr>");
+ }
+%>
 		</tbody>
 </table>
 </div>

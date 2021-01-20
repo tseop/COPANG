@@ -27,6 +27,7 @@
       
       if(pw.length < 6 || pw.length > 14){
          document.getElementById('check').innerHTML="비밀번호는 6글자이상 14글자 이하만 사용가능합니다.";
+         document.getElementById('check').style.fontSize='12px';
          x.pw.value = "";
          x.pw.focus();
          return;
@@ -38,6 +39,7 @@
       }
       if(check_sc == 0){
          document.getElementById('check').innerHTML="특수문자가 하나이상 들어가야합니다.";
+         document.getElementById('check').style.fontSize='12px';
          x.pw.value = "";
          x.pw.focus();
          return;
@@ -45,6 +47,7 @@
       else{
          document.getElementById('check').innerHTML="사용가능한 비밀번호입니다.";
          document.getElementById('check').style.color='blue';
+         document.getElementById('check').style.fontSize='12px';
          return;
       }
    }
@@ -54,11 +57,13 @@
       if(pw == pw2){
          document.getElementById('check2').innerHTML='비밀번호가 일치합니다.'
          document.getElementById('check2').style.color='blue';
+         document.getElementById('check2').style.fontSize='12px';
          return;
         }
         else{
            document.getElementById('check2').innerHTML='비밀번호가 일치하지 않습니다.';
            document.getElementById('check2').style.color='red';
+           document.getElementById('check2').style.fontSize='12px';
            x.pw2.value="";
            x.pw2.focus();
            return;
