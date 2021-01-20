@@ -101,85 +101,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<<<<<<< HEAD
-<%
-	EmployeeDTO empDTO = (EmployeeDTO)session.getAttribute("empDTO");
-	String dept_name = null;
-	int index = empDTO.getEmpSecurity().indexOf("-");
-	int len = empDTO.getEmpSecurity().length();
-	String c1 = empDTO.getEmpSecurity().substring(0,index);
-	String c2 = empDTO.getEmpSecurity().substring(index+1);
-	//940524-105 4  1  1  9   999-999
-	//012345678910 11 12 	  0123456
-	if(empDTO.getDeptNo() == 1){
-		dept_name="물류팀";
-	}
-	else if(empDTO.getDeptNo() == 2){
-		dept_name = "인사관리";
-	}
-	else if(empDTO.getDeptNo() == 3){
-		dept_name="경영지원";
-	}
-	else{
-		dept_name="부서선택";
-	}
-%>
-<div class="customer">
-<div class="emp_reg_form">
-<form action="update.ep" method="get">
-	<div class="select_box_top">
-    <h1>개인 정보수정</h1>
-	<select name="dep" class="select_box">
-		<option value="<%=empDTO.getDeptNo() %>"><%=dept_name %></option>
-		
-	</select>
-</div>
-<hr>
-	<table><thead>
-		<tr>
-         <th><span class="required_content">*</span><label for="no">사원번호</label></th>
-         <td><input type="text" name="no" onkeypress = "inNumber()" size="20"maxlength="10" value="<%=empDTO.getEmpNo() %>"
-            autofocus="autofocus" required="required" placeholder="<%=empDTO.getEmpNo() %>" width="8rem" readonly>
-           </td>
-      </tr>
-      </thead></table><table><thead>
-      <tr>
-         <th><span class="required_content">*</span><label for="pw">비밀번호</label></th>
-         <td><input type="password" name="pw" id="pw" onchange="check_pw(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 입력"><br>
-         	<span name="check" id="check"><br></span></td>
-       </tr>
-       <tr>
-       <th><span class="required_content">*</span><label for="pwc">비밀번호 확인</label></th>
-       <td><input type="password" name="pw2" id="pw2" onchange="check_pw2(this.form)" size="20" required="required" maxlength="10" placeholder="비밀번호 확인"><br>
-       		<span name="check2" id="check2"></span></td>
-       </tr>
-       </thead></table><table><thead>
-       <tr>
-         <th><span class="required_content">*</span><label for="name">이름</label></th>
-         <td><input type="text" name="name" size="20" maxlength="10" autofocus="autofocus" required="required" value="<%=empDTO.getEmpName() %>"placeholder="<%=empDTO.getEmpName() %>" readonly></td>
-       </tr>
-        </thead></table><table><thead>
-       <tr>
-         <th><span class="required_content">*</span><label for="security">주민등록번호</label></th>
-         <td><input type="text" name="c1" value="<%=c1 %>" placeholder="<%=c1 %>" required="required" size="10" maxlength="6" class="security_no" readonly> - <input type="password" name="c2" value="<%=c2 %>" placeholder="*******" required="required" size="10" maxlength="7" class="security_no" readonly>
-            </td>
-       </tr>
-     </thead></table><table><thead>
-       <tr>
-         <th><span class="required_content">*</span><label for="tel">핸드폰</label></th>
-         <td><input type="text" name="tel" size="20" maxlength="20" required="required" placeholder="010-3114-1041"></td>
-       </tr>
-     </thead></table><table><thead>      
-     	<tr>
-         <th><span class="required_content">*</span><label for="addr">주소</label></th>
-         <td><input type="text" name="addr" size="20" maxlength="100" required="required" placeholder="주소입력"></td>	
-       </tr>
-       </thead></table>
-	<div class="search_area">
-	<ul style="justify-content: center;">
-		<li><input type="submit" value="수정하기"></li>
-	</ul>
-=======
+
 	<%
 		EmployeeDTO empDTO = (EmployeeDTO) session.getAttribute("empDTO");
 		String dept_name = null;
@@ -294,7 +216,7 @@
 				</div>
 			</form>
 		</div>
->>>>>>> 4ef4057c242bbe8a9b236daefa263ca1b581ce7c
+
 	</div>
 </body>
 </html>
