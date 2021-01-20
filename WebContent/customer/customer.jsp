@@ -36,7 +36,7 @@
 						<td class="num">${customer.cusNo}</td>
 						<td><a href='customerDetails.cu?num=${customer.cusNo}'
 							style="color: black; text-decoration: none;"
-							onmouseover="this.style.color='blue'"
+							onmouseover="this.style.color='#0074E9'"
 							onmouseout="this.style.color='black'"> ${customer.cusName}</a></td>
 						<td>${customer.cusManager}</td>
 					</tr>

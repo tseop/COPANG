@@ -96,7 +96,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .customer .emp_reg_form .check{border: none; background:white; color: #366afe; font-size:0.6rem; font-weight: 700;}
 .select_box_top{display: flex;justify-content: space-between;}
 .select_box{padding:0.5rem; position: relative;width: 8rem; border: 1px solid #ccc;font-size: 0.7rem; color: #60666d;}
-
+.emp_reg_form #check, #check2{font-size: 0.8rem;}
 
 /* CUSTOMER_REGISTER */
 .customer .reg_form{width: 50%;margin: auto;}
@@ -109,8 +109,7 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .customer .reg_form h1{padding-left: 3rem;}
 .customer .reg_form input[type=text]{padding: 0.5rem; border: 1px solid #ccc;width: 15rem;}
 .customer .reg_form .search_area ul li{margin:2rem 2rem;}
-.updt{border: none; background: white; color: #ccc; font-weight: 500;}
-
+.customer .reg_form .search_area .btns{display: none;}
 
 /* bottom */
 .footer-content{background:#888; text-align: center; height:9rem; line-height: 1.5rem; width: 100%; margin:auto; color: white; padding-top: 2rem;}
@@ -136,12 +135,13 @@ footer{position: absolute;left: 0;bottom: 0;width: 100%;}
 .noti_view table thead tr .height {height: 10rem;}
 .noti_view h2 {margin: 1rem 0;text-align: center;font-size: 1.2rem;font-weight: 700;color: #366afe;}
 
+
 /* write area */
 .write_area{width: 60%; margin: auto;}
 .write_area h1{font-size: 1rem;font-weight: 700;}
 .write_area input[type=text]{border: 1px solid #fff;padding: 0.3rem;width: 50%;margin-bottom: 0.5rem;}
 .write_area input[type=button],[type=submit]{border: 0px; background: #366afe; color:white; padding: 0.8rem 1.5rem; font-size: 0.7rem;}
-.write_area .btns {display: flex;justify-content: space-between;margin: 2rem 0;} 
+.write_area .btn {display: flex;justify-content: space-between;margin: 2rem 0;} 
 
 
 /* pop up */

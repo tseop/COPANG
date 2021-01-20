@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import customer.CustomerDTO;
+
 public class EmployeeDAO {
 	private EmployeeDTO empDTO;
 	private Connection conn;
@@ -111,7 +113,43 @@ public class EmployeeDAO {
 		rs = pstmt.executeQuery();
 		return rs;
 	}
+	public EmployeeDTO empView(int empNo) throws SQLException {
+		sql = "SELECT EMP_NO, EMP_NAME, EMP_TEL, EMP_ADDR, DEPT_NO, EMP_RANK FROM EMPLOYEE WHERE EMP_NO = ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, empNo);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			empDTO.setEmpNo(rs.getInt("EMP_NO"));
+			empDTO.setEmpName(rs.getString("EMP_NAME"));
+			empDTO.setEmpTel(rs.getString("EMP_TEL"));
+			empDTO.setEmpAddr(rs.getString("EMP_ADDR"));
+			empDTO.setDeptNo(rs.getInt("DEPT_NO"));
+			empDTO.setEmpRank(rs.getInt("EMP_RANK"));
+		}
+		return empDTO;
+	}
+	public ArrayList<EmployeeDTO> empSearch(String searchEmpName) throws SQLException{
+		sql = "SELECT * FROM EMPLOYEE WHERE EMP_NAME LIKE ?";
 
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, "%"+searchEmpName+"%");
+		rs = pstmt.executeQuery();
+		empList = new ArrayList<EmployeeDTO>();
+
+		while(rs.next()) {    
+			empDTO = new EmployeeDTO();
+			empDTO.setDeptNo(rs.getInt("DEPT_NO"));
+			empDTO.setEmpAddr(rs.getString("EMP_ADDR"));
+			empDTO.setEmpName(rs.getString("EMP_NAME"));
+			empDTO.setEmpNo(rs.getInt("EMP_NO"));
+			empDTO.setEmpPw(rs.getString("EMP_PW"));
+			empDTO.setEmpRank(rs.getInt("EMP_RANK"));
+			empDTO.setEmpSecurity(rs.getString("EMP_SECURITY"));
+			empDTO.setEmpTel(rs.getString("EMP_TEL"));
+			empList.add(empDTO);
+		}
+		return empList;
+	}
 	public void empUpdate(EmployeeDTO empDTO,int empNo) throws SQLException {
 		sql = "update EMPLOYEE set EMP_NO=?,EMP_NAME=?,EMP_TEL=?,EMP_ADDR=?,EMP_SECURITY=?,EMP_PW=?,DEPT_NO=? where EMP_NO =?";
 		pstmt = conn.prepareStatement(sql);

@@ -7,6 +7,17 @@
 <head>
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
+	function check(){
+      	var editorValue = CKEDITOR.instances.editor.getData();
+      	console.log(editorValue);
+
+      	if(editorValue == "" || editorValue.length == 0){
+        	alert('내용을 입력해주세요.');
+         	return false;
+      	} else {
+         	return true;
+      	}
+   }
 	function goBack() {
 		window.history.back();
 	}
@@ -42,7 +53,7 @@ $(function(){
 			$('#fileYN').text(arr[2]);
 		}
 	});
-});	
+}); 	
 </script>
 <meta charset="UTF-8">
 <title>COPANG</title>
@@ -52,7 +63,7 @@ $(function(){
 		<div class="write_area">
 			<h1>공지사항 글쓰기</h1>
 			<form method="post" action="noticeRegister.no"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return check()">
 				<!-- enctype="multipart/form-data" -->
 				<hr>
 				<ul class=titleandfile>
@@ -62,7 +73,7 @@ $(function(){
 						<label for="file" id="fileYN">파일 선택</label></li>
 				</ul>
 				<ul>
-					<li><textarea name="content" required="required"></textarea></li>
+					<li><textarea name="content" id="editor"></textarea></li>
 				</ul>
 				<ul class="btns">
 					<li><input type="submit" value="글쓰기"></li>

@@ -114,7 +114,7 @@ select {
 	} */
 </script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/product.css?v=3">
+<link rel="stylesheet" type="text/css" href="css/product.css?v=44">
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
@@ -164,9 +164,7 @@ select {
 				</table>
 			</div>
 		</form>
-
 		<br> <br>
-
 		<form action="productSearch.pd" method="get">
 			<div class="search_area">
 				<div class="title_area">
@@ -183,7 +181,6 @@ select {
 				</div>
 			</div>
 		</form>
-
 		<div class="list">
 			<table border="1">
 				<tr>
