@@ -73,10 +73,15 @@
 						String notiTitle = noticeRs.getString("NOTI_TITLE");
 						String notiDate = noticeRs.getString("NOTI_DATE");
 						String empName = noticeRs.getString("EMP_NAME");
-						out.print("<tr><td>" + notiNo + "</td><td>" + notiTitle + "</td><td>" + empName + "</td><td>" + notiDate
-								+ "</td></tr>");
-					}
+// 						out.print("<tr><td>" + notiNo + "</td><td>" + notiTitle + "</td><td>" + empName + "</td><td>" + notiDate
+// 								+ "</td></tr>");
+					
 				%>
+				<tr><td><%=notiNo%></td><td><a href="noticeView.no?no=<%=notiNo %>" style="color: black; text-decoration: none;"
+				onmouseover="this.style.color='#0074E9'"
+				onmouseout="this.style.color='black'"><%=notiTitle%></a></td><td><%=empName%></td><td><%=notiDate%></td></tr>
+				
+				<%} %>
 			</tbody>
 		</table>
 	</div>
@@ -112,10 +117,18 @@
 				int proStoring = productRs.getInt("PRO_STORING");
 				String cusName = productRs.getString("CUS_NAME");
 				String proDate = productRs.getString("PRO_LAST_DATE");
-				out.print("<tr><td>" + proNo + "</td><td>" + proName + "</td><td>" + proStock +  "</td><td>" + proStoring + "</td><td>" + cusName + "</td><td>" + proDate
-						+ "</td></tr>");
-			}
+// 				out.print("<tr><td>" + proNo + "</td><td>" + proName + "</td><td>" + proStock +  "</td><td>" + proStoring + "</td><td>" + cusName + "</td><td>" + proDate
+// 						+ "</td></tr>");
+// 			}
 		%>
+		
+		<tr><td><%=proNo%></td><td><a href="productSearch.pd?colum=제품명&searchData=<%=proName%>" style="color: black; text-decoration: none;"
+				onmouseover="this.style.color='#0074E9'"
+				onmouseout="this.style.color='black'"><%=proName %></a></td><td><%=proStock %></td><td><%=proStoring%></td><td><a href="productSearch.pd?colum=거래처명&searchData=<%=cusName%>" style="color: black; text-decoration: none;"
+				onmouseover="this.style.color='#0074E9'"
+				onmouseout="this.style.color='black'"><%=cusName%></a></td><td><%=proDate%></td></tr>
+						
+						<%} %>
 		</tbody>
 	</table>
 </div>
