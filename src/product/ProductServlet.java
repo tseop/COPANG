@@ -51,7 +51,6 @@ public class ProductServlet extends HttpServlet {
 	      doPost(request, response);
 	   }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		doGet(request, response);
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -127,13 +126,17 @@ public class ProductServlet extends HttpServlet {
 			int empNo = (int)Login.session.getAttribute("EMP_NO");
 			try {
 				rs = empDAO.pwFind(empNo);
+				productDTO = productDAO.productUpdateConfirm(proNo);
 				if(rs.next()) {
 					//empDTO.setEmpPw(rs.getString("EMP_PW"));
 					if(pw.equals(rs.getString("EMP_PW"))) {
 //						RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=product/productUpdateForm");
 //						request.setAttribute("proNo", proNo);
 //						dis.forward(request,response);
-						response.sendRedirect("index.jsp?proNo="+proNo+"&page=product/productUpdateForm");
+//						response.sendRedirect("index.jsp?page=product/productUpdateForm");
+						dis = request.getRequestDispatcher("index.jsp?page=product/productUpdateForm");
+						request.setAttribute("productDTO", productDTO);
+						dis.forward(request, response);
 					}
 					else {
 						out.print("<script>alert('비밀번호가 일치하지 않습니다.');history.back();</script>");
