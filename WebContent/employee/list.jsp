@@ -49,7 +49,7 @@
 						} else if (empDTO.getDeptNo() == 3) {
 							deptName = "인사관리";
 						} else {
-							deptName = "";
+							deptName = "대표";
 						}
 
 						if (empDTO.getEmpRank() == 1) {
