@@ -4,15 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <style>
-input[type="submit"] {
-	float: right;
-}
-.wrap img {
-	width: 20px;
-	height: 20px;
-}
-</style> -->
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/product.css?v=45">
 <meta charset="UTF-8">
@@ -27,7 +18,7 @@ input[type="submit"] {
 	<input type="hidden" name = "proNo" value="<%= proNo%>">
 		<div class="title_area">
 				<a><img src="images/table.svg"> 제품 수정</a> 
-				<input type="submit" value="등록하기">
+				<input type="submit" value="수정하기">
 			</div>
 			<div class="register">
 				<table border="1">

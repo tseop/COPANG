@@ -13,7 +13,9 @@
 		window.history.back();
 	}
 </script>
+<style type="text/css">
 
+</style>
 <meta charset="UTF-8">
 <title>COPANG</title>
 </head>
@@ -21,28 +23,34 @@
 	<%
 		NoticeDTO noticeDTO = (NoticeDTO) request.getAttribute("noticeDTO");
 	%>
-	<div id="noticeUpdate">
+	<div class="customer">
+		<div class="write_area">
 		<form action="noticeUpdate.no" method="get">
 			<ul>
 				<li><label for="제목">제목</label> <input type="text" name="title"
-					required="required" value="<%=noticeDTO.getNotiTitle()%>">
+					required="required" class="write_title" value="<%=noticeDTO.getNotiTitle()%>">
 					<input type="hidden" name="no" value="<%=noticeDTO.getNotiNo()%>"></li>
-
-				<li><input type="file" name="file" id="file" class="inputfile"/>
-					<label for="file" id="fileYN">기존 파일 : <%= noticeDTO.getFileName() %></label></li>
-
-				<li><label for="내용">내용</label> <textarea name="content"
-						required="required" id="editor"><%=noticeDTO.getNotiContent()%></textarea></li>
-
-				<li><input type="submit" value="수정"><input
-					type="button" value="취소" onClick="goBack()"></li>
-
 			</ul>
+			<hr>
+			<ul class=titleandfile>
+				<li class="choose_file"><input type="file" name="file" id="file" class="inputfile"/>
+					<label for="file" id="fileYN">기존 파일 : <%= noticeDTO.getFileName() %></label></li>
+			</ul>
+			<ul>
+				<li><label for="내용">내용</label>
+				<textarea name="content" required="required" id="editor"><%=noticeDTO.getNotiContent()%></textarea></li>
+			</ul>
+			<ul class="btns">
+					<li><input type="submit" value="수정"></li>
+					<li><input type="button" value="취소" onClick="goBack()"></li>
+			</ul>
+
 		</form>
-	</div>
 
 	<script>
 		CKEDITOR.replace('content');
 	</script>
+	</div>
+	</div>
 </body>
 </html>
