@@ -11,11 +11,7 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css?v=125">
 <script type="text/javascript">
-// 	$function(){
-// 		$("#btnList").on("click", function(){
-// 			location.href="${path}/notice_servlete/noticeRegister.no"; /* 업로드 경로 설정하는거 같은데.. 이게 맞는건지..? upload폴더에 넣을 순 없는건가?  */
-// 		});
-// 	});
+	
 </script>
 </head>
 <body>
@@ -47,16 +43,19 @@
 					<tr>
 						<td>첨부파일</td>
 						<%
-							if(noticeDTO.getFileName() == null){
+							if (noticeDTO.getFileName() == null) {
 						%>
-						<td colspan="2">첨부파일 없음</td>		
+						<td colspan="2">첨부파일 없음</td>
 						<%
 							} else {
 						%>
-						
-						<td colspan="2"><a href="FileDown?fileName=<%=noticeDTO.getFileName()%>"><%=noticeDTO.getFileName() %></a></td>
-						<%} %>
-						<!-- 더 추가해야하는데 모르겠다... -->
+
+						<td colspan="2"><a
+							href="FileDown?fileName=<%=noticeDTO.getFileName()%>"><%=noticeDTO.getFileName()%></a></td>
+						<%
+							}
+						%>
+
 					</tr>
 					<tr>
 						<td class="height">내용</td>

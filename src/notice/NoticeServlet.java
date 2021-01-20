@@ -147,7 +147,7 @@ public class NoticeServlet extends HttpServlet {
 			}
 		} 
 		
-		//  게시글 수정
+		//  게시글 검색
 		else if (command.equals("/noticeSearch.no")) {
 			searchTitle = request.getParameter("searchTitle");
 			try {
