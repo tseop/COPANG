@@ -54,7 +54,7 @@
 	<div class="customer">
 		<div class="emp_update_form">
 			<h1>내 정보 수정</h1>
-			<form action="../updateConfirm1.ep" method="get">
+			<form action="updateConfirm1.ep" method="get">
 				<hr>
 				<label>비밀번호를 입력해주세요</label> <input type="password" name="pw" id="pw"
 					size="20" required="required" autofocus="autofocus" maxlength="10" placeholder="비밀번호 입력">

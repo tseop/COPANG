@@ -49,14 +49,14 @@
 
 			<h1>사원 상세보기</h1>
 			<hr>
-			<form name="update" action="employee/updateConfirm1.jsp" method="post">
+			<form name="update" action="index.jsp?page=employee/updateConfirm1" method="post">
 				<input type="hidden" name="empNo" value="<%=empDTO.getEmpNo()%>">
 				<table>
 					<thead>
 						<tr>
 							<th><span class="required_content">*</span>사원 번호</th>
 							<td><input type="text" name="empNo" required="required"
-								maxlength="8" value="<%=empDTO.getEmpNo()%>" readonly>
+								maxlength="8" value="<%=empDTO.getEmpNo()%>" readonly="readonly">
 						</tr>
 					</thead>
 				</table>
@@ -65,7 +65,7 @@
 						<tr>
 							<th><span class="required_content">*</span>사원 이름</th>
 							<td><input type="text" name="empName" required="required"
-								maxlength="20" value="<%=empDTO.getEmpName()%>">
+								maxlength="20" value="<%=empDTO.getEmpName()%>" readonly="readonly">
 						</tr>
 					</thead>
 				</table>
@@ -74,7 +74,7 @@
 						<tr>
 							<th><span class="required_content">*</span>전화번호</th>
 							<td><input type="text" name="empTel" required="required"
-								maxlength="15" value="<%=empDTO.getEmpTel()%>">
+								maxlength="15" value="<%=empDTO.getEmpTel()%>" readonly="readonly">
 						</tr>
 					</thead>
 				</table>
@@ -83,36 +83,30 @@
 						<tr>
 							<th><span class="required_content">*</span>주소</th>
 							<td><input type="text" name="empAddr" required="required"
-								maxlength="30" value="<%=empDTO.getEmpAddr()%>">
+								maxlength="30" value="<%=empDTO.getEmpAddr()%>" readonly="readonly">
 						</tr>
 					</thead>
 				</table>
 				<table>
 					<thead>
 						<tr>
-							<th><span class="required_content">*</span>부서이름</th><td style="width: 16rem;">
+							<th><span class="required_content">*</span>부서</th><td style="width: 16rem;">
 							<%
 								if (empDTO.getDeptNo() == 1) {
 							%>
 							<select name="dept_name" class="select_box">
 								<option value="1" selected="selected">물류</option>
-								<option value="2">경영지원</option>
-								<option value="3">인사관리</option>
 							</select>
 							<%
 								} else if (empDTO.getDeptNo() == 3) {
 							%>
 							<select name="dept_name" class="select_box">
-								<option value="1">물류</option>
 								<option value="2" selected="selected">경영지원</option>
-								<option value="3">인사관리</option>
 							</select>
 							<%
 								} else {
 							%>
 							<select name="dept_name" class="select_box">
-								<option value="1">물류</option>
-								<option value="2">경영지원</option>
 								<option value="3" selected="selected">인사관리</option>
 							</select>
 							<%
@@ -131,23 +125,17 @@
 							%>
 							<select name="rank"class="select_box">
 								<option value="1" selected="selected" >사원</option>
-								<option value="2">팀장</option>
-								<option value="3">대표</option>
 							</select>
 							<%
 								} else if (empDTO.getEmpRank() == 2) {
 							%>
 							<select name="rank" class="select_box">
-								<option value="1">사원</option>
 								<option value="2" selected="selected">팀장</option>
-								<option value="3">대표</option>
 							</select>
 							<%
 								} else {
 							%>
 							<select name="rank" class="select_box">
-								<option value="1">사원</option>
-								<option value="2">팀장</option>
 								<option value="3" selected="selected">대표</option>
 							</select>
 							<%

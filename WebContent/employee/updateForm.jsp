@@ -202,7 +202,7 @@
 							<!--누구든지 수정 가능 -->
 							<th><span class="required_content">*</span><label for="tel">핸드폰</label></th>
 							<td><input type="text" name="tel" size="20" maxlength="20"
-								required="required" placeholder="<%=empDTO.getEmpTel()%>"></td>
+								required="required" value="<%=empDTO.getEmpTel()%>"></td>
 						</tr>
 					</thead>
 				</table>
@@ -211,8 +211,8 @@
 						<tr>
 							<!--누구든지 수정 가능 -->
 							<th><span class="required_content">*</span><label for="addr">주소</label></th>
-							<td><input type="text" name="addr" size="20" maxlength="100"
-								placeholder="<%=empDTO.getEmpAddr()%>"></td>
+							<td><input type="text" name="addr" size="20" maxlength="100" 
+								required="required" value="<%=empDTO.getEmpAddr()%>"></td>
 						</tr>
 					</thead>
 				</table>
