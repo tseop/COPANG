@@ -64,12 +64,12 @@ public class ProductServlet extends HttpServlet {
 		if (command.equals("/productRegister.pd")) { 
 			productDTO.setProName(request.getParameter("proName"));
 			productDTO.setCusName(request.getParameter("cusName"));
-			productDTO.setProStoring(Integer.parseInt(request.getParameter("proStoring")));
-			productDTO.setProCost(Integer.parseInt(request.getParameter("proCost")));
-			productDTO.setProPrice(Integer.parseInt(request.getParameter("proPrice")));
+			productDTO.setProStoring(request.getParameter("proStoring"));
+			productDTO.setProCost(request.getParameter("proCost"));
+			productDTO.setProPrice(request.getParameter("proPrice"));
 			productDTO.setProFirstNal(request.getParameter("proFirstNal"));
 			productDTO.setProLastNal(request.getParameter("proLastNal"));
-			productDTO.setProStock(Integer.parseInt(request.getParameter("proStock")));
+			productDTO.setProStock(request.getParameter("proStock"));
 			try {
 				productDAO.productRegister(productDTO);
 				//out.print("<script>alert('상품등록이 완료되었습니다'; location.href='productList.pd';</script>");
@@ -147,12 +147,12 @@ public class ProductServlet extends HttpServlet {
 			int proNo = Integer.parseInt(request.getParameter("proNo"));
 			productDTO.setProName(request.getParameter("proName"));
 			productDTO.setCusName(request.getParameter("cusName"));
-			productDTO.setProStoring(Integer.parseInt(request.getParameter("proStoring")));
-			productDTO.setProCost(Integer.parseInt(request.getParameter("proCost")));
-			productDTO.setProPrice(Integer.parseInt(request.getParameter("proPrice")));
+			productDTO.setProStoring(request.getParameter("proStoring"));
+			productDTO.setProCost(request.getParameter("proCost"));
+			productDTO.setProPrice(request.getParameter("proPrice"));
 			productDTO.setProFirstNal(request.getParameter("proFirstNal"));
 			productDTO.setProLastNal(request.getParameter("proLastNal"));
-			productDTO.setProStock(Integer.parseInt(request.getParameter("proStock")));
+			productDTO.setProStock(request.getParameter("proStock"));
 			try {
 				productDAO.proUpdate(productDTO,proNo);
 //				productDAO.cusNameUpdate(productDTO,cusName);

@@ -113,8 +113,8 @@
 				ProductDTO data = new ProductDTO();
 				int proNo = productRs.getInt("PRO_NO");
 				String proName = productRs.getString("PRO_NAME");
-				int proStock = productRs.getInt("PRO_STOCK");
-				int proStoring = productRs.getInt("PRO_STORING");
+				String proStock = productRs.getString("PRO_STOCK");
+				String proStoring = productRs.getString("PRO_STORING");
 				String cusName = productRs.getString("CUS_NAME");
 				String proDate = productRs.getString("PRO_LAST_DATE");
 // 				out.print("<tr><td>" + proNo + "</td><td>" + proName + "</td><td>" + proStock +  "</td><td>" + proStoring + "</td><td>" + cusName + "</td><td>" + proDate

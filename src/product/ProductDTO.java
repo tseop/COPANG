@@ -4,12 +4,12 @@ package product;
 public class ProductDTO {
 	private int proNo;
 	private String proName;
-	private int proCost;		//원가
-	private int proPrice;	//소비자판매가
+	private String proCost;		//원가
+	private String proPrice;	//소비자판매가
 	private String proFirstNal;		//첫입고일
 	private String proLastNal;	//마지막입고일
-	private int proStoring;		//입고수
-	private int proStock;		//재고
+	private String proStoring;		//입고수
+	private String proStock;		//재고
 	private int cusNo;		//거래처번호
 	private String cusName;
 	
@@ -42,25 +42,25 @@ public class ProductDTO {
 
 
 
-	public int getProCost() {
+	public String getProCost() {
 		return proCost;
 	}
 
 
 
-	public void setProCost(int proCost) {
+	public void setProCost(String proCost) {
 		this.proCost = proCost;
 	}
 
 
 
-	public int getProPrice() {
+	public String getProPrice() {
 		return proPrice;
 	}
 
 
 
-	public void setProPrice(int proPrice) {
+	public void setProPrice(String proPrice) {
 		this.proPrice = proPrice;
 	}
 
@@ -90,25 +90,25 @@ public class ProductDTO {
 
 
 
-	public int getProStoring() {
+	public String getProStoring() {
 		return proStoring;
 	}
 
 
 
-	public void setProStoring(int proStoring) {
+	public void setProStoring(String proStoring) {
 		this.proStoring = proStoring;
 	}
 
 
 
-	public int getProStock() {
+	public String getProStock() {
 		return proStock;
 	}
 
 
 
-	public void setProStock(int proStock) {
+	public void setProStock(String proStock) {
 		this.proStock = proStock;
 	}
 
