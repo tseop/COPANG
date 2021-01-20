@@ -59,8 +59,10 @@
 .ui-datepicker{font-size: 16px;}
 .ui-datepicker select.ui-datepicker-month{ width:30%; font-size: 11px; }
 .ui-datepicker select.ui-datepicker-year{ width:40%; font-size: 11px; }
-.display_board p{padding: 2rem;text-align: center;}
-.display_board input {width: 50%; height: 1rem; padding: 0.5rem; border: 1px solid #ddd;}
+.display_board p{margin: 0 0 2rem 0;text-align: center; background: #f3f3f3; }
+.display_board h2{color:#366afe; font-size: 0.9rem; margin: 0 auto 0.5rem auto;width: fit-content;}
+.display_board input {width: 70%; height: 1rem; padding: 0.5rem; border: 0;background: #f3f3f3;}
+hr{margin:3rem 0; border: none; height: 1px; background: #ccc;}
 </style>
 
 </head>
@@ -100,21 +102,22 @@
 	</div>
 <div class="calender" id="datepicker"></div>
 </div>
-
+<hr>
 <div class="display_board">
+<h2>오늘의 한마디</h2>
     <form><p><input type="text" name="display" readonly="readonly"></p></form>
 </div>
-
 <div class="noti_preview">
+<hr>
 	<div class="title_more">
 	<p>입고현황</p><a href="productList.pd">재고관리 ></a></div>
 	<table>
 		<thead>
 			<tr>
 				<th width="10%">제품번호</th>
-				<th width="10%">제품명</th>
+				<th width="30%">제품명</th>
 				<th width="10%">재고</th>
-				<th width="30%">입고수량</th>
+				<th width="10%">입고수량</th>
 				<th width="30%">거래처명</th>
 				<th width="10%">입고일</th>
 			</tr>
