@@ -69,19 +69,23 @@
 						onClick="location.href='noticeList.no'" class="btn"></li>&emsp;&emsp;
 					<%
 						int EMP_RANK = (int) session.getAttribute("EMP_RANK");
-						if (EMP_RANK == 2 || EMP_RANK == 3) { //버튼 세션값에 따라 나타내는거
-					%>	
+						String deptName = null;
+						int EMP_DEPT = (int) session.getAttribute("EMP_DEPT");
+
+					
+						if (EMP_RANK == 1 && EMP_DEPT == 3 || EMP_RANK == 2 || EMP_RANK == 3) { //버튼 세션값에 따라 나타내는거
+					%>
 					<li><input type="button" value="수정"
 						onClick="location.href='noticeUpdateSearch.no?no=<%=noticeDTO.getNotiNo()%>'"
 						class="btn"></li>&emsp;&emsp;
-						
+
 					<li><input style="background: #D71427" type="button"
 						value="삭제"
 						onClick="location.href='noticeDelete.no?no=<%=noticeDTO.getNotiNo()%>'"
 						class="btn"></li>
 					<%
 						}
-					%>	
+					%>
 				</ul>
 			</div>
 		</div>

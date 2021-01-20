@@ -206,6 +206,7 @@ public class NoticeDAO {
 			noticeDTO.setNotiNo(rs.getInt("NOTI_NO"));
 			noticeDTO.setNotiTitle(rs.getString("NOTI_TITLE"));
 			noticeDTO.setNotiContent(rs.getString("NOTI_CONTENT"));
+			noticeDTO.setFileName(rs.getString("FILE_NAME"));
 		}
 		return noticeDTO;
 	}

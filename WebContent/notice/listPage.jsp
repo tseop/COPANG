@@ -7,15 +7,31 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <script type="text/javascript">
+
 function rank(){
-	<% int rank = (int) session.getAttribute("EMP_RANK"); 
-	 if (rank == 1) { %>
+	
+	<% 
+	
+		int rank = (int) session.getAttribute("EMP_RANK");
+		String deptName = null;
+		int dept = (int) session.getAttribute("EMP_DEPT");
+		
+		if(dept == 1){
+			deptName = "물류";
+		} else if(dept == 2){
+			deptName = "인사관리";
+		} else if(dept == 3){
+			deptName = "경영지원";
+		} 
+		
+		if (rank == 1 && dept == 1 || dept == 2) { %>
 		 alert("작성 권한이 없습니다."); 
-		 document.location.href="noticeList.no";
+		return false;
+		
 	 <% } else { %>
-	 	document.laocation.href="noticeWrite.jsp";
+	 	document.location.href="index.jsp?page=notice/noticeWrite";
 	<% } %>
- }
+	}
 </script>
 </head>
 <body>

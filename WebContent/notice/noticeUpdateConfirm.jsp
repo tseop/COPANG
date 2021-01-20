@@ -28,8 +28,8 @@
 					required="required" value="<%=noticeDTO.getNotiTitle()%>">
 					<input type="hidden" name="no" value="<%=noticeDTO.getNotiNo()%>"></li>
 
-				<li><input type="file" name="file" id="file" class="inputfile" />
-					<label for="file" id="fileYN">파일 선택</label></li>
+				<li><input type="file" name="file" id="file" class="inputfile"/>
+					<label for="file" id="fileYN">기존 파일 : <%= noticeDTO.getFileName() %></label></li>
 
 				<li><label for="내용">내용</label> <textarea name="content"
 						required="required" id="editor"><%=noticeDTO.getNotiContent()%></textarea></li>
