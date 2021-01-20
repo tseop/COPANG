@@ -61,7 +61,7 @@
 							<td><%=noticeDTO.getNotiNo()%>&nbsp;</td>
 							<td><a href='noticeView.no?no=<%=noticeDTO.getNotiNo()%>'
 								style="color: black; text-decoration: none;"
-								onmouseover="this.style.color='blue'"
+								onmouseover="this.style.color='#0074E9'"
 								onmouseout="this.style.color='black'"><%=noticeDTO.getNotiTitle()%></a>&nbsp;</td>
 							<td><%=noticeDTO.getEmpName()%></td>
 							<td><%=noticeDTO.getNotiDate()%>&nbsp;</td>

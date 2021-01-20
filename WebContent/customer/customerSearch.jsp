@@ -42,7 +42,7 @@
 			<td><%=customerDTO.getCusNo() %></td>
 			<td><a href='customerDetails.cu?num=<%=customerDTO.getCusNo() %>'
 					style="color: black; text-decoration: none;"
-					onmouseover="this.style.color='blue'"
+					onmouseover="this.style.color='#0074E9'"
 					onmouseout="this.style.color='black'"> <%=customerDTO.getCusName() %></a></td>
 			<td><%=customerDTO.getCusManager() %></td>
 			<% }} %>

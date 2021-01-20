@@ -7,7 +7,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="mainDAO" class="board.MainDAO" scope="page" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,32 +16,15 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <style type="text/css">
-.wrapper_main {
-	display: flex;
-	padding: 2rem;
-	min-width: 40rem;
-}
+.wrapper_main {	display: flex;padding: 2rem;min-width: 40rem;}
+.box1 {	border: 1px solid black;}
+.box2 {	border: 1px solid red;}
+.box2 table tr {border: 1px solid pink;}
+.box2 table tr td {	border: 1px solid pink;}
+.box3 {	border: 1px solid blue;}
 
-.box1 {
-	border: 1px solid black;
-}
-
-.box2 {
-	border: 1px solid red;
-}
-
-.box2 table tr {
-	border: 1px solid pink;
-}
-
-.box2 table tr td {
-	border: 1px solid pink;
-}
-
-.box3 {
-	border: 1px solid blue;
-}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -59,8 +41,18 @@
 		});
 
 		$('#datepicker').datepicker();
+		
 	});
+	//////////////////////////////////////////////////////////////////
+	var strtxt = ("저의 홈페이지를 방문해 주셔서 감사합니다. 사장님 한마디 ㅎㅎ/끝. ");
+	var strlaenge = strtxt.length;
+	window.onload = function() {
+		document.forms[0].display.value = strtxt;
+		strtxt = strtxt.substring(1, strlaenge) + strtxt.substring(0, 1);
+		setTimeout("scroll();", 200);
+		}
 </script>
+
 </head>
 <body>
 	<%
@@ -93,6 +85,9 @@
 				</tbody>
 			</table>
 		</div>
+<div class="display_board">
+    <form><p><input type="text" name="display" readonly="readonly"></p></form>
+</div>
 		<div class="box2">
 			<table>
 				<thead>
