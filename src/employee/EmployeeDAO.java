@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import customer.CustomerDTO;
+
+
 
 public class EmployeeDAO {
 	private EmployeeDTO empDTO;
@@ -90,6 +91,54 @@ public class EmployeeDAO {
 		return empList;
 	}
 	
+	public int totalCount(){//페이징처리:전체레코드개수
+		int count=0;
+		try {
+			sql = "SELECT COUNT(*) FROM EMPLOYEE";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	public PageTo page(int curPage) {//페이지구현
+	      PageTo pageTo = new PageTo();
+	      int totalCount = totalCount();
+	      empList = new ArrayList<EmployeeDTO>();
+	      try {
+	         sql = "SELECT * FROM EMPLOYEE";
+	         pstmt = conn.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+	         rs = pstmt.executeQuery();
+	         int perPage = pageTo.getPerPage();//5
+	         int skip = (curPage-1) * perPage;
+	         if(skip>0){
+	            rs.absolute(skip);
+	         }
+	         for(int i=0;i<perPage && rs.next();i++){
+	            empDTO = new EmployeeDTO();
+				empDTO.setDeptNo(rs.getInt("DEPT_NO"));
+				empDTO.setEmpAddr(rs.getString("EMP_ADDR"));
+				empDTO.setEmpName(rs.getString("EMP_NAME"));
+				empDTO.setEmpNo(rs.getInt("EMP_NO"));
+				empDTO.setEmpPw(rs.getString("EMP_PW"));
+				empDTO.setEmpRank(rs.getInt("EMP_RANK"));
+				empDTO.setEmpSecurity(rs.getString("EMP_SECURITY"));
+				empDTO.setEmpTel(rs.getString("EMP_TEL"));
+				empList.add(empDTO);
+	         }
+	         pageTo.setList(empList);//ArrayList 저장
+	         pageTo.setTotalCount(totalCount);//전체레코드개수
+	         pageTo.setCurPage(curPage);//현재페이지
+	   } catch (SQLException e) {
+	      e.printStackTrace();
+	   }
+	      return pageTo;        
+	   }//페이지구현
 	public ResultSet idFind(String c) throws SQLException {
 		sql = "select EMP_NO from EMPLOYEE where EMP_SECURITY = ?";
 		pstmt = conn.prepareStatement(sql);

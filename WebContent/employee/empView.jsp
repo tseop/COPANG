@@ -107,11 +107,20 @@ function button_event(){
 			</table>
 			<div class="search_area">
 				<ul style="justify-content: center;">
+				<%
+					int EMP_RANK = (int) session.getAttribute("EMP_RANK");
+					int EMP_DEPT = (int) session.getAttribute("EMP_DEPT");
+					if(EMP_RANK == 3){
+				%>
+					<li><input type="button" value="삭제하기"
+						onClick="location.href='empDelete1.ep?empNo='+<%=empDTO.getEmpNo() %>"></li>
 					<li><input type="button" value="목록으로"
-						onClick="location.href='empList.ep'"></li>
-					<li><input style="background: #ababab" id="delete"
-						type="button" value="삭제하기" disabled="true"
-						onclick="button_event()" class="btn"></li>
+						onClick="location.href='empList.ep"></li>
+					<li><input type="button" value="수정하기"
+						onClick="location.href='index.jsp?page=employee/registerForm'"></li>
+				<% 
+					}
+				%>
 				</ul>
 			</div>
 

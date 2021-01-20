@@ -116,11 +116,10 @@ public class EmployeeServlet extends HttpServlet {
 		} else if (command.equals("/logout.ep")) {
 			Login.session.invalidate();
 			response.sendRedirect("login.jsp");
-		} else if (command.equals("/empDelete.ep")) {
+		} 
+		else if (command.equals("/empDelete.ep")) {
 			int empNo = (int) Login.session.getAttribute("EMP_NO");
-			out.print(empNo + "<br>");
 			String deletePw = request.getParameter("pw");
-			out.print(deletePw + "<br>");
 			try {
 				rs = empDAO.pwFind(empNo);
 				if (rs.next()) {
@@ -140,15 +139,29 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/empList.ep")) {
+		} 
+		
+		else if (command.equals("/empDelete1.ep")) {
+			out.print("<script>confirm('정말 삭제하시겠습니까?');</script>");
+			int empNo = Integer.parseInt(request.getParameter("empNo"));
 			try {
-				empList = empDAO.empList();
-				RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=employee/list");
-				request.setAttribute("empList", empList);
-				dis.forward(request, response);
+				empDAO.empDelete(empNo);
+				response.sendRedirect("empList.ep");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		else if (command.equals("/empList.ep")) {
+			int curPage = 1;
+			if (request.getParameter("curPage") != null) {
+				curPage = Integer.parseInt(request.getParameter("curPage"));
+			}
+			PageTo empList = empDAO.page(curPage);
+			RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=employee/list");
+			request.setAttribute("page", empList);
+			request.setAttribute("empList", empList.getList());
+			dis.forward(request, response);
 		} else if (command.equals("/idFind.ep")) {
 			String c1 = request.getParameter("c1");
 			String c2 = request.getParameter("c2");
@@ -225,8 +238,8 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} 
-		
+		}
+
 		else if (command.equals("/empSearch.ep")) {
 			String searchEmpName = request.getParameter("searchEmpName");
 			try {
@@ -237,17 +250,8 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
-		else if(command.equals("/empDelete.ep")) {
-			int empNo = Integer.parseInt(request.getParameter("empNo"));
-			try {
-				empDAO.empDelete(empNo);
-				response.sendRedirect("empList.ep");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
+		} 
+
 		else if (command.equals("/updateConfirm.ep")) {
 			String pwUp = request.getParameter("pw");
 			out.print(pwUp + "<br>");

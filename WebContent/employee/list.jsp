@@ -1,7 +1,9 @@
 <%@page import="employee.EmployeeDTO"%>
 <%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +33,7 @@
 					<th width="8%">부서</th>
 					<th width="8%">직급</th>
 				</tr>
+
 				<%
 					ArrayList<EmployeeDTO> empList = (ArrayList<EmployeeDTO>) request.getAttribute("empList");
 
@@ -59,7 +62,7 @@
 				%>
 				<tr>
 					<td><%=empDTO.getEmpNo()%></td>
-					<td><a href='empView.ep?empNo=<%=empDTO.getEmpNo() %>'
+					<td><a href='empView.ep?empNo=<%=empDTO.getEmpNo()%>'
 						style="color: black; text-decoration: none;"
 						onmouseover="this.style.color='#0074E9'"
 						onmouseout="this.style.color='black'"><%=empDTO.getEmpName()%></a></td>
@@ -72,6 +75,13 @@
 				<%
 					}
 				%>
+				<tfoot>
+					<tr>
+						<td colspan="5"
+							style="border: 1px solid white; padding-top: 2rem;"><jsp:include
+								page="page.jsp" flush="true" /></td>
+					</tr>
+				</tfoot>
 			</table>
 			<br>
 			<div class="search_area">
