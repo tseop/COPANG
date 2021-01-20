@@ -140,6 +140,7 @@ select {
 	float: left; padding : .8em .5em;
 	font-family: inherit;
 	border-radius: 0px;
+	background: url('../images/arrow.jpeg') no-repeat 95% 50%;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;

@@ -51,7 +51,6 @@ public class ProductServlet extends HttpServlet {
 	      doPost(request, response);
 	   }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		doGet(request, response);
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
