@@ -5,17 +5,20 @@
 <head>
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
-$(function(){
-   $('#editor').on('blur', function(){
-      var editorVal = $('#editor').val();
-      console.log(editorVal);
-   });
-   
+   function check(){
+      var editorValue = CKEDITOR.instances.editor.getData();
+      console.log(editorValue);
 
-});
+      if(editorValue == "" || editorValue.length == 0){
+         alert('내용을 입력해주세요.');
+         return false;
+      } else {
+         return true;
+      }
+   }        
    function goBack() { 
       window.history.back();
-   }
+   }   
 </script>
 <style type="text/css">
 
@@ -30,7 +33,7 @@ $(function(){
 <div class="write_area">
    <h1>게시글 쓰기</h1>
 <hr>
-   <form action="boardRegister.bo" method="get">
+   <form action="boardRegister.bo" method="get" onsubmit="return check()">
       <ul>
          <li><input type="hidden" name="readcount" value="1"></li>
          <li><input type="text" name="title" autofocus="autofocus"
@@ -40,7 +43,7 @@ $(function(){
       </ul>
       <ul class="btns">
 	      <li><input type="submit"></li>
-	      <li><input type="button" value="취소" onClick="goBack()"></li> <!--뒤로가기 삽입-->
+	      <li><input type="button" value="취소" onclick="goBack()"></li> <!--뒤로가기 삽입-->
       </ul>
    </form>
    
