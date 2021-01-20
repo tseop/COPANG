@@ -49,7 +49,7 @@
 			<h1>제품 수정</h1>
 			<form action="productConfirm.pd" method="get">
 			<input type="hidden" name="proNo" value=<%=proNo %>>
-			<input type="hidden" name="cusName" value=<%=cusName %>>
+<%-- 			<input type="hidden" name="cusName" value=<%=cusName %>> --%>
 			
 			
 				<hr>
