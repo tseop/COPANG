@@ -196,7 +196,7 @@ public class ProductServlet extends HttpServlet {
 	             curPage = Integer.parseInt(request.getParameter("curPage"));            
 	          }         
 	          customer.PageTo customerList = customerDAO.page(curPage);
-	          dis = request.getRequestDispatcher("product/customerSearch.jsp");
+	          dis = request.getRequestDispatcher("product/customerSearchForm.jsp");
 	          request.setAttribute("page", customerList);
 	          request.setAttribute("list", customerList.getList());
 	          dis.forward(request, response);

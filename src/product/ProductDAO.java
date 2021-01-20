@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 
 import customer.CustomerDTO;
@@ -28,20 +29,37 @@ public class ProductDAO {
 	private RequestDispatcher dis;
 
 	public ProductDAO() {
-		productDTO = new ProductDTO();
-		productList = new ArrayList<ProductDTO>();
+		String dbURL = "jdbc:mysql://bbr123.cafe24.com:3306/bbr123?characterEncoding=utf8";
+		String dbID = "bbr123";
+		String dbPWD = "alstjr95!";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+			conn = DriverManager.getConnection(dbURL, dbID, dbPWD);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
-
-	public Connection getConnection() throws SQLException {
-		conn = DriverManager.getConnection("jdbc:mysql://bbr123.cafe24.com:3306/bbr123", "bbr123", "alstjr95!");
-		// Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bbr123", "bbr123", "alstjr95!");
-		return conn;
-	}
+	
+//	public ProductDAO() {
+//		productDTO = new ProductDTO();
+//		productList = new ArrayList<ProductDTO>();
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
+//
+//	public Connection getConnection() throws SQLException {
+//		conn = DriverManager.getConnection("jdbc:mysql://bbr123.cafe24.com:3306/bbr123", "bbr123", "alstjr95!");
+//		// Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bbr123", "bbr123", "alstjr95!");
+//		return conn;
+//	}
 
 	public void productClose() {
 		try {
@@ -57,7 +75,7 @@ public class ProductDAO {
 	public int totalCount() {
 		int count = 0;
 		try {
-			conn = getConnection();
+//			conn = getConnection();
 			sql = "SELECT COUNT(*) FROM PRODUCT";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -75,7 +93,7 @@ public class ProductDAO {
 		int totalCount = totalCount();
 		productList = new ArrayList<ProductDTO>();
 		try {
-			conn = getConnection();
+//			conn = getConnection();
 			sql = "SELECT P.PRO_NO, P.PRO_NAME, P.PRO_COST, P.PRO_PRICE, DATE_FORMAT(P.PRO_FIRST_DATE, '%m/%d') AS PRO_FIRST_DATE, DATE_FORMAT(P.PRO_LAST_DATE, '%m/%d') AS PRO_LAST_DATE, P.PRO_STOCK, C.CUS_NAME, P.PRO_STORING FROM PRODUCT P LEFT JOIN CUSTOMER C ON P.CUS_NO=C.CUS_NO ORDER BY PRO_NO ASC";
 			pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = pstmt.executeQuery();
@@ -108,7 +126,7 @@ public class ProductDAO {
 	}
 
 	public int productRegister(ProductDTO productDTO) throws SQLException {
-		conn = getConnection();
+//		conn = getConnection();
 		sql1 = "select CUS_NO from CUSTOMER where CUS_NAME=?";
 		pstmt = conn.prepareStatement(sql1);
 		pstmt.setString(1, productDTO.getCusName());
@@ -132,16 +150,17 @@ public class ProductDAO {
 	}
 
 	public int productDelete(int no) throws SQLException {
-		conn = getConnection();
+//		conn = getConnection();
 		sql = "delete from PRODUCT where PRO_NO=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, no);
 		cnt = pstmt.executeUpdate();
 		return cnt;
+
 	}
 
 	public ArrayList<ProductDTO> productSearch(String searchData, String colum) throws SQLException {
-		conn = getConnection();
+//		conn = getConnection();
 		if (colum.equals("제품명")) {
 			sql = "select * from PRODUCT where PRO_NAME=?";
 			pstmt = conn.prepareStatement(sql);
@@ -199,7 +218,7 @@ public class ProductDAO {
 	}
 
 	public ArrayList<CustomerDTO> customerSearch(String searchCusName) throws SQLException {
-		conn = getConnection();
+//		conn = getConnection();
 		sql = "SELECT * FROM CUSTOMER WHERE CUS_NAME LIKE ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, "%" + searchCusName + "%");
@@ -269,7 +288,7 @@ public class ProductDAO {
 	}// 페이지구현
 
 	public int stockUpdate(int todayValue, int num) throws SQLException {
-		conn = getConnection();
+//		conn = getConnection();
 		sql = "UPDATE PRODUCT SET PRO_STOCK =(SELECT PRO_STOCK - ?) WHERE PRO_NO = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, todayValue);
