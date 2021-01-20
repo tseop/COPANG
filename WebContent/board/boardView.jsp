@@ -22,6 +22,10 @@ function button_event(){
 	}
 }
 
+function goBack() { 
+    window.history.back();
+ }  
+
 </script>
 <meta charset="UTF-8">
 <title>KHJSP</title>
@@ -74,7 +78,7 @@ function button_event(){
 			<div class="search_area">
 				<ul>
 					<li><input type="button" value="목록으로"
-						onClick="button_event()" class="btn"></li>
+						onClick="goBack()" class="btn"></li>
 
 					<%
 						int EMP_RANK = (int) session.getAttribute("EMP_RANK");
