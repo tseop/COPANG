@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>KHJSP</title>
+<title>COPANG</title>
 <script>
 	function back() { //사원번호 숫자만입력
 		window.close();

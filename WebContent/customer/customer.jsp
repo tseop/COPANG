@@ -54,7 +54,7 @@
 					<%
 						int empRank = (int) session.getAttribute("EMP_RANK");
 						int deptNo = (int) session.getAttribute("EMP_DEPT");
-						if (empRank == 2 && deptNo == 2 || empRank == 2 && deptNo == 1 || empRank == 4) { //버튼 세션값에 따라 나타내는거
+						if (empRank == 2 && deptNo == 2 || empRank == 2 && deptNo == 1 || empRank == 3) { //버튼 세션값에 따라 나타내는거
 					%>
 					<li><input type="button" value="거래처 등록"
 						onClick="location.href='index.jsp?page=customer/customerRegister'"></li>
