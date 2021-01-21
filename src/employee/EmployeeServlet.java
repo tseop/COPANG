@@ -121,11 +121,11 @@ public class EmployeeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/logout.ep")) {
-			login.session.invalidate();
+			Login.session.invalidate();
 			response.sendRedirect("login.jsp");
 		} 
 		else if (command.equals("/empDelete.ep")) {
-			int empNo = (int) login.session.getAttribute("EMP_NO");
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
 			String deletePw = request.getParameter("pw");
 			try {
 				rs = empDAO.pwFind(empNo);
@@ -135,7 +135,7 @@ public class EmployeeServlet extends HttpServlet {
 						out.print("<script>");
 						out.print("alert('회원탈퇴되었습니다.');");
 						out.print("</script>");
-						login.session.invalidate();
+						Login.session.invalidate();
 						response.sendRedirect("index.jsp");
 					} else {
 						out.print("<script>");
@@ -215,7 +215,7 @@ public class EmployeeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/mypage.ep")) {
-			int empNo = (int) login.session.getAttribute("EMP_NO");
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
 			try {
 				rs = empDAO.mypage(empNo);
 				while (rs.next()) {
@@ -271,7 +271,7 @@ public class EmployeeServlet extends HttpServlet {
 		else if (command.equals("/updateConfirm.ep")) {
 			String pwUp = request.getParameter("pw");
 			out.print(pwUp + "<br>");
-			int empNo = (int) login.session.getAttribute("EMP_NO");
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
 			out.print(empNo + "<br>");
 			try {
 				rs = empDAO.pwFind(empNo);
@@ -295,7 +295,7 @@ public class EmployeeServlet extends HttpServlet {
 			//int empNoUp = Integer.parseInt(request.getParameter("empNo"));
 			out.print("123");
 			String pwUp = request.getParameter("pw");
-			int empNo = (int) login.session.getAttribute("EMP_NO");
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
 			try {
 				rs = empDAO.pwFind(empNo);
 				if(rs.next()) {
@@ -324,7 +324,7 @@ public class EmployeeServlet extends HttpServlet {
 		}
 		
 		else if (command.equals("/update.ep")) {
-			int empNo = (int) login.session.getAttribute("EMP_NO");
+			int empNo = (int) Login.session.getAttribute("EMP_NO");
 			String c1 = request.getParameter("c1");
 			String c2 = request.getParameter("c2");
 			String c = c1.concat("-");
@@ -338,7 +338,7 @@ public class EmployeeServlet extends HttpServlet {
 			empDTO.setEmpAddr(request.getParameter("addr"));
 			try {
 				empDAO.empUpdate(empDTO, empNo);
-				login.session.setAttribute("EMP_NO", empDTO.getEmpNo());
+				Login.session.setAttribute("EMP_NO", empDTO.getEmpNo());
 				response.sendRedirect("mypage.ep");
 			} catch (SQLException e) {
 				e.printStackTrace();

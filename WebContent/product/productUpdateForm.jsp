@@ -33,7 +33,7 @@ function popup() {
 	<input type="hidden" name = "proNo" value=<%= productDTO.getProNo()%>>
 		<div class="title_area">
 				<a><img src="images/table.svg"> 제품 수정</a> 
-				<input type="submit" value="수정하기">
+				<input type="submit" value="수정완료">
 			</div>
 			<div class="register">
 				<table border="1">

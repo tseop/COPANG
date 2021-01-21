@@ -70,8 +70,7 @@
 						<td><input type="date" name="proFirstNal" style="width: 70%"
 							placeholder="첫입고일" size="10" maxlength="100" required="required"></td>
 						<td><input type="date" name="proLastNal" style="width: 70%"
-							placeholder="마지막입고일" size="10" maxlength="100"
-							required="required"></td>
+							placeholder="마지막입고일" size="10" maxlength="100"></td>
 						<td><input type="number" name="proStock" placeholder="재고"
 							size="10" maxlength="100"></td>
 						<!-- <td><input type="number" name="today" placeholder="당일판매" size="10" maxlength="100"></td> -->
