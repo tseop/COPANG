@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/style.css?v=210121">
+<link rel="stylesheet" type="text/css" href="css/style.css?v=210122">
 </head>
 <body>
 	<div class="customer">

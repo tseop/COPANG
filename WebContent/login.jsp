@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css?v=210121">
+<link rel="stylesheet" href="css/style.css?v=210122">
 <script>
 function inNumber(){    //사원번호 숫자만입력
     if(event.keyCode < 48 || event.keyCode > 57){
