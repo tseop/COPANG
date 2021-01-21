@@ -46,7 +46,7 @@ function button_submit(){
 </style>
 </head>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/style.css?v=5">
+<link rel="stylesheet" type="text/css" href="css/style.css?v=210121">
 <body>
 <div class="customer">
 <div class="reg_form">

@@ -8,7 +8,7 @@
 <title>COPANG</title>
 
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css?v=125">
+<link rel="stylesheet" href="css/style.css">
 <script type="text/javascript">
 	function button_event() {
 		if (confirm("정말 삭제하시겠습니까??") == true) {

@@ -4,6 +4,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script>
+function inNumber(){    
+    if(event.keyCode < 48 || event.keyCode > 57){
+       event.returnValue = false;
+    }   
+ }
+ 
+function popup() {
+	var url = "product/customerSearchForm.jsp";
+	var name = "popup test";
+	var option = "width = 1000, height = 600, top = 100, left = 200, location = no"
+	window.open(url, name, option);
+}
+</script>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/product.css?v=45">
 <meta charset="UTF-8">
@@ -11,11 +26,11 @@
 </head>
 <body>
 <%
-	int proNo = Integer.parseInt((request.getParameter("proNo")));
+	ProductDTO productDTO = (ProductDTO)request.getAttribute("productDTO");
 %>
 <div class="wrap">
 	<form action="productUpdate.pd" method="get">
-	<input type="hidden" name = "proNo" value="<%= proNo%>">
+	<input type="hidden" name = "proNo" value=<%= productDTO.getProNo()%>>
 		<div class="title_area">
 				<a><img src="images/table.svg"> 제품 수정</a> 
 				<input type="submit" value="수정완료">
@@ -35,23 +50,25 @@
 					</tr>
 					<tr>
 						<td><input type="text" name="proName" autofocus="autofocus"
-							placeholder="제품명" size="10" maxlength="100" required="required"></td>
-						<td><input type="button" id="search" value="검색"
-							onclick='popup()'><input type="text" name="cusName"
-							style="width: 60%" placeholder="거래처명" size="10" maxlength="100"
-							required="required"></td>
-						<td><input type="number" name="proStoring" placeholder="입고수량"
+							value='<%=productDTO.getProName()%>' size="10" maxlength="100" required="required"></td>
+						<td>
+<!-- 						<input type="button" id="search" value="검색" -->
+<!-- 							onclick='popup()'> -->
+							<input type="text" name="cusName"
+							style="width: 60%" value=<%=productDTO.getCusName()%> size="10" maxlength="100"
+							required="required" readonly="readonly"></td>
+						<td><input type="text" name="proStoring" onkeypress="inNumber()" value=<%=productDTO.getProStoring()%>
 							size="10" maxlength="100" required="required"></td>
-						<td><input type="number" name="proCost" placeholder="제품원가"
+						<td><input type="text" name="proCost" onkeypress="inNumber()" value=<%=productDTO.getProCost()%>
 							size="10" maxlength="100" required="required"></td>
-						<td><input type="number" name="proPrice" placeholder="판매가"
+						<td><input type="text" name="proPrice" onkeypress="inNumber()" value=<%=productDTO.getProPrice()%>
 							size="10" maxlength="100" required="required"></td>
 						<td><input type="date" name="proFirstNal" style="width: 70%"
-							placeholder="첫입고일" size="10" maxlength="100" required="required"></td>
+							value=<%=productDTO.getProFirstNal()%> size="10" maxlength="100" readonly="readonly" required="required"></td>
 						<td><input type="date" name="proLastNal" style="width: 70%"
-							placeholder="마지막입고일" size="10" maxlength="100"
+							value=<%=productDTO.getProLastNal()%> size="10" maxlength="100"
 							required="required"></td>
-						<td><input type="number" name="proStock" placeholder="재고"
+						<td><input type="text" name="proStock" onkeypress="inNumber()" value=<%=productDTO.getProStock()%>
 							size="10" maxlength="100"></td>
 						<!-- <td><input type="number" name="today" placeholder="당일판매" size="10" maxlength="100"></td> -->
 					</tr>

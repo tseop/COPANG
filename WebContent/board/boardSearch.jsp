@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/style.css?">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <div class="customer">
@@ -71,7 +71,7 @@
 		%>
 	</table>
 	<br>
-	<div class="search_area">
+	<div class="search_area_for_btn">
 		<ul>
 			<li>
 				<%-- <% if((boardSearchList.size() != 0)) { %>  --%>

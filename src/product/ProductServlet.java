@@ -32,6 +32,7 @@ public class ProductServlet extends HttpServlet {
 	private CustomerDAO customerDAO;
 	private EmployeeDTO empDTO;
 	private EmployeeDAO empDAO;
+	private Login login;
 	
 	private Connection conn;
 	private int cnt;
@@ -45,6 +46,7 @@ public class ProductServlet extends HttpServlet {
 		productDAO = new ProductDAO();
 		empDTO =new EmployeeDTO();
 		empDAO =new EmployeeDAO();
+		login = new Login();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -123,16 +125,20 @@ public class ProductServlet extends HttpServlet {
 		else if (command.equals("/productConfirm.pd")) {
 			String pw = request.getParameter("pw");
 			int proNo = Integer.parseInt(request.getParameter("proNo"));
-			int empNo = (int)Login.session.getAttribute("EMP_NO");
+			int empNo = (int)login.session.getAttribute("EMP_NO");
 			try {
 				rs = empDAO.pwFind(empNo);
+				productDTO = productDAO.productUpdateConfirm(proNo);
 				if(rs.next()) {
 					//empDTO.setEmpPw(rs.getString("EMP_PW"));
 					if(pw.equals(rs.getString("EMP_PW"))) {
 //						RequestDispatcher dis = request.getRequestDispatcher("index.jsp?page=product/productUpdateForm");
 //						request.setAttribute("proNo", proNo);
 //						dis.forward(request,response);
-						response.sendRedirect("index.jsp?proNo="+proNo+"&page=product/productUpdateForm");
+//						response.sendRedirect("index.jsp?page=product/productUpdateForm");
+						dis = request.getRequestDispatcher("index.jsp?page=product/productUpdateForm");
+						request.setAttribute("productDTO", productDTO);
+						dis.forward(request, response);
 					}
 					else {
 						out.print("<script>alert('비밀번호가 일치하지 않습니다.');history.back();</script>");
@@ -145,17 +151,19 @@ public class ProductServlet extends HttpServlet {
 		else if (command.equals("/productUpdate.pd")) {
 			int proNo = Integer.parseInt(request.getParameter("proNo"));
 			productDTO.setProName(request.getParameter("proName"));
-			productDTO.setCusName(request.getParameter("cusName"));
 			productDTO.setProStoring(request.getParameter("proStoring"));
 			productDTO.setProCost(request.getParameter("proCost"));
 			productDTO.setProPrice(request.getParameter("proPrice"));
-			productDTO.setProFirstNal(request.getParameter("proFirstNal"));
 			productDTO.setProLastNal(request.getParameter("proLastNal"));
 			productDTO.setProStock(request.getParameter("proStock"));
 			try {
-				productDAO.proUpdate(productDTO,proNo);
+				cnt = productDAO.proUpdate(productDTO,proNo);
 //				productDAO.cusNameUpdate(productDTO,cusName);
-				response.sendRedirect("productList.pd");
+//				response.sendRedirect("productList.pd");
+				dis = request.getRequestDispatcher("productList.pd");
+				request.setAttribute("productDTO", productDTO);
+				dis.forward(request, response);
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

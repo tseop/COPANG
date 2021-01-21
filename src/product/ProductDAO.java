@@ -177,19 +177,41 @@ public class ProductDAO {
 		}
 		return productSearchList;
 	}
+	
+	public ProductDTO productUpdateConfirm(int proNo)throws SQLException{
+		sql = "SELECT P.PRO_NO, P.PRO_NAME, P.PRO_COST, P.PRO_PRICE, P.PRO_FIRST_DATE, P.PRO_LAST_DATE, P.PRO_STOCK ,C.CUS_NAME, P.PRO_STORING FROM PRODUCT P LEFT JOIN CUSTOMER C ON P.CUS_NO=C.CUS_NO WHERE P.PRO_NO=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, proNo);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			productDTO.setProNo(rs.getInt("PRO_NO"));
+			productDTO.setProName(rs.getString("PRO_NAME"));
+			productDTO.setProCost(rs.getString("PRO_COST"));
+			productDTO.setProPrice(rs.getString("PRO_PRICE"));
+			productDTO.setProFirstNal(rs.getString("PRO_FIRST_DATE"));
+			productDTO.setProLastNal(rs.getString("PRO_LAST_DATE"));
+			productDTO.setProStock(rs.getString("PRO_STOCK"));
+			productDTO.setCusName(rs.getString("CUS_NAME"));
+			productDTO.setProStoring(rs.getString("PRO_STORING"));
+		}
+		
+		return productDTO;
+	}
 
-	public void proUpdate(ProductDTO productDTO, int proNo) throws SQLException {
-		sql = "UPDATE PRODUCT SET PRO_NAME=?,PRO_STORING=?,PRO_COST=?,PRO_PRICE=?,PRO_FIRST_DATE=?,PRO_LAST_DATE=?,PRO_STOCK=? WHERE PRO_NO=?";
+	public int proUpdate(ProductDTO productDTO, int proNo) throws SQLException {
+		sql = "UPDATE PRODUCT SET PRO_NAME=?,PRO_STORING=?,PRO_COST=?,PRO_PRICE=?,PRO_LAST_DATE=?,PRO_STOCK=? WHERE PRO_NO=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, productDTO.getProName());
 		pstmt.setString(2, productDTO.getProStoring());
 		pstmt.setString(3, productDTO.getProCost());
 		pstmt.setString(4, productDTO.getProPrice());
-		pstmt.setString(5, productDTO.getProFirstNal());
-		pstmt.setString(6, productDTO.getProLastNal());
-		pstmt.setString(7, productDTO.getProStock());
-		pstmt.setInt(8, proNo);
-		pstmt.executeUpdate();
+		pstmt.setString(5, productDTO.getProLastNal());
+		pstmt.setString(6, productDTO.getProStock());
+		pstmt.setInt(7, proNo);
+		cnt = pstmt.executeUpdate();
+		
+		return cnt;
 	}
 
 	public ArrayList<CustomerDTO> customerSearch(String searchCusName) throws SQLException {

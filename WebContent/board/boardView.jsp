@@ -73,7 +73,7 @@
 					</ul>
 					<br>
 				</div>
-				<div class="search_area">
+				<div class="search_area_for_btn">
 					<ul>
 						<%
 							if (boardDTO.getBoardReadcount() != 0) {

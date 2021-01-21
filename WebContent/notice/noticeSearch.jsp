@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/style.css?">
+<link rel="stylesheet" type="text/css" href="css/style.css?v=210121">
 </head>
 <body>
 	<div class="customer">
@@ -72,7 +72,7 @@
 						%>
 					</table>
 					<br>
-					<div class="search_area">
+					<div class="search_area_for_btn">
 						<ul>
 							<li><input type="button" value="게시글 전체보기"
 								onClick="location.href='noticeList.no'"></li>

@@ -16,7 +16,7 @@ public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private EmployeeDTO empDTO;
 	private EmployeeDAO empDAO;
-	public static HttpSession session;
+	public HttpSession session;
 	
     public Login() {
         empDTO = new EmployeeDTO();
