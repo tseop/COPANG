@@ -33,6 +33,7 @@ public class NoticeServlet extends HttpServlet {
 
 	private NoticeDTO noticeDTO;
 	private NoticeDAO noticeDAO;
+	private Login login;
 	private RequestDispatcher dis;
 
 	private int cnt;
@@ -50,6 +51,7 @@ public class NoticeServlet extends HttpServlet {
 	public NoticeServlet() {
 		noticeDTO = new NoticeDTO();
 		noticeDAO = new NoticeDAO();
+		login = new Login();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -72,7 +74,7 @@ public class NoticeServlet extends HttpServlet {
 		if (command.equals("/noticeRegister.no")) {
 			noticeDTO.setNotiTitle(request.getParameter("title"));
 			noticeDTO.setNotiContent(request.getParameter("content"));			
-			noticeDTO.setEmpNo((int)Login.session.getAttribute("EMP_NO"));
+			noticeDTO.setEmpNo((int)login.session.getAttribute("EMP_NO"));
 			
 			try {
 				realPath = request.getServletContext().getRealPath("");

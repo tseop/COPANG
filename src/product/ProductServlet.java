@@ -32,6 +32,7 @@ public class ProductServlet extends HttpServlet {
 	private CustomerDAO customerDAO;
 	private EmployeeDTO empDTO;
 	private EmployeeDAO empDAO;
+	private Login login;
 	
 	private Connection conn;
 	private int cnt;
@@ -45,6 +46,7 @@ public class ProductServlet extends HttpServlet {
 		productDAO = new ProductDAO();
 		empDTO =new EmployeeDTO();
 		empDAO =new EmployeeDAO();
+		login = new Login();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -123,7 +125,7 @@ public class ProductServlet extends HttpServlet {
 		else if (command.equals("/productConfirm.pd")) {
 			String pw = request.getParameter("pw");
 			int proNo = Integer.parseInt(request.getParameter("proNo"));
-			int empNo = (int)Login.session.getAttribute("EMP_NO");
+			int empNo = (int)login.session.getAttribute("EMP_NO");
 			try {
 				rs = empDAO.pwFind(empNo);
 				productDTO = productDAO.productUpdateConfirm(proNo);
