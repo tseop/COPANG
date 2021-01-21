@@ -100,7 +100,7 @@ input[type=button],input[type=submit]{cursor: pointer;}
 .customer .emp_reg_form .check{border: none; background:white; color: #366afe; font-size:0.6rem; font-weight: 700;}
 .select_box_top{display: flex;justify-content: space-between;}
 .select_box{padding:0.5rem; position: relative;width: 8rem; border: 1px solid #ccc;font-size: 0.7rem; color: #60666d;}
-.emp_reg_form #check, #check2{font-size: 0.8rem;}
+.emp_reg_form #check, #check2{font-size: 12px;}
 
 /* CUSTOMER_REGISTER */
 .customer .reg_form{width: 50%;margin: auto;}
