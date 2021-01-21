@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>COPANG</title>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css?v=125">
+<link rel="stylesheet" href="css/style.css?v=210121">
 <script type="text/javascript">
 	function del() {
 

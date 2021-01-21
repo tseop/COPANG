@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>사원번호찾기</title>
 <link rel="stylesheet" type="text/css" href="../css/reset.css">
-<link rel="stylesheet" type="text/css" href="../css/style.css?v=5">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body style="height: 0;">
 <div class="wrap_popup">
