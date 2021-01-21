@@ -125,7 +125,7 @@ public class ProductServlet extends HttpServlet {
 		else if (command.equals("/productConfirm.pd")) {
 			String pw = request.getParameter("pw");
 			int proNo = Integer.parseInt(request.getParameter("proNo"));
-			int empNo = (int)login.session.getAttribute("EMP_NO");
+			int empNo = (int)Login.session.getAttribute("EMP_NO");
 			try {
 				rs = empDAO.pwFind(empNo);
 				productDTO = productDAO.productUpdateConfirm(proNo);
