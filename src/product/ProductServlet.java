@@ -77,7 +77,9 @@ public class ProductServlet extends HttpServlet {
 				response.sendRedirect("productList.pd"); // doPost의 인자로 있다 response
 			} catch (SQLException e) {
 				e.printStackTrace();
-			} 
+			} finally {
+				productDAO.productCloseAll();
+			}
 		}
 		
 		else if(command.equals("/productList.pd")) {
@@ -92,6 +94,8 @@ public class ProductServlet extends HttpServlet {
 	             request.setAttribute("page", productList);
 	             request.setAttribute("productList", productList.getList());
 	             dis.forward(request, response);
+	             
+	             productDAO.productCloseAll();
 	      }
 		
 		else if(command.equals("/productDelete.pd")){
@@ -107,7 +111,9 @@ public class ProductServlet extends HttpServlet {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
-			} 
+			} finally {
+				productDAO.productClose();
+			}
 		}
 		
 		else if (command.equals("/productSearch.pd")) {
@@ -120,6 +126,8 @@ public class ProductServlet extends HttpServlet {
 	             dis.forward(request, response);
 	          } catch (SQLException e) {
 	             e.printStackTrace();
+	          } finally {
+	        	  productDAO.productCloseAll();
 	          }
 	       }//검색
 		else if (command.equals("/productConfirm.pd")) {
@@ -146,6 +154,8 @@ public class ProductServlet extends HttpServlet {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				productDAO.productCloseAll();
 			}
 		}
 		else if (command.equals("/productUpdate.pd")) {
@@ -166,6 +176,8 @@ public class ProductServlet extends HttpServlet {
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				productDAO.productClose();
 			}
 		}
 		
@@ -183,6 +195,8 @@ public class ProductServlet extends HttpServlet {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
+			} finally {
+				productDAO.productClose();
 			}
 	      }
 
@@ -207,6 +221,8 @@ public class ProductServlet extends HttpServlet {
 	          request.setAttribute("page", customerList);
 	          request.setAttribute("list", customerList.getList());
 	          dis.forward(request, response);
+	          
+	          productDAO.productCloseAll();
 //
 //			  int curPage = 1;//기본페이지
 //	          if(request.getParameter("curPage")!=null){

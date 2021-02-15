@@ -34,6 +34,27 @@ public class CustomerDAO {
 				e.printStackTrace();
 			}
 	}
+	
+	public void customerCloseAll() {
+		try {
+			conn.close();
+			rs.close();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void customerClose() {
+		try {
+			conn.close();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public int customerRegister(CustomerDTO customerDTO) throws SQLException {
 		sql = "INSERT INTO CUSTOMER (CUS_NAME, CUS_MANAGER, CUS_TEL, BUSINESS_NO) VALUES (?, ?, ?, ?);";

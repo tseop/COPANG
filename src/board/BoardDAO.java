@@ -36,10 +36,20 @@ public class BoardDAO {
 		return conn;
 	}
 
-	public void boardClose() {
+	public void boardCloseAll() {
 		try {
 			conn.close();
 			rs.close();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void boardClose() {
+		try {
+			conn.close();
 			pstmt.close();
 
 		} catch (SQLException e) {

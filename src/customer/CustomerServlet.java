@@ -54,6 +54,8 @@ public class CustomerServlet extends HttpServlet {
 		            }
 	           } catch (SQLException e) {
 	              e.printStackTrace();
+	           } finally {
+	        	   customerDAO.customerClose();
 	           }
 	      }//등록 
 	      
@@ -67,6 +69,8 @@ public class CustomerServlet extends HttpServlet {
 	          request.setAttribute("page", customerList);
 	          request.setAttribute("list", customerList.getList());
 	          dis.forward(request, response);
+	          
+	          customerDAO.customerCloseAll();
 	       }//목록
 	    
 	      else if (command.equals("/customerSearch.cu")) {
@@ -78,7 +82,9 @@ public class CustomerServlet extends HttpServlet {
 	             dis.forward(request, response);
 	          } catch (SQLException e) {
 	             e.printStackTrace();
-	          }
+	          } finally {
+				customerDAO.customerCloseAll();
+			}
 	       }//검색
 	      
 	      else if(command.equals("/customerDetails.cu")){//상세보기
@@ -91,6 +97,8 @@ public class CustomerServlet extends HttpServlet {
 					dis.forward(request, response);
 				} catch (SQLException e) {
 					e.printStackTrace();
+				} finally {
+					customerDAO.customerCloseAll();
 				}
 	    	 
 	      }//상세보기
@@ -111,6 +119,8 @@ public class CustomerServlet extends HttpServlet {
 		            }
 		         } catch (SQLException e) {
 		              e.printStackTrace();
+		         } finally {
+		        	 customerDAO.customerClose();
 		         }
 	      
 	      }//수정하기
@@ -123,6 +133,8 @@ public class CustomerServlet extends HttpServlet {
 	             response.sendRedirect("customerList.cu");
 	          } catch (SQLException e) {
 	             e.printStackTrace();
+	          } finally {
+	        	  customerDAO.customerClose();
 	          }
 	      }//삭제
    }

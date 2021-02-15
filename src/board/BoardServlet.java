@@ -55,6 +55,8 @@ public class BoardServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/index.jsp?page=board/boardView").forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				boardDAO.boardClose();
 			}
 		}
 
@@ -69,6 +71,8 @@ public class BoardServlet extends HttpServlet {
 			request.setAttribute("page", boardList);
 			request.setAttribute("list", boardList.getList());
 			dis.forward(request, response);
+			
+			boardDAO.boardCloseAll();
 
 		// 게시글 클릭 후 내용볼 수 있는 게시글
 		} else if (command.equals("/boardView.bo")) {
@@ -82,6 +86,8 @@ public class BoardServlet extends HttpServlet {
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				boardDAO.boardCloseAll();
 			}
 
 		// 검색 게시글 리스트
@@ -94,6 +100,8 @@ public class BoardServlet extends HttpServlet {
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				boardDAO.boardCloseAll();
 			}
 
 		// 게시글 삭제
@@ -105,6 +113,8 @@ public class BoardServlet extends HttpServlet {
 				response.sendRedirect("boardList.bo");
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				boardDAO.boardClose();
 			}
 		}
 	}

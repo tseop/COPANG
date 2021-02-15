@@ -41,10 +41,20 @@ public class ProductDAO {
 		}
 	}
 
-	public void productClose() {
+	public void productCloseAll() {
 		try {
 			conn.close();
 			rs.close();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void productClose() {
+		try {
+			conn.close();
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

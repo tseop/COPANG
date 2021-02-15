@@ -34,6 +34,27 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void empCloseAll() {
+		try {
+			conn.close();
+			rs.close();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void empClose() {
+		try {
+			conn.close();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	public int employeeRegister(EmployeeDTO empDTO) throws SQLException {
 		sql = "insert into EMPLOYEE(EMP_NO,EMP_NAME,EMP_TEL,EMP_ADDR,EMP_SECURITY,EMP_PW,DEPT_NO,EMP_RANK) values(?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);

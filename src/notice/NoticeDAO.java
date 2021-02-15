@@ -39,7 +39,7 @@ public class NoticeDAO {
 		return conn;
 	}
 
-	public void noticeClose() {
+	public void noticeCloseAll() {
 		try {
 			conn.close();
 			rs.close();
@@ -47,7 +47,16 @@ public class NoticeDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}	
+	}
+	
+	public void noticeClose() {
+		try {
+			conn.close();
+			pstmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	// 게시글 등록
 	public int noticeWrite(NoticeDTO noticeDTO) throws SQLException {

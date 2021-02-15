@@ -70,6 +70,8 @@ public class EmployeeServlet extends HttpServlet {
 				response.sendRedirect("index.jsp");
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empClose();
 			}
 		}
 
@@ -94,6 +96,8 @@ public class EmployeeServlet extends HttpServlet {
 				out.print("<input type = 'button' value ='종료' onClick='self.close()'>");
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		} else if (command.equals("/login.ep")) {
 			int empNo = Integer.parseInt(request.getParameter("no"));
@@ -119,6 +123,8 @@ public class EmployeeServlet extends HttpServlet {
 
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		} else if (command.equals("/logout.ep")) {
 			Login.session.invalidate();
@@ -145,6 +151,8 @@ public class EmployeeServlet extends HttpServlet {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		} 
 		
@@ -157,6 +165,8 @@ public class EmployeeServlet extends HttpServlet {
 				response.sendRedirect("empList.ep");
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empClose();
 			}
 		}
 		
@@ -192,6 +202,8 @@ public class EmployeeServlet extends HttpServlet {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		} else if (command.equals("/pwFind.ep")) {
 			int empNo = Integer.parseInt(request.getParameter("no"));
@@ -213,6 +225,8 @@ public class EmployeeServlet extends HttpServlet {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		} else if (command.equals("/mypage.ep")) {
 			int empNo = (int) Login.session.getAttribute("EMP_NO");
@@ -233,6 +247,8 @@ public class EmployeeServlet extends HttpServlet {
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		}
 
@@ -253,6 +269,8 @@ public class EmployeeServlet extends HttpServlet {
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		}
 
@@ -265,6 +283,8 @@ public class EmployeeServlet extends HttpServlet {
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		} 
 
@@ -285,6 +305,8 @@ public class EmployeeServlet extends HttpServlet {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 		}
 		else if(command.equals("/updateConfirm1.ep")) {
@@ -319,6 +341,8 @@ public class EmployeeServlet extends HttpServlet {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empCloseAll();
 			}
 			
 		}
@@ -342,6 +366,8 @@ public class EmployeeServlet extends HttpServlet {
 				response.sendRedirect("mypage.ep");
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empClose();
 			}
 		}
 		else if(command.equals("/update1.ep")) {
@@ -363,6 +389,8 @@ public class EmployeeServlet extends HttpServlet {
 
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				empDAO.empClose();
 			}
 			
 		}

@@ -106,6 +106,8 @@ public class NoticeServlet extends HttpServlet {
 
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				noticeDAO.noticeClose();
 			}
 
 		}
@@ -121,6 +123,8 @@ public class NoticeServlet extends HttpServlet {
 			request.setAttribute("page", noticeList);
 			request.setAttribute("list", noticeList.getList());
 			dis.forward(request, response);
+			
+			noticeDAO.noticeCloseAll();
 		}
 
 		// 공지 내용 볼수 있는 화면
@@ -135,6 +139,8 @@ public class NoticeServlet extends HttpServlet {
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				noticeDAO.noticeCloseAll();
 			}
 		}
 
@@ -149,6 +155,8 @@ public class NoticeServlet extends HttpServlet {
 				response.sendRedirect("noticeList.no");
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				noticeDAO.noticeClose();
 			}
 		} 
 		
@@ -162,6 +170,8 @@ public class NoticeServlet extends HttpServlet {
 				dis.forward(request, response);
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				noticeDAO.noticeCloseAll();
 			}
 
 		}
@@ -184,6 +194,8 @@ public class NoticeServlet extends HttpServlet {
 
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				noticeDAO.noticeClose();
 			}
 		}
 
@@ -198,6 +210,8 @@ public class NoticeServlet extends HttpServlet {
 
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				noticeDAO.noticeCloseAll();
 			}
 
 		}
